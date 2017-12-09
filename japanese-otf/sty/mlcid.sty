@@ -1,0 +1,35 @@
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{mlcid}[2004/04/17 v1.0.2 psitau]
+%force catcode of \" be 12
+\count@\catcode`\"
+\catcode`\"=12
+\DeclareRobustCommand{\CIDK}[1]{\begingroup%
+	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+	\kanjifamily{cidk}\set@character=#1%
+	\endgroup%
+}
+\DeclareRobustCommand{\CIDC}[1]{\begingroup%
+	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+	\kanjifamily{cidc}\set@character=#1%
+	\endgroup%
+}
+\DeclareRobustCommand{\CIDT}[1]{\begingroup%
+	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+	\kanjifamily{cidt}\set@character=#1%
+	\endgroup%
+}
+\catcode`\"=\count@
+%end of changing catcode of \"
+\DeclareKanjiFamily{\otf@JYn}{cidk}{}
+\DeclareKanjiFamily{\otf@JTn}{cidk}{}
+\Declare@FontShape{cidk}{m}{01234}{cidkmr}
+\Declare@FontShape{cidk}{bx}{01234}{cidkgr}
+\DeclareKanjiFamily{\otf@JYn}{cidc}{}
+\DeclareKanjiFamily{\otf@JTn}{cidc}{}
+\Declare@FontShape{cidc}{m}{01234567}{cidcmr}
+\Declare@FontShape{cidc}{bx}{01234567}{cidcgr}
+\DeclareKanjiFamily{\otf@JYn}{cidt}{}
+\DeclareKanjiFamily{\otf@JTn}{cidt}{}
+\Declare@FontShape{cidt}{m}{01234}{cidtmr}
+\Declare@FontShape{cidt}{bx}{01234}{cidtgr}
+\endinput

@@ -1,0 +1,58 @@
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{mlutf}[2004/04/17 v1.1.2 psitau]
+%force catcode of \" be 12
+\count@\catcode`\"
+\catcode`\"=12
+\DeclareRobustCommand{\UTFK}[1]{\begingroup%
+	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+	\kanjifamily{utfk}\uppercase{\set@character="#1}%
+	\endgroup%
+}
+\DeclareRobustCommand{\UTFC}[1]{\begingroup%
+	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+	\kanjifamily{utfc}\uppercase{\set@character="#1}%
+	\endgroup%
+}
+\DeclareRobustCommand{\UTFT}[1]{\begingroup%
+	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+	\kanjifamily{utft}\uppercase{\set@character="#1}%
+	\endgroup%
+}
+\DeclareRobustCommand{\UTFM}[1]{\begingroup%
+	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+	\kanjifamily{utf}\uppercase{\set@character="#1}%
+	\endgroup%
+}
+\catcode`\"=\count@
+%end of changing catcode of \"
+\gdef\Redefine@MLUTF{%
+	\@ifpackageloaded{hyperref}{%
+		\def\hyper@UTFC##1{\ifHy@pdfstring\0x##1\else\csname UTFC \endcsname{##1}\fi}
+		\def\hyper@UTFK##1{\ifHy@pdfstring\0x##1\else\csname UTFK \endcsname{##1}\fi}
+		\def\hyper@UTFT##1{\ifHy@pdfstring\0x##1\else\csname UTFT \endcsname{##1}\fi}
+		\def\hyper@UTFM##1{\ifHy@pdfstring\0x##1\else\csname UTFM \endcsname{##1}\fi}
+		\def\UTFC{\protect\hyper@UTFC}
+		\def\UTFK{\protect\hyper@UTFK}
+		\def\UTFT{\protect\hyper@UTFT}
+		\def\UTFM{\protect\hyper@UTFM}
+	}{}
+}
+\AtBeginDocument{\Redefine@MLUTF}
+
+\DeclareKanjiFamily{\otf@JYn}{utfk}{}
+\DeclareKanjiFamily{\otf@JTn}{utfk}{}
+\Declare@FontShape{utfk}{m}{0123456789abcdef}{utfkmr}
+\Declare@FontShape{utfk}{bx}{0123456789abcdef}{utfkgr}
+\DeclareKanjiFamily{\otf@JYn}{utfc}{}
+\DeclareKanjiFamily{\otf@JTn}{utfc}{}
+\Declare@FontShape{utfc}{m}{0123456789abcdef}{utfcmr}
+\Declare@FontShape{utfc}{bx}{0123456789abcdef}{utfcgr}
+\DeclareKanjiFamily{\otf@JYn}{utft}{}
+\DeclareKanjiFamily{\otf@JTn}{utft}{}
+\Declare@FontShape{utft}{m}{0123456789abcdef}{utftmr}
+\Declare@FontShape{utft}{bx}{0123456789abcdef}{utftgr}
+\DeclareKanjiFamily{\otf@JYn}{utf}{}
+\DeclareKanjiFamily{\otf@JTn}{utf}{}
+\Declare@FontShape{utf}{m}{0123456789abcdef}{utfmr}
+\Declare@FontShape{utf}{bx}{0123456789abcdef}{utfgr}
+\endinput

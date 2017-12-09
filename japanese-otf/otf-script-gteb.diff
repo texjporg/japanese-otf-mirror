@@ -1,0 +1,251 @@
+--- japanese-otf/makeotf.orig	2010-03-27 09:48:06.000000000 +0900
++++ japanese-otf/makeotf	2013-04-13 14:43:20.000000000 +0900
+@@ -54,6 +54,14 @@
+ #for extra fonts
+ ppltotf basepl/base-h.pl tfm/nmlgotheb-h.tfm
+ ppltotf basepl/base-v.pl tfm/nmlgotheb-v.tfm
++ppltotf basepl/base-h.pl tfm/expgotheb-h.tfm
++ppltotf basepl/base-v.pl tfm/expgotheb-v.tfm
++ppltotf basepl/base-v.pl tfm/rubygotheb-v.tfm
++ppltotf basepl/base-h.pl tfm/rubygotheb-h.tfm
++ppltotf basepl/base0-h.pl tfm/cidjge0-h.tfm
++ppltotf basepl/base2-h.pl tfm/cidjge2-h.tfm
++ppltotf basepl/base2-v.pl tfm/cidjge2-v.tfm
++ppltotf basepl/base3-v.pl tfm/cidjge3-v.tfm
+ ppltotf basepl/base-h.pl tfm/nmlminl-h.tfm
+ ppltotf basepl/base-v.pl tfm/nmlminl-v.tfm
+ ppltotf basepl/base-h.pl tfm/expminl-h.tfm
+@@ -83,7 +91,7 @@
+ ./mkjvf -cm -cp nmlmgothr-v hmgothr-v
+ #extra fonts
+ ./mkjvf nmlgotheb-h hgotheb-h
+-./mkjvf -cp nmlgotheb-v hgotheb-v
++./mkjvf -cm -cp nmlgotheb-v hgotheb-v
+ ./mkjvf nmlminl-h hminl-h
+ ./mkjvf -cm -cp nmlminl-v hminl-v
+ echo "making alt. kana ..."
+@@ -111,6 +119,10 @@
+ ./mkjvf -cm -cp -expert expminl-v hminl-v cidjminl
+ ./mkjvf -ruby rubyminl-h hminl-h cidjminl
+ ./mkjvf -cm -cp -ruby rubyminl-v hminl-v cidjminl
++./mkjvf -expert expgotheb-h hgotheb-h cidjgotheb
++./mkjvf -cm -cp -expert expgotheb-v hgotheb-v cidjgotheb
++./mkjvf -ruby rubygotheb-h hgotheb-h cidjgotheb
++./mkjvf -cm -cp -ruby rubygotheb-v hgotheb-v cidjgotheb
+ echo "making proportional kana tfm/vf"
+ perl script/mkpkana.pl
+ ppltotf -kanji=euc pl/phiraminw6-h.pl tfm/phiraminw6-h.tfm
+@@ -171,6 +183,8 @@
+ ppltotf basepl/brsg-v.pl tfm/brsgexpmgothr-v.tfm
+ ppltotf basepl/brsg-h.pl tfm/brsgnmlgotheb-h.tfm
+ ppltotf basepl/brsg-v.pl tfm/brsgnmlgotheb-v.tfm
++ppltotf basepl/brsg-h.pl tfm/brsgexpgotheb-h.tfm
++ppltotf basepl/brsg-v.pl tfm/brsgexpgotheb-v.tfm
+ ppltotf basepl/brsg-h.pl tfm/brsgnmlminl-h.tfm
+ ppltotf basepl/brsg-v.pl tfm/brsgnmlminl-v.tfm
+ ppltotf basepl/brsg-h.pl tfm/brsgexpminl-h.tfm
+@@ -186,7 +200,7 @@
+ ./mkjvf -sage brsgnmlmgothr-h hmgothr-h
+ ./mkjvf -sage -cm -cp brsgnmlmgothr-v hmgothr-v
+ ./mkjvf -sage brsgnmlgotheb-h hgotheb-h
+-./mkjvf -sage -cp brsgnmlgotheb-v hgotheb-v
++./mkjvf -sage -cm -cp brsgnmlgotheb-v hgotheb-v
+ ./mkjvf -sage brsgnmlminl-h hminl-h
+ ./mkjvf -sage -cm -cp brsgnmlminl-v hminl-v
+ ./mkjvf -sage -expert brsgexpminr-h hminr-h cidjminr
+@@ -199,6 +213,8 @@
+ ./mkjvf -sage -cm -cp -expert brsgexpgothb-v hgothb-v cidjgothb
+ ./mkjvf -sage -expert brsgexpmgothr-h hmgothr-h cidjmgothr
+ ./mkjvf -sage -cm -cp -expert brsgexpmgothr-v hmgothr-v cidjmgothr
++./mkjvf -sage -expert brsgexpgotheb-h hgotheb-h cidjgotheb
++./mkjvf -sage -cm -cp -expert brsgexpgotheb-v hgotheb-v cidjgotheb
+ ./mkjvf -sage -expert brsgexpminl-h hminl-h cidjminl
+ ./mkjvf -sage -cm -cp -expert brsgexpminl-v hminl-v cidjminl
+ echo "making tfm/vf for UTF jp04 (wait a while)..."
+@@ -228,6 +244,10 @@
+ ppltotf basepl/base-v.pl tfm/nmlminln-v.tfm
+ ppltotf basepl/base-h.pl tfm/expminln-h.tfm
+ ppltotf basepl/base-v.pl tfm/expminln-v.tfm
++ppltotf basepl/base-h.pl tfm/nmlgothebn-h.tfm
++ppltotf basepl/base-v.pl tfm/nmlgothebn-v.tfm
++ppltotf basepl/base-h.pl tfm/expgothebn-h.tfm
++ppltotf basepl/base-v.pl tfm/expgothebn-v.tfm
+ ppltotf basepl/brsg-h.pl tfm/brsgnmlminrn-h.tfm
+ ppltotf basepl/brsg-v.pl tfm/brsgnmlminrn-v.tfm
+ ppltotf basepl/brsg-h.pl tfm/brsgnmlgothrn-h.tfm
+@@ -252,6 +272,10 @@
+ ppltotf basepl/brsg-v.pl tfm/brsgnmlminln-v.tfm
+ ppltotf basepl/brsg-h.pl tfm/brsgexpminln-h.tfm
+ ppltotf basepl/brsg-v.pl tfm/brsgexpminln-v.tfm
++ppltotf basepl/brsg-h.pl tfm/brsgnmlgothebn-h.tfm
++ppltotf basepl/brsg-v.pl tfm/brsgnmlgothebn-v.tfm
++ppltotf basepl/brsg-h.pl tfm/brsgexpgothebn-h.tfm
++ppltotf basepl/brsg-v.pl tfm/brsgexpgothebn-v.tfm
+ echo "making jvf for jp04 ..."
+ ./mkjvf -jp04 nmlminrn-h hminrn-h
+ ./mkjvf -jp04 -cm -cp nmlminrn-v hminrn-v
+@@ -265,6 +289,8 @@
+ ./mkjvf -jp04 -cm -cp nmlmgothrn-v hmgothrn-v
+ ./mkjvf -jp04 nmlminln-h hminln-h
+ ./mkjvf -jp04 -cm -cp nmlminln-v hminln-v
++./mkjvf -jp04 nmlgothebn-h hgothebn-h
++./mkjvf -jp04 -cm -cp nmlgothebn-v hgothebn-v
+ ./mkjvf -jp04 -expert expminrn-h hminrn-h cidjminr
+ ./mkjvf -jp04 -cm -cp -expert expminrn-v hminrn-v cidjminr
+ ./mkjvf -jp04 -expert expgothrn-h hgothrn-h cidjgothr
+@@ -275,6 +301,8 @@
+ ./mkjvf -jp04 -cm -cp -expert expgothbn-v hgothbn-v cidjgothb
+ ./mkjvf -jp04 -expert expmgothrn-h hmgothrn-h cidjmgothr
+ ./mkjvf -jp04 -cm -cp -expert expmgothrn-v hmgothrn-v cidjmgothr
++./mkjvf -jp04 -expert expgothebn-h hgothebn-h cidjgotheb
++./mkjvf -jp04 -cm -cp -expert expgothebn-v hgothebn-v cidjgotheb
+ ./mkjvf -jp04 -expert expminln-h hminln-h cidjminl
+ ./mkjvf -jp04 -cm -cp -expert expminln-v hminln-v cidjminl
+ ./mkjvf -jp04 -sage brsgnmlminrn-h hminrn-h
+@@ -287,6 +315,8 @@
+ ./mkjvf -jp04 -sage -cm -cp brsgnmlgothbn-v hgothbn-v
+ ./mkjvf -jp04 -sage brsgnmlmgothrn-h hmgothrn-h
+ ./mkjvf -jp04 -sage -cm -cp brsgnmlmgothrn-v hmgothrn-v
++./mkjvf -jp04 -sage brsgnmlgothebn-h hgothebn-h
++./mkjvf -jp04 -sage -cm -cp brsgnmlgothebn-v hgothebn-v
+ ./mkjvf -jp04 -sage brsgnmlminln-h hminln-h
+ ./mkjvf -jp04 -sage -cm -cp brsgnmlminln-v hminln-v
+ ./mkjvf -jp04 -sage -expert brsgexpminrn-h hminrn-h cidjminr
+@@ -299,6 +329,8 @@
+ ./mkjvf -jp04 -sage -cm -cp -expert brsgexpgothbn-v hgothbn-v cidjgothb
+ ./mkjvf -jp04 -sage -expert brsgexpmgothrn-h hmgothrn-h cidjmgothr
+ ./mkjvf -jp04 -sage -cm -cp -expert brsgexpmgothrn-v hmgothrn-v cidjmgothr
++./mkjvf -jp04 -sage -expert brsgexpgothebn-h hgothebn-h cidjgotheb
++./mkjvf -jp04 -sage -cm -cp -expert brsgexpgothebn-v hgothebn-v cidjgotheb
+ ./mkjvf -jp04 -sage -expert brsgexpminln-h hminln-h cidjminl
+ ./mkjvf -jp04 -sage -cm -cp -expert brsgexpminln-v hminln-v cidjminl
+ echo "finishing ..."
+--- japanese-otf/script/mkcidofm.pl.orig	2010-03-24 00:37:16.000000000 +0900
++++ japanese-otf/script/mkcidofm.pl	2013-04-13 14:43:20.000000000 +0900
+@@ -1,7 +1,7 @@
+ opendir(OPLD, "opl") || mkdir("opl",0755) || die "cannot mkdir opl";
+ opendir(OFMD, "ofm") || mkdir("ofm",0755) || die "cannot mkdir ofm";
+ $font_at=1.0;
+-@font_base_name=("cjmr", "cjgr", "cjmb", "cjgb", "cjmgr", "cjml");
++@font_base_name=("cjmr", "cjgr", "cjmb", "cjgb", "cjmgr", "cjml", "cjge");
+ for ($d=0; $d<=1; $d++){
+ 	if ($d==0){$dir="h";}elsif($d==1){$dir="v";}
+ 	foreach $base_name(@font_base_name){
+--- japanese-otf/script/mkcidvf.pl.orig	2010-03-23 07:50:02.000000000 +0900
++++ japanese-otf/script/mkcidvf.pl	2013-04-13 14:44:40.000000000 +0900
+@@ -4,9 +4,10 @@
+ &makevf;
+ 
+ sub makevf {
+-	for ($k=0; $k<=5; $k++){#face
++	for ($k=0; $k<=6; $k++){#face
+ 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
+ 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
++			elsif ($k==6){$face="ge";}
+ 		for ($i=0; $i<=1; $i++){#direction
+ 			if ($i==0) {$dir="h";}elsif ($i==1){$dir="v";}
+ 			$cidcode=0;
+--- japanese-otf/script/mkjp04tfmvf.pl.orig	2010-03-26 11:36:32.000000000 +0900
++++ japanese-otf/script/mkjp04tfmvf.pl	2013-04-13 14:45:50.000000000 +0900
+@@ -11,9 +11,10 @@
+ &makejvf;
+ 
+ sub make_utf_tfm {
+-	for ($k=0; $k<=5; $k++){#face
++	for ($k=0; $k<=6; $k++){#face
+ 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
+ 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
++			elsif ($k==6){$face="ge";}
+ 		for ($l=0; $l<=0; $l++){#language
+ 			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
+ 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
+@@ -43,9 +44,10 @@
+ }
+ 
+ sub makejvf {
+-	for ($k=0; $k<=5; $k++){#face
++	for ($k=0; $k<=6; $k++){#face
+ 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
+ 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
++			elsif ($k==6){$face="ge";}
+ 		for ($l=0; $l<=0; $l++){#language
+ 			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
+ 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
+--- japanese-otf/script/mktfm.pl.orig	2004-12-23 22:50:06.000000000 +0900
++++ japanese-otf/script/mktfm.pl	2013-04-13 14:46:37.000000000 +0900
+@@ -13,9 +13,10 @@
+ &make_multi_cid_tfm;
+ 
+ sub make_utf_tfm {
+-	for ($k=0; $k<=5; $k++){#face
++	for ($k=0; $k<=6; $k++){#face
+ 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
+ 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
++			elsif ($k==6){$face="ge";}
+ 		for ($l=0; $l<=0; $l++){#language
+ 			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
+ 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
+@@ -45,9 +46,10 @@
+ }
+ 
+ sub make_cid_tfm {
+-	for ($k=0; $k<=5; $k++){#face
++	for ($k=0; $k<=6; $k++){#face
+ 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
+ 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
++			elsif ($k==6){$face="ge";}
+ 		for ($l=0; $l<=0; $l++){#language
+ 			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
+ 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
+--- japanese-otf/script/mkutfvf.pl.orig	2010-03-26 11:23:42.000000000 +0900
++++ japanese-otf/script/mkutfvf.pl	2013-04-13 14:43:21.000000000 +0900
+@@ -6,9 +6,10 @@
+ &makemlvf;
+ 
+ sub makejvf {
+-	for ($k=0; $k<=5; $k++){#face
++	for ($k=0; $k<=6; $k++){#face
+ 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
+ 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
++			elsif ($k==6){$face="ge";}
+ 		for ($l=0; $l<=0; $l++){#language
+ 			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
+ 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
+@@ -33,6 +34,7 @@
+ 	for ($k=0; $k<=1; $k++){#face
+ 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
+ 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
++			elsif ($k==6){$face="ge";}
+ 		for ($l=1; $l<=$multi; $l++){#language
+ 			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
+ 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
+--- japanese-otf/script/mkaltutfvf.pl.orig	2010-03-23 07:49:34.000000000 +0900
++++ japanese-otf/script/mkaltutfvf.pl	2013-04-13 14:43:20.000000000 +0900
+@@ -24,6 +24,7 @@
+ 	for ($k=0; $k<=1; $k++){#face
+ 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
+ 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
++			elsif ($k==6){$face="ge";}
+ 		for ($i=0; $i<=1; $i++){#direction
+ 			if ($i==0) {$dir="h";}elsif ($i==1){$dir="v";}
+ 			for ($first_hex=0x0; $first_hex <= 0xf; $first_hex++){
+--- japanese-otf/mkjvf.orig	2010-03-27 08:18:50.000000000 +0900
++++ japanese-otf/mkjvf	2013-04-13 14:43:20.000000000 +0900
+@@ -381,6 +381,8 @@
+ 		$face="cidjmb";
+ 	}elsif($kana_font eq "cidjgothb"){
+ 		$face="cidjgb";
++	}elsif($kana_font eq "cidjgotheb"){
++		$face="cidjge";
+ 	}elsif($kana_font eq "cidjmgothr"){
+ 		$face="cidjmgr";
+ 	}elsif($kana_font eq "cidjminl"){
+@@ -398,6 +400,8 @@
+ 			$face="cidjmb";
+ 		}elsif($kanji_font =~ /hgothb/){
+ 			$face="cidjgb";
++		}elsif($kanji_font =~ /hgotheb/){
++			$face="cidjge";
+ 		}elsif($kanji_font =~ /hmgothr/){
+ 			$face="cidjmgr";
+ 		}elsif($kanji_font =~ /hminl/){

@@ -1,0 +1,47 @@
+\documentclass[a4paper,draft,twocolumn]{jarticle}
+\usepackage[deluxe]{otf}
+\pagestyle{empty}
+\AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
+\parindent=0zw
+\textwidth=25zw
+\columnsep=1zw
+\makeatletter
+\long\def\test{ひらかな「ひらかな」ひらかな「ひら」「かな」\par
+漢字漢字「漢字漢字」漢字漢字「漢字」「漢字」\par
+ひらかな「ひらかな」漢字漢字「漢字」ひらかな\par
+次は“引用符”の‘テスト’です．\par
+行末の区点は全角ドリに。なります。
+□□□□□□□□□□□□
+□□□□、□□□、□□□。\par
+行末の読点は半角ドリに、なります。\par
+□□□□□□□□□□□□
+□□□□、□□□、□□□、□□□。□□□。\par
+疑問符の後に空白は入るでしょうか？入った！オッケイです．\par
+\hbox to 2.5zw{漢：字}
+\setbox1=\hbox{あ}
+\dimen1=\wd1 \advance\dimen1 by .5zw
+\advance\dimen1 by \wd1
+\hbox to \dimen1{あ：あ}
+\dimen1=\wd1 \advance\dimen1 by 1.75zw
+\hbox to \dimen1{漢：あ}
+%\hbox to \dimen1{漢\hfil あ}
+\hbox to 7zw{漢字「漢字」漢字}
+\setbox1=\hbox{ひら}
+\dimen1=\wd1 \multiply\dimen1 by 3
+\advance\dimen1 by 1zw
+\hbox to \dimen1{ひら「ひら」ひら}
+}
+\makeatother
+\begin{document}
+%\kanjiskip 0pt plus 1sp minus 1sp
+\begingroup
+\propshape
+{\bfseries プロポーショナル組の例}
+
+\test
+\endgroup
+\newpage
+{\bfseries べた組みの例}
+
+\test
+\end{document}

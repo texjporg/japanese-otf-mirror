@@ -1,0 +1,211 @@
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{redeffont}[2004/01/19 v1.2.2 psitau]
+
+\newif\if@asciiclasses \@asciiclassesfalse 
+\newif\if@articleclass \@articleclassfalse
+\newif\if@bookclass \@bookclassfalse
+\@ifclassloaded{jarticle}{\@asciiclassestrue\@articleclasstrue}{}
+\@ifclassloaded{jbook}{\@asciiclassestrue\@bookclasstrue}{}
+\@ifclassloaded{jreport}{\@asciiclassestrue}{}
+\@ifclassloaded{tarticle}{\@asciiclassestrue\@articleclasstrue}{}
+\@ifclassloaded{tbook}{\@asciiclassestrue\@bookclasstrue}{}
+\@ifclassloaded{treport}{\@asciiclassestrue}{}
+
+\if@asciiclasses \else \endinput\fi
+\def\otf@tmp{\newif\if@mainmatter}
+\if@articleclass\otf@tmp\fi
+
+\def\headfont{\gtfamily\bfseries}
+\def\part@head@font{\headfont}
+\def\chapter@head@font{\headfont}
+\def\section@head@font{\headfont}
+\def\subsection@head@font{\headfont}
+\def\subsubsection@head@font{\headfont}
+\def\paragraph@head@font{\headfont}
+\def\subparagraph@head@font{\headfont}
+\def\abstract@head@font{\headfont}
+\def\description@label@font{\headfont}
+\def\toc@part@font{\headfont}
+\def\toc@chapter@font{\headfont}
+\def\toc@section@font{\headfont}
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+   {1.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+   {.5\Cvs \@plus.3\Cdp}%
+   {\reset@font\Large\section@head@font}}%changed
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+   {1.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+   {.5\Cvs \@plus.3\Cdp}%
+   {\reset@font\large\subsection@head@font}}%changed
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+   {1.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+   {.5\Cvs \@plus.3\Cdp}%
+   {\reset@font\normalsize\subsubsection@head@font}}%changed
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+   {3.25ex \@plus 1ex \@minus .2ex}%
+   {-1em}%
+   {\reset@font\normalsize\paragraph@head@font}}%changed
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{5}{\z@}%
+   {3.25ex \@plus 1ex \@minus .2ex}%
+   {-1em}%
+   {\reset@font\normalsize\subparagraph@head@font}}%changed
+\renewcommand{\descriptionlabel}[1]{%
+   \hspace\labelsep\normalfont\description@label@font#1}%changed
+
+\if@bookclass \relax\else
+	\if@titlepage
+	  \renewenvironment{abstract}{%
+	      \titlepage
+	      \null\vfil
+	      \@beginparpenalty\@lowpenalty
+	      \begin{center}%
+	        {\abstract@head@font\abstractname}%changed
+	        \@endparpenalty\@M
+	      \end{center}}%
+	      {\par\vfil\null\endtitlepage}
+	\else
+	  \renewenvironment{abstract}{%
+	    \if@twocolumn
+	      \section*{\abstractname}%
+	    \else
+	      \small
+	      \begin{center}%
+	        {\abstract@head@font\abstractname\vspace{-.5em}\vspace{\z@}}%changed
+	      \end{center}%
+	      \quotation
+	    \fi}{\if@twocolumn\else\endquotation\fi}
+	\fi
+\fi%end of \if@bookclass
+
+\if@articleclass
+\def\@part[#1]#2{%
+  \ifnum \c@secnumdepth >\m@ne
+    \refstepcounter{part}%
+    \addcontentsline{toc}{part}{%
+       \prepartname\thepart\postpartname\hspace{1zw}#1}%
+  \else
+    \addcontentsline{toc}{part}{#1}%
+  \fi
+  \markboth{}{}%
+  {\parindent\z@\raggedright
+   \interlinepenalty\@M\reset@font
+   \ifnum \c@secnumdepth >\m@ne
+     \Large\part@head@font\prepartname\thepart\postpartname%changed
+     \par\nobreak
+   \fi
+   \huge\part@head@font#2\par}%changed
+  \nobreak\vskip3ex\@afterheading}
+\def\@spart#1{{%
+  \parindent\z@\raggedright
+  \interlinepenalty\@M\reset@font
+  \huge\part@head@font#1\par}%changed
+  \nobreak\vskip3ex\@afterheading}
+\renewcommand*{\l@part}[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty{\@secpenalty}%
+    \addvspace{2.25em \@plus\p@}%
+    \begingroup
+    \parindent\z@\rightskip\@pnumwidth
+    \parfillskip-\@pnumwidth
+    {\leavevmode\large\toc@part@font%changed
+     \setlength\@lnumwidth{4zw}%
+     #1\hfil\nobreak
+     \hbox to\@pnumwidth{\hss#2}}\par
+    \nobreak
+    \if@compatibility
+    \global\@nobreaktrue
+    \everypar{\global\@nobreakfalse\everypar{}}%
+    \fi
+     \endgroup
+  \fi}
+\renewcommand*{\l@section}[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty{\@secpenalty}%
+    \addvspace{1.0em \@plus\p@}%
+    \begingroup
+      \parindent\z@ \rightskip\@pnumwidth \parfillskip-\rightskip
+      \leavevmode\toc@section@font%changed
+      \setlength\@lnumwidth{1.5em}%
+      \advance\leftskip\@lnumwidth \hskip-\leftskip
+      #1\nobreak\hfil\nobreak\hbox to\@pnumwidth{\hss#2}\par
+    \endgroup
+  \fi}
+
+\else%\if@articleclass-->false
+
+\def\@part[#1]#2{%
+  \ifnum \c@secnumdepth >-2\relax
+    \refstepcounter{part}%
+    \addcontentsline{toc}{part}{%
+       \prepartname\thepart\postpartname\hspace{1em}#1}%
+  \else
+    \addcontentsline{toc}{part}{#1}%
+  \fi
+  \markboth{}{}%
+  {\centering
+   \interlinepenalty\@M\reset@font
+   \ifnum \c@secnumdepth >-2\relax
+     \huge\part@head@font\prepartname\thepart\postpartname%changed
+     \par\vskip20\p@
+   \fi
+   \Hugepart@head@font#2\par}%changed
+   \@endpart}
+\def\@spart#1{{%
+  \centering
+  \interlinepenalty\@M\reset@font
+  \Huge\part@head@font#1\par}%changed
+  \@endpart}
+\renewcommand*{\l@part}[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \addpenalty{-\@highpenalty}%
+    \addvspace{2.25em \@plus\p@}%
+    \begingroup
+    \parindent\z@\rightskip\@pnumwidth
+    \parfillskip-\@pnumwidth
+    {\leavevmode\large\toc@part@font%changed
+     \setlength\@lnumwidth{4zw}%
+     #1\hfil\nobreak
+     \hbox to\@pnumwidth{\hss#2}}\par
+    \nobreak
+    \global\@nobreaktrue
+    \everypar{\global\@nobreakfalse\everypar{}}%
+     \endgroup
+  \fi}
+\renewcommand*{\l@chapter}[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \addvspace{1.0em \@plus\p@}%
+    \begingroup
+      \parindent\z@ \rightskip\@pnumwidth \parfillskip-\rightskip
+      \leavevmode\toc@chapter@font%changed
+      \setlength\@lnumwidth{4zw}%
+      \advance\leftskip\@lnumwidth \hskip-\leftskip
+      #1\nobreak\hfil\nobreak\hbox to\@pnumwidth{\hss#2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+\def\@makechapterhead#1{\hbox{}%
+  \vskip2\Cvs
+  {\parindent\z@
+   \raggedright
+   \reset@font\huge\chapter@head@font%changed
+   \leavevmode
+   \ifnum \c@secnumdepth >\m@ne
+     \setlength\@tempdima{\linewidth}%
+    \if@mainmatter
+     \setbox\z@\hbox{\@chapapp\thechapter\@chappos\hskip1zw}%
+     \addtolength\@tempdima{-\wd\z@}%
+     \unhbox\z@\nobreak
+    \fi
+     \vtop{\hsize\@tempdima#1}%
+   \else
+     #1\relax
+   \fi}\nobreak\vskip3\Cvs}
+\def\@makeschapterhead#1{\hbox{}%
+  \vskip2\Cvs
+  {\parindent\z@
+   \raggedright
+   \reset@font\huge\chapter@head@font%changed
+   \leavevmode
+   \setlength\@tempdima{\linewidth}%
+   \vtop{\hsize\@tempdima#1}}\vskip3\Cvs}
+\fi%end of \if@articleclass

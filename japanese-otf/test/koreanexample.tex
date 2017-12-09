@@ -1,0 +1,44 @@
+\documentclass[papersize]{jsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[expert, multi]{otf}
+\input{otf-hangul.dfu}
+\DeclareUnicodeCharacter{5F3A}{\UTF{5F3A}}% 強
+\DeclareUnicodeCharacter{654E}{\UTF{654E}}% 教
+\DeclareUnicodeCharacter{5FB5}{\UTF{5FB5}}% 徴 jisl34k_uo.dfu: 1-84-36 cjk
+\usepackage{palatino}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage{url}
+\pagestyle{empty}
+
+\begin{document}
+
+% 横書き (horizontal writing)
+\fbox{\vbox{\hsize=21zw
+{\TeX}はスタンフォード大学のクヌース教授によって開発された組版システムであり、組版の美しさと強力なマクロ機能を特徴としている。\par
+\bigskip
+{\noautoxspacing
+{\TeX}은 스탠포드 大學의 크누스 敎授에 의해 開發된 組版 시스템으로, 組版의 美와 强力한 매크로 機能이 特徵이다.\par
+}}}
+
+% 縦書き (vertical writing)
+\fbox{\vbox{\hsize=21zw \tate\adjustbaseline
+{\TeX}はスタンフォード大学のクヌース教授によって開発された組版システムであり、組版の美しさと強力なマクロ機能を特徴としている。\par
+\bigskip
+{\noautoxspacing
+{\TeX}은 스탠포드 大學의 크누스 敎授에 의해 開發된 組版 시스템으로、組版의 美와 强力한 매크로 機能이 特徵이다。
+\par}}}
+
+\begin{thebibliography}{9}
+ \bibitem{OkumuraCho2004}
+         Cho, J.-H. and Okumura, H.:
+         Typesetting CJK languages with Omega, \TeX, XML, and Digital Typography,
+         Lecture Notes in Computer Science \textbf{3130}, Springer, 2004,
+         pp.~139--148. \newline\url{http://project.ktug.or.kr/omega-cjk/cjk-otp/}.
+ \bibitem{TsuchimuraKuroki2008}
+         Tsuchimura, N. and Kuroki, Y.:
+         Development of Japanese \TeX\ environment,
+         \textit{The Asian Journal of \TeX}, \textbf{2}~(2008), pp.~53--62.
+         \newblock\url{http://ajt.ktug.kr/assets/2008/5/1/0201tsuchimura_kuroki.pdf}.
+\end{thebibliography}
+
+\end{document}
