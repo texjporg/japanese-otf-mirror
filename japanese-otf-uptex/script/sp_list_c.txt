@@ -1,0 +1,17 @@
+%
+% This file is generated from the data of UniGB-UTF32
+% in cid2code.txt (Version 10/29/2010)
+% for Adobe-GB1-5
+%
+% Reference:
+%   https://github.com/adobe-type-tools/cmap-resources/
+%   cmapresources_gb1-5/cid2code.txt
+%
+% A newer CMap may be required for some code points.
+%
+
+
+%Adobe-GB1-2
+20087,20089,200CC,215D7,2298F,20509,2099D,241FE
+
+% end

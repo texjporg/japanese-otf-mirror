@@ -1,0 +1,69 @@
+\makeatletter
+
+\def\@opt@{multi}
+\def\@default{default}
+\def\@jarticle{jarticle}
+\def\@tarticle{tarticle}
+\def\@op@cls{}
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\scale\@undefined
+ \edef\scale{default}
+\else
+ \ifx\scale\@default
+ \else
+  \edef\@opt@{scale=\scale,\@opt@}
+ \fi
+\fi
+\typeout{## scale: \scale ##}
+
+\ifx\class\@undefined
+ \def\class{jarticle}
+\fi
+\ifx\class\@jarticle
+\else
+ \ifx\class\@tarticle
+ \else
+  \ifnum\jis"2121="3000
+   \edef\@opt@{uplatex,\@opt@}
+   \def\@op@cls{,uplatex}
+  \else
+  \fi
+ \fi
+\fi
+
+\documentclass[a4paper,titlepage,draft\@op@cls]{\class}
+
+\usepackage[\@opt@]{otf}
+\usepackage{color}
+\newcommand{\redframe}[1]{%
+ \textcolor{red}{\frame{\textcolor{black}{#1}}}}
+
+\begin{document}
+\section{見出し}
+
+クラス：\texttt{\class}\\
+オプション：\texttt{\option}\\
+スケール：\texttt{\scale}
+
+\parindent0mm
+\xkanjiskip=0pt plus.1pt minus.1pt
+
+\vbox{\tate
+\hbox{\Large \redframe{HMH}\redframe{回□回}\redframe{HMH}\redframe{回□回}\redframe{HMH}}
+\hbox{\Large HMH回□回HMH回□回HMH}
+}
+
+\vbox{\yoko
+\hbox{\Large \redframe{HMH}\redframe{回□回}\redframe{HMH}\redframe{回□回}\redframe{HMH}}
+\hbox{\Large HMH回□回HMH回□回HMH}
+}
+
+\end{document}

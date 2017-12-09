@@ -1,0 +1,313 @@
+% -*- coding: utf-8 -*-
+%%%%%%%%
+% To control hyperref on command line,
+% you can select one of (1),(2a),(2b),(3).
+%   (1) do not treat hyperref
+%   $ uplatex uotf-sp-utf8.tex
+%   (2a) hyperref + dvipdfmx           (with    CMap conversion)
+%   $ uplatex "\def\withhyperref{dvipdfmx}\input" uotf-sp-utf8.tex
+%   (2b) hyperref + dvipdfmx + out2uni (without CMap conversion)
+%   $ uplatex "\def\withhyperref{dvipdfmx}\nocmap{true}\input" uotf-sp-utf8.tex
+%   (3) hyperref + dvips + convbkmk.rb + distiller/ps2pdf
+%   $ uplatex "\def\withhyperref{dvips}\input" uotf-sp-utf8.tex
+%%%%%%
+
+\newif\ifuptexmode\uptexmodefalse
+\ifnum\jis"2121="3000
+ \uptexmodetrue
+ \def\tounicode{pdf:tounicode UTF8-UTF16}
+\else
+ \ifnum\jis"2121="A1A1
+  \def\tounicode{pdf:tounicode EUC-UCS2}
+ \fi
+ \ifnum\jis"2121="8140
+  \def\tounicode{pdf:tounicode 90ms-RKSJ-UCS2}
+ \fi
+\fi
+
+\makeatletter
+
+\def\@opt@{multi}
+\def\@default{default}
+\def\@jarticle{jarticle}
+\def\@tarticle{tarticle}
+\def\@ujarticle{ujarticle}
+\def\@noreplace{noreplace}
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@noreplace
+ \ifuptexmode
+  \ifx\class\@ujarticle
+   \def\@enc@{JY2}\def\@dir@{h}
+  \else
+   \def\@enc@{JT2}\def\@dir@{v}
+  \fi
+  \DeclareFontFamily{\@enc@}{mcw}{}
+  \DeclareFontFamily{\@enc@}{gtw}{}
+  \DeclareFontShape{\@enc@}{mcw}{m}{n}{<->s*[0.962216]upjpnrm-\@dir@}{}
+  \DeclareFontShape{\@enc@}{gtw}{m}{n}{<->s*[0.962216]upjpngt-\@dir@}{}
+  \DeclareFontShape{\@enc@}{gt}{m}{n}{<->s*[0.962216]upjpngt-\@dir@}{}
+  \DeclareFontShape{\@enc@}{mcw}{bx}{n}{<->ssub*gt/m/n}{}
+  \DeclareFontShape{\@enc@}{gtw}{bx}{n}{<->ssub*gt/m/n}{}
+  \DeclareFontShape{\@enc@}{gt}{bx}{n}{<->ssub*gt/m/n}{}
+  \DeclareRobustCommand\mcw{\kanjifamily{mcw}\selectfont}
+  \DeclareRobustCommand\gtw{\kanjifamily{gtw}\selectfont}
+  \renewcommand\mcdefault{mcw}
+  \renewcommand\gtdefault{gtw}
+ \fi
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\class\@undefined
+ \ifuptexmode
+  \def\class{ujarticle}
+ \else
+  \def\class{jarticle}
+ \fi
+\fi
+\ifuptexmode
+ \edef\@opt@{uplatex,\@opt@}
+\fi
+\ifx\class\@jarticle
+  \documentclass[a4paper,titlepage]{\class}
+\else
+ \ifx\class\@ujarticle
+  \documentclass[a4paper,titlepage]{\class}
+ \else
+  \documentclass[a4paper,titlepage,landscape]{\class}
+ \fi
+\fi
+
+\usepackage[\@opt@]{otf}
+
+\def\@dvipdfmx{dvipdfmx}
+\def\@dvips{dvips}
+
+\ifx\withhyperref\@undefined
+ \def\withhyperref{undefined}
+ \edef\texorpdfstring#1#2{#1}
+\else
+ \ifx\withhyperref\@dvipdfmx
+  \def\@hyperrefkeyval{dvipdfm}
+  \usepackage{atbegshi}
+  \ifx\nocmap\@undefined
+   \AtBeginShipoutFirst{\special{\tounicode}}
+  \fi
+ \fi
+ \ifx\withhyperref\@dvips
+  \def\@hyperrefkeyval{dvips}
+ \fi
+
+\usepackage[\@hyperrefkeyval,%
+bookmarks=true,%
+bookmarksnumbered=true,%
+bookmarkstype=toc,%
+%pdfstartview={FitBH -32768},%
+pdftitle={japanese-otfのテスト},%
+pdfsubject={Unicode supplementary plane編},%
+pdfauthor={upTeXプロジェクト},%
+pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
+]{hyperref}
+
+\fi
+
+\makeatother
+
+\usepackage{redeffont}
+
+\ajUTFVarDef{叱}{20B9F}
+\ajUTFVarDef{亭}{20158}
+\ajUTFVarDef{吉}{20bb7}
+\ajUTFVarDef{座}{2B776}
+
+\AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
+\pagestyle{empty}
+\makeatletter
+\ifx\rubyfamily\@undefined\let\rubyfamily=\relax\fi
+\ifx\mgfamily\@undefined\let\mgfamily=\relax\fi
+\makeatother
+
+\edef\bs{$\backslash$\kern0em}
+\setlength\parindent{0em}
+
+\begin{document}
+\section{見出し}
+
+コンパイラー：\ifuptexmode upLaTeX\else pLaTeX\fi\\
+クラス：\texttt{\class}\\
+オプション：\texttt{\option}
+
+\vspace{\baselineskip}
+\ifuptexmode
+\begin{tabular}{l||ccccccc}
+フォント & 仮名 & 漢字 & UTF-8 & \bs kchar & \bs UTF & \bs CID\\
+\hline
+mc/m & ひらかな & 漢字 & 𠮟𠅘 & \kchar"20B9F\kchar"20158 & \UTF{20B9F}\UTF{20158} & \CID{13803}\CID{20075} \\
+mc/bx & {\bfseries ひらかな} & {\bfseries 漢字} & {\bfseries 𠮟𠅘} & {\bfseries\kchar"20B9F\kchar"20158} & {\bfseries\UTF{20B9F}\UTF{20158}} & {\bfseries\CID{13803}\CID{20075}} \\
+gt/m & {\gtfamily ひらかな} & {\gtfamily 漢字} & {\gtfamily 𠮟𠅘} & {\gtfamily\kchar"20B9F\kchar"20158} & {\gtfamily\UTF{20B9F}\UTF{20158}} & {\gtfamily\CID{13803}\CID{20075}} \\
+gt/bx & {\gtfamily\bfseries ひらかな} & {\gtfamily\bfseries 漢字} & {\gtfamily\bfseries 𠮟𠅘} & {\gtfamily\bfseries\kchar"20B9F\kchar"20158} & {\gtfamily\bfseries\UTF{20B9F}\UTF{20158}} & {\gtfamily\bfseries\CID{13803}\CID{20075}} \\
+mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily 𠮟𠅘} & {\mgfamily\kchar"20B9F\kchar"20158} & {\mgfamily\UTF{20B9F}\UTF{20158}} & {\mgfamily\CID{13803}\CID{20075}} \\
+\end{tabular}
+\else
+\begin{tabular}{l||ccccc}
+フォント & 仮名 & 漢字 & \bs UTF & \bs CID\\
+\hline
+mc/m & ひらかな & 漢字 & \UTF{20B9F}\UTF{20158} & \CID{13803}\CID{20075} \\
+mc/bx & {\bfseries ひらかな} & {\bfseries 漢字} & {\bfseries\UTF{20B9F}\UTF{20158}} & {\bfseries\CID{13803}\CID{20075}} \\
+gt/m & {\gtfamily ひらかな} & {\gtfamily 漢字} & {\gtfamily\UTF{20B9F}\UTF{20158}} & {\gtfamily\CID{13803}\CID{20075}} \\
+gt/bx & {\gtfamily\bfseries ひらかな} & {\gtfamily\bfseries 漢字} & {\gtfamily\bfseries\UTF{20B9F}\UTF{20158}} & {\gtfamily\bfseries\CID{13803}\CID{20075}} \\
+mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily\UTF{20B9F}\UTF{20158}} & {\mgfamily\CID{13803}\CID{20075}} \\
+\end{tabular}
+\fi
+\vspace{\baselineskip}
+
+日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}
+
+日本：\UTF{20b9f}\UTF{26402}　繁體字：\UTFT{20b9f}\UTFT{26402}  多言語：\UTFM{20b9f}\UTFM{26402}
+
+簡体字：\UTFC{20087}\UTFC{200cc}　繁體字：\UTFT{20087}\UTFT{200cc}  多言語：\UTFM{20087}\UTFM{200cc}
+
+\vspace{\baselineskip}
+
+\ifuptexmode
+ \kchar"20B9Fる。
+ 𠮟る。
+\fi
+\ajVar{叱}る。
+叱る。
+
+\ifuptexmode
+ らいおん\kchar"20158。
+ らいおん𠅘。
+\fi
+らいおん\ajVar{亭}。
+らいおん亭。
+
+\ifuptexmode
+ \kchar"20BB7野家。
+ 𠮷野家。
+\fi
+\ajVar{吉}野家。
+吉野家。
+
+\ifuptexmode
+ 銀\kchar"2B776アスター。
+ 銀𫝶アスター。
+\fi
+銀\ajVar{座}アスター。
+銀座アスター。
+
+\makeatletter
+\ifx\withhyperref\@undefined
+\else
+
+\section{見出しに\texorpdfstring{\bs}{\134}UTF, \texorpdfstring{\bs}{\134}UTFC, \texorpdfstring{\bs}{\134}UTFMなど}
+\subsection{日本：\UTF{9aa8}\UTF{6D77} 簡体字：\UTFC{9aa8}\UTFC{6D77} 繁體字：\UTFT{9AA8}\UTFT{6d77} 朝鮮：\UTFK{9AA8}\UTFK{6d77}}
+日本：\UTF{9aa8}\UTF{6D77} 簡体字：\UTFC{9aa8}\UTFC{6D77} 繁體字：\UTFT{9AA8}\UTFT{6d77} 朝鮮：\UTFK{9AA8}\UTFK{6d77}
+
+\subsection{ハングル：\UTFK{c548}\UTFK{b155}\UTFK{d558}\UTFK{C138}\UTFK{C694}}
+ハングル：\UTFK{c548}\UTFK{b155}\UTFK{d558}\UTFK{C138}\UTFK{C694}
+
+\subsection{日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}}
+日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}
+
+\subsection{日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}}
+日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}
+
+\subsection{日本：\UTF{20b9f}\UTF{26402}　繁體字：\UTFT{20b9f}\UTFT{26402}  多言語：\UTFM{20b9f}\UTFM{26402}}
+日本：\UTF{20b9f}\UTF{26402}　繁體字：\UTFT{20b9f}\UTFT{26402}  多言語：\UTFM{20b9f}\UTFM{26402}
+
+\subsection{簡体字：\UTFC{20087}\UTFC{200cc}　繁體字：\UTFT{20087}\UTFT{200cc}  多言語：\UTFM{20087}\UTFM{200cc}}
+簡体字：\UTFC{20087}\UTFC{200cc}　繁體字：\UTFT{20087}\UTFT{200cc}  多言語：\UTFM{20087}\UTFM{200cc}
+\fi
+\makeatother
+
+\clearpage
+[mc/m]
+
+\ifuptexmode
+ \input{sp_jp_text}
+\fi
+\input{sp_jp_utf}
+
+{\bfseries%
+[mc/bx]
+
+\ifuptexmode
+ \input{sp_jp_text}
+\fi
+\input{sp_jp_utf}
+
+}
+
+{\gtfamily
+[gt/m]
+
+\ifuptexmode
+ \input{sp_jp_text}
+\fi
+\input{sp_jp_utf}
+
+{\bfseries%
+[gt/bx]
+
+\ifuptexmode
+ \input{sp_jp_text}
+\fi
+\input{sp_jp_utf}
+
+}}
+
+{\mgfamily
+[mg/m]
+
+\ifuptexmode
+ \input{sp_jp_text}
+\fi
+\input{sp_jp_utf}
+
+}
+
+\clearpage
+[mc/m]
+
+\input{sp_cns_utf}
+
+\input{sp_gb_utf}
+
+%\end{document}
+
+{\bfseries%
+[mc/bx]
+
+\input{sp_cns_utf}
+
+\input{sp_gb_utf}
+
+}
+
+\end{document}
+
+
+{\gtfamily
+[gt/m]
+
+\input{sp_cns_utf}
+
+\input{sp_gb_utf}
+
+{\bfseries%
+[gt/bx]
+
+\input{sp_cns_utf}
+
+\input{sp_gb_utf}
+
+}}
+
+\end{document}

@@ -1,0 +1,300 @@
+[ Title ]
+otfbeta-uptex (japanese-otf-uptex) Ver.0.18  2017/03/04
+
+
+[ Abstract ]
+This is a package for upLaTeX support of
+japanese-otf package "otfbeta (v1.7b6 2013/11/17)" by psitau-san
+( http://psitau.kitunebi.com/otf.html )
+It requires upTeX-0.20 or later.
+
+
+[ Contents ]
+00otf-uptex.txt : this file
+umakeotf : script to make vf, tfm
+umakeotf_brsg : script to make vf, tfm for burasage option
+umakeotf_jis04 : script to make vf, tfm for jis2004 option
+umakeotf_prop : script to make vf, tfm for proportional kana
+umakeotf_pre : preparation script for umakeotf*
+umkjvf : mkjvf with unicode support
+
+basepl/ubase-h.pl : unicode version of base-h.pl
+basepl/ubase-v.pl : unicode version of base-v.pl
+basepl/ubrsg-h.pl : unicode version of brsg-h.pl
+basepl/ubrsg-v.pl : unicode version of brsg-v.pl
+
+script/mkutf32list.pl : perl script making lists of characters on supplementary planes.
+script/MakeSPList.pm : perl module making data of characters on supplementary planes.
+script/mktfm_sp.pl   : perl script making tfm for characters on supplementary planes.
+script/mkutfvf_sp.pl : perl script making vf for characters on supplementary planes.
+script/sp_list_j.txt : a list of characters on supplementary planes in UniJIS-UTF32.
+script/sp_list_c.txt : a list of characters on supplementary planes in UniCNS-UTF32.
+script/sp_list_t.txt : a list of characters on supplementary planes in UniGB-UTF32.
+script/sp_list_k.txt : a list of characters on supplementary planes in UniKS-UTF32.
+script/CheckDVICode.pm : perl module checking category of characters.
+script/umkpkana.pl   : perl script making pl, ovp for proportional kana
+script/umkvpkana.pl  : perl script making pl, ovp for proportional kana
+
+sty/otf.sty   : basic style file 
+sty/mlutf.sty : style file for multi option
+
+test/uplatex/* : test samples.
+
+patch/*.patch : patch for original style files sty/*.sty
+    and fontmap files fontmap/* in otfbeta.zip
+
+COPYRIGHT : copyright notice of this package.
+
+
+[ Status ]
+Beta version.
+
+
+[ About jis2004 option ]
+otfbeta-uptex (japanese-otf-uptex) Ver.0.12 or later supports
+combination of "jis2004" and "uplatex" option.
+If you run the script "umakeotf_jis04", tfm and vf for jis2004 will be generated.
+They cousumes about 36.1 Mbytes in total.
+You will get expected results by mapping the new fonts
+  up{,brsg}{nml,exp}{minr,gothr,minb,gothb,mgothr,minl,gotheb}n-{h,v}.tfm
+to Adobe standard CMap "UniJIS2004-UTF16-{H,V}".
+
+If you do not use "jis2004" option, you can delete tfm and vf:
+  up{,brsg}{nml,exp}{minr,gothr,minb,gothb,mgothr,minl,gotheb}n-{h,v}.{tfm,vf}
+
+Instead of using "jis2004" option,
+you can get same result by mapping conventional fonts
+  up{,brsg}{nml,exp}{minr,gothr,minb,gothb,mgothr,minl,gotheb}-{h,v}.tfm
+to Adobe standard CMap "UniJIS2004-UTF16-{H,V}".
+
+
+[ About proportional kana ]
+otfbeta-uptex (japanese-otf-uptex) Ver.0.14 or later supports
+proportional kana at deluxe option and \propshape with limitation:
+* Halfwidth katakana letters are not supported:
+  ｱｲｳｴｵｶｷｸｹｺ ... (in UTF-8)
+To build tfm files, uppltotf in TeX live r43143 or later is required.
+
+
+[ History ]
+2007.12.09 Ver0.00
+  Initial version.
+  for "otfstable (v1.2.9 2007/3/19)"
+2008.01.12 Ver0.01
+  umakeotf
+    Revise: for upTeX-0.20
+  umkjvf::
+    Bug fix: Ruby glyphs, horizontally- and vertically optimized kana glyphs.
+    Revise: for upTeX-0.20
+  ubase-h.pl::
+    Insert glue between halfwidth kana and others at horizontal writing.
+  test/uplatex::
+    Revise.
+2008.10.01 Ver0.02
+  re-packaged for upTeX-0.24
+  tfm/*.tfm, vf/*.vf::
+    Delete
+  patch/*.patch::
+    Include
+2008.11.08 Ver0.03
+  Revise: for upTeX-0.25
+  umkjvf::
+    Add: Ruby glyphs, horizontally- and vertically optimized kana glyphs
+      in JIS X 0213 (ainu kana, etc.)
+  fontmap/*::
+    Revise.
+  test/uplatex/*::
+    Revise.
+  patch/*.patch::
+    Revise.
+2009.08.01 Ver0.04
+  Revise: for upTeX-0.28
+  umkjvf::
+    Bug fix: SIP option did not work
+    Revise: help message
+2010.03.28 Ver0.05
+  Revise: for "otfstable (v1.2.9.2 2010/3/26)", upTeX-0.30
+  umkjvf::
+    Revise: It may work with C-version ovp2ovf, opl2ofm
+  patch/*.patch::
+    Revise.
+  sty/*::
+    Removed.
+2010.05.xx Ver0.06
+  Test only. Not released.
+2012.01.02 Ver0.07
+  Revise: for "otfbeta (v1.7b3 2011/10/28)", upTeX in TeXLive svn r24922
+  umkjvf::
+    Revise: Based on "mkjvf version 1.0b21 (2010/3/25)"
+    Revise: use ovp2ovf (WEB version) in TeXLive svn r24922 for SIP
+    Bug fix: pTeX mode was not compatible with mkjvf for ruby.
+  umakeotf
+    Revise: Minor update about "mkdir tfm"
+  fontmap/*::
+    Revise.
+  patch/*.patch::
+    Revise.
+  COPYRIGHT::
+    Add.
+2012.01.22 Ver0.08
+  ## Thank Kitagawa san and Norbert san for helpful bug reports.
+  umkjvf::
+    Add: option '-ovp2ovf' and '-dbg'.
+    Revise: hankaku kana in ucs mode base font.
+    Support ovp2ovf (C version) in TeXLive svn r24887 for BMP.
+    Bug fix: combination of '-cp' and '-ucs'.
+  umakeotf::
+    Bug fix: up{exp,ruby}mgothr-{h,v}.vf was broken.
+    Revise: do not use '-chk' for hankaku kana in ucs mode base font.
+  basepl/ubase-{h,v}.pl::
+    Convert from ISO-2022-JP to UTF-8.
+    Add U+2014 as Type 5.
+    Revise hankaku kana.
+  test/uplatex/uotftest-utf8.tex::
+    Revise.
+2012.02.18 Ver0.09
+  For "otfbeta (v1.7b4 2012/01/22)", upTeX in TeXLive svn r24922
+  Enhance: support characters on supplementary planes (SP) in ucs mode base fonts
+    and those in macros \UTF{}, \UTFC{}, \UTFT{}, and \UTFM{}.
+    Not only upLaTeX but also pLaTeX can treat
+    the macros \UTF{}, \UTFC{}, \UTFT{}, and \UTFM{} for characters on SP.
+    To generate vf, we require ovp2ovf with set3 support
+    i.e. ovp2ovf (WEB version) in TeXLive svn r24922.
+    To treat dvi, we require dviware with set3 support
+    i.e. dvipdfmx in TeXLive svn r24509, dvipsk in TeXLive svn r18144.
+  sty/otf.sty ::
+    Support characters on SP in the macro \UTF{}.
+  sty/mlutf.sty ::
+    Support characters on SP in the macros \UTFC{}, \UTFT{}, and \UTFM{}.
+  umkjvf ::
+    Change option from '-sip' to '-sp <0-2>'.
+    Update references Unicode Blocks-6.1.0.txt (Date: 2011-06-14, 18:26:00 GMT [KW, LI])
+      and Adobe-Japan1-6 cid2code.txt (Version 02/04/2012).
+  umakeotf, script/sp_list_{j,c,t,k}.txt,
+  script/MakeSPList.pm, script/{mkutf32list,mktfm_sp,mkutfvf_sp}.pl ::
+    Add: New script to make vf, tfm for characters on SP.
+  test/uplatex/Makefile, test/uplatex/uotftest-utf8.tex ::
+    Revise.
+  test/uplatex/uotf-sp-utf8.tex, test/uplatex/sp_jp_text.tex,
+  test/uplatex/sp_{jp,cns,gb,kr}_utf.tex ::
+    Add.
+  patch/*.patch::
+    Revise.
+2012.04.21 Ver0.10
+  For "otfbeta (v1.7b5 2012/04/11)", upTeX in TeXLive svn r24922 or later
+  Enhance: support burasage on uplatex.
+  umakeotf_brsg, basepl/ubrsg-{h,v}.pl ::
+    Add. The files generate vf and tfm for burasage on uplatex.
+    The vf and tfm consume about 16.7 Mbytes in total.
+  umkjvf ::
+    Refer an environment variable OVP2OVF to set ovp2ovf command.
+  umakeotf ::
+    Revise.
+  sty/otf.sty ::
+    Adopt otf.sty [2012/04/11 v1.7b5 psitau] in otfbeta (v1.7b5 2012/4/11).
+  sty/mlutf.sty ::
+    Update version number.
+  test/uplatex/upbrsgtest.tex ::
+    Add.
+  test/uplatex/Makefile, test/uplatex/uotftest-utf8.tex ::
+    Revise.
+  patch/*.patch::
+    Revise.
+2012.07.09 Ver0.11
+  ## Thank ZR san for great contribution.
+  sty/otf.sty, sty/mlutf.sty ::
+    Apply new code to support surrogate pairs
+    when macros \UTF{}, \UTFT{}, \UTFC{} and/or \UTFM{} are used with hyperref package.
+    The new code is written by ZR san.
+  test/uplatex/uotftest-utf8.tex ::
+    Revise.
+2013.06.02 Ver0.12
+  ## Thank Kitagawa san for helpful reports.
+  script/mktfm_sp.pl, script/mkutfvf_sp.pl, umakeotf, umakeotf_bsrg, umkjvf ::
+    Support Gothic/ExtraBold (gt/eb).
+  script/mkutfvf_sp.pl ::
+    Refer an environment variable OVP2OVF to set ovp2ovf command.
+  umakeotf_jis04 ::
+    Add. The script generates vf and tfm for jis2004 option on uplatex.
+    The vf and tfm consume about 36.1 Mbytes in total.
+  fontmap/hiragino.map(for udvips), fontmap/hiraginox.map(for dvipdfmx) ::
+    Add jis2004 entry.
+  umkjvf ::
+    Revise comment.
+  umakeotf, umakeotf_bsrg ::
+    Clean up.
+  sty/otf.sty, sty/mlutf.sty ::
+    Add jis2004 entry.
+    Increment version number.
+  patch/*.patch::
+    Revise.
+  test/uplatex/upjis2004.tex, test/uplatex/Makefile::
+    Add new test.
+2013.11.21 Ver0.13
+  sty/otf.sty ::
+    Add scale option by following otfbeta v1.7b6.
+    Increment version number.
+  sty/mlutf.sty ::
+    Increment version number.
+  patch/*.patch::
+    Revise.
+  test/uplatex/otfscale.tex, test/uplatex/Makefile::
+    Add new test.
+2014.03.22 Ver0.14
+  umkjvf, sty/otf.sty, sty/mlutf.sty, otfbeta_uptex-0.14.patch ::
+    Increment version number.
+  script/umk{,v}pkana.pl ::
+    Add proportional kana support.
+  umakeotf_prop ::
+    Add. The script generates vf and tfm for proportional kana on uplatex.
+    The vf and tfm consume about 6.4 Mbytes in total.
+  umkjvf, script/CheckDVICode.pm, script/MakeSPList.pm ::
+    Move some subroutines in the new module and tune up.
+  test/uplatex/upkanatest{1,2}.tex, test/uplatex/Makefile ::
+    Add new tests.
+  COPYRIGHT ::
+    Update year.
+2014.03.28 Ver0.15
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  sty/otf.sty ::
+    Apply again update of otf.sty [2012/04/11 v1.7b5 psitau] in otfbeta (v1.7b5 2012/4/11).
+  patch/*.patch::
+    Revise.
+2014.07.26 Ver0.16
+  ## Thank Dora TeX san for helpful reports.
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  sty/otf.sty ::
+    Bug fix for ExtraBold (eb).
+  patch/*.patch::
+    Revise.
+2015.04.10 Ver0.17
+  ## Thank Akira Kakuto san for helpful reports.
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  sty/otf.sty ::
+    Fix bug for ruby.
+  patch/*.patch::
+    Revise.
+  COPYRIGHT ::
+    Update year.
+2017.03.04 Ver0.18
+  umakeotf{,_brsg,_jis04,_prop,_pre} ::
+    Clean up.
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  script/CheckDVICode.pm ::
+    Update reference Unicode Blocks-9.0.0.txt (Date: 2016-02-05, 23:48:00 GMT [KW])
+  script/mkutf32list.pl, script/sp_list_{c,j,k,t}.txt, test/uplatex/sp_{cns,gb,jp}_utf.tex ::
+    Update references: URL of cid2code.txt
+    and Adobe-CNS1-6 cid2code.txt (Version 12/04/2015).
+  script/umk{,v}pkana.pl, test/uplatex/upkanatest1.tex ::
+    Add more proportional kana support:
+      〃〆ヿゟゔゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿヷヸヹヺ (in UTF-8)
+    Latest uppltotf (TeX Live r43143 or later) is required.
+  patch/*.patch::
+    Remove.
+  COPYRIGHT ::
+    Update year.
+

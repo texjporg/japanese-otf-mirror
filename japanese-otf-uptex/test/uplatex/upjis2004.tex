@@ -1,0 +1,158 @@
+% -*- coding: utf-8 -*-
+\newif\ifuptexmode\uptexmodefalse
+\ifnum\jis"2121="3000 \uptexmodetrue\fi
+
+\makeatletter
+
+\def\@opt@{deluxe}
+\def\@default{default}
+\def\@br@{br}
+\def\@newjis@{04}
+
+\ifuptexmode
+ \edef\@opt@{uplatex,\@opt@}
+\fi
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\burasage\@br@
+ \edef\@opt@{\@opt@,burasage}
+ \def\burasage{yes}
+\else
+ \def\burasage{no}
+\fi
+
+\ifx\jisvar\@newjis@
+ \edef\@opt@{\@opt@,jis2004}
+ \def\jisvar{2004}
+\else
+ \def\jisvar{conventional}
+\fi
+
+\ifx\class\@undefined
+ \ifuptexmode
+  \def\class{ujarticle}
+ \else
+  \def\class{jarticle}
+ \fi
+\fi
+
+\documentclass[a4paper,titlepage,draft]{\class}
+%\documentclass[a4paper,titlepage,draft,landscape]{\class}
+
+\usepackage[\@opt@]{otf}
+
+\makeatother
+
+\usepackage{redeffont}
+\parindent 0zw
+\pagestyle{empty}
+%\parskip \baselineskip
+\makeatletter
+\ifx\rubyfamily\@undefined\let\rubyfamily=\relax\fi
+\ifx\mgfamily\@undefined\let\mgfamily=\relax\fi
+\makeatother
+
+\def\testglyph{%
+逢芦飴溢茨鰯淫迂厩噂餌襖迦牙廻恢晦蟹葛鞄
+釜翰翫徽祇汲灸笈卿饗僅喰櫛屑粂祁隙倦捲牽
+鍵諺巷梗膏鵠甑叉榊薩鯖錆鮫餐杓灼酋楯薯藷
+哨鞘杖蝕訊逗摺撰煎煽穿箭詮噌遡揃遜腿蛸辿
+樽歎註瀦捗槌鎚辻挺鄭擢溺兎堵屠賭瀞遁謎灘
+楢禰牌這秤駁箸叛挽誹樋稗逼謬豹廟瀕斧蔽瞥
+蔑篇娩鞭庖蓬鱒迄儲餅籾爺鑓愈猷漣煉簾榔冤
+叟咬嘲囀徘扁棘橙狡甕甦疼祟竈筵篝腱艘芒虔
+蜃蠅訝靄靱騙鴉
+\ifuptexmode
+ 俱剝吞噓姸屛幷瘦繫摯懲蘒譿悞煒驊夆暵屢
+\fi
+}
+\def\testutf{%
+\UTF{9022}\UTF{82A6}\UTF{98F4}\UTF{6EA2}\UTF{8328}\UTF{9C2F}\UTF{6DEB}\UTF{8FC2}\UTF{53A9}\UTF{5642}%
+\UTF{990C}\UTF{8956}\UTF{8FE6}\UTF{7259}\UTF{5EFB}\UTF{6062}\UTF{6666}\UTF{87F9}\UTF{845B}\UTF{9784}%
+\UTF{91DC}\UTF{7FF0}\UTF{7FEB}\UTF{5FBD}\UTF{7947}\UTF{6C72}\UTF{7078}\UTF{7B08}\UTF{537F}\UTF{9957}%
+\UTF{50C5}\UTF{55B0}\UTF{6ADB}\UTF{5C51}\UTF{7C82}\UTF{7941}\UTF{9699}\UTF{5026}\UTF{6372}\UTF{727D}%
+\UTF{9375}\UTF{8AFA}\UTF{5DF7}\UTF{6897}\UTF{818F}\UTF{9D60}\UTF{7511}\UTF{53C9}\UTF{698A}\UTF{85A9}%
+\UTF{9BD6}\UTF{9306}\UTF{9BAB}\UTF{9910}\UTF{6753}\UTF{707C}\UTF{914B}\UTF{696F}\UTF{85AF}\UTF{85F7}%
+\UTF{54E8}\UTF{9798}\UTF{6756}\UTF{8755}\UTF{8A0A}\UTF{9017}\UTF{647A}\UTF{64B0}\UTF{714E}\UTF{717D}%
+\UTF{7A7F}\UTF{7BAD}\UTF{8A6E}\UTF{564C}\UTF{9061}\UTF{63C3}\UTF{905C}\UTF{817F}\UTF{86F8}\UTF{8FBF}%
+\UTF{6A3D}\UTF{6B4E}\UTF{8A3B}\UTF{7026}\UTF{6357}\UTF{69CC}\UTF{939A}\UTF{8FBB}\UTF{633A}\UTF{912D}%
+\UTF{64E2}\UTF{6EBA}\UTF{514E}\UTF{5835}\UTF{5C60}\UTF{8CED}\UTF{701E}\UTF{9041}\UTF{8B0E}\UTF{7058}%
+\UTF{6962}\UTF{79B0}\UTF{724C}\UTF{9019}\UTF{79E4}\UTF{99C1}\UTF{7BB8}\UTF{53DB}\UTF{633D}\UTF{8AB9}%
+\UTF{6A0B}\UTF{7A17}\UTF{903C}\UTF{8B2C}\UTF{8C79}\UTF{5EDF}\UTF{7015}\UTF{65A7}\UTF{853D}\UTF{77A5}%
+\UTF{8511}\UTF{7BC7}\UTF{5A29}\UTF{97AD}\UTF{5E96}\UTF{84EC}\UTF{9C52}\UTF{8FC4}\UTF{5132}\UTF{9905}%
+\UTF{7C7E}\UTF{723A}\UTF{9453}\UTF{6108}\UTF{7337}\UTF{6F23}\UTF{7149}\UTF{7C3E}\UTF{6994}\UTF{51A4}%
+\UTF{53DF}\UTF{54AC}\UTF{5632}\UTF{56C0}\UTF{5F98}\UTF{6241}\UTF{68D8}\UTF{6A59}\UTF{72E1}\UTF{7515}%
+\UTF{7526}\UTF{75BC}\UTF{795F}\UTF{7AC8}\UTF{7B75}\UTF{7BDD}\UTF{8171}\UTF{8258}\UTF{8292}\UTF{8654}%
+\UTF{8703}\UTF{8805}\UTF{8A1D}\UTF{9744}\UTF{9771}\UTF{9A19}\UTF{9D09}%
+\UTF{4FF1}\UTF{525D}\UTF{541E}\UTF{5653}\UTF{59F8}\UTF{5C5B}\UTF{5E77}\UTF{7626}\UTF{7E6B}\UTF{646F}%
+\UTF{FA40}\UTF{FA20}\UTF{8B7F}\UTF{609E}\UTF{7152}\UTF{9A4A}\UTF{5906}\UTF{66B5}\UTF{5C62}}
+
+\begin{document}
+class: \texttt{\class}\\
+option: \texttt{\option}\\
+burasage: \texttt{\burasage}\\
+jis version: \texttt{\jisvar}\\
+
+[mc/m]
+
+\testglyph
+
+\testutf
+
+{\bfseries%
+[mc/bx]
+
+\testglyph
+
+\testutf
+}
+
+{\gtfamily
+[gt/m]
+
+\testglyph
+
+\testutf
+
+{\bfseries%
+[gt/bx]
+
+\testglyph
+
+\testutf
+}}
+
+{\mgfamily
+[mg/m]
+
+\testglyph
+
+\testutf
+}
+
+%%% extra font
+{\ltseries%
+[mc/lt]
+
+\testglyph
+
+\testutf
+}
+
+{\gtfamily
+{\ebseries%
+[gt/eb]
+
+\testglyph
+
+\testutf
+}}
+
+\end{document}

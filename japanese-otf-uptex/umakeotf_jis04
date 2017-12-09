@@ -1,0 +1,112 @@
+#!/bin/sh
+
+#
+# This script is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
+#
+
+# setting for ovp2ovf & uppltotf
+. ./umakeotf_pre
+
+if test ! -d tfm; then
+mkdir tfm
+fi
+
+
+echo "making tfm for jis2004 ..."
+for series in nml exp
+do
+for face in minr gothr minb gothb mgothr
+do
+$UPPLTOTF -kanji=uptex basepl/ubase-h.pl tfm/up${series}${face}n-h.tfm
+$UPPLTOTF -kanji=uptex basepl/ubase-v.pl tfm/up${series}${face}n-v.tfm
+done
+done
+#for extra fonts
+for series in nml exp
+do
+for face in gotheb minl
+do
+$UPPLTOTF -kanji=uptex basepl/ubase-h.pl tfm/up${series}${face}n-h.tfm
+$UPPLTOTF -kanji=uptex basepl/ubase-v.pl tfm/up${series}${face}n-v.tfm
+done
+done
+
+
+echo "making tfm for burasage & jis2004 ..."
+for series in nml exp
+do
+for face in minr gothr minb gothb mgothr
+do
+$UPPLTOTF -kanji=uptex basepl/ubrsg-h.pl tfm/upbrsg${series}${face}n-h.tfm
+$UPPLTOTF -kanji=uptex basepl/ubrsg-v.pl tfm/upbrsg${series}${face}n-v.tfm
+done
+done
+#for extra fonts
+for series in nml exp
+do
+for face in gotheb minl
+do
+$UPPLTOTF -kanji=uptex basepl/ubrsg-h.pl tfm/upbrsg${series}${face}n-h.tfm
+$UPPLTOTF -kanji=uptex basepl/ubrsg-v.pl tfm/upbrsg${series}${face}n-v.tfm
+done
+done
+
+
+echo "making vf for jis2004 ..."
+for face in minr gothr minb gothb mgothr
+do
+./umkjvf -ucs -sp 1 -cq     upnml${face}n-h uph${face}n-h
+./umkjvf -ucs -sp 1 -cm -cp upnml${face}n-v uph${face}n-v
+done
+#extra fonts
+for face in gotheb minl
+do
+./umkjvf -ucs -sp 1 -cq     upnml${face}n-h uph${face}n-h
+./umkjvf -ucs -sp 1 -cm -cp upnml${face}n-v uph${face}n-v
+done
+
+for face in minr gothr minb gothb mgothr
+do
+./umkjvf -ucs -sp 1 -cq     -expert upexp${face}n-h  uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -cm -cp -expert upexp${face}n-v  uph${face}n-v cidj${face}
+done
+#extra fonts
+for face in gotheb minl
+do
+./umkjvf -ucs -sp 1 -cq     -expert upexp${face}n-h  uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -cm -cp -expert upexp${face}n-v  uph${face}n-v cidj${face}
+done
+
+
+echo "making vf for burasage & jis2004 ..."
+for face in minr gothr minb gothb mgothr
+do
+./umkjvf -ucs -sp 1 -sage -cq     upbrsgnml${face}n-h uph${face}n-h
+./umkjvf -ucs -sp 1 -sage -cm -cp upbrsgnml${face}n-v uph${face}n-v
+done
+#extra fonts
+for face in gotheb minl
+do
+./umkjvf -ucs -sp 1 -sage -cq     upbrsgnml${face}n-h uph${face}n-h
+./umkjvf -ucs -sp 1 -sage -cm -cp upbrsgnml${face}n-v uph${face}n-v
+done
+
+for face in minr gothr minb gothb mgothr
+do
+./umkjvf -ucs -sp 1 -sage -cq     -expert upbrsgexp${face}n-h uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -sage -cm -cp -expert upbrsgexp${face}n-v uph${face}n-v cidj${face}
+done
+#extra fonts
+for face in gotheb minl
+do
+./umkjvf -ucs -sp 1 -sage -cq     -expert upbrsgexp${face}n-h uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -sage -cm -cp -expert upbrsgexp${face}n-v uph${face}n-v cidj${face}
+done
+
+
+echo "finishing ..."
+if test ! -d vf; then
+mkdir vf
+fi
+mv *.vf vf/
+mv *.tfm tfm/

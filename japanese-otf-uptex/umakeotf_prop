@@ -1,0 +1,35 @@
+#!/bin/sh
+
+#
+# This script is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
+#
+
+# setting for ovp2ovf & uppltotf
+. ./umakeotf_pre
+
+if test ! -d tfm; then
+mkdir tfm
+fi
+if test ! -d vf; then
+mkdir vf
+fi
+if test ! -d ovp; then
+mkdir ovp
+fi
+
+echo "making proportional kana tfm/vf ..."
+perl -s script/umkpkana.pl -sp=1
+perl -s script/umkvpkana.pl -sp=1
+
+for face in minw3 minw6 kakuw3 kakuw6 maruw4
+do
+$UPPLTOTF -kanji=uptex pl/upphira${face}-h.pl tfm/upphira${face}-h.tfm
+$UPPLTOTF -kanji=uptex pl/upphira${face}-v.pl tfm/upphira${face}-v.tfm
+done
+
+for face in minw3 minw6 kakuw3 kakuw6 maruw4
+do
+$OVP2OVF ovp/upphira${face}-h.ovp vf/upphira${face}-h.vf vf/upphira${face}-h.ofm
+$OVP2OVF ovp/upphira${face}-v.ovp vf/upphira${face}-v.vf vf/upphira${face}-v.ofm
+done
+

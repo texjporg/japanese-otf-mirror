@@ -1,0 +1,12 @@
+#!/bin/sh
+
+#
+# This script is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
+#
+
+# setting for ovp2ovf & uppltotf
+#OVP2OVF='omfonts -ovp2ovf'
+OVP2OVF=ovp2ovf
+export OVP2OVF
+UPPLTOTF=uppltotf
+

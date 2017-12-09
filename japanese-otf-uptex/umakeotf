@@ -1,0 +1,77 @@
+#!/bin/sh
+
+#
+# This script is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
+#
+
+# setting for ovp2ovf & uppltotf
+. ./umakeotf_pre
+
+if test ! -d tfm; then
+mkdir tfm
+fi
+
+
+echo "making tfm ..."
+for series in nml exp ruby
+do
+for face in minr gothr minb gothb mgothr
+do
+$UPPLTOTF -kanji=uptex basepl/ubase-h.pl tfm/up${series}${face}-h.tfm
+$UPPLTOTF -kanji=uptex basepl/ubase-v.pl tfm/up${series}${face}-v.tfm
+done
+done
+#for extra fonts
+for series in nml exp ruby
+do
+for face in gotheb minl
+do
+$UPPLTOTF -kanji=uptex basepl/ubase-h.pl tfm/up${series}${face}-h.tfm
+$UPPLTOTF -kanji=uptex basepl/ubase-v.pl tfm/up${series}${face}-v.tfm
+done
+done
+
+
+echo "making vf (wait a while)..."
+for face in minr gothr minb gothb mgothr
+do
+./umkjvf -ucs -sp 1 -cq     upnml${face}-h uph${face}-h
+./umkjvf -ucs -sp 1 -cm -cp upnml${face}-v uph${face}-v
+done
+#extra fonts
+for face in gotheb minl
+do
+./umkjvf -ucs -sp 1 -cq     upnml${face}-h uph${face}-h
+./umkjvf -ucs -sp 1 -cm -cp upnml${face}-v uph${face}-v
+done
+
+echo "making alt. kana ..."
+for face in minr gothr minb gothb mgothr
+do
+./umkjvf -ucs -sp 1 -cq     -expert upexp${face}-h  uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -cm -cp -expert upexp${face}-v  uph${face}-v cidj${face}
+./umkjvf -ucs -sp 1 -cq     -ruby   upruby${face}-h uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -cm -cp -ruby   upruby${face}-v uph${face}-v cidj${face}
+done
+#extra fonts
+for face in gotheb minl
+do
+./umkjvf -ucs -sp 1 -cq     -expert upexp${face}-h  uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -cm -cp -expert upexp${face}-v  uph${face}-v cidj${face}
+./umkjvf -ucs -sp 1 -cq     -ruby   upruby${face}-h uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -cm -cp -ruby   upruby${face}-v uph${face}-v cidj${face}
+done
+
+
+echo "making tfm for supplementary plane ..."
+perl script/mktfm_sp.pl
+echo "making vf for supplementary plane ..."
+perl script/mkutfvf_sp.pl
+
+
+echo "finishing ..."
+if test ! -d vf; then
+mkdir vf
+fi
+mv *.vf vf/
+mv *.tfm tfm/
