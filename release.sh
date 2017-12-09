@@ -29,7 +29,7 @@ if test -d "$TEMP/$PROJECT-$VER"; then
   esac
 fi
 echo
-git commit -m "Release $VER" --allow-empty
+#git commit -m "Release $VER" --allow-empty
 git archive --format=tar --prefix=$PROJECT-$VER/ HEAD | (cd $TEMP && tar xf -)
 #git --no-pager log --date=short --format='%ad  %aN  <%ae>%n%n%x09* %s%d [%h]%n' > $TEMP/$PROJECT-$VER/ChangeLog
 cd $TEMP
