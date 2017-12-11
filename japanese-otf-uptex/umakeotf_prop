@@ -33,3 +33,6 @@ $OVP2OVF ovp/upphira${face}-h.ovp vf/upphira${face}-h.vf vf/upphira${face}-h.ofm
 $OVP2OVF ovp/upphira${face}-v.ovp vf/upphira${face}-v.vf vf/upphira${face}-v.ofm
 done
 
+rm vf/*.ofm
+rm -rf ovp
+rm -rf pl

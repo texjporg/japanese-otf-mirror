@@ -75,3 +75,4 @@ mkdir vf
 fi
 mv *.vf vf/
 mv *.tfm tfm/
+rm -rf ovp
