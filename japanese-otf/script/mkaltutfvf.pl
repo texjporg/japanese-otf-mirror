@@ -3,6 +3,8 @@ binmode(GLYPH);
 @glyph_sub_table=();
 opendir(OVP, "ovp") || mkdir("ovp",0755) || die "cannot mkdir ovp";
 opendir(VF, "vf") || mkdir("vf",0755) || die "cannot mkdir vf";
+closedir(OVP);
+closedir(VF);
 
 &make_glyph_substitute_array;
 &make_uni_vf;
