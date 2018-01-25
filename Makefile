@@ -50,6 +50,7 @@ install:
 		mkdir -p ${TEXMF}/tex/platex/japanese-otf-uptex ; \
 		cp japanese-otf-uptex/sty/* ${TEXMF}/tex/platex/japanese-otf-uptex/ ; \
 	fi
+	## install TEXMF/doc/*
 	for PKGNAME in japanese-otf japanese-otf-uptex ; do \
 		mkdir -p ${TEXMF}/doc/fonts/$$PKGNAME ; \
 		cp $$PKGNAME/COPYRIGHT ${TEXMF}/doc/fonts/$$PKGNAME/ ; \
