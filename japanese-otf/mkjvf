@@ -238,7 +238,7 @@ sub write_char {
 }
 sub make_vf {
 	close(OVP);
-	system("wovp2ovf $tfm_name.ovp $tfm_name.vf $tfm_name.ofm");
+	system("ovp2ovf $tfm_name.ovp $tfm_name.vf $tfm_name.ofm");
 	unlink "$tfm_name.ovp";
 	unlink "$tfm_name.ofm";
 }

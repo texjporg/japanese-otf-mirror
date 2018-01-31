@@ -1,0 +1,52 @@
+otf-ujmr-h    UniJIS-UTF16-H KozMinPro-Regular-Acro.otf
+otf-ujmr-v    UniJIS-UTF16-V KozMinPro-Regular-Acro.otf
+otf-cjmr-h    Identity-H KozMinPro-Regular-Acro.otf
+otf-cjmr-v    Identity-V KozMinPro-Regular-Acro.otf
+hminr-h       H KozMinPro-Regular-Acro.otf
+hminr-v       V KozMinPro-Regular-Acro.otf
+
+otf-ujgr-h    UniJIS-UTF16-H KozGoStd-Regular.otf
+otf-ujgr-v    UniJIS-UTF16-V KozGoStd-Regular.otf
+otf-cjgr-h    Identity-H KozGoStd-Regular.otf
+otf-cjgr-v    Identity-V KozGoStd-Regular.otf
+hgothr-h      H KozGoStd-Regular.otf
+hgothr-v      V KozGoStd-Regular.otf
+
+otf-ujmb-h    UniJIS-UTF16-H KozMinStd-Bold.otf
+otf-ujmb-v    UniJIS-UTF16-V KozMinStd-Bold.otf
+otf-cjmb-h    Identity-H KozMinStd-Bold.otf
+otf-cjmb-v    Identity-V KozMinStd-Bold.otf
+hminb-h       H KozMinStd-Bold.otf
+hminb-v       V KozMinStd-Bold.otf
+
+otf-cjgb-h    Identity-H KozGoStd-Bold.otf
+otf-cjgb-v    Identity-V KozGoStd-Bold.otf
+otf-ujgb-h    UniJIS-UTF16-H KozGoStd-Bold.otf
+otf-ujgb-v    UniJIS-UTF16-V KozGoStd-Bold.otf
+hgothb-h      H KozGoStd-Bold.otf
+hgothb-v      V KozGoStd-Bold.otf
+
+otf-ujmgr-h   UniJIS-UTF16-H KozGoStd-Heavy.otf
+otf-ujmgr-v   UniJIS-UTF16-V KozGoStd-Heavy.otf
+otf-cjmgr-h   Identity-H KozGoStd-Heavy.otf
+otf-cjmgr-v   Identity-V KozGoStd-Heavy.otf
+hmgothr-h     H KozGoStd-Heavy.otf
+hmgothr-v     V KozGoStd-Heavy.otf
+
+
+%
+%for Adobe Reader 7
+%
+otf-ujmr-h    UniJIS-UTF16-H KozMinProVI-Regular.otf
+otf-ujmr-v    UniJIS-UTF16-V KozMinProVI-Regular.otf
+otf-cjmr-h    Identity-H KozMinProVI-Regular.otf
+otf-cjmr-v    Identity-V KozMinProVI-Regular.otf
+hminr-h       H KozMinProVI-Regular.otf
+hminr-v       V KozMinProVI-Regular.otf
+
+otf-ujgr-h    UniJIS-UTF16-H KozGoPro-Medium.otf
+otf-ujgr-v    UniJIS-UTF16-V KozGoPro-Medium.otf
+otf-cjgr-h    Identity-H KozGoPro-Medium.otf
+otf-cjgr-v    Identity-V KozGoPro-Medium.otf
+hgothr-h      H KozGoPro-Medium.otf
+hgothr-v      V KozGoPro-Medium.otf

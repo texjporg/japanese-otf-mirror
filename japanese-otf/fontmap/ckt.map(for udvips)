@@ -1,0 +1,26 @@
+%font from acrobat5
+otf-utmr-h MSungStd-Light-Acro-UniCNS-UCS2-H
+otf-utmr-v MSungStd-Light-Acro-UniCNS-UCS2-V
+otf-utgr-h MHei-Medium-UniCNS-UCS2-H
+otf-utgr-v MHei-Medium-UniCNS-UCS2-V
+otf-ucmr-h STSongStd-Light-Acro-UniGB-UCS2-H
+otf-ucmr-v STSongStd-Light-Acro-UniGB-UCS2-V
+otf-ucgr-h STHeiti-Regular-UniGB-UCS2-H
+otf-ucgr-v STHeiti-Regular-UniGB-UCS2-V
+otf-ukmr-h   HYSMyeongJoStd-Medium-Acro-UniKS-UCS2-H
+otf-ukmr-v   HYSMyeongJoStd-Medium-Acro-UniKS-UCS2-V
+otf-ukgr-h HYGoThic-Medium-UniKS-UCS2-H
+otf-ukgr-v HYGoThic-Medium-UniKS-UCS2-V
+
+otf-ctmr-h MSungStd-Light-Acro-Identity-H
+otf-ctmr-v MSungStd-Light-Acro-Identity-V
+otf-ctgr-h MHei-Medium-Identity-H
+otf-ctgr-v MHei-Medium-Identity-V
+otf-ccmr-h STSongStd-Light-Acro-Identity-H
+otf-ccmr-v STSongStd-Light-Acro-Identity-V
+otf-ccgr-h STHeiti-Regular-Identity-H
+otf-ccgr-v STHeiti-Regular-Identity-V
+otf-ckmr-h   HYSMyeongJoStd-Medium-Acro-Identity-H
+otf-ckmr-v   HYSMyeongJoStd-Medium-Acro-Identity-V
+otf-ckgr-h HYGoThic-Medium-Identity-H
+otf-ckgr-v HYGoThic-Medium-Identity-V

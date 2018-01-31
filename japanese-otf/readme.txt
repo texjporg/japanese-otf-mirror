@@ -1,218 +1,222 @@
-OTF$B%Q%C%1!<%83+H/HG!J(Bv1.7b6 2013/11/17$B!K(B
-$Bc7F#=$;0O:(B
+OTFパッケージ開発版（v1.7b7 2018/02/01）
+齋藤修三郎
 
-$B!Z%i%$%;%s%9![(B
-$B=$@5(B BSD$B$H$7$^$9!%(B
+【ライセンス】
+修正 BSDとします．
 
-$B!ZI,MW$JJ*![(B
-$B!&(Bovp2ovf$B!'(BWEB$BHG$N$b$N$@$H3N<B$K$&$^$/$$$-$^$9!%(BC$BHG$N>l9g!"(B2011$BG/(B12$B7n0J9_$N(BVersion$B$G$7$?$i$&$^$/$$$-$^$9!%(B
-$B!&(Bopl2ofm$B!'(BWEB$BHG$N$b$N$@$H3N<B$K$&$^$/$$$-$^$9!%(BC$BHG$N>l9g!"(B2011$BG/(B12$B7n0J9_$N(BVersion$B$G$7$?$i$&$^$/$$$-$^$9!%(B
-$B!&(Bperl
-$B!&(Bppltotf
+【必要な物】
+・ovp2ovf：WEB版のものだと確実にうまくいきます．C版の場合、2011年12月以降のVersionでしたらうまくいきます．
+・opl2ofm：WEB版のものだと確実にうまくいきます．C版の場合、2011年12月以降のVersionでしたらうまくいきます．
+・perl
+・ppltotf
 
-$B!Z%$%s%9%H!<%k![(B
-$B#1!K%7%'%k%9%/%j%W%H(Bmakeotf$B$r<B9T$7$F$/$@$5$$!JI,MW$J$i<B9TB0@-$rIU$1$F$/$@$5$$!K!%(B
-$B!!!!!J(Bmkjvf$B$K$b<B9TB0@-$,IU$$$F$$$kI,MW$,$"$j$^$9!K(B
+【インストール】
+１）シェルスクリプトmakeotfを実行してください（必要なら実行属性を付けてください）．
+　　（mkjvfにも実行属性が付いている必要があります）
 
-$B#2!K=hM}$,=*$o$k$HF1$83,AX$K(Bvf, tfm, ofm$B$H$$$&%U%)%k%@$,:n@.$5$l$^$9!%E,@Z$J>l=j$K0\F0$5$;$F$/$@$5$$!%(B
+２）処理が終わると同じ階層にvf, tfm, ofmというフォルダが作成されます．適切な場所に移動させてください．
 
-$B#3!K(Bsty$B%U%!%$%kEy$rE,Ev$J>l=j$K0\F0$5$;$F$/$@$5$$!%I,MW$,M-$l$P!$(Bmktexlsr$B$r<B9T$7$F$/$@$5$$!%(B
+３）styファイル等を適当な場所に移動させてください．必要が有れば，mktexlsrを実行してください．
 
-$B#4!K(Bdivps$B$N%^%C%W%U%!%$%k$K!JNc$($P!K(Bhiragino.map(for udvips)$B$K=q$+$l$?%(%s%H%j$rDI2C$7$^$9!%(B
+４）divpsのマップファイルに（例えば）hiragino.map(for udvips)に書かれたエントリを追加します．
 
-$B#5!K(Bdvipdfmx$B$N%^%C%W%U%!%$%k$K!JNc$($P!K(Bhiraginox.map(for dvipdfmx)$B$K=q$+$l$?%(%s%H%j$rDI2C$7$^$9!%(B
+５）dvipdfmxのマップファイルに（例えば）hiraginox.map(for dvipdfmx)に書かれたエントリを追加します．
 
-$B#6!KHKqs;z!$4JBN;z!$%O%s%0%k$J$I$r;HMQ$9$k>l9g!$(Bckt.map(for udvips), ckt.map(for dvipdfmx)$B$K(B
-$B!!!!=q$+$l$?%(%s%H%j$rDI2C$7$F2<$5$$!%(B
-$B!!!!(BDistiller$B$N!V%U%)%s%H$N>l=j!W$K(BMSungStd-Light-Acro$B$J$I$,F~$C$F$$$k%U%)%k%@$rDI2C$9$l$P!$(B
-$B!!!!HKqs;z!$4JBN;z!$%O%s%0%k$J$I$bKd$a9~$a$^$9!JL@D+BN$N$_!K!%(B
+６）繁體字，簡体字，ハングルなどを使用する場合，ckt.map(for udvips), ckt.map(for dvipdfmx)に
+　　書かれたエントリを追加して下さい．
+　　Distillerの「フォントの場所」にMSungStd-Light-Acroなどが入っているフォルダを追加すれば，
+　　繁體字，簡体字，ハングルなども埋め込めます（明朝体のみ）．
 
-$B%"%8%"%s%U%)%s%H%Q%C%/$O2<5-$N(BURL$B$+$iF~<j=PMh$^$9!%(B
+アジアンフォントパックは下記のURLから入手出来ます．
 http://www.adobe.com/products/acrobat/acrrasianfontpack.html
 
 
-$B!Z;HMQK!![(B
-otf.sty$B$K$J$C$FDI2C$5$l$?%*%W%7%g%s$H$7$F!$(Bdeluxe, multi, bold, noreplace$B$,$"$j$^$9!%(B
+【使用法】
+otf.styになって追加されたオプションとして，deluxe, multi, bold, noreplaceがあります．
 
-deluxe$B$r;XDj$9$k$H!$(Bmc/m/n, mc/bx/n, gt/m/n, gt/bx/n$B$rJL!9$N%U%)%s%H$K3d$jEv$F$k$h$&$K$7$^$9!%(B
-$B4]%4%7%C%/$b;H$($k$h$&$K$J$j$^$9!%(B\mgfamily$B$r@k8@$9$k$H4]%4%7%C%/$K$J$j$^$9!%!JL^O@3d$jEv$F$i$l$?%U%)%s%H<!Bh$G$9!K(B
+deluxeを指定すると，mc/m/n, mc/bx/n, gt/m/n, gt/bx/nを別々のフォントに割り当てるようにします．
+丸ゴシックも使えるようになります．\mgfamilyを宣言すると丸ゴシックになります．（勿論割り当てられたフォント次第です）
 
-$B!ZCm0U![(B
-$B%"%9%-!<$NI8=`%/%i%9%U%!%$%k$G$O8+=P$7$J$I$N%U%)%s%H$K(B\bfseries$B$,;XDj$5$l$F$$$k$@$1$G$9!%=hM}7k2L$G!JB@;z$N!K%4%7%C%/(B
-$B$GI=<($5$l$F$$$?$N$O(Bmc/bx --> gt/m$B$KBeBX$5$l$F$$$?$+$i$G$9!%F1MM$N7k2L$rF@$k$?$a$K$O(B\bfseries$B$r(B\gtfamily\bfseries
-$B$KJQ99$9$kI,MW$,$"$j$^$9!%$3$l$r9T$&$?$a$N%9%?%$%k%U%!%$%k$,(Bredeffont.sty$B$G$9!%(Bdeluxe$B%*%W%7%g%s$r;HMQ$9$k$H$-$O!$(B
-$B$3$N%9%?%$%k%U%!%$%k$rFI$_9~$s$G$/$@$5$$!%!J<+F0$G$OFI$_9~$^$l$^$;$s!K(B
-redeffont.sty$B$G$O!$8+=P$7$,(Bgt/bx$B$K3d$jEv$F$i$l$F$$$k%U%)%s%H$K$J$j$^$9!%$3$l$rNc$($P(Bgt/m$B$K$7$?$$>l9g!$(B\headfont$B$r(B
-$B=q$-49$($k$3$H$G2DG=$G$9!%%W%j%"%s%V%k$G(B
+【注意】
+アスキーの標準クラスファイルでは見出しなどのフォントに\bfseriesが指定されているだけです．処理結果で（太字の）ゴシック
+で表示されていたのはmc/bx --> gt/mに代替されていたからです．同様の結果を得るためには\bfseriesを\gtfamily\bfseries
+に変更する必要があります．これを行うためのスタイルファイルがredeffont.styです．deluxeオプションを使用するときは，
+このスタイルファイルを読み込んでください．（自動では読み込まれません）
+redeffont.styでは，見出しがgt/bxに割り当てられているフォントになります．これを例えばgt/mにしたい場合，\headfontを
+書き換えることで可能です．プリアンブルで
 \let\headfont=\gtfamily
-$B$H$7$F$/$@$5$$!%(B
+としてください．
 
-multi$B$r;XDj$9$k$H!$(BUnicode$B$N4A;z$NItJ,$r4JBN;z!$HKqs;z!$D+A/8l$N$=$l$>$l$N%U%)%s%H$rMxMQ$9$k$3$H$,(B
-$B=PPT$^$9!%4JBN;z$O(B\UTFC$B$r!$HKqs;z$O(B\UTFT$B$r!$D+A/8l$O(B\UTFK$B$r!$$=$l$>$l;H$$$^$9!%(B
-$B!J;DG0Fc$i!$(Bdeluxe$B%*%W%7%g%s$r;XDj$7$F$b!$8z2L$O5Z$S$^$;$s!K(B
-$B$^$?!$(B\UTFM$B$rMQ$$$k$H!$$b$7F|K\8l$N%U%)%s%H$K%0%j%U$,$J$$>l9g!$HKqs;z!d4JBN;z!d%O%s%0%k$N=gHV$G(B
-$B%0%j%U$,$J$$$+$rD4$Y!$2?$l$+$K%0%j%U$,$"$k>l9g!$$=$N%U%)%s%H$N%0%j%U$,MQ$$$i$l$^$9!%(B
-CID$B$K$h$k;XDj$O!$4JBN;z$O(B\CIDC$B$r!$HKqs;z$O(B\CIDT$B$r!$D+A/8l$O(B\CIDK$B$r!$$=$l$>$l;H$$$^$9!%(B
+multiを指定すると，Unicodeの漢字の部分を簡体字，繁體字，朝鮮語のそれぞれのフォントを利用することが
+出來ます．簡体字は\UTFCを，繁體字は\UTFTを，朝鮮語は\UTFKを，それぞれ使います．
+（残念乍ら，deluxeオプションを指定しても，効果は及びません）
+また，\UTFMを用いると，もし日本語のフォントにグリフがない場合，繁體字＞簡体字＞ハングルの順番で
+グリフがないかを調べ，何れかにグリフがある場合，そのフォントのグリフが用いられます．
+CIDによる指定は，簡体字は\CIDCを，繁體字は\CIDTを，朝鮮語は\CIDKを，それぞれ使います．
 
-$B!ZCm0U![(Botf.sty$B$O%G%U%)%k%H$NL@D+BN!$%4%7%C%/BN$rCV$-49$($^$9!%(B
-$B!~(Bgt/m$B$r$I$N$h$&$KCV$-49$($k$+$rJQ99$9$k%*%W%7%g%s$,(Bbold$B%*%W%7%g%s$G$9!%%G%U%)%k%H$G$O(Bgt/m$B$K$O(B
-$B%l%.%e%i!<$N%4%7%C%/$r3d$jEv$F$^$9$,!$(Bbold$B%*%W%7%g%s$r;XDj$9$k$H%\!<%k%I$N%4%7%C%/$r3d$jEv$F$^$9!%(B
+【注意】otf.styはデフォルトの明朝体，ゴシック体を置き換えます．
+◇gt/mをどのように置き換えるかを変更するオプションがboldオプションです．デフォルトではgt/mには
+レギュラーのゴシックを割り当てますが，boldオプションを指定するとボールドのゴシックを割り当てます．
 
-$B!~(Bnoreplace$B$r;XDj$9$k$H!$%G%U%)%k%H$NL@D+BN!$%4%7%C%/BN$rCV$-49$($J$$$h$&$K$J$j$^$9!%(B
-$B$?$@$7!$(Bdeluxe, expert$B%*%W%7%g%s$,;XDj$5$l$k$H(Bnoreplace$B$OL58z$K$J$j$^$9!%(B
+◇noreplaceを指定すると，デフォルトの明朝体，ゴシック体を置き換えないようになります．
+ただし，deluxe, expertオプションが指定されるとnoreplaceは無効になります．
 
 \usepackage[deluxe, expert, multi]{otf}
-$B$G%*%W%7%g%s$,A4$FM-8z$K$J$j$^$9!%!J%U%)%s%H$N(Bshape$B$,$?$/$5$sDj5A$5$lL5BL$,A}$($^$9!%!K(B
+でオプションが全て有効になります．（フォントのshapeがたくさん定義され無駄が増えます．）
 
-$B!~(Bburasage$B%*%W%7%g%s$,;XDj$5$l$k$H!$$V$i2<$2AH$r$9$k$h$&$K$J$j$^$9!%C"$7!$$A$g$&$I9TKv$KMh$?6gFIE@$OA43Q<h$j$K$J$j$^$9!%(B
-$B%k%SMQ$N%U%)%s%H$K$OE,MQ$5$l$^$;$s!%(B
+◇burasageオプションが指定されると，ぶら下げ組をするようになります．但し，ちょうど行末に来た句読点は全角取りになります．
+ルビ用のフォントには適用されません．
 
-$B!~(Bjis2004$B%*%W%7%g%s$,;XDj$5$l$k$H!$(BJIS X 0213:2004$B$G9T$o$l$?Nc<(;z7A$NJQ99$K$h$k;z7A$rI=<($9$k$h$&$K$J$j$^$9!%(B
-$B%k%SMQ$N%U%)%s%H$*$h$S(B\ebseries$B$K$OE,MQ$5$l$^$;$s!%(B
-$B$^$?!$<B:]$K;HMQ$9$k%U%)%s%H$K$h$C$F$O;z7A$NJQ99$,9T$o$l$J$$$3$H$,$"$j$^$9!%(B
+◇jis2004オプションが指定されると，JIS X 0213:2004で行われた例示字形の変更による字形を表示するようになります．
+ルビ用のフォントおよび\ebseriesには適用されません．
+また，実際に使用するフォントによっては字形の変更が行われないことがあります．
 
-$B!~(Bscale$B%*%W%7%g%s!N(Bv1.7b6$B0J9_!O(B
-$B%U%)%s%H$r@k8@$9$k$H$-$KL@<(E*$K(Bscale$B$r;XDj$7$?$$>l9g$K;HMQ$7$^$9!%(B
+◇scaleオプション［v1.7b6以降］
+フォントを宣言するときに明示的にscaleを指定したい場合に使用します．
 \usepackage[scale=1.0]{otf}
-$B$G!$2$J8(B10pt$B$KBP$7$F!$OBJ8$b(B10pt$B$K$J$j$^$9!%(B
-$B>0!$@k8@$7$J$$>l9g!$(Bjs$B%/%i%9$r;HMQ$7$F$$$l$P(Bscale=0.92469$B!$$=$l0J30$N%/%i%9%U%!%$%k$N>l9g!$(Bscale=0.962216$B$H$J$j$^$9!%(B
+で，欧文10ptに対して，和文も10ptになります．
+尚，宣言しない場合，jsクラスを使用していればscale=0.92469，それ以外のクラスファイルの場合，scale=0.962216となります．
 
 
-$B!Z$*$^$1![(Bmkjvf$B$K$D$$$F(B
-$B@8@.%9%/%j%W%H$NCf$G;H$C$F$$$k(Bmkjvf$B$O(Bovp2ovf$B$rMxMQ$7$F(BVF$B$r:n@.$9$k(Bperl$B%9%/%j%W%H$G$9!%(B
-$B$=$l<+BN$G$b;H$($^$9$N$G!$$4MxMQBW$1$l$P9,$$$G$9!%(B
-makejvf$B$H$N0c$$$O!$(B
-$B!&(BTFM$B$r$A$c$s$HFI$_9~$^$J$$!%(B
-$B!&D9BN!?J?BN$K$OBP1~$7$F$$$J$$!%(B
-$B!&(BUTF/OTF$B%Q%C%1!<%8MQ$G$9$,!$2>L>$N%U%)%s%H$K%k%SMQ$+$J!$=DAH!?2#AH@lMQ$+$J$r3d$jEv$F$?(BVF$B$r:n@.2DG=(B
-$B!&%^%C%T%s%0$N%+%9%?%^%$%:$,Hf3SE*4JC1(B
-$B$G$9!%(BTFM$B$r$A$c$s$HFI$_9~$^$J$$$N$G!$@8@.=PMh$k$N$O(BJIS TFM$B%Y!<%9$G$9!$(Bmin10$B$N$h$&$JJ#;($J(B
-$BJ8;zI}$K$OBP1~$7$F$$$^$;$s!%(B
+【おまけ】mkjvfについて
+生成スクリプトの中で使っているmkjvfはovp2ovfを利用してVFを作成するperlスクリプトです．
+それ自体でも使えますので，ご利用戴ければ幸いです．
+makejvfとの違いは，
+・TFMをちゃんと読み込まない．
+・長体／平体には対応していない．
+・UTF/OTFパッケージ用ですが，仮名のフォントにルビ用かな，縦組／横組専用かなを割り当てたVFを作成可能
+・マッピングのカスタマイズが比較的簡単
+です．TFMをちゃんと読み込まないので，生成出来るのはJIS TFMベースです，min10のような複雑な
+文字幅には対応していません．
 
-$B!Z;HMQ5vBz![(B
-$BK\%Q%C%1!<%8$N%$%s%9%H!<%k$^$?$O;HMQ$K4XO"$7$F;HMQ<T$KD>@\E*$^$?$O4V@\E*$KH/@8$9$k0l@Z$NB;32(B
-$B!J%O!<%I%&%'%"!"B>$N%=%U%H%&%'%"$NGKB;!"IT6q9gEy$r4^$`!#$^$?!"DL>oB;32!"FCJLB;32!"7k2LB;32$r(B
-$BLd$o$J$$!K$*$h$SBh;0<T$+$i$J$5$l$k@A5a$K$D$$$FCx:n8"<T$O0l@Z@UG$$rIiC4$7$^$;$s!#(B
-$BK\%Q%C%1!<%8$r;HMQ$7$FF@$i$l$k7k2L$O!">&MQ!"Hs>&MQ$K4X$o$i$:L5=~$G;HMQ$9$k$3$H$,2DG=$G$9!#(B
-$B<+8J@UG$$G;HMQ$7$F$/$@$5$$!#K\%Q%C%1!<%8$r;HMQ$7$?>l9g!">e5-$N5-:\;v9`$KF10U$7$?$b$N$H8+$J$7(B
-$B$^$9!#(B
+【使用許諾】
+本パッケージのインストールまたは使用に関連して使用者に直接的または間接的に発生する一切の損害
+（ハードウェア、他のソフトウェアの破損、不具合等を含む。また、通常損害、特別損害、結果損害を
+問わない）および第三者からなされる請求について著作権者は一切責任を負担しません。
+本パッケージを使用して得られる結果は、商用、非商用に関わらず無償で使用することが可能です。
+自己責任で使用してください。本パッケージを使用した場合、上記の記載事項に同意したものと見なし
+ます。
 
-$B!ZJQ99MzNr![(B
+【変更履歴】
+v1.7b6-->v1.7b7(2018/02/01)
+・jsreportを使用した場合もscale=0.92469となるようにしました．[otf.sty]
+・クラスファイルで\Cjascaleが定義されている場合，scale=\Cjascaleとなるようにしました．[otf.sty]
+・ajmacros.styに\NeedsTeXFormat{pLaTeX2e}を追加．[ajmacros.sty]
 v1.7b5-->v1.7b6(2013/11/17)
-$B!&(Bscale$B%*%W%7%g%s$NDI2C!%(B[otf.sty]
-$B!J<BAu$O!$(BZ.R.$B$5$s$N(BBXjscls$B%Q%C%1!<%8$r;29M$K$5$;$F$$$?$@$-$-$^$7$?!K(B
+・scaleオプションの追加．[otf.sty]
+（実装は，Z.R.さんのBXjsclsパッケージを参考にさせていただききました）
 v1.7b4-->v1.7b5(2012/4/11)
-$B!&(Bnoreplace$B%*%W%7%g%s;HMQ;~$G!$(B\if@enablejfam$B$,Dj5A$5$l$F$$$J$$>l9g!$%(%i!<$H$J$kIT6q9g$r=$@5!%(BZ.R.$B$5$s$K$h$k=$@5$r<h$j9~$^$;$F$$$?$@$-$^$7$?!J>eED$5$s!$A0ED$5$s!$;3K\$5$s!$(BZ.R.$B$5$s$"$j$,$H$&$4$6$$$^$9!K!%(B[otf.sty]
+・noreplaceオプション使用時で，\if@enablejfamが定義されていない場合，エラーとなる不具合を修正．Z.R.さんによる修正を取り込ませていただきました（上田さん，前田さん，山本さん，Z.R.さんありがとうございます）．[otf.sty]
 v1.7b3-->v1.7b4(2012/1/22)
-$B!&9uLZM52p$5$s$K$h$k!$D+A/8l$NAHHG$9$k$?$a$NJd=u%U%!%$%k$NDI2C!%>\$7$/$O(Bhttp://ptetexwin.sourceforge.jp/jkexample/$B$r;2>H$N$3$H!%(B
-$B!!(B[otf-hangul.dfu$B$NDI2C(B, koreanexample.tex$B$NDI2C(B]
+・黒木裕介さんによる，朝鮮語の組版するための補助ファイルの追加．詳しくはhttp://ptetexwin.sourceforge.jp/jkexample/を参照のこと．
+　[otf-hangul.dfuの追加, koreanexample.texの追加]
 v1.7b1-->v1.7b3(2011/10/28)
-$B!&=$@5(B BSD$B%i%$%;%s%9$rE,MQ(B[COPYRIGHT$B$NDI2C(B]
+・修正 BSDライセンスを適用[COPYRIGHTの追加]
 v1.7b1-->v1.7b2(2010/7/30)
-$B!&(Bmkjvf$B$+$i:n@.$5$l$k(BVF$B$,!$?7$7$$(Bovp2ovf (ver. 2.1)$B$G:n$C$?>l9g!$>e<j$/:n@.$5$l$J$$IT6q9g$r=$@5$7$h$&$H$7$?$,>e<j$/$$$+$J$C$?$?$aKW$K(B[mkjvf]
+・mkjvfから作成されるVFが，新しいovp2ovf (ver. 2.1)で作った場合，上手く作成されない不具合を修正しようとしたが上手くいかなったため没に[mkjvf]
 v1.5.6.1-->v1.7b1(2010/3/27)
-$B!&$V$i2<$2AH$KBP1~(B[otf.sty, makeotf, mkjvf, brsg-h.pl$B$*$h$S(Bbrsg-v.pl$BDI2C(B, brsgtest.tex$B$NDI2C(B]
-$B!&(BJIS X 0213:2004$B$N;z7A2~@5$KBP1~(B
-$B!!(B[otf.sty, makeotf, mkjvf, hiragino.map(for udvips), hiraginox.map(for dvipdfmx), jis2004.tex$B$NDI2C(B]
+・ぶら下げ組に対応[otf.sty, makeotf, mkjvf, brsg-h.plおよびbrsg-v.pl追加, brsgtest.texの追加]
+・JIS X 0213:2004の字形改正に対応
+　[otf.sty, makeotf, mkjvf, hiragino.map(for udvips), hiraginox.map(for dvipdfmx), jis2004.texの追加]
 v1.5.6-->v1.5.6.1(2010/3/26)
-$B!&(Bmkutfvf.pl$B$K(Bspeed up patch$B$rE,MQ$,>e<j$/$$$C$F$$$J$+$C$?$N$r=$@5(B[mkutfvf.pl]
+・mkutfvf.plにspeed up patchを適用が上手くいっていなかったのを修正[mkutfvf.pl]
 v1.5.5-->v1.5.6(2010/3/22)
-$B!&%7%'%k%9%/%j%W%HFb$N(Bpltotf$B$r(Bppltotf$B$KJQ99(B[makeotf]
-$B!&(BWindows$BMQ$N%P%C%A%U%!%$%k(B(mkotf.bat)$B$r:o=|(B
-$B!&?7$7$$(Bovp2ovf, opl2ofm$B$G(Bovf, ofm$B$,:n@.$G$-$k$h$&$K(BOFMLEVEL$B%(%s%H%j$rDI2C(B
-$B!!(B[mkvpkana.pl, mkutfvf.pl, mkcidvf.pl, mkpkana.pl, mkcidofm.pl, mkaltutfvf.pl,
-$B!!(Bmkmlcidvf.pl, mkpropofm.pl, mkjvf]
-$B!&(Bmkutfvf.pl$B$KEZB<E8G7$5$s$N(Bspeed up patch$B$rE,MQ$5$;$FBW$/(B[mkutfvf.pl]
-$B!&(Buplatex$B$KBP1~$9$k$h$&%9%?%$%k%U%!%$%k$r=$@5(B[otf.sty, mlcid.sty, mlutf.sty]
-$B!&;3K\OB5A$5$s$N$4;XE&$K$h$j!$(Bdisablejfam$B$r;HMQ$7$J$$>l9g$NDj5A$r=$@5(B[otf.sty]
+・シェルスクリプト内のpltotfをppltotfに変更[makeotf]
+・Windows用のバッチファイル(mkotf.bat)を削除
+・新しいovp2ovf, opl2ofmでovf, ofmが作成できるようにOFMLEVELエントリを追加
+　[mkvpkana.pl, mkutfvf.pl, mkcidvf.pl, mkpkana.pl, mkcidofm.pl, mkaltutfvf.pl,
+　mkmlcidvf.pl, mkpropofm.pl, mkjvf]
+・mkutfvf.plに土村展之さんのspeed up patchを適用させて戴く[mkutfvf.pl]
+・uplatexに対応するようスタイルファイルを修正[otf.sty, mlcid.sty, mlutf.sty]
+・山本和義さんのご指摘により，disablejfamを使用しない場合の定義を修正[otf.sty]
 v1.5.4-->v1.5.5(2010/3/20)
-$B!&%/%i%9%U%!%$%k$N%*%W%7%g%s$K$F(Bdisablejfam$B;HMQ;~$NIT6q9g$r=$@5(B[otf.sty]
+・クラスファイルのオプションにてdisablejfam使用時の不具合を修正[otf.sty]
 v1.5.3-->v1.5.4(2007/3/19)
-$B!&=D=q$-MQ$N(BOFM$B$N%a%H%j%C%/$,4V0c$C$F$$$?$N$r=$@5(B[mkcidofm.pl]
+・縦書き用のOFMのメトリックが間違っていたのを修正[mkcidofm.pl]
 v1.5.2.1-->v1.5.3(2006/9/6)
-$B!&%W%m%]!<%7%g%J%k2>L>MQ(Btfm$B$N:n@.J}K!$,$*$+$7$+$C$?$N$r=$@5(B[mkotf, mkotf.bat]
+・プロポーショナル仮名用tfmの作成方法がおかしかったのを修正[mkotf, mkotf.bat]
 v1.5.1-->v1.5.2.1(2005/12/31)
-$B!&%^%/%m=8$N=$@5(B(\ajSlanted$B$H(B\ajSlanted*$B$NDj5A$NF~$l49$((B)[ajmacros.sty]
+・マクロ集の修正(\ajSlantedと\ajSlanted*の定義の入れ換え)[ajmacros.sty]
 v1.5.1-->v1.5.2(2005/5/11)
-$B!&=D=q$-(BCID$BMQ$N(BVF, OFM$B$N%a%H%j%C%/$,$*$+$7$+$C$?$N$r=$@5(B[mkcidvf.pl, mkofm.pl]
+・縦書きCID用のVF, OFMのメトリックがおかしかったのを修正[mkcidvf.pl, mkofm.pl]
 v1.5-->v1.5.1(2005/1/27)
-$B!&%^%/%m=8$N=$@5(B[ajmacros.sty]
+・マクロ集の修正[ajmacros.sty]
 v1.3.4-->v1.5(2005/1/16)
-$B!&(BAdobe-Japan1-6$B$KBP1~(B[otf.sty, ajmacros.sty, mktfm.pl, mkcidvf.pl, mkcidofm.pl, kozuka.map, kozukax.map]
+・Adobe-Japan1-6に対応[otf.sty, ajmacros.sty, mktfm.pl, mkcidvf.pl, mkcidofm.pl, kozuka.map, kozukax.map]
 v1.3.3-->v1.3.4(2004/8/17)
-$B!&(Bajmacros.sty$B$rFI$_9~$^$J$$%*%W%7%g%s$r(Bnomacros$B$K=$@5(B[otf.sty]
+・ajmacros.styを読み込まないオプションをnomacrosに修正[otf.sty]
 v1.3.2-->v1.3.3(2004/4/17)
-$B!&(B"$B$N(Bcatcode$B$r6/@)E*$K(B12$B$K$9$k$h$&$KJQ99(B[otf.sty, mlcid.sty, mlutf.sty]
+・"のcatcodeを強制的に12にするように変更[otf.sty, mlcid.sty, mlutf.sty]
 v1.3.1.1-->v1.3.2(2004/3/5)
-$B!&%^%/%m=8$K9g;z%^%/%m$NDI2C(B[ajmacros.sty]
+・マクロ集に合字マクロの追加[ajmacros.sty]
 v1.3.1-->v1.3.1.1(2004/2/25)
-$B!&(BVF$B@8@.%9%/%j%W%H$r=$@5(B[mkutfvf.pl, mkcidvf.pl, mkaltutfvf.pl, mkmlcidvf.pl, mkjvf, mkotf.bat]
+・VF生成スクリプトを修正[mkutfvf.pl, mkcidvf.pl, mkaltutfvf.pl, mkmlcidvf.pl, mkjvf, mkotf.bat]
 v1.3.0-->v1.3.1(2004/2/18)
-$B!&(BCVS$BHG$N(Bdvipdfmx$B$KBP1~$9$k$?$a(BOFM$B%U%!%$%k$r:n@.$9$k$h$&$K$7$?(B[makeotf, mkotf.bat, mkofm.pl, mkofm2.pl]
-$B!&%W%m%]!<%7%g%J%k2>L>$N(BVF$B$rJQ99(B[mkpkana.pl, mkvpkana.pl]
-$B!&>e5-$NJQ99$K$h$j!$%^%C%W%U%!%$%k$r%(%s%H%j$rDI2C(B[hiraginox.map(for dvipdfmx), hiragino.map(for udvips)]
+・CVS版のdvipdfmxに対応するためOFMファイルを作成するようにした[makeotf, mkotf.bat, mkofm.pl, mkofm2.pl]
+・プロポーショナル仮名のVFを変更[mkpkana.pl, mkvpkana.pl]
+・上記の変更により，マップファイルをエントリを追加[hiraginox.map(for dvipdfmx), hiragino.map(for udvips)]
 v1.1.6-->v1.3.0(2004/2/7)
-$B!&L@D+BN!$%4%7%C%/BN$NCV$-49$(MQ$N%U%)%s%H$N%U%!%_%j$r(Bmc, gt$B$+$i(Bhmc, hgt$B$KJQ99(B[otf.sty]
+・明朝体，ゴシック体の置き換え用のフォントのファミリをmc, gtからhmc, hgtに変更[otf.sty]
 v1.1.5-->v1.1.6(2004/2/2)
-$B!&=D=q$-MQ%W%m%]!<%7%g%J%k2>L>$NDI2C(B[mkotf, mkotf.bat, mkvpkana.pl, tfm, vf, otf.sty]
+・縦書き用プロポーショナル仮名の追加[mkotf, mkotf.bat, mkvpkana.pl, tfm, vf, otf.sty]
 v1.1.4-->v1.1.5(2004/1/19)
-$B!&(Bredeffont.sty$B$N(BJIS X 0213$B%Q%C%1!<%8$KBP$9$kBP1~(B[redeffont.sty]
-$B!&%U%)%s%HDj5AMQ$NFbIt%^%/%m$N!J0f>e9@0l;a$K$h$k!K2~NI(B[otf.sty]
+・redeffont.styのJIS X 0213パッケージに対する対応[redeffont.sty]
+・フォント定義用の内部マクロの（井上浩一氏による）改良[otf.sty]
 v1.1.3-->v1.1.4(2003/12/19)
-$B!&%U%)%s%HDj5AMQ$NFbIt%^%/%m$N!J0f>e9@0l;a$K$h$k!K2~NI(B[otf.sty, mlotf.sty, mlcid.sty]
-$B!&(Bdvipdfmx$BMQ$N%U%)%s%H%^%C%W%U%!%$%k$r(B20031207$BHG$N$b$N$KJQ99(B[$B3F<o%^%C%W%U%!%$%k(B]
+・フォント定義用の内部マクロの（井上浩一氏による）改良[otf.sty, mlotf.sty, mlcid.sty]
+・dvipdfmx用のフォントマップファイルを20031207版のものに変更[各種マップファイル]
 v1.1.2-->v1.1.3(2003/12/17)
-$B!&(BCID$B$K$h$k;XDj$rB?8@8l$KBP1~$5$;$^$7$?!J$H$j$"$($:!$A4$FA43QI}$K$7$F$$$^$9!K(B
-$B!!(B[makeotf, mkotf.bat, mktfm.pl, mkmlcidvf.pl, tfm, vf, mlcid.sty, fontmap]
+・CIDによる指定を多言語に対応させました（とりあえず，全て全角幅にしています）
+　[makeotf, mkotf.bat, mktfm.pl, mkmlcidvf.pl, tfm, vf, mlcid.sty, fontmap]
 v1.1.1-->v1.1.2(2003/11/27)
-$B!&%W%m%]!<%7%g%J%k2>L>MQ$N(BJFM, VF$B$r(BOTF$B%Q%C%1!<%8I8=`$N%a%H%j%C%/$K=`5r$9$k$h$&$K$7$?(B[mkpkana.pl, tfm, vf]
+・プロポーショナル仮名用のJFM, VFをOTFパッケージ標準のメトリックに準拠するようにした[mkpkana.pl, tfm, vf]
 v1.1-->v1.1.1(2003/11/25)
-$B!&(Bredeffont.sty$B$K$*$$$F(B{j, t}book.cls$B$r;H$C$?>l9g$K%3%s%Q%$%k$G$-$J$+$C$?IT6q9g$r=$@5(B[redeffont.sty]
+・redeffont.styにおいて{j, t}book.clsを使った場合にコンパイルできなかった不具合を修正[redeffont.sty]
 v1.1b8-->v1.1(2003/11/17)
-$B!&4]%4%7%C%/$N%U%!%_%j!<$K@Z$jBX$($k(B\textmg$B%3%^%s%I$rDI2C(B[otf.sty]
+・丸ゴシックのファミリーに切り替える\textmgコマンドを追加[otf.sty]
 v1.1b8-->v1.1b9, v1.0.4-->v1.0.5(2003/11/3)
-$B!&%U%)%s%HL>$r<B:]$NJ*$K9g$o$;$?(B[morisawax.map(for dvipdfmx)]
-$B!&%R%i%.%NL@D+BN(BW2$B$N%(%s%H%j$rDI2C(B[hiraginox.map(for dvipdfmx), hiragino.map(for udvips)]
+・フォント名を実際の物に合わせた[morisawax.map(for dvipdfmx)]
+・ヒラギノ明朝体W2のエントリを追加[hiraginox.map(for dvipdfmx), hiragino.map(for udvips)]
 v1.1b7-->v1.1b8, v1.0.3-->v1.0.4(2003/11/2)
-$B!&(Bredeffont.sty$B$G(B\headfont$B$r:FDj5A$7$F$b!$@5$7$/CV$-JQ$o$i$J$+$C$?IT6q9g$r=$@5(B[redeffont.sty]
+・redeffont.styで\headfontを再定義しても，正しく置き変わらなかった不具合を修正[redeffont.sty]
 v1.1b6-->v1.1b7(2003/10/31)
-$B!&=DAH$_MQ$N(BVF$B$G%3%s%^!$%T%j%*%I$r6gFIE@$KJQ99$9$k5!G=$N=$@5(B[mkjvf, vf]
+・縦組み用のVFでコンマ，ピリオドを句読点に変更する機能の修正[mkjvf, vf]
 v1.1b5-->v1.1b6(2003/10/27)
-$B!&(Bnmlminr-v$B$J$I$G%_%K%e!<%H$X$NJQ49$N:]$N%U%)%s%HL>$r<hF@$G$-$F$$$J$+$C$?$N$r=$@5(B[mkjvf, vf]
+・nmlminr-vなどでミニュートへの変換の際のフォント名を取得できていなかったのを修正[mkjvf, vf]
 v1.1b4-->v1.1b5(2003/10/27)
-$B!&(Bproperty list files$B$NJ8;z%3!<%I$r(BJIS$B$KJQ99(B[basepl]
-$B=DAH$_MQ$N(BVF$B$G%/%)!<%F!<%7%g%s%^!<%/$r%_%K%e!<%H$KJQ99$9$k5!G=$N=$@5(B[mkjvf, vf]
+・property list filesの文字コードをJISに変更[basepl]
+縦組み用のVFでクォーテーションマークをミニュートに変更する機能の修正[mkjvf, vf]
 v1.1b3-->v1.1b4(2003/10/25)
-$B!&=DAH$_MQ$N(BVF$B$G%/%)!<%F!<%7%g%s%^!<%/$r%_%K%e!<%H$KJQ99$9$k5!G=$N=$@5(B[mkjvf, vf]
-$B!&=DAH$_MQ$N(BVF$B$G%3%s%^!$%T%j%*%I$r6gFIE@$KJQ99(B[mkjvf, vf]
+・縦組み用のVFでクォーテーションマークをミニュートに変更する機能の修正[mkjvf, vf]
+・縦組み用のVFでコンマ，ピリオドを句読点に変更[mkjvf, vf]
 v1.1b2-->v1.1b3(2003/10/25)
-$B!&(Bmkjvf$B$r>.2>L>$,:n@.$G$-$k$h$&$KJQ99(B[mkjvf]
+・mkjvfを小仮名が作成できるように変更[mkjvf]
 v1.1b-->v1.1b2(2003/10/24)
-$B!&=DAH$_MQ$N(BVF$B$G%/%)!<%F!<%7%g%s%^!<%/$r%_%K%e!<%H$KJQ99(B[mkjvf, vf]
+・縦組み用のVFでクォーテーションマークをミニュートに変更[mkjvf, vf]
 v1.0.2-->v1.1b(2003/10/22)
-$B!&(BJFM$B$K$*$$$F(B0.962216$BG\$7$F$$$?$N$r%9%?%$%k%U%!%$%kB&$G%9%1!<%k$9$k$h$&$K=$@5(B[mkjvf, vf, tfm]
-$B!&B?8@8lMQ$N%U%)%s%H$,(Bjsclasses$B$KBP1~$7$o$9$l$F$$$?$N$r=$@5(B[mlutf.sty]
-$B!&(Bextrafonts$B$r<h$j9~$s$@!$%R%i%.%NL@D+(BW2$BMQ$N(Bvf, tfm$B$rDI2C(B[otf.sty, vf, tfm]
+・JFMにおいて0.962216倍していたのをスタイルファイル側でスケールするように修正[mkjvf, vf, tfm]
+・多言語用のフォントがjsclassesに対応しわすれていたのを修正[mlutf.sty]
+・extrafontsを取り込んだ，ヒラギノ明朝W2用のvf, tfmを追加[otf.sty, vf, tfm]
 v1.0-->v1.0.2(2003/9/03)
-$B!&2#!?eTAH@lMQ2>L>!$$*$h$S%k%S@lMQ2>L>$,=L>.$5$l$F$7$^$C$F$$$?%P%0$r=$@5!%(B[mkjvf, vf]
+・横／縱組専用仮名，およびルビ専用仮名が縮小されてしまっていたバグを修正．[mkjvf, vf]
 v1.0-->v1.0.1(2003/8/18)
-$B!&%/%)!<%F!<%7%g%s%^!<%/$,$:$l$k%P%0$r=$@5!%(B[mkjvf, vf]
+・クォーテーションマークがずれるバグを修正．[mkjvf, vf]
 v1.0b5-->v1.0(2003/5/1)
-$B!&(Bwindows$BMQ$N%P%C%A%U%!%$%k$NL>>N$rJQ99(B
-$B!&(Bmkjvf$B$r:G?7$NJ*$K%"%C%W%G!<%H(B
+・windows用のバッチファイルの名称を変更
+・mkjvfを最新の物にアップデート
 v1.0b4-->v1.0b5(2003/3/25)
-$B!&(Bhyperref.sty$B$,FI$_9~$^$l$F$$$k>l9g!$(B\UTF$B%3%^%s%I$J$I$G;XDj$5$l$?J8;z$KBP$7$F(Boutline$B%U%!%$%k$X$N(B
-$B!!=q$-=P$7$,(B\0xXXXX$B$H$$$&7A$G=q$-=P$5$l$k$h$&$K$J$j$^$7$?!%(B[ajmacros.sty, otf.sty, mlutf.sty]
+・hyperref.styが読み込まれている場合，\UTFコマンドなどで指定された文字に対してoutlineファイルへの
+　書き出しが\0xXXXXという形で書き出されるようになりました．[ajmacros.sty, otf.sty, mlutf.sty]
 v1.0b3-->v1.0b4(2003/3/25)
-$B!&(Bhyperref.sty$B$,FI$_9~$^$l$F$$$k>l9g$NJQ99$r<h$j$d$a$^$7$?!%(B[ajmacros.sty, otf.sty]
+・hyperref.styが読み込まれている場合の変更を取りやめました．[ajmacros.sty, otf.sty]
 v1.0b2-->v1.0b3(2003/3/24)
-$B!&(Bhyperref.sty$B$,FI$_9~$^$l$F$$$k>l9g!$(B\UTF{XXXX}$B$G;XDj$5$l$?ItJ,$r(B
-$B!!(B$XXXX$B$H$$$&7A<0$G(Boutline$B%U%!%$%k$K=q$-=P$9$h$&$KJQ99(B[otf.sty]
-$B!&(B\UTFM$B%3%^%s%I$r?7@_!$(B\UTFM$BMQ$N(BVF, TFM$B$r@8@.$9$k$h$&$K$7$^$7$?!%(B
-$B!!$=$l$KH<$$!$%U%)%s%H%^%C%W$NNc$rJQ99$7$^$7$?!%(B[mlutf.sty, vf, tfm, fontmap]
-$B!&(Bhyperref.sty$B$,FI$_9~$^$l$F$$$k>l9g!$(B\ajVar$B$,(Bout$B%U%!%$%k$K=q$-=P$5$l$k$H$-(B
-$B!!0z?t$,=q$-=P$5$l$k$h$&$K$J$j$^$7$?!%(B[ajmacro.sty]
+・hyperref.styが読み込まれている場合，\UTF{XXXX}で指定された部分を
+　$XXXXという形式でoutlineファイルに書き出すように変更[otf.sty]
+・\UTFMコマンドを新設，\UTFM用のVF, TFMを生成するようにしました．
+　それに伴い，フォントマップの例を変更しました．[mlutf.sty, vf, tfm, fontmap]
+・hyperref.styが読み込まれている場合，\ajVarがoutファイルに書き出されるとき
+　引数が書き出されるようになりました．[ajmacro.sty]
 v1.0b1-->v1.0b2(2003/3/17)
-$B!&(Bmkutfvf.pl$B$N%P%0$r=$@5!%F|K\8l0J30$K$OI,MW$J$$(BVF$B$^$G:n@.$7$F$$$^$7$?!%(B[mkutfvf.pl]
+・mkutfvf.plのバグを修正．日本語以外には必要ないVFまで作成していました．[mkutfvf.pl]
 v1.0b0-->v1.0b1(2003/3/17)
-$B!&(Bmkjvf$B$NM>J,$J%3!<%I$r>C5n(B[mkjvf]
+・mkjvfの余分なコードを消去[mkjvf]

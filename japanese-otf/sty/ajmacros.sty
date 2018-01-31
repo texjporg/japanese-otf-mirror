@@ -1,3 +1,4 @@
+\NeedsTeXFormat{pLaTeX2e}
 \@ifpackageloaded{otf}{}{\@ifpackageloaded{utf}{}{\RequirePackage{otf}}}
 \ProvidesPackage{ajmacros}[2005/12/25 13:52 iNOUE Koich! <inoue@ma.ns.musashi-tech.ac.jp>]
 {%
@@ -249,7 +250,7 @@
 	\expandafter\@aj半角def\fi}
 \@tempcnta326
 \@tempcntb9084
-\@aj半角def 　。「」、・ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン゛゜｀ヰヱヮヵヶヴガギグゲゴザジズゼゾダヂヅデドバパビピブプベペボポ\@nil
+\@aj半角def 　。「」、・ヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン゛゜｀ヰヱヮヵヶヴガギグゲゴザジズゼゾダヂヅデドバパビピブプベペボポ\@nil
 \@tempcnta516
 \@aj半角def をぁぃぅぇぉゃゅょっあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわんゐゑゎがぎぐげござじずぜぞだぢづでどばぱびぴぶぷべぺぼぽ\@nil
 \gdef\aj半角#1{\aj@半角#1\@nil}
@@ -596,7 +597,7 @@
 	\def\aj@kokana##1##2{\orig@kokana{\aj@kundokusize\if@kana\rubyfamily\fi##1}%
 		{\aj@kundokusize\ajKunten{##2}}}%
 	\def\aj@retenform{\aj@kundokusize\aj訓点レ}%
-	\def\aj@reten{\orig@kaeriten{\aj@kundokusize\aj訓点レ}}%
+	\def\aj@reten{\orig@kaeriten{\aj@kundokusize\aj訓点レ}}%
 	\def\aj@retenkana##1{\orig@retenkana{\aj@kundokusize\if@kana\rubyfamily\fi##1}}%
 	\def\aj@kaeriten##1{\orig@kaeriten{\aj@kundokusize\ajKunten{##1}}}%
 	\let\aj@kundokusize\tiny

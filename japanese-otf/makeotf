@@ -130,22 +130,22 @@ ppltotf -kanji=euc pl/phirakakuw3-h.pl tfm/phirakakuw3-h.tfm
 ppltotf -kanji=euc pl/phiraminw3-h.pl tfm/phiraminw3-h.tfm
 ppltotf -kanji=euc pl/phiramaruw4-h.pl tfm/phiramaruw4-h.tfm
 ppltotf -kanji=euc pl/phirakakuw6-h.pl tfm/phirakakuw6-h.tfm
-wovp2ovf ovp/phirakakuw3-h.ovp vf/phirakakuw3-h.vf vf/phirakakuw3-h.ofm
-wovp2ovf ovp/phiraminw6-h.ovp vf/phiraminw6-h.vf vf/phiraminw6-h.ofm
-wovp2ovf ovp/phiraminw3-h.ovp vf/phiraminw3-h.vf vf/phiraminw3-h.ofm
-wovp2ovf ovp/phirakakuw6-h.ovp vf/phirakakuw6-h.vf vf/phirakakuw6-h.ofm
-wovp2ovf ovp/phiramaruw4-h.ovp vf/phiramaruw4-h.vf vf/phiramaruw4-h.ofm
+ovp2ovf ovp/phirakakuw3-h.ovp vf/phirakakuw3-h.vf vf/phirakakuw3-h.ofm
+ovp2ovf ovp/phiraminw6-h.ovp vf/phiraminw6-h.vf vf/phiraminw6-h.ofm
+ovp2ovf ovp/phiraminw3-h.ovp vf/phiraminw3-h.vf vf/phiraminw3-h.ofm
+ovp2ovf ovp/phirakakuw6-h.ovp vf/phirakakuw6-h.vf vf/phirakakuw6-h.ofm
+ovp2ovf ovp/phiramaruw4-h.ovp vf/phiramaruw4-h.vf vf/phiramaruw4-h.ofm
 perl script/mkvpkana.pl
 ppltotf -kanji=euc pl/phiraminw6-v.pl tfm/phiraminw6-v.tfm
 ppltotf -kanji=euc pl/phirakakuw3-v.pl tfm/phirakakuw3-v.tfm
 ppltotf -kanji=euc pl/phiraminw3-v.pl tfm/phiraminw3-v.tfm
 ppltotf -kanji=euc pl/phiramaruw4-v.pl tfm/phiramaruw4-v.tfm
 ppltotf -kanji=euc pl/phirakakuw6-v.pl tfm/phirakakuw6-v.tfm
-wovp2ovf ovp/phirakakuw3-v.ovp vf/phirakakuw3-v.vf vf/phirakakuw3-v.ofm
-wovp2ovf ovp/phiraminw6-v.ovp vf/phiraminw6-v.vf vf/phiraminw6-v.ofm
-wovp2ovf ovp/phiraminw3-v.ovp vf/phiraminw3-v.vf vf/phiraminw3-v.ofm
-wovp2ovf ovp/phirakakuw6-v.ovp vf/phirakakuw6-v.vf vf/phirakakuw6-v.ofm
-wovp2ovf ovp/phiramaruw4-v.ovp vf/phiramaruw4-v.vf vf/phiramaruw4-v.ofm
+ovp2ovf ovp/phirakakuw3-v.ovp vf/phirakakuw3-v.vf vf/phirakakuw3-v.ofm
+ovp2ovf ovp/phiraminw6-v.ovp vf/phiraminw6-v.vf vf/phiraminw6-v.ofm
+ovp2ovf ovp/phiraminw3-v.ovp vf/phiraminw3-v.vf vf/phiraminw3-v.ofm
+ovp2ovf ovp/phirakakuw6-v.ovp vf/phirakakuw6-v.vf vf/phirakakuw6-v.ofm
+ovp2ovf ovp/phiramaruw4-v.ovp vf/phiramaruw4-v.vf vf/phiramaruw4-v.ofm
 cp hminr-h.tfm tfm/hiramin-w3-h.tfm
 cp hminr-h.tfm tfm/hiramin-w6-h.tfm
 cp hminr-h.tfm tfm/hirakaku-w3-h.tfm
