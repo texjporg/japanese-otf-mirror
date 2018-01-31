@@ -13,7 +13,7 @@ default:
 	sh ./umakeotf_brsg ; \
 	sh ./umakeotf_jis04
 
-.PHONY: install
+.PHONY: install clean
 install:
 	## install TEXMF/fonts/* and TEXMF/source/fonts/*
 	# fontmap.zip is not installed, nor extracted
@@ -57,3 +57,6 @@ install:
 		cp $$PKGNAME/README ${TEXMF}/doc/fonts/$$PKGNAME/ ; \
 		cp $$PKGNAME/*.txt ${TEXMF}/doc/fonts/$$PKGNAME/ ; \
 	done
+clean:
+	rm -rf japanese-otf/{tfm,vf,ofm}
+	rm -rf japanese-otf-uptex/{tfm,vf,ofm}
