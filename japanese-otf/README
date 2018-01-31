@@ -8,7 +8,7 @@ choosing to general names on CTAN (and in TeX Live) it will be
 called "japanese-otf". This change has been discussed with
 the author of the package, Saito Shuzaburo. The version of
 the package used is 
-	otfbeta.zip v1.7b6 2013/11/17
+	otfbeta.zip v1.7b7 2018/02/01
 
 In addition a patch by Hironori Kitagawa was applied
 	otf-script-gteb.diff
@@ -20,7 +20,7 @@ provided font maps.
 The original source has been downloaded from
 	http://psitau.kitunebi.com/otf.html
 as
-	http://psitau.kitunebi.com/otf1.7b6.zip
+	http://psitau.kitunebi.com/otf1.7b7.zip
 
 This package provides advanced typesetting options for platex and 
 friends.
@@ -32,4 +32,4 @@ The contents of this package is under the license given in the
 COPYRIGHT file, which is more or less BSD license.
 
 Norbert Preining
-2013-11-23
+$RELEASEDATE
