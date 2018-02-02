@@ -1,5 +1,5 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{otf}[2013/11/17 v1.7b6 psitau, u0.18 ttk]
+\ProvidesPackage{otf}[2018/02/01 v1.7b7 psitau, u0.18 ttk]
 \RequirePackage{keyval}
 %for processing options 
 \newif\if@kana \@kanafalse
@@ -239,10 +239,13 @@
 \if@otf@scale
 	\relax
 \else
-	%for jsclasses
-	\@ifclassloaded{jsarticle}{\@jsclassestrue}{}
-	\@ifclassloaded{jsbook}{\@jsclassestrue}{}
-	\if@jsclasses\def\utf@sc@le{0.92469}\else\def\utf@sc@le{0.962216}\fi
+	\@ifundefined{Cjascale}{%
+		%for jsclasses
+		\@ifclassloaded{jsreport}{\@jsclassestrue}{}
+		\@ifclassloaded{jsarticle}{\@jsclassestrue}{}
+		\@ifclassloaded{jsbook}{\@jsclassestrue}{}
+		\if@jsclasses\def\utf@sc@le{0.92469}\else\def\utf@sc@le{0.962216}\fi
+	}{\edef\utf@sc@le{\Cjascale}}
 \fi
 %definitions of alt-normal font family
 \@ifundefined{if@enablejfam}{%
