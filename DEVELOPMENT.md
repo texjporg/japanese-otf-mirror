@@ -16,6 +16,11 @@ japanese-otf-mirror リポジトリは，以下の目的で用意しています
 このリポジトリにあるものが公式の upstream ではないことに注意してください。
 それぞれの公式は [README.md](./README.md) に記載のあるとおりです。
 
+## インストール手順
+
+`make install` でインストールします。現時点では
+hiraprop は Makefile のインストール対象に含めていません（準備中）。
+
 ## 公式ソースからの違い
 
 公式の upstream から取得したアーカイブに，いくつかの変更が加えてあります。
@@ -25,7 +30,7 @@ japanese-otf-mirror リポジトリは，以下の目的で用意しています
 - Obtain and extract `http://psitau.kitunebi.com/otf1.7b7.zip`
 - Rename `readme.txt` -> `readme-ja.txt`
 - `chmod +x makeotf mkjvf`
-- Convert all files in `scripts/` and `test/` from CRLF -> LF
+- Convert all files in `script/` and `test/` from CRLF -> LF
 - `patch -p1 <otf-script-gteb.diff`
     - avoid a warning for opening dirhandle
     - build tfm/vf/ofm for gteb font series
@@ -40,8 +45,22 @@ japanese-otf-mirror リポジトリは，以下の目的で用意しています
 ### hiraprop
 
 - Obtain and extract `http://psitau.kitunebi.com/hiraprop.zip`
-- Import map/hiraprop.map from `https://texlive.texjp.org/current/tltexjp/`
-  (though already supported by kanji-config-updmap.pl in ptex-fontmaps)
+- Import `map/hiraprop.map` from `https://texlive.texjp.org/current/tltexjp/`
+  (though already supported by `kanji-config-updmap.pl` in ptex-fontmaps)
+
+## リリース手順
+
+CTAN へアップロードするためのアーカイブ (.tar.gz) は
+`release.sh` を実行すれば作成することができます。
+
+````
+    $ ./release.sh [パッケージ名]
+````
+
+を実行します（`[パッケージ名]` は japanese-otf，japanese-otf-uptex 又は
+hiraprop のいずれか）。CTAN へのアップロードでは，TeX Live に敢えて収録しない
+nonfree サポートファイル（具体的には，ヒラギノフォントを使用するための
+TFM/VF/OFM のセット）を分割し，別のアーカイブとします。
 
 ----
 Japanese TeX Development Community
