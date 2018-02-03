@@ -1,0 +1,112 @@
+otf-ujmr-h	HiraMinPro-W3-UniJIS-UTF16-H
+otf-ujmr-v	HiraMinPro-W3-UniJIS-UTF16-V
+otf-cjmr-h	 HiraMinPro-W3-Identity-H
+otf-cjmr-v 	HiraMinPro-W3-Identity-V
+hminr-h HiraMinPro-W3-H
+hminr-v HiraMinPro-W3-V
+uphminr-h	HiraMinPro-W3-UniJIS-UTF16-H
+uphminr-v	HiraMinPro-W3-UniJIS-UTF16-V
+
+otf-ujgr-h	HiraKakuPro-W3-UniJIS-UTF16-H
+otf-ujgr-v	HiraKakuPro-W3-UniJIS-UTF16-V
+otf-cjgr-h 	HiraKakuPro-W3-Identity-H
+otf-cjgr-v 	HiraKakuPro-W3-Identity-V
+hgothr-h HiraKakuPro-W3-H
+hgothr-v HiraKakuPro-W3-V
+uphgothr-h	HiraKakuPro-W3-UniJIS-UTF16-H
+uphgothr-v	HiraKakuPro-W3-UniJIS-UTF16-V
+
+otf-ujmb-h	HiraMinPro-W6-UniJIS-UTF16-H
+otf-ujmb-v	HiraMinPro-W6-UniJIS-UTF16-V
+otf-cjmb-h	 HiraMinPro-W6-Identity-H
+otf-cjmb-v 	HiraMinPro-W6-Identity-V
+hminb-h HiraMinPro-W6-H
+hminb-v HiraMinPro-W6-V
+uphminb-h	HiraMinPro-W6-UniJIS-UTF16-H
+uphminb-v	HiraMinPro-W6-UniJIS-UTF16-V
+
+otf-cjgb-h 	HiraKakuPro-W6-Identity-H
+otf-cjgb-v 	HiraKakuPro-W6-Identity-V
+otf-ujgb-h	HiraKakuPro-W6-UniJIS-UTF16-H
+otf-ujgb-v	HiraKakuPro-W6-UniJIS-UTF16-V
+hgothb-h HiraKakuPro-W6-H
+hgothb-v HiraKakuPro-W6-V
+uphgothb-h	HiraKakuPro-W6-UniJIS-UTF16-H
+uphgothb-v	HiraKakuPro-W6-UniJIS-UTF16-V
+
+hgotheb-h HiraKakuStd-W8-H
+hgotheb-v HiraKakuStd-W8-V
+uphgotheb-h HiraKakuStd-W8-UniJIS-UTF16-H
+uphgotheb-v HiraKakuStd-W8-UniJIS-UTF16-V
+
+otf-ujmgr-h	HiraMaruPro-W4-UniJIS-UTF16-H
+otf-ujmgr-v	HiraMaruPro-W4-UniJIS-UTF16-V
+otf-cjmgr-h 	HiraMaruPro-W4-Identity-H
+otf-cjmgr-v 	HiraMaruPro-W4-Identity-V
+hmgothr-h HiraMaruPro-W4-H
+hmgothr-v HiraMaruPro-W4-V
+uphmgothr-h	HiraMaruPro-W4-UniJIS-UTF16-H
+uphmgothr-v	HiraMaruPro-W4-UniJIS-UTF16-V
+
+otf-ujml-h	HiraMinPro-W2-UniJIS-UTF16-H
+otf-ujml-v	HiraMinPro-W2-UniJIS-UTF16-V
+otf-cjml-h	 HiraMinPro-W2-Identity-H
+otf-cjml-v 	HiraMinPro-W2-Identity-V
+hminl-h HiraMinPro-W2-H
+hminl-v HiraMinPro-W2-V
+uphminl-h	HiraMinPro-W2-UniJIS-UTF16-H
+uphminl-v	HiraMinPro-W2-UniJIS-UTF16-V
+
+hiramin-w3-h HiraMinPro-W3-Identity-H
+hiramin-w6-h HiraMinPro-W6-Identity-H
+hirakaku-w3-h HiraKakuPro-W3-Identity-H
+hirakaku-w6-h HiraKakuPro-W6-Identity-H
+hiramaru-w4-h HiraMaruPro-W4-Identity-H
+hiramin-w3-v HiraMinPro-W3-Identity-V
+hiramin-w6-v HiraMinPro-W6-Identity-V
+hirakaku-w3-v HiraKakuPro-W3-Identity-V
+hirakaku-w6-v HiraKakuPro-W6-Identity-V
+hiramaru-w4-v HiraMaruPro-W4-Identity-V
+
+%for JIS X 0213:2004
+otf-ujmrn-h    HiraMinProN-W3-UniJIS2004-UTF16-H
+otf-ujmrn-v    HiraMinProN-W3-UniJIS2004-UTF16-V
+hminrn-h    HiraMinProN-W3-H
+hminrn-v    HiraMinProN-W3-V
+uphminrn-h     HiraMinPro-W3-UniJIS2004-UTF16-H
+uphminrn-v     HiraMinPro-W3-UniJIS2004-UTF16-V
+
+otf-ujgrn-h    HiraKakuProN-W3-UniJIS2004-UTF16-H
+otf-ujgrn-v    HiraKakuProN-W3-UniJIS2004-UTF16-V
+hgothrn-h    HiraKakuProN-W3-H
+hgothrn-v    HiraKakuProN-W3-V
+uphgothrn-h    HiraKakuProN-W3-UniJIS2004-UTF16-H
+uphgothrn-v    HiraKakuProN-W3-UniJIS2004-UTF16-V
+
+otf-ujmbn-h    HiraMinProN-W6-UniJIS2004-UTF16-H
+otf-ujmbn-v    HiraMinProN-W6-UniJIS2004-UTF16-V
+hminbn-h    HiraMinProN-W6-H
+hminbn-v    HiraMinProN-W6-V
+uphminbn-h     HiraMinProN-W6-UniJIS2004-UTF16-H
+uphminbn-v     HiraMinProN-W6-UniJIS2004-UTF16-V
+
+otf-ujgbn-h    HiraKakuProN-W6-UniJIS2004-UTF16-H
+otf-ujgbn-v    HiraKakuProN-W6-UniJIS2004-UTF16-V
+hgothbn-h    HiraKakuProN-W6-H
+hgothbn-v    HiraKakuProN-W6-V
+uphgothbn-h    HiraKakuProN-W6-UniJIS2004-UTF16-H
+uphgothbn-v    HiraKakuProN-W6-UniJIS2004-UTF16-V
+
+otf-ujmgrn-h    HiraMaruProN-W4-UniJIS2004-UTF16-H
+otf-ujmgrn-v    HiraMaruProN-W4-UniJIS2004-UTF16-V
+hmgothrn-h    HiraMaruProN-W4-H
+hmgothrn-v    HiraMaruProN-W4-V
+uphmgothrn-h    HiraMaruProN-W4-UniJIS2004-UTF16-H
+uphmgothrn-v    HiraMaruProN-W4-UniJIS2004-UTF16-V
+
+otf-ujmln-h    HiraMinProN-W2-UniJIS2004-UTF16-H
+otf-ujmln-v    HiraMinProN-W2-UniJIS2004-UTF16-V
+hminln-h    HiraMinProN-W2-H
+hminln-v    HiraMinProN-W2-V
+uphminln-h     HiraMinProN-W2-UniJIS2004-UTF16-H
+uphminln-v     HiraMinProN-W2-UniJIS2004-UTF16-V

@@ -1,0 +1,67 @@
+#  Ž€UTF font (needed --with-vflib=vf2ft)
+unijmin-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf unicode
+unijmin-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf unicode
+unijgoth-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf unicode
+unijgoth-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf unicode
+hmr /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf
+hmrv /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf
+hkb /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf
+hkbv /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf
+
+#  Ž€CID font (needed --with-vflib=vf2ft)
+cidmin-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf adobejapan
+cidmin-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf adobejapan
+cidgoth-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf adobejapan
+cidgoth-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf adobejapan
+
+otf-ujmr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf unicode
+otf-ujmr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf unicode
+otf-cjmr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf adobejapan
+otf-cjmr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf adobejapan
+hminr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf
+hminr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf
+uphminr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf unicode
+uphminr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W3.otf unicode
+
+otf-ujgr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W3.otf unicode
+otf-ujgr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W3.otf unicode
+otf-cjgr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W3.otf adobejapan
+otf-cjgr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W3.otf adobejapan
+hgothr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W3.otf
+hgothr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W3.otf
+uphgothr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W3.otf unicode
+uphgothr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W3.otf unicode
+
+otf-ujmb-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W6.otf unicode
+otf-ujmb-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W6.otf unicode
+otf-cjmb-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W6.otf adobejapan
+otf-cjmb-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W6.otf adobejapan
+hminb-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W6.otf
+hminb-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W6.otf
+uphminb-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W6.otf unicode
+uphminb-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMinPro-W6.otf unicode
+
+otf-ujgb-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf unicode
+otf-ujgb-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf unicode
+otf-cjgb-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf adobejapan
+otf-cjgb-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf adobejapan
+hgothb-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf
+hgothb-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf
+uphgothb-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf unicode
+uphgothb-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraKakuPro-W6.otf unicode
+
+otf-ujmgr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMaruPro-W4.otf unicode
+otf-ujmgr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMaruPro-W4.otf unicode
+otf-cjmgr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMaruPro-W4.otf adobejapan
+otf-cjmgr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMaruPro-W4.otf adobejapan
+hmgothr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMaruPro-W4.otf
+hmgothr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMaruPro-W4.otf
+uphmgothr-h /usr/local/share/texmf/dvipdfm/CIDFont/HiraMaruPro-W4.otf unicode
+uphmgothr-v /usr/local/share/texmf/dvipdfm/CIDFont/HiraMaruPro-W4.otf unicode
+
+otf-ukmr-h /usr/local/share/texmf/dvipdfm/CIDFont/HYSMyeongJoStd-Medium-Acro.otf unicode
+otf-ukmr-v /usr/local/share/texmf/dvipdfm/CIDFont/HYSMyeongJoStd-Medium-Acro.otf unicode
+otf-ucmr-h /usr/local/share/texmf/dvipdfm/CIDFont/STSongStd-Light-Acro.otf unicode
+otf-ucmr-v /usr/local/share/texmf/dvipdfm/CIDFont/STSongStd-Light-Acro.otf unicode
+otf-utmr-h /usr/local/share/texmf/dvipdfm/CIDFont/MSungStd-Light-Acro.otf unicode
+otf-utmr-v /usr/local/share/texmf/dvipdfm/CIDFont/MSungStd-Light-Acro.otf unicode

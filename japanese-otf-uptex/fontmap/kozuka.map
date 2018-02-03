@@ -1,0 +1,61 @@
+otf-ujmr-h      KozMinPro-Regular-Acro-UniJIS-UTF16-H
+otf-ujmr-v      KozMinPro-Regular-Acro-UniJIS-UTF16-V
+otf-cjmr-h      KozMinPro-Regular-Acro-Identity-H
+otf-cjmr-v      KozMinPro-Regular-Acro-Identity-V
+hminr-h         KozMinPro-Regular-Acro-H
+hminr-v         KozMinPro-Regular-Acro-V
+uphminr-h       KozMinPro-Regular-Acro-UniJIS-UTF16-H
+uphminr-v       KozMinPro-Regular-Acro-UniJIS-UTF16-V
+
+otf-ujgr-h      KozGoStd-Regular-UniJIS-UTF16-H
+otf-ujgr-v      KozGoStd-Regular-UniJIS-UTF16-V
+otf-cjgr-h      KozGoStd-Regular-Identity-H
+otf-cjgr-v      KozGoStd-Regular-Identity-V
+hgothr-h        KozGoStd-Regular-H
+hgothr-v        KozGoStd-Regular-V
+uphgothr-h      KozGoStd-Regular-UniJIS-UTF16-H
+uphgothr-v      KozGoStd-Regular-UniJIS-UTF16-V
+
+otf-ujmb-h      KozMinStd-Bold-UniJIS-UTF16-H
+otf-ujmb-v      KozMinStd-Bold-UniJIS-UTF16-V
+otf-cjmb-h      KozMinStd-Bold-Identity-H
+otf-cjmb-v      KozMinStd-Bold-Identity-V
+hminb-h         KozMinStd-Bold-H
+hminb-v         KozMinStd-Bold-V
+uphminb-h       KozMinStd-Bold-UniJIS-UTF16-H
+uphminb-v       KozMinStd-Bold-UniJIS-UTF16-V
+
+otf-cjgb-h      KozGoStd-Bold-Identity-H
+otf-cjgb-v      KozGoStd-Bold-Identity-V
+otf-ujgb-h      KozGoStd-Bold-UniJIS-UTF16-H
+otf-ujgb-v      KozGoStd-Bold-UniJIS-UTF16-V
+hgothb-h        KozGoStd-Bold-H
+hgothb-v        KozGoStd-Bold-V
+uphgothb-h      KozGoStd-Bold-UniJIS-UTF16-H
+uphgothb-v      KozGoStd-Bold-UniJIS-UTF16-V
+
+otf-ujmgr-h     KozGoStd-Heavy-UniJIS-UTF16-H
+otf-ujmgr-v     KozGoStd-Heavy-UniJIS-UTF16-V
+otf-cjmgr-h     KozGoStd-Heavy-Identity-H
+otf-cjmgr-v     KozGoStd-Heavy-Identity-V
+hmgothr-h       KozGoStd-Heavy-H
+hmgothr-v       KozGoStd-Heavy-V
+uphmgothr-h     KozGoStd-Heavy-UniJIS-UTF16-H
+uphmgothr-v     KozGoStd-Heavy-UniJIS-UTF16-V
+
+%
+%for Adobe Reader 7
+%
+otf-ujmr-h      KozMinProVI-Regular-UniJIS-UTF16-H
+otf-ujmr-v      KozMinProVI-Regular-UniJIS-UTF16-V
+otf-cjmr-h      KozMinProVI-Regular-Identity-H
+otf-cjmr-v      KozMinProVI-Regular-Identity-V
+hminr-h         KozMinProVI-Regular-H
+hminr-v         KozMinProVI-Regular-V
+
+otf-ujgr-h      KozGoPro-Medium-UniJIS-UTF16-H
+otf-ujgr-v      KozGoPro-Medium-UniJIS-UTF16-V
+otf-cjgr-h      KozGoPro-Medium-Identity-H
+otf-cjgr-v      KozGoPro-Medium-Identity-V
+hgothr-h        KozGoPro-Medium-H
+hgothr-v        KozGoPro-Medium-V
