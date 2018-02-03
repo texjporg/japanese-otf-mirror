@@ -1,7 +1,9 @@
 package name: otf or japanese-otf
 
-This is the file readme.en.txt written by Norbert Preining for the
-upload to CTAN.
+This is the file README written in English by Norbert Preining
+for the upload to CTAN. More information in Japanese can be
+found in readme-ja.txt. (written by Saito Shuzaburo, originally
+named readme.txt)
 
 This package is originally named "otf", but for the sake of not
 choosing to general names on CTAN (and in TeX Live) it will be
