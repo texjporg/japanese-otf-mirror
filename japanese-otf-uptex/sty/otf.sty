@@ -30,6 +30,7 @@
 
 \def\otf@JYn{\if@otf@uplatex JY2\else JY1\fi}
 \def\otf@JTn{\if@otf@uplatex JT2\else JT1\fi}
+\def\otf@OTorT{\if@otf@uplatex T\else OT\fi}
 \def\otf@pfx@{\if@otf@uplatex up\else \fi}
 \def\brsg@pfx@{\if@burasage brsg\else\fi}
 \def\nlck@sfx@{\if@newglyph n\else\fi}
@@ -261,20 +262,20 @@
 	\DeclareKanjiFamily{\otf@JTn}{hmc}{}
 	\DeclareKanjiFamily{\otf@JYn}{hgt}{}
 	\DeclareKanjiFamily{\otf@JTn}{hgt}{}
-	\DeclareRelationFont{\otf@JYn}{hmc}{m}{}{OT1}{cmr}{m}{}
-	\DeclareRelationFont{\otf@JTn}{hmc}{m}{}{OT1}{cmr}{m}{}
-	\DeclareRelationFont{\otf@JYn}{hmc}{bx}{}{OT1}{cmr}{bx}{}
-	\DeclareRelationFont{\otf@JTn}{hmc}{bx}{}{OT1}{cmr}{bx}{}
+	\DeclareRelationFont{\otf@JYn}{hmc}{m}{}{\otf@OTorT1}{cmr}{m}{}
+	\DeclareRelationFont{\otf@JTn}{hmc}{m}{}{\otf@OTorT1}{cmr}{m}{}
+	\DeclareRelationFont{\otf@JYn}{hmc}{bx}{}{\otf@OTorT1}{cmr}{bx}{}
+	\DeclareRelationFont{\otf@JTn}{hmc}{bx}{}{\otf@OTorT1}{cmr}{bx}{}
 	\if@deluxe
-		\DeclareRelationFont{\otf@JYn}{hgt}{m}{}{OT1}{cmss}{m}{}
-		\DeclareRelationFont{\otf@JTn}{hgt}{m}{}{OT1}{cmss}{m}{}
-		\DeclareRelationFont{\otf@JYn}{hgt}{bx}{}{OT1}{cmss}{bx}{}
-		\DeclareRelationFont{\otf@JTn}{hgt}{bx}{}{OT1}{cmss}{bx}{}
+		\DeclareRelationFont{\otf@JYn}{hgt}{m}{}{\otf@OTorT1}{cmss}{m}{}
+		\DeclareRelationFont{\otf@JTn}{hgt}{m}{}{\otf@OTorT1}{cmss}{m}{}
+		\DeclareRelationFont{\otf@JYn}{hgt}{bx}{}{\otf@OTorT1}{cmss}{bx}{}
+		\DeclareRelationFont{\otf@JTn}{hgt}{bx}{}{\otf@OTorT1}{cmss}{bx}{}
 	\else
-		\DeclareRelationFont{\otf@JYn}{hgt}{m}{}{OT1}{cmr}{bx}{}
-		\DeclareRelationFont{\otf@JTn}{hgt}{m}{}{OT1}{cmr}{bx}{}
-		\DeclareRelationFont{\otf@JYn}{hgt}{bx}{}{OT1}{cmr}{bx}{}
-		\DeclareRelationFont{\otf@JTn}{hgt}{bx}{}{OT1}{cmr}{bx}{}
+		\DeclareRelationFont{\otf@JYn}{hgt}{m}{}{\otf@OTorT1}{cmr}{bx}{}
+		\DeclareRelationFont{\otf@JTn}{hgt}{m}{}{\otf@OTorT1}{cmr}{bx}{}
+		\DeclareRelationFont{\otf@JYn}{hgt}{bx}{}{\otf@OTorT1}{cmr}{bx}{}
+		\DeclareRelationFont{\otf@JTn}{hgt}{bx}{}{\otf@OTorT1}{cmr}{bx}{}
 	\fi
 	\@ifpackageloaded{jisx0213}{\relax}{\def\mcdefault{hmc}\def\gtdefault{hgt}}
 	\if@jfam@used
@@ -295,8 +296,8 @@
 	\if@deluxe
 		\DeclareKanjiFamily{\otf@JYn}{rubyg}{}
 		\DeclareKanjiFamily{\otf@JTn}{rubyg}{}
-		\DeclareRelationFont{\otf@JYn}{rubyg}{m}{}{OT1}{cmss}{m}{}
-		\DeclareRelationFont{\otf@JTn}{rubyg}{m}{}{OT1}{cmss}{m}{}
+		\DeclareRelationFont{\otf@JYn}{rubyg}{m}{}{\otf@OTorT1}{cmss}{m}{}
+		\DeclareRelationFont{\otf@JTn}{rubyg}{m}{}{\otf@OTorT1}{cmss}{m}{}
 		\DeclareRobustCommand\rubyfamily{\edef\reserved@a{\gtdefault}%
 			\edef\reserved@b{\mgdefault}%
 			\ifx\k@family\reserved@a \kanjifamily{rubyg}\else\ifx\k@family\reserved@b
@@ -378,16 +379,16 @@
 	\def\ltdefault{l}
 	\DeclareKanjiFamily{\otf@JYn}{mg}{}
 	\DeclareKanjiFamily{\otf@JTn}{mg}{}
-	\DeclareRelationFont{\otf@JYn}{mg}{m}{}{OT1}{cmss}{m}{}
-	\DeclareRelationFont{\otf@JTn}{mg}{m}{}{OT1}{cmss}{m}{}
+	\DeclareRelationFont{\otf@JYn}{mg}{m}{}{\otf@OTorT1}{cmss}{m}{}
+	\DeclareRelationFont{\otf@JTn}{mg}{m}{}{\otf@OTorT1}{cmss}{m}{}
 	\DeclareMathAlphabet{\mathmg}{\otf@JYn}{mg}{m}{n}
 	\DeclareRobustCommand\mgfamily{\not@math@alphabet\mgfamily\mathmg%
 		\kanjifamily\mgdefault\selectfont}
 	\DeclareTextFontCommand{\textmg}{\mgfamily}
 	\DeclareKanjiFamily{\otf@JYn}{rubymg}{}
 	\DeclareKanjiFamily{\otf@JTn}{rubymg}{}
-	\DeclareRelationFont{\otf@JYn}{rubymg}{m}{}{OT1}{cmss}{m}{}
-	\DeclareRelationFont{\otf@JTn}{rubymg}{m}{}{OT1}{cmss}{m}{}
+	\DeclareRelationFont{\otf@JYn}{rubymg}{m}{}{\otf@OTorT1}{cmss}{m}{}
+	\DeclareRelationFont{\otf@JTn}{rubymg}{m}{}{\otf@OTorT1}{cmss}{m}{}
 	\DeclareRobustCommand\propshape
 		{\not@math@alphabet\propshape\relax
 		\kanjishape\propdefault\selectfont}
