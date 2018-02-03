@@ -71,6 +71,10 @@ if test $PROJECT = "hiraprop"; then
   echo "  LICENSE:      free/other-free"
   echo "  FILE:         $DIR/$PROJECT-$VER.tar.gz"
 else
+  # we don't include fontmap/* for CTAN,
+  # as it contains files with parenthesis
+  # (ctan2tds also excludes them from installation)
+  rm -rf $PROJECT-$VER/fontmap
   # japanese-otf(-uptex) contains Hiragino-specific TFM/VF,
   # mark them as nonfree
   rm -rf $PROJECT-nonfree-$VER
@@ -91,6 +95,11 @@ else
     mv $i $PROJECT-nonfree-$VER/vf/
   done
   mv $PROJECT-$VER/README.nonfree $PROJECT-nonfree-$VER/README
+  # release date
+  perl -pi.bak -e "s/\\\$RELEASEDATE/$VER/g" $PROJECT-$VER/README
+  rm -f $PROJECT-$VER/README.bak
+  perl -pi.bak -e "s/\\\$RELEASEDATE/$VER/g" $PROJECT-nonfree-$VER/README
+  rm -f $PROJECT-nonfree-$VER/README.bak
   # make archives
   tar zcf $DIR/$PROJECT-$VER.tar.gz $PROJECT-$VER
   tar zcf $DIR/$PROJECT-nonfree-$VER.tar.gz $PROJECT-nonfree-$VER
