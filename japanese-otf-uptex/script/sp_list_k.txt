@@ -5,7 +5,7 @@
 %
 % Reference:
 %   https://github.com/adobe-type-tools/cmap-resources/
-%   cmapresources_korea1-2/cid2code.txt
+%   Adobe-Korea1-2/cid2code.txt
 %
 % A newer CMap may be required for some code points.
 %

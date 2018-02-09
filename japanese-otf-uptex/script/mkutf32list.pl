@@ -46,22 +46,23 @@ if (/cid2code/) {
     $cid2code=$_;
     $cid2code=~s/^#/%/;
 }
-if (/((Adobe.*)-\d) Character Collection/) {
+
+if ($.<8 & /((Adobe-(?:Japan|CNS|GB|Korea).*)-\d)\s/) {
     $collection_n=$1;
     $collection=$2;
     given($collection) {
-	when (/cns/i) { @cid_max = qw/-1 14098 17407 17600 18845 18964 19087 19155/;
+	when (/cns/i) { @cid_max = qw/-1 14098 17407 17600 18845 18964 19087 19155 19178/;
 			$utfmac="UTFT"; $cmap="UniCNS-UTF32";
-			$source="cmapresources_cns1-6/cid2code.txt"; }
+			$source="Adobe-CNS1-7/cid2code.txt"; }
 	when (/gb/i)  { @cid_max = qw/-1 7716 9896 22126 22352 29063 30283/;
 			$utfmac="UTFC"; $cmap="UniGB-UTF32";
-			$source="cmapresources_gb1-5/cid2code.txt"; }
+			$source="Adobe-GB1-5/cid2code.txt"; }
 	when (/kor/i) { @cid_max = qw/-1 9332 18154 18351/;
 			$utfmac="UTFK"; $cmap="UniKS-UTF32";
-			$source="cmapresources_korea1-2/cid2code.txt"; }
+			$source="Adobe-Korea1-2/cid2code.txt"; }
 	default       { @cid_max = qw/-1 8283 8358 8719 9353 15443 20316 23057/;
 			$utfmac="UTF";  $cmap="UniJIS-UTF32";
-			$source="cmapresources_japan1-6/cid2code.txt"; }
+			$source="Adobe-Japan1-6/cid2code.txt"; }
     }
 }
 
