@@ -300,6 +300,7 @@ To build tfm files, uppltotf in TeX live r43143 or later is required.
 2018.02.11 Ver0.19
   sty/otf.sty, sty/mlutf.sty ::
     Sync with japanese-otf [2018/02/01 v1.7b7].
+    Set default latin font T1.
     Increment version number.
   script/CheckDVICode.pm ::
     Update reference Unicode Blocks-10.0.0.txt (Date: 2017-04-12, 17:30:00 GMT [KW])
@@ -315,4 +316,6 @@ To build tfm files, uppltotf in TeX live r43143 or later is required.
     Adobe-Japan1-6 cid2code.txt (Version 10/24/2017).
   basepl/u{base,brsg}-{h,v}.pl ::
     Add U+00B7 to char_type 3.
+  COPYRIGHT ::
+    Update year.
 
