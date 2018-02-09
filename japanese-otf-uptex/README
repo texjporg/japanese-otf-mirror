@@ -3,12 +3,12 @@ README
 
 From 00otf-uptex.txt:
 [ Title ]
-otfbeta-uptex (japanese-otf-uptex) Ver.0.17  2015/04/10
+otfbeta-uptex (japanese-otf-uptex) Ver.0.19  2018/02/11
 
 
 [ Abstract ]
 This is a package for upLaTeX support of
-japanese-otf package "otfbeta (v1.7b6 2012/11/17)" by psitau-san
+japanese-otf package "otfbeta (v1.7b7 2018/02/01)" by psitau-san
 ( http://psitau.kitunebi.com/otf.html )
 It requires upTeX-0.20 or later.
 
@@ -23,12 +23,11 @@ Ref. http://opensource.org/licenses/BSD-3-Clause
 The original source has been downloaded from
 	http://www.t-lab.opal.ne.jp/tex/uptex_en.html
 as
-	http://www.t-lab.opal.ne.jp/tex/otfbeta-uptex-0.17.tar.xz
+	http://www.t-lab.opal.ne.jp/tex/otfbeta-uptex-0.19.tar.xz
 
 After that the scripts run and the generated tfm and vf files included.
-The scripts were run with the env variable OVP2OVF=wovp2ovf
 
 Norbert Preining <preining@logic.at>
 TANAKA Takuji <ttk@t-lab.opal.ne.jp>
-2015-04-10
+2018-02-11
 

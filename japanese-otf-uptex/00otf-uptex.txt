@@ -1,10 +1,10 @@
 [ Title ]
-otfbeta-uptex (japanese-otf-uptex) Ver.0.18  2017/03/04
+otfbeta-uptex (japanese-otf-uptex) Ver.0.19  2018/02/11
 
 
 [ Abstract ]
 This is a package for upLaTeX support of
-japanese-otf package "otfbeta (v1.7b6 2013/11/17)" by psitau-san
+japanese-otf package "otfbeta (v1.7b7 2018/02/01)" by psitau-san
 ( http://psitau.kitunebi.com/otf.html )
 It requires upTeX-0.20 or later.
 
@@ -297,4 +297,22 @@ To build tfm files, uppltotf in TeX live r43143 or later is required.
     Remove.
   COPYRIGHT ::
     Update year.
+2018.02.11 Ver0.19
+  sty/otf.sty, sty/mlutf.sty ::
+    Sync with japanese-otf [2018/02/01 v1.7b7].
+    Increment version number.
+  script/CheckDVICode.pm ::
+    Update reference Unicode Blocks-10.0.0.txt (Date: 2017-04-12, 17:30:00 GMT [KW])
+    Add Block Kana Extended-A, CJK Unified Ideographs Extension F to is_ucs_jpn_range{).
+  script/mk{tfm,utfvf}_sp.pl, sty/otf.sty, sty/mlutf.sty ::
+    Add subfonts for CJK Unified Ideographs Extension F.
+  script/mkutf32list.pl ::
+    Add option -style=list-wo-collec.
+  script/mkutf32list.pl, script/sp_list_{c,j,k,t}.txt, test/uplatex/sp_{cns,gb,jp,kr}_utf.tex,
+  test/uplatex/sp_jp_text.tex ::
+    Update references:
+    Adobe-CNS1-7 cid2code.txt (Version  10/24/2017), and
+    Adobe-Japan1-6 cid2code.txt (Version 10/24/2017).
+  basepl/u{base,brsg}-{h,v}.pl ::
+    Add U+00B7 to char_type 3.
 
