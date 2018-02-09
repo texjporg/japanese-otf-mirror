@@ -1,5 +1,5 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{otf}[2018/02/01 v1.7b7 psitau, u0.18 ttk]
+\ProvidesPackage{otf}[2018/02/01 v1.7b7 psitau, u0.19 ttk]
 \RequirePackage{keyval}
 %for processing options 
 \newif\if@kana \@kanafalse
@@ -433,36 +433,36 @@
 \DeclareKanjiFamily{\otf@JTn}{utfj}{}
 \DeclareKanjiFamily{\otf@JYn}{cidj}{}
 \DeclareKanjiFamily{\otf@JTn}{cidj}{}
-\Declare@FontShape{utfj}{m}{0123456789abcdefjklmnopqrstuvz}{utfjmr\nlck@sfx@}
+\Declare@FontShape{utfj}{m}{0123456789abcdefjklmnopqrstuvxyz}{utfjmr\nlck@sfx@}
 \Declare@FontShape{cidj}{m}{012345}{cidjmr}
 %definition of other utf/cid fonts
 \if@deluxe
-	\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvz}{utfjmb\nlck@sfx@}
+	\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz}{utfjmb\nlck@sfx@}
 	\Declare@FontShape{cidj}{bx}{012345}{cidjmb}
 	\DeclareKanjiFamily{\otf@JYn}{utfjg}{}
 	\DeclareKanjiFamily{\otf@JTn}{utfjg}{}
 	\DeclareKanjiFamily{\otf@JYn}{cidjg}{}
 	\DeclareKanjiFamily{\otf@JTn}{cidjg}{}
-	\Declare@FontShape{utfjg}{m}{0123456789abcdefjklmnopqrstuvz}{utfjgr\nlck@sfx@}
+	\Declare@FontShape{utfjg}{m}{0123456789abcdefjklmnopqrstuvxyz}{utfjgr\nlck@sfx@}
 	\Declare@FontShape{cidjg}{m}{012345}{cidjgr}
-	\Declare@FontShape{utfjg}{bx}{0123456789abcdefjklmnopqrstuvz}{utfjgb\nlck@sfx@}
+	\Declare@FontShape{utfjg}{bx}{0123456789abcdefjklmnopqrstuvxyz}{utfjgb\nlck@sfx@}
 	\Declare@FontShape{cidjg}{bx}{012345}{cidjgb}
-	\Declare@FontShape{utfjg}{eb}{0123456789abcdefjklmnopqrstuvz}{utfjge\nlck@sfx@}
+	\Declare@FontShape{utfjg}{eb}{0123456789abcdefjklmnopqrstuvxyz}{utfjge\nlck@sfx@}
 	\Declare@FontShape{cidjg}{eb}{012345}{cidjge}
 	\DeclareKanjiFamily{\otf@JYn}{utfjmg}{}
 	\DeclareKanjiFamily{\otf@JTn}{utfjmg}{}
 	\DeclareKanjiFamily{\otf@JYn}{cidjmg}{}
 	\DeclareKanjiFamily{\otf@JTn}{cidjmg}{}
-	\Declare@FontShape{utfjmg}{m}{0123456789abcdefjklmnopqrstuvz}{utfjmgr\nlck@sfx@}
+	\Declare@FontShape{utfjmg}{m}{0123456789abcdefjklmnopqrstuvxyz}{utfjmgr\nlck@sfx@}
 	\Declare@FontShape{cidjmg}{m}{012345}{cidjmgr}
-	\Declare@FontShape{utfj}{l}{0123456789abcdefjklmnopqrstuvz}{utfjml\nlck@sfx@}
+	\Declare@FontShape{utfj}{l}{0123456789abcdefjklmnopqrstuvxyz}{utfjml\nlck@sfx@}
 	\Declare@FontShape{cidj}{l}{012345}{cidjml}
 \else
 	\if@bold
-		\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvz}{utfjgb\nlck@sfx@}
+		\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz}{utfjgb\nlck@sfx@}
 		\Declare@FontShape{cidj}{bx}{012345}{cidjgb}
 	\else
-		\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvz}{utfjgr\nlck@sfx@}
+		\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz}{utfjgr\nlck@sfx@}
 		\Declare@FontShape{cidj}{bx}{012345}{cidjgr}
 	\fi
 \fi

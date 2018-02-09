@@ -80,7 +80,7 @@ sub maketfm_body {
 	my $lang = join ',', @ln;
 	my @exist_head=@{$MakeSPList::r_exist_head->{$lang}};
 
-	foreach $first_hex (0x1b, 0x1d .. 0x2b, 0x2f) { # U+1Cxxx, U+2[CDE]xxx : not defined yet
+	foreach $first_hex (0x1b, 0x1d .. 0x2f) { # U+1Cxxx : not defined yet
 		next if (!$exist_head[$first_hex]);
 
 		$id = $font_id{sprintf("%x", $first_hex)};
