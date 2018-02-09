@@ -10,6 +10,7 @@ mkutf32list.pl cid2code.txt > sp_jp_text.tex
 mkutf32list.pl -style=utf cid2code.txt > sp_jp_utf.tex
 mkutf32list.pl -style=kchar cid2code.txt > sp_jp_kchar.tex
 mkutf32list.pl -style=list cid2code.txt > sp_list_j.txt
+mkutf32list.pl -style=list-wo-collec cid2code.txt > sp_list_ja.txt
 mkutf32list.pl -allrange cid2code.txt > sp_jp_text.tex
 
 =head1 AUTHOR
@@ -125,8 +126,11 @@ foreach (@utf32) {
 END {
     my ($i, $out, $ch);
 
+    if ($style eq "list-wo-collec") { @out = sort(@out); }
+
     foreach $ch (@out) {
-	if (defined($reset_ch{$ch})) {
+	if ($style eq "list-wo-collec") {}
+	elsif (defined($reset_ch{$ch})) {
 	    $i=0;
 	    print "\n\n";
 	    print "%" if ($style =~ /list/);
@@ -142,12 +146,12 @@ END {
 	    when (/list/)  { $out=sprintf "%X", $ch; }
 	    default        { $out=chr($ch); }
 	}
-	if ($i % 10 != 1) {
+	my ($newline);
+	$newline = $allrange ? 25 : 10;
+	if ($i % $newline != 1) {
 	    print "," if ($style =~ /list/);
 	}
 	print $out;
-	my ($newline);
-	$newline = $allrange ? 25 : 10;
 	if ($i % $newline == 0) {
 	    print "%" if ($style =~ /utf/);
 	    print "\n" ;
