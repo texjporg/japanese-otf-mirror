@@ -10,6 +10,7 @@
 \newif\if@burasage \@burasagefalse
 \newif\if@newglyph \@newglyphfalse
 \newif\if@otf@uplatex \@otf@uplatexfalse
+\newif\if@otf@autodetect \@otf@autodetectfalse
 \newif\if@otf@scale \@otf@scalefalse
 \newif\if@jsclasses \@jsclassesfalse
 
@@ -22,6 +23,7 @@
 \DeclareOption{multi}{\AtEndOfPackage{\RequirePackage{mlutf}\RequirePackage{mlcid}}}
 \DeclareOption{burasage}{\@burasagetrue}
 \DeclareOption{uplatex}{\@otf@uplatextrue}
+\DeclareOption{autodetect-engine}{\@otf@autodetecttrue}
 \DeclareOption{jis2004}{\@newglyphtrue}
 \DeclareOption*{\otfpkg@setkey}
 \def\otfpkg@setkey{\expandafter\otfpkg@setkey@a\expandafter{\CurrentOption}}
@@ -35,6 +37,33 @@
 \def\brsg@pfx@{\if@burasage brsg\else\fi}
 \def\nlck@sfx@{\if@newglyph n\else\fi}
 \ProcessOptions\relax
+\ifnum \ifx\ucs\@undefined\z@\else\ucs"3000 \fi ="3000 %upTeX
+	\if@otf@autodetect
+		\PackageInfo{otf}{Autodetected engine: upLaTeX}
+		\@otf@uplatextrue
+	\fi
+	\if@otf@uplatex\else
+		\PackageError{otf}
+			{You are running upLaTeX.\MessageBreak
+			 Please use pLaTeX instead, or add 'uplatex' to\MessageBreak
+			 the package option list}
+			{\@ehc}
+		\@otf@uplatextrue
+	\fi
+\else %pTeX
+	\if@otf@autodetect
+		\PackageInfo{otf}{Autodetected engine: pLaTeX}
+		\@otf@uplatexfalse
+	\fi
+	\if@otf@uplatex
+		\PackageError{otf}
+			{You are running pLaTeX.\MessageBreak
+			 Please use upLaTeX instead, or remove 'uplatex' from\MessageBreak
+			 the package option list}
+			{\@ehc}
+		\@otf@uplatexfalse
+	\fi
+\fi
 %user interface
 %force catcode of \" be 12
 \count@\catcode`\"
