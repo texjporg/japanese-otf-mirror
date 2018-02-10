@@ -302,6 +302,7 @@ To build tfm files, uppltotf in TeX live r43143 or later is required.
   sty/otf.sty, sty/mlutf.sty ::
     Sync with japanese-otf [2018/02/01 v1.7b7].
     Set default latin font T1.
+    Add {,u}pLaTeX engine check and a package option "autodetect-engine".
     Increment version number.
   script/CheckDVICode.pm ::
     Update reference Unicode Blocks-10.0.0.txt (Date: 2017-04-12, 17:30:00 GMT [KW])
