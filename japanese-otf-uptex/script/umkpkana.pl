@@ -150,6 +150,7 @@ sub glue_kern{
 	print  JPL "   )\n";
 }
 sub chars_in_type_jis{
+	my ($type3add) = $ucs ? "U00B7" : "";
 	my ($type5) = $ucs ? "— ― … ‥" : "— … ‥";
 print JPL <<END_OF_DATA;
 (CHARSINTYPE O 1
@@ -160,7 +161,7 @@ print JPL <<END_OF_DATA;
    )
 (CHARSINTYPE O 3
    ・ ： ； 
-   U00B7 
+   $type3add 
    )
 (CHARSINTYPE O 4
    。 ． 
