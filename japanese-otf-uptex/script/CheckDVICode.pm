@@ -130,7 +130,8 @@ sub is_dvicode($){
 	if ($key eq 'burasage') { return 
 		($code == 0x3001 || $code == 0x3002 ||
 		 $code == 0xFF0C || $code == 0xFF0E);}
-	if ($key eq 'nakaten'  ) { return ($code == 0x30FB);}
+	if ($key eq 'nakaten'  ) { return 
+		($code == 0x30FB || $code == 0x00B7);}
 	if ($key eq 'colon'    ) { return ($code == 0xFF1A);}
 	if ($key eq 'semicolon') { return ($code == 0xFF1B);}
 	if ($key eq 'quote') { return 
@@ -167,6 +168,7 @@ sub is_ucs_open{
 }
 
 sub is_ucs_kigo{
+	return 1 if ($dvicode==0x00B7);
 	return 1 if ($dvicode>=0x2018 && $dvicode<=0x2019);
 	return 1 if ($dvicode>=0x201C && $dvicode<=0x201D);
 	return 1 if ($dvicode>=0x3001 && $dvicode<=0x301F);
