@@ -40,6 +40,7 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 ### japanese-otf-uptex
 
 - Obtain and extract `http://www.t-lab.opal.ne.jp/tex/otfbeta-uptex-0.19.tar.xz`
+- `make` (at top directory)
 - Add `README` (almost same as `00otf-uptex.txt`)
 
 ### hiraprop
@@ -50,7 +51,10 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 
 ## リリース手順
 
-CTAN へアップロードするためのアーカイブ (.tar.gz) は
+状況によっては，upstream からでなく，本リポジトリから
+CTAN へアップロードする場合があるかもしれません。
+
+この場合，CTAN へアップロードするためのアーカイブ (.tar.gz) は
 `release.sh` を実行すれば作成することができます。
 
 ````
