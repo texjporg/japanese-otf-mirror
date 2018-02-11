@@ -1,10 +1,10 @@
-package name: otfbeta-nonfree or japanese-otf-nonfree
+package name: otfbeta-uptex-nonfree or japanese-otf-uptex-nonfree
 
-This package is a companion to `otf' or `japanese-otf' including
+This package is a companion to `japanese-otf-uptex' including
 support for nonfree Hiragino fonts, which we decided not to be
 included in TeX Live. Current version of this package used is
 based on
-	otfbeta.zip v1.7b7 2018/02/01
+	otfbeta-uptex Ver.0.19 2018/02/11
 
 The contents of this package is under the license given in the 
 COPYRIGHT file, which is more or less BSD license.
