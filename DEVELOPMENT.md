@@ -39,8 +39,8 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 
 ### japanese-otf-uptex
 
-- Obtain and extract `http://www.t-lab.opal.ne.jp/tex/otfbeta-uptex-0.18.tar.xz`
-- (to be added soon)
+- Obtain and extract `http://www.t-lab.opal.ne.jp/tex/otfbeta-uptex-0.19.tar.xz`
+- Add `README` (almost same as `00otf-uptex.txt`)
 
 ### hiraprop
 
@@ -60,7 +60,10 @@ CTAN へアップロードするためのアーカイブ (.tar.gz) は
 を実行します（`[パッケージ名]` は japanese-otf，japanese-otf-uptex 又は
 hiraprop のいずれか）。CTAN へのアップロードでは，TeX Live に敢えて収録しない
 nonfree サポートファイル（具体的には，ヒラギノフォントを使用するための
-TFM/VF/OFM のセット）を分割し，別のアーカイブとします。
+TFM/VF/OFM のセット）を分割し，別のアーカイブとします。本体の方のみ
+CTAN に登録し，nonfree の方は [TLContrib](http://contrib.texlive.info)
+([Git repository](https://git.texlive.info/tlcontrib))
+で配布します。
 
 ----
 Japanese TeX Development Community
