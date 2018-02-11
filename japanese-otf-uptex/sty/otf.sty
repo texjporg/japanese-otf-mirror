@@ -42,6 +42,7 @@
 \ifnum \ifx\ucs\@undefined\z@\else\ucs"3000 \fi ="3000 %upTeX
 	\if@otf@autodetect
 		\PackageInfo{otf}{Autodetected engine: upLaTeX}
+		\@otf@uplatextrue
 	\fi
 	\if@otf@uplatex\else
 		\PackageError{otf}
@@ -49,11 +50,12 @@
 			 Please use pLaTeX instead, or add 'uplatex' to\MessageBreak
 			 the package option list}
 			{\@ehc}
+		\@otf@uplatextrue
 	\fi
-	\@otf@uplatextrue
 \else %pTeX
 	\if@otf@autodetect
 		\PackageInfo{otf}{Autodetected engine: pLaTeX}
+		\@otf@uplatexfalse
 	\fi
 	\if@otf@uplatex
 		\PackageError{otf}
@@ -61,8 +63,8 @@
 			 Please use upLaTeX instead, or remove 'uplatex' from\MessageBreak
 			 the package option list}
 			{\@ehc}
+		\@otf@uplatexfalse
 	\fi
-	\@otf@uplatexfalse
 \fi
 %user interface
 %force catcode of \" be 12
