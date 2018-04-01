@@ -152,14 +152,23 @@ sub glue_kern{
 	print  JPL "   )\n";
 }
 sub chars_in_type_jis{
-	my ($type3add) = $ucs ? "U00B7" : "";
-	my ($type5) = $ucs ? "— ― … ‥" : "— … ‥";
+	my ($type1add, $type2add, $type3add, $type5)=();
+	if ($ucs) {
+		$type1add = "UFF5F U3018 U3016 U301D U00AB U2329 U301A";
+		$type2add = "UFF60 U3019 U3017 U301F U00BB U232A U301B U301E";
+		$type3add = "U00B7";
+		$type5 = "— ― … ‥";
+	} else {
+		$type5 = "— … ‥";
+	}
 print JPL <<END_OF_DATA;
 (CHARSINTYPE O 1
    ‘ “ （ 〔 ［ ｛ 〈 《 「 『 【 
+   $type1add 
    )
 (CHARSINTYPE O 2
    、 ， ’ ” ） 〕 ］ ｝ 〉 》 」 』 】 
+   $type2add 
    )
 (CHARSINTYPE O 3
    ・ ： ； 
@@ -327,7 +336,7 @@ sub print_type_prop{
 
 sub get_charwidth{
 	my ($i,$dvicode)=@_;
-	my ($char,$eucchar,$testchar,$u,$l);
+	my ($char,$u,$l);
 
 	if (!$ucs) {
 		if ($dvicode>=0x2474 && $dvicode<=0x2476) {
