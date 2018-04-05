@@ -15,7 +15,7 @@
 # The Current Maintainer of this work is KUROKI Yusuke.
 #
 # This work consists of the files otf-hangul.rb
-# and the derived file orf-hangul.dfu.
+# and the derived file otf-hangul.dfu.
 
 print "%% otf-hangul.rb and otf-hangul.dfu
 %
@@ -32,7 +32,7 @@ print "%% otf-hangul.rb and otf-hangul.dfu
 % The Current Maintainer of this work is KUROKI Yusuke.
 %
 % This work consists of the files otf-hangul.rb
-% and the derived file orf-hangul.dfu.
+% and the derived file otf-hangul.dfu.
 
 "
 
