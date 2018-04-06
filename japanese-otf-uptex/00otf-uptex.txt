@@ -1,5 +1,5 @@
 [ Title ]
-otfbeta-uptex (japanese-otf-uptex) Ver.0.19  2018/02/11
+otfbeta-uptex (japanese-otf-uptex) Ver.0.20  2018/04/07
 
 
 [ Abstract ]
@@ -39,9 +39,6 @@ sty/otf.sty   : basic style file
 sty/mlutf.sty : style file for multi option
 
 test/uplatex/* : test samples.
-
-patch/*.patch : patch for original style files sty/*.sty
-    and fontmap files fontmap/* in otfbeta.zip
 
 COPYRIGHT : copyright notice of this package.
 
@@ -320,4 +317,12 @@ To build tfm files, uppltotf in TeX live r43143 or later is required.
     Add U+00B7 to char_type 3.
   COPYRIGHT ::
     Update year.
+2018.04.07 Ver0.20
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  script/CheckDVICode.pm, script/umk{,v}pkana.pl, basepl/u{base,brsg}-{h,v}.pl ::
+    Add U+00AB, U+2329, U+301A to char_type 1.
+    Add U+00BB, U+232A, U+301B, U+301E to char_type 2.
+  test/uplatex/{punctuation,punct0,paren0}.tex, test/uplatex/Makefile ::
+    Add a new test for punctuations.
 

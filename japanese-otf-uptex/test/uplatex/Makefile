@@ -6,7 +6,7 @@ DVIPS = dvips
 DVIPDFMX = dvipdfmx
 PDVITYPE = pdvitype
 
-all: otf sp art bsrg jis04 scale prop
+all: otf sp art bsrg jis04 scale prop punct
 
 otf: uplatex-otf platex-otf
 sp: uplatex-sp platex-sp
@@ -166,5 +166,12 @@ platex-prop:
 		$(DVIPDFMX) -l upkanatest$$test-v-platex.dvi ; \
 	done
 
+punct:
+	for opt in default deluxe expert bold noreplace; do \
+		$(UPLATEX) "\def\option{$$opt}\input" punctuation.tex ; \
+		mv punctuation.dvi punctuation-$$opt.dvi ; \
+		$(DVIPDFMX) punctuation-$$opt.dvi ; \
+	done
+
 clean:
-	rm *.aux *.log *.dvi *.pdf
+	rm -f *.aux *.log *.dvi *.pdf

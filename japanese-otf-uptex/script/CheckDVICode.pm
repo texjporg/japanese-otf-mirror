@@ -150,7 +150,11 @@ sub is_dvicode($){
 		 $code == 0xFF5F || $code == 0xFF60 || # X0213 1-02-54,55
 		 $code == 0x3018 || $code == 0x3019 || # X0213 1-02-56,57
 		 $code == 0x3016 || $code == 0x3017 || # X0213 1-02-58,59
-		 $code == 0x301D || $code == 0x301F    # X0213 1-13-64,65
+		 $code == 0x301D || $code == 0x301F || # X0213 1-13-64,65
+		 $code == 0x00AB || $code == 0x00BB || # X0213 1-09-08,18
+		 $code == 0x2329 || $code == 0x232A ||
+		 $code == 0x301A || $code == 0x301B ||
+		 $code == 0x301E
 		);}
 	if ($key eq 'open')  { return &is_ucs_open; }
 	if ($key eq 'close') { return (!&is_ucs_open); }
@@ -160,17 +164,23 @@ sub is_dvicode($){
 }
 
 sub is_ucs_open{
-	if ($dvicode == 0x301D) { return 1;}
-	if ($dvicode <= 0xFF09) { return ($dvicode%2==0);}
-	if ($dvicode == 0xFF3B || $dvicode == 0xFF5B) { return 1;}
-	if ($dvicode == 0xFF5F) { return 1;}
-	return 0;
+	if ($dvicode == 0x00AB || $dvicode == 0x2329
+	 || $dvicode == 0x301D
+	 || $dvicode == 0xFF3B || $dvicode == 0xFF5B
+	 || $dvicode == 0xFF5F) { return 1;}
+	if ($dvicode == 0x00BB || $dvicode == 0x232A
+	 || $dvicode == 0x301E || $dvicode == 0x301F
+	 || $dvicode == 0xFF3D || $dvicode == 0xFF5D
+	 || $dvicode == 0xFF60) { return 0;}
+	return ($dvicode%2==0);
 }
 
 sub is_ucs_kigo{
+	return 1 if ($dvicode==0x00AB || $dvicode==0x00BB);
 	return 1 if ($dvicode==0x00B7);
 	return 1 if ($dvicode>=0x2018 && $dvicode<=0x2019);
 	return 1 if ($dvicode>=0x201C && $dvicode<=0x201D);
+	return 1 if ($dvicode>=0x2329 && $dvicode<=0x232A);
 	return 1 if ($dvicode>=0x3001 && $dvicode<=0x301F);
 	return 1 if ($dvicode>=0x3090 && $dvicode<=0x3093);
 	return 1 if ($dvicode>=0x3097 && $dvicode<=0x309F);

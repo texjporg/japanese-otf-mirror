@@ -1,0 +1,181 @@
+% -*- coding: utf-8 -*-
+\makeatletter
+
+\def\@opt@{uplatex}
+\def\@default{default}
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\documentclass[twocolumn]{ujarticle}
+\textwidth 170mm
+\textheight 255mm
+\voffset -10mm
+\topmargin 0mm
+\headheight 0mm
+\headsep 0mm
+\leftmargin 0mm
+\rightmargin 0mm
+
+\usepackage{color}
+\usepackage{plext}
+\usepackage[\@opt@]{otf}
+
+\makeatother
+
+\newcommand{\Bracket}[2]{%
+ \textcolor{green}{\fbox{\textcolor{black}{#1}}}雪%
+ \textcolor{green}{\fbox{\textcolor{black}{#2}}}%
+ \textcolor{green}{\fbox{\textcolor{black}{\inhibitglue #1}}}雪%
+ \textcolor{green}{\fbox{\textcolor{black}{#2\inhibitglue}}}%
+%%% vvv 色無し vvv %%%
+% \fbox{#1}雪\fbox{#2}%
+% \fbox{\inhibitglue #1}雪\fbox{#2\inhibitglue}%
+}
+\newcommand{\BracketUCS}[2]{%
+ \Bracket{\kchar"#1}{\kchar"#2} {\footnotesize U+#1, U+#2}%
+}
+\newcommand{\Punct}[1]{%
+ 雪\textcolor{green}{\fbox{\textcolor{black}{#1}}}雪%
+ \textcolor{green}{\fbox{\textcolor{black}{\inhibitglue #1\inhibitglue}}}雪%
+%%% vvv 色無し vvv %%%
+% 雪\fbox{#1}雪%
+% \fbox{\inhibitglue #1\inhibitglue}雪%
+}
+\newcommand{\PunctUCS}[1]{%
+ \Punct{\kchar"#1} {\footnotesize U+#1}%"
+}
+
+\makeatletter
+\ifx\rubyfamily\@undefined\let\rubyfamily=\relax\fi
+\ifx\mgfamily\@undefined\let\mgfamily=\relax\fi
+\makeatother
+
+\begin{document}
+\parindent0pt
+\fboxsep0pt
+
+オプション：\texttt{\option}
+
+\section{括弧類}
+{
+[mc/m]
+
+\input{paren0.tex}
+
+{\bfseries%
+[mc/bx]
+
+\input{paren0.tex}
+}}
+
+{\gtfamily
+[gt/m]
+
+\input{paren0.tex}
+
+{\bfseries%
+[gt/bx]
+
+\input{paren0.tex}
+}}
+
+{\mgfamily
+[mg/m]
+
+\input{paren0.tex}
+}
+
+{\rubyfamily%
+[ruby/m]
+
+\input{paren0.tex}
+
+{\bfseries%
+[ruby/bx]
+
+\input{paren0.tex}
+}}
+
+{\gtfamily\rubyfamily%
+[rubyg/m]
+
+\input{paren0.tex}
+
+{\gtfamily\rubyfamily\bfseries%
+[rubyg/bx]
+
+\input{paren0.tex}
+}}
+
+{\mgfamily\rubyfamily%
+[rubymg/m]
+
+\input{paren0.tex}
+}
+
+
+\section{句読点など}
+{
+[mc/m]
+
+\input{punct0.tex}
+
+{\bfseries%
+[mc/bx]
+
+\input{punct0.tex}
+}}
+
+{\gtfamily
+[gt/m]
+
+\input{punct0.tex}
+
+{\bfseries%
+[gt/bx]
+
+\input{punct0.tex}
+}}
+
+{\mgfamily
+[mg/m]
+
+\input{punct0.tex}
+}
+
+{\rubyfamily%
+[ruby/m]
+
+\input{punct0.tex}
+
+{\bfseries%
+[ruby/bx]
+
+\input{punct0.tex}
+}}
+
+{\gtfamily\rubyfamily%
+[rubyg/m]
+
+\input{punct0.tex}
+
+{\gtfamily\rubyfamily\bfseries%
+[rubyg/bx]
+
+\input{punct0.tex}
+}}
+
+{\mgfamily\rubyfamily%
+[rubymg/m]
+
+\input{punct0.tex}
+}
+
+\end{document}
+
