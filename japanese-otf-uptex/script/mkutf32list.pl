@@ -25,7 +25,6 @@ This software is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
 
 use strict;
 use encoding 'utf8';
-use feature 'switch';
 
 our ($style, $allrange);
 our (@count, %reset_ch, $icollec, $cid2code, $line);
@@ -47,23 +46,25 @@ if (/cid2code/) {
     $cid2code=~s/^#/%/;
 }
 
-if ($.<8 & /((Adobe-(?:Japan|CNS|GB|Korea).*)-\d)\s/) {
+if ($.<8 && /((Adobe-(?:Japan|CNS|GB|Korea).*)-\d)\s/) {
     $collection_n=$1;
     $collection=$2;
-    given($collection) {
-	when (/cns/i) { @cid_max = qw/-1 14098 17407 17600 18845 18964 19087 19155 19178/;
-			$utfmac="UTFT"; $cmap="UniCNS-UTF32";
-			$source="Adobe-CNS1-7/cid2code.txt"; }
-	when (/gb/i)  { @cid_max = qw/-1 7716 9896 22126 22352 29063 30283/;
-			$utfmac="UTFC"; $cmap="UniGB-UTF32";
-			$source="Adobe-GB1-5/cid2code.txt"; }
-	when (/kor/i) { @cid_max = qw/-1 9332 18154 18351/;
-			$utfmac="UTFK"; $cmap="UniKS-UTF32";
-			$source="Adobe-Korea1-2/cid2code.txt"; }
-	default       { @cid_max = qw/-1 8283 8358 8719 9353 15443 20316 23057/;
-			$utfmac="UTF";  $cmap="UniJIS-UTF32";
-			$source="Adobe-Japan1-6/cid2code.txt"; }
-    }
+    if ($collection =~ /cns/i)    {
+	@cid_max = qw/-1 14098 17407 17600 18845 18964 19087 19155 19178/;
+	$utfmac="UTFT"; $cmap="UniCNS-UTF32";
+	$source="Adobe-CNS1-7/cid2code.txt"; }
+    elsif ($collection =~ /gb/i)  {
+	@cid_max = qw/-1 7716 9896 22126 22352 29063 30283/;
+	$utfmac="UTFC"; $cmap="UniGB-UTF32";
+	$source="Adobe-GB1-5/cid2code.txt"; }
+    elsif ($collection =~ /kor/i) {
+	@cid_max = qw/-1 9332 18154 18351/;
+	$utfmac="UTFK"; $cmap="UniKS-UTF32";
+	$source="Adobe-Korea1-2/cid2code.txt"; }
+    else                          {
+	@cid_max = qw/-1 8283 8358 8719 9353 15443 20316 23057/;
+	$utfmac="UTF";  $cmap="UniJIS-UTF32";
+	$source="Adobe-Japan1-6/cid2code.txt"; }
 }
 
 next if (/^#/);
@@ -141,12 +142,10 @@ END {
 	}
 
 	$i++;
-	given($style) {
-	    when (/utf/)   { $out=sprintf "\\${utfmac}{%X}", $ch; }
-	    when (/kchar/) { $out=sprintf "\\kchar\"%X", $ch; }
-	    when (/list/)  { $out=sprintf "%X", $ch; }
-	    default        { $out=chr($ch); }
-	}
+	if    ($style =~ /utf/)   { $out=sprintf "\\${utfmac}{%X}", $ch; }
+	elsif ($style =~ /kchar/) { $out=sprintf "\\kchar\"%X", $ch; }
+	elsif ($style =~ /list/)  { $out=sprintf "%X", $ch; }
+	else                      { $out=chr($ch); }
 	my ($newline);
 	$newline = $allrange ? 25 : 10;
 	if ($i % $newline != 1) {
