@@ -119,6 +119,7 @@ sub glue_kern{
 	print  JPL "   (LABEL O 2)\n";
 	printf JPL "   (GLUE O 5 R %f R 0.0 R %f)\n", $half_width, $half_width;
 	printf JPL "   (GLUE O 6 R %f R 0.0 R %f)\n", $half_width, $half_width;
+	print  JPL "   (STOP)\n";
 	print  JPL "   (LABEL O 6)\n";
 	printf JPL "   (GLUE O 0 R %f R 0.0 R %f)\n", $half_width, $half_width;
 	printf JPL "   (GLUE O 1 R %f R 0.0 R %f)\n", $half_width, $half_width;

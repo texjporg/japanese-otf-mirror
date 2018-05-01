@@ -49,6 +49,7 @@ closedir(VF);
 closedir(JPL);
 closedir(JFM);
 
+$n_fixed=7; ## type 0..6
 $ucs=1; # 1: upphiraXXX or 0: phiraXXX
 if ($ucs) {
 	$CheckDVICode::is_ucs=1;
@@ -108,7 +109,7 @@ sub glue_kern{
 	print  JPL "   (KRN O 5 R 0.0)\n";
 	print  JPL "   (LABEL O 0)\n";
 	for ($char=0; $char<=$#uniq_char_width_array; $char++){
-		printf JPL "   (LABEL H %X)\n",($char+7);
+		printf JPL "   (LABEL H %X)\n",($char+$n_fixed);
 	}
 	printf JPL "   (GLUE O 1 R %f R 0.0 R %f)\n", $half_width, $half_width;
 	print  JPL "   (LABEL O 1)\n";
@@ -117,12 +118,13 @@ sub glue_kern{
 	print  JPL "   (LABEL O 2)\n";
 	printf JPL "   (GLUE O 5 R %f R 0.0 R %f)\n", $half_width, $half_width;
 	printf JPL "   (GLUE O 6 R %f R 0.0 R %f)\n", $half_width, $half_width;
+	print  JPL "   (STOP)\n";
 	print  JPL "   (LABEL O 6)\n";
 	printf JPL "   (GLUE O 0 R %f R 0.0 R %f)\n", $half_width, $half_width;
 	printf JPL "   (GLUE O 1 R %f R 0.0 R %f)\n", $half_width, $half_width;
 	printf JPL "   (GLUE O 3 R %f R 0.0 R %f)\n", $quater_width, $quater_width;
 	for ($char=0; $char<=$#uniq_char_width_array; $char++){
-		printf JPL "   (GLUE H %X R %f R 0.0 R %f)\n",($char+7), $half_width, $half_width;
+		printf JPL "   (GLUE H %X R %f R 0.0 R %f)\n",($char+$n_fixed), $half_width, $half_width;
 	}
 	print  JPL "   (STOP)\n";
 	print  JPL "   (LABEL O 4)\n";
@@ -132,7 +134,7 @@ sub glue_kern{
 	printf JPL "   (GLUE O 5 R %f R 0.0 R 0.0)\n", $half_width;
 	printf JPL "   (GLUE O 6 R %f R 0.0 R 0.0)\n", $half_width;
 	for ($char=0; $char<=$#uniq_char_width_array; $char++){
-		printf JPL "   (GLUE H %X R %f R 0.0 R 0.0)\n",($char+7), $half_width;
+		printf JPL "   (GLUE H %X R %f R 0.0 R 0.0)\n",($char+$n_fixed), $half_width;
 	}
 	print  JPL "   (STOP)\n";
 	print  JPL "   (LABEL O 3)\n";
@@ -144,7 +146,7 @@ sub glue_kern{
 	printf JPL "   (GLUE O 5 R %f R 0.0 R %f)\n", $quater_width, $quater_width;
 	printf JPL "   (GLUE O 6 R %f R 0.0 R %f)\n", $quater_width, $quater_width;
 	for ($char=0; $char<=$#uniq_char_width_array; $char++){
-		printf JPL "   (GLUE H %X R %f R 0.0 R %f)\n",($char+7), $quater_width, $quater_width;
+		printf JPL "   (GLUE H %X R %f R 0.0 R %f)\n",($char+$n_fixed), $quater_width, $quater_width;
 	}
 	print  JPL "   (STOP)\n";
 	print  JPL "   )\n";
@@ -187,7 +189,7 @@ END_OF_DATA
 }
 sub print_type_jis{
 	@type_width=($font_at, $half_width, $half_width, $half_width, $half_width, $font_at, $font_at);
-	for ($k=0; $k<=6; $k++){
+	for ($k=0; $k<$n_fixed; $k++){
 		printf  JPL "(TYPE H %x\n", $k;
 		printf  JPL "   (CHARWD R %f)\n", $type_width[$k];
 		&char_foot_h;
@@ -309,7 +311,7 @@ sub chars_in_type_prop{
 	$x = '-';
 	@uniq_char_width_array = grep( $_ ne $x && ($x = $_), sort values(%char_width_hash));
 	for ($j=0; $j<=$#uniq_char_width_array; $j++){
-		printf JPL "(CHARSINTYPE H %X\n",($j+7);
+		printf JPL "(CHARSINTYPE H %X\n",($j+$n_fixed);
 		print  JPL "   ";
 		@char_in_this_type = ();
 		while (($name, $value) = each(%char_width_hash)) {
@@ -328,7 +330,7 @@ sub chars_in_type_prop{
 sub print_type_prop{
 	for ($j=0; $j<=$#uniq_char_width_array; $j++){
 		$char_width=$uniq_char_width_array[$j];
-		printf JPL "(TYPE H %X\n", ($j+7);
+		printf JPL "(TYPE H %X\n", ($j+$n_fixed);
 		printf JPL "   (CHARWD R %f)\n", $char_width;
 		&char_foot_h;
 	}
