@@ -150,12 +150,13 @@ sub glue_kern{
 	print  JPL "   )\n";
 }
 sub chars_in_type_jis{
-	my ($type1add, $type2add, $type3add, $type5)=();
+	my ($type1add, $type2add, $type3add, $type5, $type6add)=();
 	if ($ucs) {
 		$type1add = "UFF5F U3018 U3016 U301D U00AB U2329 U301A";
 		$type2add = "UFF60 U3019 U3017 U301F U00BB U232A U301B U301E";
 		$type3add = "U00B7";
 		$type5 = "— ― … ‥";
+		$type6add = "U203C U2047 U2048 U2049";
 	} else {
 		$type5 = "— … ‥";
 	}
@@ -180,6 +181,7 @@ print JPL <<END_OF_DATA;
    )
 (CHARSINTYPE O 6
    ？ ！ 
+   $type6add 
    )
 END_OF_DATA
 }
