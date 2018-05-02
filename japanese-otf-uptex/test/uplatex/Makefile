@@ -6,7 +6,7 @@ DVIPS = dvips
 DVIPDFMX = dvipdfmx
 PDVITYPE = pdvitype
 
-all: otf sp art bsrg jis04 scale prop punct
+all: otf sp art bsrg jis04 scale prop punct exclam
 
 otf: uplatex-otf platex-otf
 sp: uplatex-sp platex-sp
@@ -15,6 +15,7 @@ brsg: uplatex-brsg platex-brsg
 jis04: uplatex-jis04 platex-jis04
 scale: uplatex-scale platex-scale
 prop: uplatex-prop platex-prop
+exclam: uplatex-exclam platex-exclam
 
 uplatex-otf:
 	for opt in default deluxe expert bold noreplace; do \
@@ -171,6 +172,20 @@ punct:
 		$(UPLATEX) "\def\option{$$opt}\input" punctuation.tex ; \
 		mv punctuation.dvi punctuation-$$opt.dvi ; \
 		$(DVIPDFMX) punctuation-$$opt.dvi ; \
+	done
+
+uplatex-exclam:
+	for opt in default deluxe noreplace; do \
+		$(UPLATEX) "\def\option{$$opt}\input" exclam.tex ; \
+		mv exclam.dvi exclam-$$opt-uplatex.dvi ; \
+		$(DVIPDFMX) exclam-$$opt-uplatex.dvi ; \
+	done
+
+platex-exclam:
+	for opt in default deluxe noreplace; do \
+		$(PLATEX) "\def\option{$$opt}\input" exclam.tex ; \
+		mv exclam.dvi exclam-$$opt-platex.dvi ; \
+		$(DVIPDFMX) exclam-$$opt-platex.dvi ; \
 	done
 
 clean:
