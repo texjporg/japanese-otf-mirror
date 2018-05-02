@@ -234,7 +234,7 @@ sub write_char {
 		if   (&is_ucs_kigo){&print_kigo_char;}
 		elsif(&is_ucs_hira){&print_kana_char;}
 		elsif(&is_ucs_kata){&print_kana_char;}
-		elsif(&is_ucs_hankana && $direction eq "y"){&print_hankana_char;}
+#		elsif(&is_ucs_hankana && $hk_mode){&print_hankana_char;}
 		else{&print_char;}
 	}
     }
