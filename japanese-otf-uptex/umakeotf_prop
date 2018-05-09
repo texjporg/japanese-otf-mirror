@@ -18,7 +18,7 @@ mkdir ovp
 fi
 
 echo "making proportional kana tfm/vf ..."
-perl -s script/umkpkana.pl -sp=1
+perl -s script/umkpkana.pl -sp=1 -hk
 perl -s script/umkvpkana.pl -sp=1
 
 for face in minw3 minw6 kakuw3 kakuw6 maruw4

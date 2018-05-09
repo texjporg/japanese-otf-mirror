@@ -57,7 +57,8 @@ if ($ucs) {
 		$_="up$_";
 	}
 	if ($hk) { ## command line option -hk: Enable halfwidth katakana
-		$hk_mode=1;  $n_fixed=8;
+		$hk_mode=1;
+		$n_fixed=8; ## type 0..7
 	}
 }
 
