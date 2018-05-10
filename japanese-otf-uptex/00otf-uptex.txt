@@ -1,5 +1,5 @@
 [ Title ]
-otfbeta-uptex (japanese-otf-uptex) Ver.0.20  2018/04/07
+otfbeta-uptex (japanese-otf-uptex) Ver.0.21  2018/05/13
 
 
 [ Abstract ]
@@ -67,10 +67,8 @@ to Adobe standard CMap "UniJIS2004-UTF16-{H,V}".
 
 [ About proportional kana ]
 otfbeta-uptex (japanese-otf-uptex) Ver.0.14 or later supports
-proportional kana at deluxe option and \propshape with limitation:
-* Halfwidth katakana letters are not supported:
-  ｱｲｳｴｵｶｷｸｹｺ ... (in UTF-8)
-To build tfm files, uppltotf in TeX live r43143 or later is required.
+proportional kana at deluxe option and \propshape.
+To build tfm files, uppltotf in TeX Live r43143 or TeX Live 2017 or later is required.
 
 
 [ History ]
@@ -325,4 +323,15 @@ To build tfm files, uppltotf in TeX live r43143 or later is required.
     Add U+00BB, U+232A, U+301B, U+301E to char_type 2.
   test/uplatex/{punctuation,punct0,paren0}.tex, test/uplatex/Makefile ::
     Add a new test for punctuations.
+2018.05.13 Ver0.21
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  script/umk{,v}pkana.pl, basepl/u{base,brsg}-{h,v}.pl ::
+    Add U+203C, U+2047, U+2048, U+2049 to char_type 6.
+  script/umkpkana.pl, umakeotf_prop ::
+    Add -hk option to enable halfwidth katakana letters in hiraprop.
+  script/mkutf32list.pl ::
+    Remove feature 'switch'
+  test/uplatex/{exclam,upkanatest1}.tex, test/uplatex/Makefile ::
+    Add a new test for punctuations and halfwidth katakana.
 
