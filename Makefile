@@ -6,7 +6,9 @@ TEXMF = $(shell kpsewhich -var-value=TEXMFHOME)
 PWDF = $(shell pwd)
 
 default:
-	cd $(PWDF)/japanese-otf ; sh ./makeotf
+	cd $(PWDF)/japanese-otf ; \
+	sh ./makeotf ; \
+	ruby script/otf-hangul.rb >sty/otf-hangul.dfu
 	cd $(PWDF)/japanese-otf-uptex ; \
 	sh ./umakeotf ; \
 	sh ./umakeotf_prop ; \

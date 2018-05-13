@@ -13,7 +13,7 @@
 % The Current Maintainer of this work is KUROKI Yusuke.
 %
 % This work consists of the files otf-hangul.rb
-% and the derived file orf-hangul.dfu.
+% and the derived file otf-hangul.dfu.
 
   \ProvidesFile{otf-hangul.dfu}
    [2010/06/20 v0.02 Hangul symbol, UTF-8 support for inputenc & UTF/OTF packages]
