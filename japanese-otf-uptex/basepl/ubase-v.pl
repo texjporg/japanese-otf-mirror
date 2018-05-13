@@ -80,6 +80,7 @@
    )
 (CHARSINTYPE O 6
    ？ ！ 
+   U203C U2047 U2048 U2049
    )
 (TYPE O 0
    (CHARWD R 1.0)

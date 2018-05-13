@@ -1,0 +1,133 @@
+% -*- coding: utf-8 -*-
+\newif\ifuptexmode\uptexmodefalse
+\ifnum\jis"2121="3000 \uptexmodetrue\fi
+
+\makeatletter
+
+\def\@opt@{multi}
+\def\@default{default}
+\def\@jarticle{jarticle}
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\class\@undefined
+ \ifuptexmode
+  \def\class{ujarticle}
+ \else
+  \def\class{jarticle}
+ \fi
+\fi
+
+\ifuptexmode
+  \edef\@opt@{uplatex,\@opt@}
+\fi
+
+\documentclass[a4paper,draft]{\class}
+
+\usepackage{plext}
+\usepackage[\@opt@]{otf}
+
+\makeatother
+
+\begin{document}
+\parindent0pt
+
+クラス：\texttt{\class}\\
+オプション：\texttt{\option}
+
+\vskip1zh
+
+あっ！あっ？ああ！ああ？驚いた。\\
+あっ！ あっ？ ああ！ ああ？ 驚いた。\\
+あっ！あっ？と驚き、ああ！ああ？と嘆く。\\
+あっ！\inhibitglue あっ？\inhibitglue と驚き、
+ああ！\inhibitglue ああ？\inhibitglue と嘆く。\\
+あっ\,！\inhibitglue\,あっ\,？\inhibitglue\,と驚き、
+ああ\,！\inhibitglue\,ああ\,？\inhibitglue\,と嘆く。\\
+あっ！\<あっ？\<と驚き、
+ああ！\<ああ？\<と嘆く。\\
+あっ\,！\<\,あっ\,？\<\,と驚き、
+ああ\,！\<\,ああ\,？\<\,と嘆く。
+
+\ifuptexmode
+
+あっ‼あっ⁇ああ‼ああ⁇驚いた。\\
+あっ‼ あっ⁇ ああ‼ ああ⁇ 驚いた。\\
+あっ‼あっ⁇と驚き、ああ‼ああ⁇と嘆く。\\
+あっ‼\inhibitglue あっ⁇\inhibitglue と驚き、
+ああ‼\inhibitglue ああ⁇\inhibitglue と嘆く。\\
+あっ\,‼\inhibitglue\,あっ\,⁇\inhibitglue\,と驚き、
+ああ\,‼\inhibitglue\,ああ\,⁇\inhibitglue\,と嘆く。\\
+あっ‼\<あっ⁇\<と驚き、
+ああ‼\<ああ⁇\<と嘆く。\\
+あっ\,‼\<\,あっ\,⁇\<\,と驚き、
+ああ\,‼\<\,ああ\,⁇\<\,と嘆く。
+
+あっ⁈あっ⁉ああ⁈ああ⁉驚いた。\\
+あっ⁈ あっ⁉ ああ⁈ ああ⁉ 驚いた。\\
+あっ⁈あっ⁉と驚き、ああ⁈ああ⁉と嘆く。\\
+あっ⁈\inhibitglue あっ⁉\inhibitglue と驚き、
+ああ⁈\inhibitglue ああ⁉\inhibitglue と嘆く。\\
+あっ\,⁈\inhibitglue\,あっ\,⁉\inhibitglue\,と驚き、
+ああ\,⁈\inhibitglue\,ああ\,⁉\inhibitglue\,と嘆く。\\
+あっ⁈\<あっ⁉\<と驚き、
+ああ⁈\<ああ⁉\<と嘆く。\\
+あっ\,⁈\<\,あっ\,⁉\<\,と驚き、
+ああ\,⁈\<\,ああ\,⁉\<\,と嘆く。
+
+\fi
+
+\vskip1zh
+
+\parbox<t>{25.0zw}{
+
+あっ！あっ？ああ！ああ？驚いた。\\
+あっ！ あっ？ ああ！ ああ？ 驚いた。\\
+あっ！あっ？と驚き、ああ！ああ？と嘆く。\\
+あっ！\inhibitglue あっ？\inhibitglue と驚き、
+ああ！\inhibitglue ああ？\inhibitglue と嘆く。\\
+あっ\,！\inhibitglue\,あっ\,？\inhibitglue\,と驚き、
+ああ\,！\inhibitglue\,ああ\,？\inhibitglue\,と嘆く。\\
+あっ！\<あっ？\<と驚き、
+ああ！\<ああ？\<と嘆く。\\
+あっ\,！\<\,あっ\,？\<\,と驚き、
+ああ\,！\<\,ああ\,？\<\,と嘆く。
+
+\ifuptexmode
+
+あっ‼あっ⁇ああ‼ああ⁇驚いた。\\
+あっ‼ あっ⁇ ああ‼ ああ⁇ 驚いた。\\
+あっ‼あっ⁇と驚き、ああ‼ああ⁇と嘆く。\\
+あっ‼\inhibitglue あっ⁇\inhibitglue と驚き、
+ああ‼\inhibitglue ああ⁇\inhibitglue と嘆く。\\
+あっ\,‼\inhibitglue\,あっ\,⁇\inhibitglue\,と驚き、
+ああ\,‼\inhibitglue\,ああ\,⁇\inhibitglue\,と嘆く。\\
+あっ‼\<あっ⁇\<と驚き、
+ああ‼\<ああ⁇\<と嘆く。\\
+あっ\,‼\<\,あっ\,⁇\<\,と驚き、
+ああ\,‼\<\,ああ\,⁇\<\,と嘆く。
+
+あっ⁈あっ⁉ああ⁈ああ⁉驚いた。\\
+あっ⁈ あっ⁉ ああ⁈ ああ⁉ 驚いた。\\
+あっ⁈あっ⁉と驚き、ああ⁈ああ⁉と嘆く。\\
+あっ⁈\inhibitglue あっ⁉\inhibitglue と驚き、
+ああ⁈\inhibitglue ああ⁉\inhibitglue と嘆く。\\
+あっ\,⁈\inhibitglue\,あっ\,⁉\inhibitglue\,と驚き、
+ああ\,⁈\inhibitglue\,ああ\,⁉\inhibitglue\,と嘆く。\\
+あっ⁈\<あっ⁉\<と驚き、
+ああ⁈\<ああ⁉\<と嘆く。\\
+あっ\,⁈\<\,あっ\,⁉\<\,と驚き、
+ああ\,⁈\<\,ああ\,⁉\<\,と嘆く。
+
+\fi
+
+}
+
+\end{document}
+
