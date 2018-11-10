@@ -28,8 +28,8 @@ script/MakeSPList.pm : perl module making data of characters on supplementary pl
 script/mktfm_sp.pl   : perl script making tfm for characters on supplementary planes.
 script/mkutfvf_sp.pl : perl script making vf for characters on supplementary planes.
 script/sp_list_j.txt : a list of characters on supplementary planes in UniJIS-UTF32.
-script/sp_list_c.txt : a list of characters on supplementary planes in UniCNS-UTF32.
-script/sp_list_t.txt : a list of characters on supplementary planes in UniGB-UTF32.
+script/sp_list_c.txt : a list of characters on supplementary planes in UniGB-UTF32.
+script/sp_list_t.txt : a list of characters on supplementary planes in UniCNS-UTF32.
 script/sp_list_k.txt : a list of characters on supplementary planes in UniKS-UTF32.
 script/CheckDVICode.pm : perl module checking category of characters.
 script/umkpkana.pl   : perl script making pl, ovp for proportional kana
@@ -286,7 +286,7 @@ To build tfm files, uppltotf in TeX Live r43143 or TeX Live 2017 or later is req
     and Adobe-CNS1-6 cid2code.txt (Version 12/04/2015).
   script/umk{,v}pkana.pl, test/uplatex/upkanatest1.tex ::
     Add more proportional kana support:
-      〃〆ヿゟゔゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿヷヸヹヺ (in UTF-8)
+      〃〆ヿゟヴゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿヷヸヹヺ (in UTF-8)
     Latest uppltotf (TeX Live r43143 or later) is required.
   patch/*.patch::
     Remove.
