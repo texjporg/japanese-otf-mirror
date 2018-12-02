@@ -286,7 +286,7 @@ To build tfm files, uppltotf in TeX Live r43143 or TeX Live 2017 or later is req
     and Adobe-CNS1-6 cid2code.txt (Version 12/04/2015).
   script/umk{,v}pkana.pl, test/uplatex/upkanatest1.tex ::
     Add more proportional kana support:
-      〃〆ヿゟヴゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿヷヸヹヺ (in UTF-8)
+      〃〆ヿゟゔゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿヷヸヹヺ (in UTF-8)
     Latest uppltotf (TeX Live r43143 or later) is required.
   patch/*.patch::
     Remove.
