@@ -182,7 +182,6 @@ sub is_ucs_kigo{
 	return 1 if ($dvicode>=0x201C && $dvicode<=0x201D);
 	return 1 if ($dvicode>=0x2329 && $dvicode<=0x232A);
 	return 1 if ($dvicode>=0x3001 && $dvicode<=0x301F);
-	return 1 if ($dvicode>=0x3090 && $dvicode<=0x3093);
 	return 1 if ($dvicode>=0x3097 && $dvicode<=0x309F);
 	return 1 if ($dvicode>=0x30FB && $dvicode<=0x30FE);
 	return 1 if ($dvicode>=0xFF08 && $dvicode<=0xFF60);
@@ -191,7 +190,7 @@ sub is_ucs_kigo{
 }
 
 sub is_ucs_hira{
-	return 1 if ($dvicode>=0x3041 && $dvicode<=0x308F);
+	return 1 if ($dvicode>=0x3041 && $dvicode<=0x3093);
 	return 1 if ($dvicode>=0x3094 && $dvicode<=0x3096); # Vu, small Ka, small Ke
 	return 0;
 }
