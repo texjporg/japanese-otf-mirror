@@ -24,7 +24,7 @@ This software is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
 =cut
 
 use strict;
-use encoding 'utf8';
+binmode(STDOUT, ":utf8");
 
 our ($style, $allrange);
 our (@count, %reset_ch, $icollec, $cid2code, $line);
@@ -62,9 +62,9 @@ if ($.<8 && /((Adobe-(?:Japan|CNS|GB|Korea).*)-\d)\s/) {
 	$utfmac="UTFK"; $cmap="UniKS-UTF32";
 	$source="Adobe-Korea1-2/cid2code.txt"; }
     else                          {
-	@cid_max = qw/-1 8283 8358 8719 9353 15443 20316 23057/;
+	@cid_max = qw/-1 8283 8358 8719 9353 15443 20316 23057 23059/;
 	$utfmac="UTF";  $cmap="UniJIS-UTF32";
-	$source="Adobe-Japan1-6/cid2code.txt"; }
+	$source="Adobe-Japan1-7/cid2code.txt"; }
 }
 
 next if (/^#/);
