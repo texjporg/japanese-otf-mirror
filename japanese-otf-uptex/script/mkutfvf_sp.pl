@@ -16,7 +16,9 @@ This software is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
 
 =cut
 
-use script::MakeSPList;
+use FindBin;
+use lib "$FindBin::Bin";
+use MakeSPList;
 
 if (!defined($ovp2ovf)) { ## check option '-ovp2ovf=????'
     $ovp2ovf = defined($ENV{'OVP2OVF'}) ? $ENV{'OVP2OVF'} : 'ovp2ovf';
