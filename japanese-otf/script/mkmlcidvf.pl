@@ -29,9 +29,9 @@ sub makevf {
 
 sub fonthead {
 if ($lang eq "c"){
-	print OUT "(VTITLE JVF for Adobe-GB1-4)\n"
+	print OUT "(VTITLE JVF for Adobe-GB1-5)\n"
 }elsif ($lang eq "t"){
-	print OUT "(VTITLE JVF for Adobe-CNS1-4)\n"
+	print OUT "(VTITLE JVF for Adobe-CNS1-7)\n"
 }elsif ($lang eq "k"){
 	print OUT "(VTITLE JVF for Adobe-Korea1-2)\n"
 }
