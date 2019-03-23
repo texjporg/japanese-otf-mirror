@@ -1,7 +1,7 @@
 % -*- coding: utf-8 -*-
 
 %%%%%%%%
-% ①,②,③,④ のどれかを実行すればよい。
+% ①,②,③,④,⑤,⑥ のどれかを実行すればよい。
 %   ① platex, 新元号なし
 %   $ platex era.tex
 %   ② uplatex, 新元号なし
@@ -10,6 +10,10 @@
 %   $ platex "\def\era{true}\input" era.tex
 %   ④ uplatex, 新元号あり
 %   $ uplatex "\def\era{true}\input" era.tex
+%   ⑤ platex, 新元号あり、\ajLig{新元号}も含む
+%   $ platex "\def\era{full}\input" era.tex
+%   ⑥ uplatex, 新元号あり、\ajLig{新元号}も含む
+%   $ uplatex "\def\era{full}\input" era.tex
 %%%%%%
 
 \newif\ifuptexmode\uptexmodefalse
@@ -19,6 +23,7 @@
 
 \def\@opt@{multi}
 \def\@default{default}
+\def\@full{full}
 
 \ifx\option\@undefined
  \def\option{default}
@@ -41,7 +46,13 @@
  \edef\era{なし}
 \else
  \neweratrue
- \edef\era{あり}
+ \ifx\era\@full
+  \def\ligNewEra{\ajLig{新元号}}
+  \edef\era{あり (ajLigも含む)}
+ \else
+  \def\ligNewEra{\relax}
+  \edef\era{あり}
+ \fi
 \fi
 \typeout{## 新元号:\era ##}
 
@@ -62,7 +73,7 @@
 
 \vskip1zh
 
-\bs{}ajLig: \ajLig{明治}\ajLig{大正}\ajLig{昭和}\ajLig{平成}\ifnewera\ajLig{新元号}\fi
+\bs{}ajLig: \ajLig{明治}\ajLig{大正}\ajLig{昭和}\ajLig{平成}\ifnewera\ligNewEra\fi
 
 \bs{}UTF: \UTF{337E}\UTF{337D}\UTF{337C}\UTF{337B}\ifnewera\UTF{32FF}\fi
 
@@ -80,7 +91,7 @@ UTF-8: ㍾㍽㍼㍻\ifnewera ㋿\fi
 
 \parbox<t>{25.0zw}{
 
-\bs{}ajLig: \ajLig{明治}\ajLig{大正}\ajLig{昭和}\ajLig{平成}\ifnewera\ajLig{新元号}\fi
+\bs{}ajLig: \ajLig{明治}\ajLig{大正}\ajLig{昭和}\ajLig{平成}\ifnewera\ligNewEra\fi
 
 \bs{}UTF: \UTF{337E}\UTF{337D}\UTF{337C}\UTF{337B}\ifnewera\UTF{32FF}\fi
 
