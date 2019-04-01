@@ -10,9 +10,9 @@
 %   $ platex "\def\era{true}\input" era.tex
 %   ④ uplatex, 新元号あり
 %   $ uplatex "\def\era{true}\input" era.tex
-%   ⑤ platex, 新元号あり、\ajLig{新元号}も含む
+%   ⑤ platex, 新元号あり、\ajLig{令和}も含む
 %   $ platex "\def\era{full}\input" era.tex
-%   ⑥ uplatex, 新元号あり、\ajLig{新元号}も含む
+%   ⑥ uplatex, 新元号あり、\ajLig{令和}も含む
 %   $ uplatex "\def\era{full}\input" era.tex
 %%%%%%
 
@@ -47,7 +47,7 @@
 \else
  \neweratrue
  \ifx\era\@full
-  \def\ligNewEra{\ajLig{新元号}}
+  \def\ligNewEra{\ajLig{令和}}
   \edef\era{あり (ajLigも含む)}
  \else
   \def\ligNewEra{\relax}
