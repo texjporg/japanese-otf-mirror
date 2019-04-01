@@ -1,10 +1,10 @@
 [ Title ]
-japanese-otf-uptex Ver.0.22  2018/12/08
+japanese-otf-uptex Ver.0.23  2019/04/01
 
 
 [ Abstract ]
 This package provides upLaTeX support of
-japanese-otf package "otfbeta (v1.7b7 2018/02/01)" by psitau-san
+japanese-otf package "otfbeta (v1.7b8 2019/04/01)" by psitau-san
 ( http://psitau.kitunebi.com/otf.html )
 
 
@@ -304,7 +304,7 @@ https://github.com/t-tk/japanese-otf-uptex
     and Adobe-CNS1-6 cid2code.txt (Version 12/04/2015).
   script/umk{,v}pkana.pl, test/uplatex/upkanatest1.tex ::
     Add more proportional kana support:
-      〃〆ヿゟゔゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿヷヸヹヺ (in UTF-8)
+      〃〆ゔゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿヷヸヹヺ (in UTF-8)
     Latest uppltotf (TeX Live r43143 or later) is required.
   patch/*.patch::
     Remove.
@@ -367,3 +367,18 @@ https://github.com/t-tk/japanese-otf-uptex
     Adobe-Japan1-7 cid2code.txt (Version 07/30/2018).
   test/uplatex/paren0.tex ::
     Fix typo.
+2019.04.01 Ver0.23
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  script/CheckDVICode.pm, script/umk{,v}pkana.pl ::
+    Add more proportional kana support:
+      ヿゟ (in UTF-8)
+    Previously, they did not work due to a bug.
+  script/CheckDVICode.pm, test/uplatex/sp_jp_{utf,text}.tex ::
+    Update references:
+    Unicode Blocks-12.0.0.txt (Date: 2018-07-30, 19:40:00 GMT [KW])
+    Adobe-Japan1-7 cid2code.txt (Version 07/30/2018).
+  test/uplatex/era.tex ::
+    Added.
+  COPYRIGHT ::
+    Update year.

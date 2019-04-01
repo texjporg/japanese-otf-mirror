@@ -232,8 +232,8 @@ sub write_char {
 			next unless ($exist_char{sprintf("%X",$ucscode)});
 		}
 		if   (&is_ucs_kigo){&print_kigo_char;}
-		elsif(&is_ucs_hira){&print_kana_char;}
-		elsif(&is_ucs_kata){&print_kana_char;}
+		elsif(&is_ucs_hira || &is_dvicode('hira-yori')){&print_kana_char;}
+		elsif(&is_ucs_kata || &is_dvicode('kata-koto')){&print_kana_char;}
 #		elsif(&is_ucs_hankana && $hk_mode){&print_hankana_char;}
 		else{&print_char;}
 	}

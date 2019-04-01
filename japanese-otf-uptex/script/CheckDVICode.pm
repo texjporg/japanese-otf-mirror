@@ -159,6 +159,10 @@ sub is_dvicode($){
 	if ($key eq 'open')  { return &is_ucs_open; }
 	if ($key eq 'close') { return (!&is_ucs_open); }
 
+	# ucs only
+	if ($key eq 'hira-yori'){ return ($code == 0x309F);} # yori
+	if ($key eq 'kata-koto'){ return ($code == 0x30FF);} # koto
+
 	die "illegal keyname ($key)\n";
     }
 }
@@ -182,7 +186,7 @@ sub is_ucs_kigo{
 	return 1 if ($dvicode>=0x201C && $dvicode<=0x201D);
 	return 1 if ($dvicode>=0x2329 && $dvicode<=0x232A);
 	return 1 if ($dvicode>=0x3001 && $dvicode<=0x301F);
-	return 1 if ($dvicode>=0x3097 && $dvicode<=0x309F);
+	return 1 if ($dvicode>=0x3097 && $dvicode<=0x309E);
 	return 1 if ($dvicode>=0x30FB && $dvicode<=0x30FE);
 	return 1 if ($dvicode>=0xFF08 && $dvicode<=0xFF60);
 
@@ -192,6 +196,7 @@ sub is_ucs_kigo{
 sub is_ucs_hira{
 	return 1 if ($dvicode>=0x3041 && $dvicode<=0x3093);
 	return 1 if ($dvicode>=0x3094 && $dvicode<=0x3096); # Vu, small Ka, small Ke
+#	return 1 if ($dvicode==0x309F); # Yori :: It is omitted because it is not included in "Tuned" in AJ1-6
 	return 0;
 }
 
@@ -199,6 +204,7 @@ sub is_ucs_kata{
 	return 1 if ($dvicode>=0x30A1 && $dvicode<=0x30F6);
 	return 1 if ($dvicode>=0x30F7 && $dvicode<=0x30FA); # Va, Vi, Ve, Vo
 	return 1 if ($dvicode>=0x31F0 && $dvicode<=0x31FF); # small Ku, small Shi, ... , Small Re, Small Ro
+#	return 1 if ($dvicode==0x30FF); # Koto :: It is omitted because it is not included in "Tuned" in AJ1-6
 	return 0;
 }
 
