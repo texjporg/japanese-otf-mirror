@@ -5,11 +5,11 @@ This bundle is an unofficial mirror of the followings:
 - japanese-otf
   (OTF package by Shuzaburo Saito)
     - upstream: http://psitau.kitunebi.com/otf.html
-    - currently otfbeta v1.7b7 (2018/02/01)
+    - currently otfbeta v1.7b8 (2019/04/01)
 - japanese-otf-uptex
   (upLaTeX support of japanese-otf by Takuji Tanaka)
     - upstream: http://www.t-lab.opal.ne.jp/tex/uptex_en.html
-    - currently japanese-otf-uptex Ver.0.22 (2018/12/08)
+    - currently japanese-otf-uptex Ver.0.23 (2019/04/01)
 - hiraprop
   (LaTeX and TFM/VF support for Hiragino Proportional Alphabet)
     - upstream: http://psitau.kitunebi.com/experiment.html

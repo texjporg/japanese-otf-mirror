@@ -27,7 +27,7 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 
 ### japanese-otf
 
-- Obtain and extract `http://psitau.kitunebi.com/otf1.7b7.zip`
+- Obtain and extract `http://psitau.kitunebi.com/otf1.7b8.zip`
 - Rename `readme.txt` -> `readme-ja.txt`
 - `chmod +x makeotf mkjvf`
 - Convert all files in `script/` and `test/` from CRLF -> LF
@@ -39,7 +39,7 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 
 ### japanese-otf-uptex
 
-- Obtain and extract `https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.22`
+- Obtain and extract `https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.23`
 - `make` (at top directory)
 - Add `README` (almost same as `00otf-uptex.txt`)
 
