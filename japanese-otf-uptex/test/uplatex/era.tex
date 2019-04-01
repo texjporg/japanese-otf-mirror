@@ -1,0 +1,111 @@
+% -*- coding: utf-8 -*-
+
+%%%%%%%%
+% ①,②,③,④,⑤,⑥ のどれかを実行すればよい。
+%   ① platex, 新元号なし
+%   $ platex era.tex
+%   ② uplatex, 新元号なし
+%   $ uplatex era.tex
+%   ③ platex, 新元号あり
+%   $ platex "\def\era{true}\input" era.tex
+%   ④ uplatex, 新元号あり
+%   $ uplatex "\def\era{true}\input" era.tex
+%   ⑤ platex, 新元号あり、\ajLig{令和}も含む
+%   $ platex "\def\era{full}\input" era.tex
+%   ⑥ uplatex, 新元号あり、\ajLig{令和}も含む
+%   $ uplatex "\def\era{full}\input" era.tex
+%%%%%%
+
+\newif\ifuptexmode\uptexmodefalse
+\ifnum\jis"2121="3000 \uptexmodetrue\fi
+
+\makeatletter
+
+\def\@opt@{multi}
+\def\@default{default}
+\def\@full{full}
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\class\@undefined
+ \ifuptexmode
+  \def\engine{upLaTeX}
+ \else
+  \def\engine{pLaTeX}
+ \fi
+\fi
+
+\newif\ifnewera\newerafalse
+\ifx\era\@undefined
+ \edef\era{なし}
+\else
+ \neweratrue
+ \ifx\era\@full
+  \def\ligNewEra{\ajLig{令和}}
+  \edef\era{あり (ajLigも含む)}
+ \else
+  \def\ligNewEra{\relax}
+  \edef\era{あり}
+ \fi
+\fi
+\typeout{## 新元号:\era ##}
+
+\documentclass[a4paper,draft,autodetect-engine]{jsarticle}
+
+\usepackage{plext}
+\usepackage[\@opt@]{otf}
+
+\makeatother
+\edef\bs{$\backslash$\kern0em}
+
+\begin{document}
+\parindent0pt
+
+エンジン：\texttt{\engine}\\
+オプション：\texttt{\option}\\
+新元号：\era
+
+\vskip1zh
+
+\bs{}ajLig: \ajLig{明治}\ajLig{大正}\ajLig{昭和}\ajLig{平成}\ifnewera\ligNewEra\fi
+
+\bs{}UTF: \UTF{337E}\UTF{337D}\UTF{337C}\UTF{337B}\ifnewera\UTF{32FF}\fi
+
+\bs{}CID: \CID{7621}\CID{7622}\CID{7623}\CID{8323}\ifnewera\CID{23058}\fi
+
+\ifuptexmode
+
+UTF-8: ㍾㍽㍼㍻\ifnewera ㋿\fi
+
+\bs{}kchar: \kchar"337E\kchar"337D\kchar"337C\kchar"337B\ifnewera\kchar"32FF\fi
+
+\fi
+
+\vskip1zh
+
+\parbox<t>{25.0zw}{
+
+\bs{}ajLig: \ajLig{明治}\ajLig{大正}\ajLig{昭和}\ajLig{平成}\ifnewera\ligNewEra\fi
+
+\bs{}UTF: \UTF{337E}\UTF{337D}\UTF{337C}\UTF{337B}\ifnewera\UTF{32FF}\fi
+
+\bs{}CID: \CID{12041}\CID{12042}\CID{12043}\CID{12044}\ifnewera\CID{23059}\fi
+
+\ifuptexmode
+
+UTF-8: ㍾㍽㍼㍻\ifnewera ㋿\fi
+
+\bs{}kchar: \kchar"337E\kchar"337D\kchar"337C\kchar"337B\ifnewera\kchar"32FF\fi
+
+\fi
+
+}
+
+\end{document}
+

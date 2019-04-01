@@ -25,7 +25,7 @@ for ($d=0; $d<=1; $d++){
 		printf OPL "   (XHEIGHT R %f)\n", $font_at;
 		printf OPL "   (QUAD R %f)\n", $font_at;
 		print OPL "   )\n";
-		for($cidcode=0; $cidcode<=23057; $cidcode++){
+		for($cidcode=0; $cidcode<=23059; $cidcode++){
 			if ($dir eq "h"){
 				if (($cidcode >= 231) && ($cidcode <= 632)){
 					$width=0.5;

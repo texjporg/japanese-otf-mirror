@@ -1,4 +1,4 @@
-OTFパッケージ開発版（v1.7b7 2018/02/01）
+OTFパッケージ開発版（v1.7b8 2019/04/01）
 齋藤修三郎
 
 【ライセンス】
@@ -98,6 +98,11 @@ makejvfとの違いは，
 ます。
 
 【変更履歴】
+v1.7b7-->v1.7b8(2019/04/01)
+・新元号に対応．[ajmacros.sty]
+・typoを修正．[redeffont.sty]
+・vfのfontheadをAdobe-Japan1-7, Adobe-GB1-5, Adobe-CNS1-7に変更．[mkcidvf.pl, mkmlcidvf.pl]
+・OFMをCID23059まで出力されるように変更．[mkcidofm.pl]
 v1.7b6-->v1.7b7(2018/02/01)
 ・jsreportを使用した場合もscale=0.92469となるようにしました．[otf.sty]
 ・クラスファイルで\Cjascaleが定義されている場合，scale=\Cjascaleとなるようにしました．[otf.sty]

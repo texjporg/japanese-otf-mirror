@@ -28,7 +28,7 @@ sub makevf {
 
 sub fonthead {
 print OUT <<END_OF_DATA;
-(VTITLE JVF for Adobe-Japan1-6)
+(VTITLE JVF for Adobe-Japan1-7)
 (OFMLEVEL D 0)
 (DESIGNSIZE R 10.000000)
 (CHECKSUM O 0)

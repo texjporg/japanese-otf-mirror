@@ -209,8 +209,8 @@ sub is_ucs_hankana{
 
 # Reference:
 #   http://www.unicode.org/Public/UNIDATA/Blocks.txt
-#     Blocks-10.0.0.txt
-#     Date: 2017-04-12, 17:30:00 GMT [KW]
+#     Blocks-12.0.0.txt
+#     Date: 2018-07-30, 19:40:00 GMT [KW]
 sub is_ucs_jpn_range{
 	return 1 if ($dvicode<=0x04FF); # Cyrillic
 
@@ -256,6 +256,7 @@ sub is_ucs_jpn_range{
 	return 0 if ($dvicode< 0x1B000);
 	return 1 if ($dvicode<=0x1B0FF); # Kana Supplement
 	return 1 if ($dvicode<=0x1B12F); # Kana Extended-A
+	return 1 if ($dvicode<=0x1B16F); # Small Kana Extension
 
 	return 0 if ($dvicode< 0x1F100);
 	return 1 if ($dvicode<=0x1F1FF); # Enclosed Alphanumeric Supplement
