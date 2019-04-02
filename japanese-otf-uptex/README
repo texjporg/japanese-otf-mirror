@@ -3,12 +3,12 @@ README
 
 From 00otf-uptex.txt:
 [ Title ]
-japanese-otf-uptex Ver.0.22  2018/12/08
+japanese-otf-uptex Ver.0.23  2019/04/01
 
 
 [ Abstract ]
 This package provides upLaTeX support of
-japanese-otf package "otfbeta (v1.7b7 2018/02/01)" by psitau-san
+japanese-otf package "otfbeta (v1.7b8 2019/04/01)" by psitau-san
 ( http://psitau.kitunebi.com/otf.html )
 
 --------------------
@@ -22,11 +22,11 @@ Ref. http://opensource.org/licenses/BSD-3-Clause
 The original source has been downloaded from
 	https://github.com/t-tk/japanese-otf-uptex
 as
-	https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.22
+	https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.23
 
 After that the scripts run and the generated tfm and vf files included.
 
 Norbert Preining <preining@logic.at>
 TANAKA Takuji <ttk@t-lab.opal.ne.jp>
-2018-12-08
+2019-04-02
 
