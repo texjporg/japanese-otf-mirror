@@ -125,7 +125,7 @@ sub is_dvicode($){
 	if ($key eq 'kutouten') { return 
 		($code == 0x3001 || $code == 0x3002 ||
 		 $code == 0xFF0C || $code == 0xFF0E ||
-		 $code == 0x30FB ||
+		 $code == 0x30FB || $code == 0x00B7 ||
 		 $code == 0xFF1A || $code == 0xFF1B);}
 	if ($key eq 'burasage') { return 
 		($code == 0x3001 || $code == 0x3002 ||
