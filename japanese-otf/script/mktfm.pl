@@ -55,15 +55,15 @@ sub make_cid_tfm {
 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
 			for ($i=0; $i<=1; $i++){#direction
 				if ($i==0) {$dir="h";}elsif ($i==1){$dir="v";}
-				$varfilename="otf-cj$face-$dir";
-				open(DVIPSTFM,">tfm/$varfilename.tfm") || die "Can't make \'tfm/$varfilename.tfm\'!\n";
-				binmode(DVIPSTFM);
-				if ($i==0) {
-					foreach $binary(@dvips_tfm_h) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
-				}elsif ($i==1){
-					foreach $binary(@dvips_tfm_v) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
-				}
-				close(DVIPSTFM);
+#				$varfilename="otf-cj$face-$dir";
+#				open(DVIPSTFM,">tfm/$varfilename.tfm") || die "Can't make \'tfm/$varfilename.tfm\'!\n";
+#				binmode(DVIPSTFM);
+#				if ($i==0) {
+#					foreach $binary(@dvips_tfm_h) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
+#				}elsif ($i==1){
+#					foreach $binary(@dvips_tfm_v) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
+#				}
+#				close(DVIPSTFM);
 				for ($first_hex=0x0; $first_hex <= 0x5; $first_hex++){
 					$filename="cidj$face".sprintf("%x",$first_hex)."-$dir";
 					open(TEXTFM,">tfm/$filename.tfm") || die "Can't make \'tfm/$filename.tfm\'!\n";
