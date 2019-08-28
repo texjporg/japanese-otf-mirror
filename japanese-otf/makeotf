@@ -146,20 +146,22 @@ ovp2ovf ovp/phiraminw6-v.ovp vf/phiraminw6-v.vf vf/phiraminw6-v.ofm
 ovp2ovf ovp/phiraminw3-v.ovp vf/phiraminw3-v.vf vf/phiraminw3-v.ofm
 ovp2ovf ovp/phirakakuw6-v.ovp vf/phirakakuw6-v.vf vf/phirakakuw6-v.ofm
 ovp2ovf ovp/phiramaruw4-v.ovp vf/phiramaruw4-v.vf vf/phiramaruw4-v.ofm
-cp hminr-h.tfm tfm/hiramin-w3-h.tfm
-cp hminr-h.tfm tfm/hiramin-w6-h.tfm
-cp hminr-h.tfm tfm/hirakaku-w3-h.tfm
-cp hminr-h.tfm tfm/hirakaku-w6-h.tfm
-cp hminr-h.tfm tfm/hiramaru-w4-h.tfm
-cp hminr-v.tfm tfm/hiramin-w3-v.tfm
-cp hminr-v.tfm tfm/hiramin-w6-v.tfm
-cp hminr-v.tfm tfm/hirakaku-w3-v.tfm
-cp hminr-v.tfm tfm/hirakaku-w6-v.tfm
-cp hminr-v.tfm tfm/hiramaru-w4-v.tfm
-echo "making ofm file for dvipdfmx in CVS"
+#cp hminr-h.tfm tfm/hiramin-w3-h.tfm
+#cp hminr-h.tfm tfm/hiramin-w6-h.tfm
+#cp hminr-h.tfm tfm/hirakaku-w3-h.tfm
+#cp hminr-h.tfm tfm/hirakaku-w6-h.tfm
+#cp hminr-h.tfm tfm/hiramaru-w4-h.tfm
+#cp hminr-v.tfm tfm/hiramin-w3-v.tfm
+#cp hminr-v.tfm tfm/hiramin-w6-v.tfm
+#cp hminr-v.tfm tfm/hirakaku-w3-v.tfm
+#cp hminr-v.tfm tfm/hirakaku-w6-v.tfm
+#cp hminr-v.tfm tfm/hiramaru-w4-v.tfm
+#echo "making ofm file for dvipdfmx in CVS"
 #perl script/mkcidofm.pl
+#perl script/mkpropofm.pl
+echo "making tfm file with correct widths"
 perl script/mkcidtfm.pl
-perl script/mkpropofm.pl
+perl script/mkproptfm.pl
 #burasage
 echo "making tfm/vf for burasage ..."
 ppltotf basepl/brsg-h.pl tfm/brsgnmlminr-h.tfm
