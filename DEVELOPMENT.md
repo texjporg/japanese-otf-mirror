@@ -48,8 +48,8 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 ### japanese-otf-uptex
 
 - Obtain and extract `https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.23`
+- Add `README` and `README.nonfree`
 - `make` (at top directory)
-- Add `README` (almost same as `00otf-uptex.txt`)
 
 ### hiraprop
 
