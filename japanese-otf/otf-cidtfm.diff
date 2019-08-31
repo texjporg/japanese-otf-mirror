@@ -1,8 +1,7 @@
-diff --git a/japanese-otf/makeotf b/japanese-otf/makeotf
-index 7b134c9..4a828a6 100755
---- a/japanese-otf/makeotf
-+++ b/japanese-otf/makeotf
-@@ -157,7 +157,8 @@ cp hminr-v.tfm tfm/hirakaku-w3-v.tfm
+diff -urN japanese-otf.orig/makeotf japanese-otf/makeotf
+--- japanese-otf.orig/makeotf	2019-08-31 09:38:11.000000000 +0900
++++ japanese-otf/makeotf	2019-08-31 09:40:47.000000000 +0900
+@@ -157,7 +157,8 @@
  cp hminr-v.tfm tfm/hirakaku-w6-v.tfm
  cp hminr-v.tfm tfm/hiramaru-w4-v.tfm
  echo "making ofm file for dvipdfmx in CVS"
@@ -12,11 +11,9 @@ index 7b134c9..4a828a6 100755
  perl script/mkpropofm.pl
  #burasage
  echo "making tfm/vf for burasage ..."
-diff --git a/japanese-otf/script/mkcidtfm.pl b/japanese-otf/script/mkcidtfm.pl
-new file mode 100644
-index 0000000..5d44f61
---- /dev/null
-+++ b/japanese-otf/script/mkcidtfm.pl
+diff -urN japanese-otf.orig/script/mkcidtfm.pl japanese-otf/script/mkcidtfm.pl
+--- japanese-otf.orig/script/mkcidtfm.pl	1970-01-01 09:00:00.000000000 +0900
++++ japanese-otf/script/mkcidtfm.pl	2019-08-31 09:40:47.000000000 +0900
 @@ -0,0 +1,115 @@
 +opendir(PLD, "pl") || mkdir("pl",0755) || die "cannot mkdir pl";
 +opendir(TFMD, "tfm") || mkdir("tfm",0755) || die "cannot mkdir tfm";
@@ -133,11 +130,10 @@ index 0000000..5d44f61
 +		system("uppltotf pl/otf-cjxx-$dir.pl tfm/$font_name.tfm")
 +	}
 +}
-diff --git a/japanese-otf/script/mktfm.pl b/japanese-otf/script/mktfm.pl
-index ae0b82a..b0c1ade 100644
---- a/japanese-otf/script/mktfm.pl
-+++ b/japanese-otf/script/mktfm.pl
-@@ -55,15 +55,15 @@ sub make_cid_tfm {
+diff -urN japanese-otf.orig/script/mktfm.pl japanese-otf/script/mktfm.pl
+--- japanese-otf.orig/script/mktfm.pl	2019-08-31 09:38:11.000000000 +0900
++++ japanese-otf/script/mktfm.pl	2019-08-31 09:40:47.000000000 +0900
+@@ -55,15 +55,15 @@
  				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
  			for ($i=0; $i<=1; $i++){#direction
  				if ($i==0) {$dir="h";}elsif ($i==1){$dir="v";}

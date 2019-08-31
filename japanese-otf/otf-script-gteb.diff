@@ -1,6 +1,6 @@
 diff -ur japanese-otf.orig/makeotf japanese-otf/makeotf
 --- japanese-otf.orig/makeotf	2010-03-27 09:48:06.000000000 +0900
-+++ japanese-otf/makeotf	2018-01-31 21:52:00.000000000 +0900
++++ japanese-otf/makeotf	2019-08-31 09:32:52.000000000 +0900
 @@ -54,6 +54,14 @@
  #for extra fonts
  ppltotf basepl/base-h.pl tfm/nmlgotheb-h.tfm
@@ -123,7 +123,7 @@ diff -ur japanese-otf.orig/makeotf japanese-otf/makeotf
  echo "finishing ..."
 diff -ur japanese-otf.orig/mkjvf japanese-otf/mkjvf
 --- japanese-otf.orig/mkjvf	2010-03-27 08:18:50.000000000 +0900
-+++ japanese-otf/mkjvf	2018-01-31 21:52:00.000000000 +0900
++++ japanese-otf/mkjvf	2019-08-31 09:32:52.000000000 +0900
 @@ -381,6 +381,8 @@
  		$face="cidjmb";
  	}elsif($kana_font eq "cidjgothb"){
@@ -144,7 +144,7 @@ diff -ur japanese-otf.orig/mkjvf japanese-otf/mkjvf
  		}elsif($kanji_font =~ /hminl/){
 diff -ur japanese-otf.orig/script/mkaltutfvf.pl japanese-otf/script/mkaltutfvf.pl
 --- japanese-otf.orig/script/mkaltutfvf.pl	2010-03-23 07:49:34.000000000 +0900
-+++ japanese-otf/script/mkaltutfvf.pl	2018-01-31 22:08:50.000000000 +0900
++++ japanese-otf/script/mkaltutfvf.pl	2019-08-31 09:32:52.000000000 +0900
 @@ -3,6 +3,8 @@
  @glyph_sub_table=();
  opendir(OVP, "ovp") || mkdir("ovp",0755) || die "cannot mkdir ovp";
@@ -163,8 +163,8 @@ diff -ur japanese-otf.orig/script/mkaltutfvf.pl japanese-otf/script/mkaltutfvf.p
  			if ($i==0) {$dir="h";}elsif ($i==1){$dir="v";}
  			for ($first_hex=0x0; $first_hex <= 0xf; $first_hex++){
 diff -ur japanese-otf.orig/script/mkcidofm.pl japanese-otf/script/mkcidofm.pl
---- japanese-otf.orig/script/mkcidofm.pl	2010-03-24 00:37:16.000000000 +0900
-+++ japanese-otf/script/mkcidofm.pl	2018-01-31 22:08:50.000000000 +0900
+--- japanese-otf.orig/script/mkcidofm.pl	2019-03-31 00:08:18.000000000 +0900
++++ japanese-otf/script/mkcidofm.pl	2019-08-31 09:32:52.000000000 +0900
 @@ -1,7 +1,7 @@
  opendir(OPLD, "opl") || mkdir("opl",0755) || die "cannot mkdir opl";
  opendir(OFMD, "ofm") || mkdir("ofm",0755) || die "cannot mkdir ofm";
@@ -175,8 +175,8 @@ diff -ur japanese-otf.orig/script/mkcidofm.pl japanese-otf/script/mkcidofm.pl
  	if ($d==0){$dir="h";}elsif($d==1){$dir="v";}
  	foreach $base_name(@font_base_name){
 diff -ur japanese-otf.orig/script/mkcidvf.pl japanese-otf/script/mkcidvf.pl
---- japanese-otf.orig/script/mkcidvf.pl	2010-03-23 07:50:02.000000000 +0900
-+++ japanese-otf/script/mkcidvf.pl	2018-01-31 22:08:50.000000000 +0900
+--- japanese-otf.orig/script/mkcidvf.pl	2019-08-31 09:33:35.000000000 +0900
++++ japanese-otf/script/mkcidvf.pl	2019-08-31 09:32:52.000000000 +0900
 @@ -4,9 +4,10 @@
  &makevf;
  
@@ -190,8 +190,8 @@ diff -ur japanese-otf.orig/script/mkcidvf.pl japanese-otf/script/mkcidvf.pl
  			if ($i==0) {$dir="h";}elsif ($i==1){$dir="v";}
  			$cidcode=0;
 diff -ur japanese-otf.orig/script/mkjp04tfmvf.pl japanese-otf/script/mkjp04tfmvf.pl
---- japanese-otf.orig/script/mkjp04tfmvf.pl	2010-03-26 11:36:32.000000000 +0900
-+++ japanese-otf/script/mkjp04tfmvf.pl	2018-01-31 22:08:50.000000000 +0900
+--- japanese-otf.orig/script/mkjp04tfmvf.pl	2019-08-31 09:33:40.000000000 +0900
++++ japanese-otf/script/mkjp04tfmvf.pl	2019-08-31 09:32:52.000000000 +0900
 @@ -11,9 +11,10 @@
  &makejvf;
  
@@ -217,8 +217,8 @@ diff -ur japanese-otf.orig/script/mkjp04tfmvf.pl japanese-otf/script/mkjp04tfmvf
  			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
  				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
 diff -ur japanese-otf.orig/script/mktfm.pl japanese-otf/script/mktfm.pl
---- japanese-otf.orig/script/mktfm.pl	2004-12-23 22:50:06.000000000 +0900
-+++ japanese-otf/script/mktfm.pl	2018-01-31 22:08:50.000000000 +0900
+--- japanese-otf.orig/script/mktfm.pl	2019-08-31 09:33:37.000000000 +0900
++++ japanese-otf/script/mktfm.pl	2019-08-31 09:32:52.000000000 +0900
 @@ -13,9 +13,10 @@
  &make_multi_cid_tfm;
  
@@ -245,7 +245,7 @@ diff -ur japanese-otf.orig/script/mktfm.pl japanese-otf/script/mktfm.pl
  				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
 diff -ur japanese-otf.orig/script/mkutfvf.pl japanese-otf/script/mkutfvf.pl
 --- japanese-otf.orig/script/mkutfvf.pl	2010-03-26 11:23:42.000000000 +0900
-+++ japanese-otf/script/mkutfvf.pl	2018-01-31 22:08:50.000000000 +0900
++++ japanese-otf/script/mkutfvf.pl	2019-08-31 09:32:52.000000000 +0900
 @@ -6,9 +6,10 @@
  &makemlvf;
  

@@ -31,11 +31,19 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 - Rename `readme.txt` -> `readme-ja.txt`
 - `chmod +x makeotf mkjvf`
 - Convert all files in `script/` and `test/` from CRLF -> LF
+    - `script/mkcidvf.pl`
+    - `script/mkjp04tfmvf.pl`
+    - `script/mktfm.pl`
+    - `test/koreanexample.tex`
 - `patch -p1 <otf-script-gteb.diff`
     - avoid a warning for opening dirhandle
     - build tfm/vf/ofm for gteb font series
-- `make` (at top directory)
+- `patch -p1 <otf-cidtfm.diff`
+    - avoid building `otf-cj**-*.ofm`
+    - build `otf-cj**-*.tfm` with correct widths instead
+- Add missing source `script/otf-hangul.rb`
 - Add `README`, `README.nonfree` and `TeXLive-maps/otf-cktx.map`
+- `make` (at top directory)
 
 ### japanese-otf-uptex
 
