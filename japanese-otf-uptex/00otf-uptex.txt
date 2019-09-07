@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.23  2019/04/01
+japanese-otf-uptex Ver.0.24  2019/09/07
 
 
 [ Abstract ]
@@ -34,7 +34,7 @@ script/CheckDVICode.pm : perl module checking category of characters.
 script/umkpkana.pl   : perl script making pl, ovp for proportional kana
 script/umkvpkana.pl  : perl script making pl, ovp for proportional kana
 
-sty/otf.sty   : basic style file 
+sty/otf.sty   : basic style file
 sty/mlutf.sty : style file for multi option
 
 test/uplatex/* : test samples.
@@ -382,3 +382,9 @@ https://github.com/t-tk/japanese-otf-uptex
     Added.
   COPYRIGHT ::
     Update year.
+2019.09.07 Ver0.24
+  ## Thank @aminophen san.
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  script/CheckDVICode.pm ::
+    Make half width U+00B7 in VFs.
