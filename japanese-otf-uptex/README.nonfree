@@ -4,7 +4,7 @@ This package is a companion to `japanese-otf-uptex' including
 support for nonfree Hiragino fonts, which we decided not to be
 included in TeX Live. Current version of this package used is
 based on
-	japanese-otf-uptex Ver.0.23  2019/04/01
+	japanese-otf-uptex Ver.0.24  2019/09/07
 
 The contents of this package is under the license given in the
 COPYRIGHT file, which is more or less BSD license.
