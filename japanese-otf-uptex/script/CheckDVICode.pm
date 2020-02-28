@@ -268,6 +268,9 @@ sub is_ucs_jpn_range{
 	return 1 if ($dvicode<=0x1F1FF); # Enclosed Alphanumeric Supplement
 	return 1 if ($dvicode<=0x1F2FF); # Enclosed Ideographic Supplement
 
+	return 0 if ($dvicode< 0x1F780);
+	return 1 if ($dvicode<=0x1F7FF); # Geometric Shapes Extended
+
 	return 0 if ($dvicode< 0x20000);
 	return 1 if ($dvicode<=0x2A6DF); # CJK Unified Ideographs Extension B
 	return 1 if ($dvicode<=0x2B73F); # CJK Unified Ideographs Extension C
