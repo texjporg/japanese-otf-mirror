@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.24  2019/09/07
+japanese-otf-uptex Ver.0.25  2020/02/28
 
 
 [ Abstract ]
@@ -388,3 +388,12 @@ https://github.com/t-tk/japanese-otf-uptex
     Increment version number.
   script/CheckDVICode.pm ::
     Make half width U+00B7 in VFs.
+2020.02.28 Ver0.25
+  sty/otf.sty, sty/mlutf.sty ::
+    Increment version number.
+  script/CheckDVICode.pm, script/sp_list_j.txt,
+  test/uplatex/sp_jp_{utf,text}.tex ::
+    Update references:
+    Adobe-Japan1-7 cid2code.txt (Version 07/30/2019).
+  COPYRIGHT ::
+    Update year.
