@@ -76,7 +76,7 @@
 \newcommand\put@character{%
 	\@tempcntb=\@tempcnta
 	\divide\@tempcntb by "1000
-	\kanjishape{\ifcase\@tempcntb0\or1\or2\or3\or4\or5\or6\or7\or8\or9\or a\or b\or c\or d\or e\or f\fi}%
+	\edef\k@shape{\ifcase\@tempcntb0\or1\or2\or3\or4\or5\or6\or7\or8\or9\or a\or b\or c\or d\or e\or f\fi}%
 	\selectfont%
 	\multiply\@tempcntb by "1000
 	\advance\@tempcnta by -\@tempcntb
