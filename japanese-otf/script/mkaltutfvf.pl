@@ -79,7 +79,7 @@ sub printchar {
 	$jiscode=($_[1]+0x20)*256+($_[2]+0x20);
 	$unicode=$_[0]*4096+($_[1]-16)*64+($_[2]-16);
 	printf OVP "(CHARACTER H %X\n", $jiscode;
-	print OUT "   (CHARWD R 1.0)\n";#2003/10/22 CHARWD 0.962216->1.0
+	print  OVP "   (CHARWD R 1.0)\n";#2003/10/22 CHARWD 0.962216->1.0
 	print  OVP "   (MAP\n";
 	&write_map_font;
 	printf OVP "      (SETCHAR H %X)\n", $unicode;
@@ -90,7 +90,7 @@ sub printchar {
 sub printgeta {
 	$jiscode=($_[1]+0x20)*256+($_[2]+0x20);
 	printf OVP "(CHARACTER H %X\n", $jiscode;
-	print OUT "   (CHARWD R 1.0)\n";#2003/10/22 CHARWD 0.962216->1.0
+	print  OVP "   (CHARWD R 1.0)\n";#2003/10/22 CHARWD 0.962216->1.0
 	print  OVP "   (MAP\n";
 	print  OVP "      (SETCHAR H 3013)\n";
 	print  OVP "      )\n";
