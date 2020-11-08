@@ -57,6 +57,10 @@ sub makemlvf {
 		foreach $face (@face){ #face
 			foreach $dir (@dir){ #direction
 				&make_ucs_vf_body($face, $dir, $lang);
+			}
+		}
+		foreach $face (@face[0..1]){ #face
+			foreach $dir (@dir){ #direction
 				&makevf_body($face, $dir, $lang);
 			}
 		}

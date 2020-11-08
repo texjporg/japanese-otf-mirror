@@ -101,6 +101,7 @@ sub make_utf_tfm {
 			$face0 = $face.$newjis;
 			foreach $dir (@dir){ #direction
 				&make_dvipstfm_body($face0, $dir, $lang) if ($dir=='h');
+				&make_ucs_tfm_body($face0, $dir, $lang);
 				&maketfm_body($face0, $dir, $lang);
 			}
 		}
@@ -112,6 +113,11 @@ sub make_multi_utf_tfm {
 		foreach $face (@face){ #face
 			foreach $dir (@dir){ #direction
 				&make_dvipstfm_body($face, $dir, $lang);
+				&make_ucs_tfm_body($face, $dir, $lang);
+			}
+		}
+		foreach $face (@face[0..1]){ #face
+			foreach $dir (@dir){ #direction
 				&maketfm_body($face, $dir, $lang);
 			}
 		}
@@ -156,6 +162,10 @@ sub maketfm_body {
 		}
 		close(TEXTFM);
 	}
+}
+
+sub make_ucs_tfm_body {
+	my ($face, $dir, $lang)=@_;
 
 	{
 		$id = '-';
@@ -202,5 +212,5 @@ sub make_dvipstfm_body {
 		}elsif ($dir eq 'v'){
 			foreach $binary(@dvips_tfm_v) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
 		}
-		close(TEXTFM);
+		close(DVIPSTFM);
 }
