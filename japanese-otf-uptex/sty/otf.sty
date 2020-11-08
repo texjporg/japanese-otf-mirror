@@ -1,5 +1,5 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{otf}[2019/04/01 v1.7b8 psitau, u0.25 ttk]
+\ProvidesPackage{otf}[2019/04/01 v1.7b8 psitau, u0.26 ttk]
 \RequirePackage{keyval}
 %for processing options 
 \newif\if@kana \@kanafalse
@@ -75,7 +75,8 @@
 		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
 		\ifx\k@family\reserved@a \kanjifamily{utfjg}\else\ifx\k@family\reserved@b
 			\kanjifamily{utfjmg}\else\kanjifamily{utfj}\fi\fi%
-		\uppercase{\set@character="#1}%
+%		\uppercase{\set@character="#1}% (1) pLaTeX, upLaTeXともに\UTF{}に従来のsubfontを使う
+		\uppercase{\if@otf@uplatex\set@character@\else\set@character\fi="#1}% (2) upLaTeXでは\UTF{}に新vfを使う
 		\endgroup%
 	}
 	\DeclareRobustCommand{\CID}[1]{\begingroup%
@@ -88,7 +89,9 @@
 \else
 	\DeclareRobustCommand{\UTF}[1]{\begingroup%
 		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
-		\kanjifamily{utfj}\uppercase{\set@character="#1}%
+		\kanjifamily{utfj}%
+%		\uppercase{\set@character="#1}% (1) pLaTeX, upLaTeXともに\UTF{}に従来のsubfontを使う
+		\uppercase{\if@otf@uplatex\set@character@\else\set@character\fi="#1}% (2) upLaTeXでは\UTF{}に新vfを使う
 		\endgroup%
 	}
 	\DeclareRobustCommand{\CID}[1]{\begingroup%
@@ -253,11 +256,16 @@
 	\advance\@tempcnta by \@tempcntb
 	\if@otf@uplatex
 		\advance\@tempcnta by "113030
-		\char\@tempcnta%
+		\kchar\@tempcnta%
 	\else
 		\advance\@tempcnta by "3030
 		\char\jis\@tempcnta%
 	\fi
+}
+\newcommand\set@character@{\afterassignment\put@character@\@tempcnta}
+\newcommand\put@character@{%
+	\kanjishape{-}\selectfont%
+	\kchar\@tempcnta%
 }
 \catcode`\"=\count@
 %end of changing catcode of \"
@@ -464,36 +472,36 @@
 \DeclareKanjiFamily{\otf@JTn}{utfj}{}
 \DeclareKanjiFamily{\otf@JYn}{cidj}{}
 \DeclareKanjiFamily{\otf@JTn}{cidj}{}
-\Declare@FontShape{utfj}{m}{0123456789abcdefjklmnopqrstuvxyz}{utfjmr\nlck@sfx@}
+\Declare@FontShape{utfj}{m}{0123456789abcdefjklmnopqrstuvxyz-}{utfjmr\nlck@sfx@}
 \Declare@FontShape{cidj}{m}{012345}{cidjmr}
 %definition of other utf/cid fonts
 \if@deluxe
-	\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz}{utfjmb\nlck@sfx@}
+	\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz-}{utfjmb\nlck@sfx@}
 	\Declare@FontShape{cidj}{bx}{012345}{cidjmb}
 	\DeclareKanjiFamily{\otf@JYn}{utfjg}{}
 	\DeclareKanjiFamily{\otf@JTn}{utfjg}{}
 	\DeclareKanjiFamily{\otf@JYn}{cidjg}{}
 	\DeclareKanjiFamily{\otf@JTn}{cidjg}{}
-	\Declare@FontShape{utfjg}{m}{0123456789abcdefjklmnopqrstuvxyz}{utfjgr\nlck@sfx@}
+	\Declare@FontShape{utfjg}{m}{0123456789abcdefjklmnopqrstuvxyz-}{utfjgr\nlck@sfx@}
 	\Declare@FontShape{cidjg}{m}{012345}{cidjgr}
-	\Declare@FontShape{utfjg}{bx}{0123456789abcdefjklmnopqrstuvxyz}{utfjgb\nlck@sfx@}
+	\Declare@FontShape{utfjg}{bx}{0123456789abcdefjklmnopqrstuvxyz-}{utfjgb\nlck@sfx@}
 	\Declare@FontShape{cidjg}{bx}{012345}{cidjgb}
-	\Declare@FontShape{utfjg}{eb}{0123456789abcdefjklmnopqrstuvxyz}{utfjge\nlck@sfx@}
+	\Declare@FontShape{utfjg}{eb}{0123456789abcdefjklmnopqrstuvxyz-}{utfjge\nlck@sfx@}
 	\Declare@FontShape{cidjg}{eb}{012345}{cidjge}
 	\DeclareKanjiFamily{\otf@JYn}{utfjmg}{}
 	\DeclareKanjiFamily{\otf@JTn}{utfjmg}{}
 	\DeclareKanjiFamily{\otf@JYn}{cidjmg}{}
 	\DeclareKanjiFamily{\otf@JTn}{cidjmg}{}
-	\Declare@FontShape{utfjmg}{m}{0123456789abcdefjklmnopqrstuvxyz}{utfjmgr\nlck@sfx@}
+	\Declare@FontShape{utfjmg}{m}{0123456789abcdefjklmnopqrstuvxyz-}{utfjmgr\nlck@sfx@}
 	\Declare@FontShape{cidjmg}{m}{012345}{cidjmgr}
-	\Declare@FontShape{utfj}{l}{0123456789abcdefjklmnopqrstuvxyz}{utfjml\nlck@sfx@}
+	\Declare@FontShape{utfj}{l}{0123456789abcdefjklmnopqrstuvxyz-}{utfjml\nlck@sfx@}
 	\Declare@FontShape{cidj}{l}{012345}{cidjml}
 \else
 	\if@bold
-		\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz}{utfjgb\nlck@sfx@}
+		\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz-}{utfjgb\nlck@sfx@}
 		\Declare@FontShape{cidj}{bx}{012345}{cidjgb}
 	\else
-		\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz}{utfjgr\nlck@sfx@}
+		\Declare@FontShape{utfj}{bx}{0123456789abcdefjklmnopqrstuvxyz-}{utfjgr\nlck@sfx@}
 		\Declare@FontShape{cidj}{bx}{012345}{cidjgr}
 	\fi
 \fi

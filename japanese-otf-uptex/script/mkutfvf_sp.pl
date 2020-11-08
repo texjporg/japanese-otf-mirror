@@ -43,18 +43,20 @@ my %font_id = qw/1b g      1d h 1e i 1f j
 &makeunivf;
 
 sub makejvf {
-	foreach $lang ($lang[0]){ #language
+	foreach $lang ($lang[0]){ #language, japanase
 		foreach $face (@face){ #face
 			foreach $dir (@dir){ #direction
+				&make_ucs_vf_body($face, $dir, $lang);
 				&makevf_body($face, $dir, $lang);
 			}
 		}
 	}
 }
 sub makemlvf {
-	foreach $lang (@lang[1..$multi]){ #language
-		foreach $face (@face[0..1]){ #face
+	foreach $lang (@lang[1..$multi]){ #language, t c k
+		foreach $face (@face){ #face
 			foreach $dir (@dir){ #direction
+				&make_ucs_vf_body($face, $dir, $lang);
 				&makevf_body($face, $dir, $lang);
 			}
 		}
@@ -75,8 +77,8 @@ sub makevf_body {
     foreach $first_hex (0x1b, 0x1d .. 0x2f) { # U+1Cxxx : not defined yet
 	next if (!$exist_head[$first_hex]);
 
-	$HEX = sprintf("%X", $first_hex);
-	$id = $font_id{sprintf("%x", $first_hex)};
+	$HEX = sprintf("%02X", $first_hex);
+	$id = $font_id{sprintf("%02x", $first_hex)};
 	warn "now processing (face:$face, dir:$dir, lang:$lang, first_hex:$HEX, ID:$id) ...\n";
 	$filename="utf$lang$face$id-$dir";
 	open(OUT, ">ovp/$filename.ovp")||die "$!";
@@ -100,8 +102,8 @@ sub make_uni_vf_body {
     foreach $first_hex (0x1b, 0x1d .. 0x2f) { # U+1Cxxx : not defined yet
 	next if (!$exist_head[$first_hex]);
 
-	$HEX = sprintf("%X", $first_hex);
-	$id = $font_id{sprintf("%x", $first_hex)};
+	$HEX = sprintf("%02X", $first_hex);
+	$id = $font_id{sprintf("%02x", $first_hex)};
 	warn "now processing (face:$face, dir:$dir, lang:MULTI, first_hex:$HEX, ID:$id) ...\n";
 	$filename="utf$face$id-$dir";
 	open(OUT, ">ovp/$filename.ovp")||die "$!";
@@ -112,6 +114,26 @@ sub make_uni_vf_body {
 		&fontfoot;
 	}
 	&writechar($first_hex, @ln);
+	close(OUT);
+	unless ($debug){
+		system("$ovp2ovf ovp/$filename.ovp vf/$filename.vf vf/$filename.ofm");
+		unlink "vf/$filename.ofm";
+	}
+    }
+}
+
+sub make_ucs_vf_body {
+    my ($face, $dir, $lang)=@_;
+
+    {
+	$id = '-';
+	warn "now processing (face:$face, dir:$dir, lang:$lang, ucs vf, ID:$id) ...\n";
+	$filename="utf$lang$face$id-$dir";
+	open(OUT, ">ovp/$filename.ovp")||die "$!";
+	&fonthead;
+	print OUT "(MAPFONT D 0\n   (FONTNAME otf-u$lang$face-$dir)\n";
+	&fontfoot;
+	&writechar_ucs($dir) if ($lang eq 'j');
 	close(OUT);
 	unless ($debug){
 		system("$ovp2ovf ovp/$filename.ovp vf/$filename.vf vf/$filename.ofm");
@@ -162,5 +184,15 @@ sub writechar {
 				print OUT "      (SETCHAR H $uni)))\n";
 			}
 		}
+	}
+}
+
+sub writechar_ucs {
+	my ($dir) = @_;
+	my $wd = $dir eq 'h' ? '0.5' : '1.0';
+	foreach $uni (0xFF61 .. 0xFF9F){
+		my $uniX = sprintf("%X", $uni);
+		print OUT "(CHARACTER H $uniX (CHARWD R $wd) (MAP \n";
+		print OUT "      (SETCHAR H $uniX)))\n";
 	}
 }

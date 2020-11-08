@@ -41,13 +41,9 @@ sub initialize_constant{
 	@yoko_tfm_binary=(0x00, 0x0B, 0x00, 0x01, 0x00, 0x1B, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x14, 0x7B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xEB, 0x85, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 	@tate_tfm_binary=(0x00, 0x09, 0x00, 0x01, 0x00, 0x1B, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 	@yoko_ucs_tfm_binary=map{ hex($_) } qw/
-		00 0b 00 40 00 6c 00 12 00 00 00 01 00 03 00 02
+		00 0b 00 40 00 5c 00 02 00 00 00 01 00 03 00 02
 		00 02 00 01 00 00 00 00 00 00 00 09 00 00 00 00
-		00 a0 00 00 0b 55 4e 53 50 45 43 49 46 49 45 44
-		00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-		00 00 00 00 00 00 00 00 00 00 00 00 0b 55 4e 53
-		50 45 43 49 46 49 45 44 00 00 00 00 00 00 00 00
-		80 00 00 00 00 00 00 00 ff 61 00 01 ff 62 00 01
+		00 a0 00 00 00 00 00 00 ff 61 00 01 ff 62 00 01
 		ff 63 00 01 ff 64 00 01 ff 65 00 01 ff 66 00 01
 		ff 67 00 01 ff 68 00 01 ff 69 00 01 ff 6a 00 01
 		ff 6b 00 01 ff 6c 00 01 ff 6d 00 01 ff 6e 00 01
@@ -98,41 +94,44 @@ JIS     UCS
 }
 sub proc_arg {
 	if ($#ARGV == -1) {&print_help;}
-	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cq', \$cid_quote, 0], ['^-cp', \$comma_period, 0], ['^-chk', \$cid_hankana, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-ucs', \$ucs, 0], ['^-sp', \$sp, 1], ['^-ovp2ovf', \$ovp2ovf_command, 1], ['^-h(e|el|elp)?', \$help, 0], ['^-dbg', \$debug_mode, 0], ['^-(.+)', \$unknown, 0]);
+	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cq', \$cid_quote, 0], ['^-cp', \$comma_period, 0], ['^-chk', \$cid_hankana, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-ucs', \$ucs, 0], ['^-omitfw', \$omitfw, 0], ['^-sp', \$sp, 1], ['^-ovp2ovf', \$ovp2ovf_command, 1], ['^-h(e|el|elp)?', \$help, 0], ['^-dbg', \$debug_mode, 0], ['^-(.+)', \$unknown, 0]);
 	if ($unknown == 1){
-		print "mkjvf: Unknown options!\n";
+		print "umkjvf: Unknown options!\n";
 		&print_help;
 	}
 	if ($help == 1){&print_help;}
 	if (($expert == 0) && ($ruby == 0)){
 		if ($#ARGV <= 0) {
-			print "mkjvf: Need two to three file arguments.\n";
+			print "umkjvf: Need two to three file arguments.\n";
 			&print_help;
 		}
 	} elsif (($expert != 0) && ($ruby != 0)){
-			print "mkjvf: You can't use \"-ruby\" and \"-expert\" at same time.\n";
+			print "umkjvf: You can't use \"-ruby\" and \"-expert\" at same time.\n";
 			&print_help;
 	} elsif (($scale != 0) && ($ruby != 0)){
-			print "mkjvf: You can't use \"-ruby\" and \"-scale\" at same time.\n";
+			print "umkjvf: You can't use \"-ruby\" and \"-scale\" at same time.\n";
 			&print_help;
 	} elsif (($jis2004 != 0) && ($ruby != 0)){
-			print "mkjvf: You can't use \"-ruby\" and \"-jp04\" at same time.\n";
+			print "umkjvf: You can't use \"-ruby\" and \"-jp04\" at same time.\n";
 			&print_help;
 	} elsif (($jis2004 != 0) && ($sjis != 0)){
-			print "mkjvf: You can't use \"-sjis\" and \"-jp04\" at same time.\n";
+			print "umkjvf: You can't use \"-sjis\" and \"-jp04\" at same time.\n";
 			&print_help;
 	} elsif (($jis2004 != 0) && ($ucs != 0)){
-			print "mkjvf: You can't use \"-ucs\" and \"-jp04\" at same time.\n";
+			print "umkjvf: You can't use \"-ucs\" and \"-jp04\" at same time.\n";
+			&print_help;
+	} elsif (($omitfw != 0) && ($baseline_shift != 0)){
+			print "umkjvf: You can't use \"-b\" and \"-omitfw\" at same time.\n";
 			&print_help;
 	} else {
 		if ($#ARGV <= 1) {
-			print "mkjvf: Need three file arguments for this option.\n";
+			print "umkjvf: Need three file arguments for this option.\n";
 			&print_help;
 		}
 		$alt_kana_true=1;
 	}
 	if ($scale < 0 || $scale >= 1){
-		print "mkjvf: Invalid Scale!!\n";
+		print "umkjvf: Invalid Scale!!\n";
 		&print_help;
 	}
 	if ($scale == 0){$scale = 1;}
@@ -458,6 +457,7 @@ sub print_help {
 	print "   -burasage       make the width of kutoh-ten zero for burasage\n";
 	print "   -jp04           make a font mapped JIS X 0213:2004 glyphs\n";
 	print "   -ucs            make ucs mapped vf (umkjvf extention)\n";
+	print "   -omitfw         omit entries in vf for characters with default metric (umkjvf extention)\n";
 	print "   -sp <0--2>      include supplemental plane (umkjvf extention)\n";
 	print "   -SJIS           make shift jis mapped vf (experimental)\n";
 	print "   -scale <0--1>   make kokana vf\n";
@@ -712,19 +712,25 @@ sub print_kigo_char{
 	print  OVP "   )\n";
 }
 sub print_char{
-	printf OVP "(CHARACTER H %X\n", $dvicode;
-	printf OVP "   (CHARWD R %f)\n", $font_at;
-	print  OVP "   (MAP\n";
+	$fontmap = 0;
 	if (($jis2004 == 1) && (0x3029 <= $jiscode && $jiscode <= 0x726D)){
 		if (exists $kaisei_jikei{$jiscode}){
 			$cid = $kaisei_jikei{$jiscode};
-			$fontmap = int($cid/4096)+3;
-			printf OVP "      (SELECTFONT D %d)\n", $fontmap;
+			$fontmap = int($cid/4096)+3; ## $fontmap>=3
 			$upper = int(($cid%4096)/64)+16;
 			$lower = (($cid%4096)%64)+16;
 #			printf STDOUT "%d, %d\n",$upper,$lower;
 			$char_code = $upper*256+$lower+0x2020;
 		}
+	}
+	if ($omitfw && $baseline_shift==0 && !$fontmap) {
+		return if ($dvicode==$char_code);
+	}
+	printf OVP "(CHARACTER H %X\n", $dvicode;
+	printf OVP "   (CHARWD R %f)\n", $font_at;
+	print  OVP "   (MAP\n";
+	if ($fontmap) {
+		printf OVP "      (SELECTFONT D %d)\n", $fontmap;
 	}
 	&baseline_shift;
 	printf OVP "      (SETCHAR H %X)\n",$char_code;
@@ -732,6 +738,9 @@ sub print_char{
 	print  OVP "   )\n";
 }
 sub print_kana_char{
+	if ($omitfw && $baseline_shift==0 && $scale==1 && $kana_font eq "") {
+		return if ($dvicode==$char_code);
+	}
 	printf OVP "(CHARACTER H %X\n", $dvicode;
 	printf OVP "   (CHARWD R %f)\n", $font_at;
 	print  OVP "   (MAP\n";

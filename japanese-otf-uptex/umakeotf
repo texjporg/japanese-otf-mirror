@@ -48,18 +48,18 @@ done
 echo "making alt. kana ..."
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -cq     -expert upexp${face}-h  uph${face}-h cidj${face}
-./umkjvf -ucs -sp 1 -cm -cp -expert upexp${face}-v  uph${face}-v cidj${face}
-./umkjvf -ucs -sp 1 -cq     -ruby   upruby${face}-h uph${face}-h cidj${face}
-./umkjvf -ucs -sp 1 -cm -cp -ruby   upruby${face}-v uph${face}-v cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cq     -expert upexp${face}-h  uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -expert upexp${face}-v  uph${face}-v cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cq     -ruby   upruby${face}-h uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -ruby   upruby${face}-v uph${face}-v cidj${face}
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -cq     -expert upexp${face}-h  uph${face}-h cidj${face}
-./umkjvf -ucs -sp 1 -cm -cp -expert upexp${face}-v  uph${face}-v cidj${face}
-./umkjvf -ucs -sp 1 -cq     -ruby   upruby${face}-h uph${face}-h cidj${face}
-./umkjvf -ucs -sp 1 -cm -cp -ruby   upruby${face}-v uph${face}-v cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cq     -expert upexp${face}-h  uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -expert upexp${face}-v  uph${face}-v cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cq     -ruby   upruby${face}-h uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -ruby   upruby${face}-v uph${face}-v cidj${face}
 done
 
 

@@ -265,6 +265,7 @@ sub write_char {
     }
 }
 sub print_char{
+	return if ($omitfw);
 	printf OVP "(CHARACTER H %X\n", $dvicode;
 	printf OVP "   (CHARWD R %f)\n", $font_at;
 	print  OVP "   (MAP\n";

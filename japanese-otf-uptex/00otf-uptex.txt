@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.25  2020/02/28
+japanese-otf-uptex Ver.0.26  2020/11/08
 
 
 [ Abstract ]
@@ -82,6 +82,46 @@ to Adobe standard CMap "UniJIS2004-UTF16-{H,V}".
 otfbeta-uptex (japanese-otf-uptex) Ver.0.14 or later supports
 proportional kana at deluxe option and \propshape.
 To build tfm files, uppltotf in TeX Live r43143 or TeX Live 2017 or later is required.
+
+
+[ About shrunk file size of virtual fonts ]
+japanese-otf-uptex Ver.0.26 has shrunk file size of some virtual fonts for main text.
+The virtual fonts listed below are smaller in file size than conventional ones.
+  upexp*.vf
+  upbrsg*.vf
+  upruby*.vf
+  upphira*.vf
+These are used by selecting options "expert", "brsg", "ruby", etc. of otf.sty.
+The feature requires new dviware which support fall back of CJK virtual fonts:
+  dvipdfmx (version 20200315 (2020/3/15) or later)
+  dvips    (TeX Live subversion r54794 (2020/4/19) or later)
+Ref. https://github.com/texjporg/tex-jp-build/issues/99
+
+If you do not wish this feature, you can avoid by regenerating virtual fonts
+after removing "-omitfw" option of umkjvf
+in the font generation scripts umakeotf{,_brsg,_jis04,_prop}.
+ $ ./umakeotf
+ $ ./umakeotf_brsg
+ $ ./umakeotf_jis04
+ $ ./umakeotf_prop
+Ref. https://github.com/t-tk/japanese-otf-uptex/issues/3
+
+
+[ About Unicode base multi-weight fonts in \UTF{}, \UTFC{}, \UTFT{}, \UTFK{} ]
+japanese-otf-uptex Ver.0.26 has introduced new virtual fonts for
+\UTF{}, \UTFC{}, \UTFT{}, \UTFK{} macros. They are Unicode base
+(conventionally subfont scheme) and support multi-weight fonts
+(seven sets of family/series for all languages,
+conventionally two sets of family/series for Chinese and Korean).
+The feature also requires new dviware which support fall back of CJK virtual fonts.
+  明朝体・細字　　  \mcfamily\ltseries  ml
+  明朝体・中字　　  \mcfamily\mdseries  mr
+  明朝体・太字　　  \mcfamily\bfseries  mb
+  ゴシック体・中字  \gtfamily\mdseries  gr
+  ゴシック体・太字  \gtfamily\bfseries  gb
+  ゴシック体・極太  \gtfamily\ebseries  ge
+  丸ゴシック体　　  \mgfamily           mgr
+Ref. https://github.com/t-tk/japanese-otf-uptex/issues/4
 
 
 [ Repository ]
@@ -397,3 +437,18 @@ https://github.com/t-tk/japanese-otf-uptex
     Adobe-Japan1-7 cid2code.txt (Version 07/30/2019).
   COPYRIGHT ::
     Update year.
+2020.11.08 Ver0.26
+  sty/otf.sty, sty/mlutf.sty ::
+    Bump version number.
+  umkjvf, umakeotf{,_brsg,_jis04,_prop} ::
+  script/{umkpkana.pl,umkvpkana.pl} ::
+    Make virtual fonts for main text smaller in file size.
+    New option "-omitfw" for umkjvf.
+  sty/otf.sty, sty/mlutf.sty,
+  script/{mktfm_sp.pl,mkutfvf_sp.pl} ::
+    Introduce Unicode base multi-weight virtual fonts
+    for \UTF{}, \UTFC{}, \UTFT{}, \UTFK{}.
+  test/uplatex/{uotftest-utf8.tex,utfmacro-cjk.tex}, test/uplatex/Makefile,
+  test/uplatex/utfmacro-haranoaji.map ::
+    Add a new test for multi-weight \UTF{}, \UTFC{}, \UTFT{}, \UTFK{}.
+
