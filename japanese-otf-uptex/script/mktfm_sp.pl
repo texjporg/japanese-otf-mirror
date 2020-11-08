@@ -102,9 +102,13 @@ sub make_utf_tfm {
 			foreach $dir (@dir){ #direction
 				&make_dvipstfm_body($face0, $dir, $lang) if ($dir=='h');
 				&make_ucs_tfm_body($face0, $dir, $lang);
-				&maketfm_body($face0, $dir, $lang);
 			}
 		}
+		}
+		foreach $face (@face){ #face
+			foreach $dir (@dir){ #direction
+				&maketfm_body($face, $dir, $lang);
+			}
 		}
 	}
 }

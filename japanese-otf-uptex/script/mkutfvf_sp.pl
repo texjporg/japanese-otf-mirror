@@ -44,9 +44,16 @@ my %font_id = qw/1b g      1d h 1e i 1f j
 
 sub makejvf {
 	foreach $lang ($lang[0]){ #language, japanase
+		foreach $newjis ('', 'n') {
+		foreach $face (@face){ #face
+			$face0 = $face.$newjis;
+			foreach $dir (@dir){ #direction
+				&make_ucs_vf_body($face0, $dir, $lang);
+			}
+		}
+		}
 		foreach $face (@face){ #face
 			foreach $dir (@dir){ #direction
-				&make_ucs_vf_body($face, $dir, $lang);
 				&makevf_body($face, $dir, $lang);
 			}
 		}
