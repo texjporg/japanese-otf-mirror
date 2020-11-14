@@ -442,7 +442,7 @@ https://github.com/t-tk/japanese-otf-uptex
     Bump version number.
   umkjvf, umakeotf{,_brsg,_jis04,_prop} ::
   script/{umkpkana.pl,umkvpkana.pl} ::
-    Make virtual fonts for main text smaller in file size.
+    Shrink file size of some virtual fonts for main text.
     New option "-omitfw" for umkjvf.
   sty/otf.sty, sty/mlutf.sty,
   script/{mktfm_sp.pl,mkutfvf_sp.pl} ::
