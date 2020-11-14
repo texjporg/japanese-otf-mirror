@@ -67,40 +67,40 @@ done
 
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -cq     -expert upexp${face}n-h  uph${face}n-h cidj${face}
-./umkjvf -ucs -sp 1 -cm -cp -expert upexp${face}n-v  uph${face}n-v cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cq     -expert upexp${face}n-h  uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -expert upexp${face}n-v  uph${face}n-v cidj${face}
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -cq     -expert upexp${face}n-h  uph${face}n-h cidj${face}
-./umkjvf -ucs -sp 1 -cm -cp -expert upexp${face}n-v  uph${face}n-v cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cq     -expert upexp${face}n-h  uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -expert upexp${face}n-v  uph${face}n-v cidj${face}
 done
 
 
 echo "making vf for burasage & jis2004 ..."
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -sage -cq     upbrsgnml${face}n-h uph${face}n-h
-./umkjvf -ucs -sp 1 -sage -cm -cp upbrsgnml${face}n-v uph${face}n-v
+./umkjvf -ucs -sp 1 -sage -omitfw -cq     upbrsgnml${face}n-h uph${face}n-h
+./umkjvf -ucs -sp 1 -sage -omitfw -cm -cp upbrsgnml${face}n-v uph${face}n-v
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -sage -cq     upbrsgnml${face}n-h uph${face}n-h
-./umkjvf -ucs -sp 1 -sage -cm -cp upbrsgnml${face}n-v uph${face}n-v
+./umkjvf -ucs -sp 1 -sage -omitfw -cq     upbrsgnml${face}n-h uph${face}n-h
+./umkjvf -ucs -sp 1 -sage -omitfw -cm -cp upbrsgnml${face}n-v uph${face}n-v
 done
 
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -sage -cq     -expert upbrsgexp${face}n-h uph${face}n-h cidj${face}
-./umkjvf -ucs -sp 1 -sage -cm -cp -expert upbrsgexp${face}n-v uph${face}n-v cidj${face}
+./umkjvf -ucs -sp 1 -sage -omitfw -cq     -expert upbrsgexp${face}n-h uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -sage -omitfw -cm -cp -expert upbrsgexp${face}n-v uph${face}n-v cidj${face}
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -sage -cq     -expert upbrsgexp${face}n-h uph${face}n-h cidj${face}
-./umkjvf -ucs -sp 1 -sage -cm -cp -expert upbrsgexp${face}n-v uph${face}n-v cidj${face}
+./umkjvf -ucs -sp 1 -sage -omitfw -cq     -expert upbrsgexp${face}n-h uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -sage -omitfw -cm -cp -expert upbrsgexp${face}n-v uph${face}n-v cidj${face}
 done
 
 

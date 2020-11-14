@@ -24,6 +24,61 @@ $multi=3;
 @dvips_tfm_h=(0x00, 0x0B, 0x00, 0x01, 0x00, 0x1B, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0E, 0x14, 0x7B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xEB, 0x85, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 @dvips_tfm_v=(0x00, 0x09, 0x00, 0x01, 0x00, 0x1B, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x02, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0xA0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 
+@tex_tfm_ucs_h=map{ hex($_) } qw/
+	00 0b 00 40 00 6c 00 12 00 00 00 01 00 03 00 02
+	00 02 00 01 00 00 00 00 00 00 00 09 00 00 00 00
+	00 a0 00 00 0e 54 45 58 20 4b 41 4e 4a 49 20 54
+	45 58 54 00 00 00 00 00 00 00 00 00 00 00 00 00
+	00 00 00 00 00 00 00 00 00 00 00 00 09 4f 54 46
+	20 4b 41 4e 4a 49 00 00 00 00 00 00 00 00 00 00
+	80 00 00 00 00 00 00 00 ff 61 00 01 ff 62 00 01
+	ff 63 00 01 ff 64 00 01 ff 65 00 01 ff 66 00 01
+	ff 67 00 01 ff 68 00 01 ff 69 00 01 ff 6a 00 01
+	ff 6b 00 01 ff 6c 00 01 ff 6d 00 01 ff 6e 00 01
+	ff 6f 00 01 ff 70 00 01 ff 71 00 01 ff 72 00 01
+	ff 73 00 01 ff 74 00 01 ff 75 00 01 ff 76 00 01
+	ff 77 00 01 ff 78 00 01 ff 79 00 01 ff 7a 00 01
+	ff 7b 00 01 ff 7c 00 01 ff 7d 00 01 ff 7e 00 01
+	ff 7f 00 01 ff 80 00 01 ff 81 00 01 ff 82 00 01
+	ff 83 00 01 ff 84 00 01 ff 85 00 01 ff 86 00 01
+	ff 87 00 01 ff 88 00 01 ff 89 00 01 ff 8a 00 01
+	ff 8b 00 01 ff 8c 00 01 ff 8d 00 01 ff 8e 00 01
+	ff 8f 00 01 ff 90 00 01 ff 91 00 01 ff 92 00 01
+	ff 93 00 01 ff 94 00 01 ff 95 00 01 ff 96 00 01
+	ff 97 00 01 ff 98 00 01 ff 99 00 01 ff 9a 00 01
+	ff 9b 00 01 ff 9c 00 01 ff 9d 00 01 ff 9e 00 01
+	ff 9f 00 01 02 11 00 00 01 11 00 00 00 00 00 00
+	00 08 00 00 00 10 00 00 00 00 00 00 00 0e 14 7b
+	00 00 00 00 00 01 eb 85 00 00 00 00 00 00 00 00
+	00 00 00 00 00 01 99 9a 00 00 00 00 00 10 00 00
+	00 10 00 00 00 04 00 00 00 03 33 33 00 02 00 00
+/;
+@dvips_tfm_ucs_h=map{ hex($_) } qw/
+	00 0b 00 40 00 5c 00 02 00 00 00 01 00 03 00 02
+	00 02 00 01 00 00 00 00 00 00 00 09 00 00 00 00
+	00 a0 00 00 00 00 00 00 ff 61 00 01 ff 62 00 01
+	ff 63 00 01 ff 64 00 01 ff 65 00 01 ff 66 00 01
+	ff 67 00 01 ff 68 00 01 ff 69 00 01 ff 6a 00 01
+	ff 6b 00 01 ff 6c 00 01 ff 6d 00 01 ff 6e 00 01
+	ff 6f 00 01 ff 70 00 01 ff 71 00 01 ff 72 00 01
+	ff 73 00 01 ff 74 00 01 ff 75 00 01 ff 76 00 01
+	ff 77 00 01 ff 78 00 01 ff 79 00 01 ff 7a 00 01
+	ff 7b 00 01 ff 7c 00 01 ff 7d 00 01 ff 7e 00 01
+	ff 7f 00 01 ff 80 00 01 ff 81 00 01 ff 82 00 01
+	ff 83 00 01 ff 84 00 01 ff 85 00 01 ff 86 00 01
+	ff 87 00 01 ff 88 00 01 ff 89 00 01 ff 8a 00 01
+	ff 8b 00 01 ff 8c 00 01 ff 8d 00 01 ff 8e 00 01
+	ff 8f 00 01 ff 90 00 01 ff 91 00 01 ff 92 00 01
+	ff 93 00 01 ff 94 00 01 ff 95 00 01 ff 96 00 01
+	ff 97 00 01 ff 98 00 01 ff 99 00 01 ff 9a 00 01
+	ff 9b 00 01 ff 9c 00 01 ff 9d 00 01 ff 9e 00 01
+	ff 9f 00 01 02 11 00 00 01 11 00 00 00 00 00 00
+	00 08 00 00 00 10 00 00 00 00 00 00 00 0e 14 7b
+	00 00 00 00 00 01 eb 85 00 00 00 00 00 00 00 00
+	00 00 00 00 00 00 00 00 00 00 00 00 00 10 00 00
+	00 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+/;
+
 opendir(TFM, "tfm") || mkdir("tfm",0755) || die "cannot mkdir tfm";
 
 my @face = qw/mr gr mb gb mgr ml ge/;
@@ -40,7 +95,16 @@ my %font_id = qw/1b g      1d h 1e i 1f j
 &make_unified_utf_tfm;
 
 sub make_utf_tfm {
-	foreach $lang ($lang[0]){ #language
+	foreach $lang ($lang[0]){ #language, japanase
+		foreach $newjis ('', 'n') {
+		foreach $face (@face){ #face
+			$face0 = $face.$newjis;
+			foreach $dir (@dir){ #direction
+				&make_dvipstfm_body($face0, $dir, $lang) if ($dir=='h');
+				&make_ucs_tfm_body($face0, $dir, $lang);
+			}
+		}
+		}
 		foreach $face (@face){ #face
 			foreach $dir (@dir){ #direction
 				&maketfm_body($face, $dir, $lang);
@@ -49,7 +113,13 @@ sub make_utf_tfm {
 	}
 }
 sub make_multi_utf_tfm {
-	foreach $lang (@lang[1..$multi]){ #language
+	foreach $lang (@lang[1..$multi]){ #language, t c k
+		foreach $face (@face){ #face
+			foreach $dir (@dir){ #direction
+				&make_dvipstfm_body($face, $dir, $lang);
+				&make_ucs_tfm_body($face, $dir, $lang);
+			}
+		}
 		foreach $face (@face[0..1]){ #face
 			foreach $dir (@dir){ #direction
 				&maketfm_body($face, $dir, $lang);
@@ -85,7 +155,7 @@ sub maketfm_body {
 	foreach $first_hex (0x1b, 0x1d .. 0x2f) { # U+1Cxxx : not defined yet
 		next if (!$exist_head[$first_hex]);
 
-		$id = $font_id{sprintf("%x", $first_hex)};
+		$id = $font_id{sprintf("%02x", $first_hex)};
 		$filename= (@ln>1) ? "utf$face$id-$dir" : "utf$lang$face$id-$dir";
 		open(TEXTFM,">tfm/$filename.tfm") || die "Can't make \'tfm/$filename.tfm\'!\n";
 		binmode(TEXTFM);
@@ -96,4 +166,55 @@ sub maketfm_body {
 		}
 		close(TEXTFM);
 	}
+}
+
+sub make_ucs_tfm_body {
+	my ($face, $dir, $lang)=@_;
+
+	{
+		$id = '-';
+		$filename="utf$lang$face$id-$dir";
+		open(TEXTFM,">tfm/$filename.tfm") || die "Can't make \'tfm/$filename.tfm\'!\n";
+		binmode(TEXTFM);
+		if ($dir eq 'h') {
+			if ($lang eq 'j') {
+				@tex_tfm = @tex_tfm_ucs_h;
+			} else {
+				@tex_tfm = @tex_tfm_h;
+			}
+			foreach $binary(@tex_tfm  ) {$_ = pack("C", $binary);print TEXTFM "$_";}
+		}elsif ($dir eq 'v'){
+			foreach $binary(@tex_tfm_v) {$_ = pack("C", $binary);print TEXTFM "$_";}
+		}
+		close(TEXTFM);
+	}
+}
+
+sub make_dvipstfm_body {
+	my ($face, $dir, $lang)=@_;
+=comment
+		## mktfm.pl does similar procedure.
+		$varfilename="otf-u$lang$face-$dir";
+		open(DVIPSTFM,">tfm/$varfilename.tfm") || die "Can't make \'tfm/$varfilename.tfm\'!\n";
+		if ($i==0) {
+			foreach $binary(@dvips_tfm_h) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
+		}elsif ($i==1){
+			foreach $binary(@dvips_tfm_v) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
+		}
+		close(DVIPSTFM);
+=cut
+		$varfilename= "otf-u$lang$face-$dir";
+		open(DVIPSTFM,">tfm/$varfilename.tfm") || die "Can't make \'tfm/$varfilename.tfm\'!\n";
+		binmode(DVIPSTFM);
+		if ($dir eq 'h') {
+			if ($lang eq 'j') {
+				@dvips_tfm = @dvips_tfm_ucs_h;
+			} else {
+				@dvips_tfm = @dvips_tfm_h;
+			}
+			foreach $binary(@dvips_tfm  ) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
+		}elsif ($dir eq 'v'){
+			foreach $binary(@dvips_tfm_v) {$_ = pack("C", $binary);print DVIPSTFM "$_";}
+		}
+		close(DVIPSTFM);
 }

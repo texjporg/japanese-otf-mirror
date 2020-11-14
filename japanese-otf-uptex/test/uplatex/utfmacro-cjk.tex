@@ -1,0 +1,344 @@
+% -*- coding: utf-8 -*-
+\newif\ifuptexmode\uptexmodefalse
+\ifnum\jis"2121="3000 \uptexmodetrue\fi
+
+\makeatletter
+
+\def\@opt@{multi}
+\def\@default{default}
+\def\@jarticle{jarticle}
+\def\@tarticle{tarticle}
+\def\@utarticle{utarticle}
+\def\@landscape@{}
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\class\@undefined
+ \ifuptexmode
+  \def\class{ujarticle}
+ \else
+  \def\class{jarticle}
+ \fi
+\fi
+
+\def\baseshift{-.12zh}
+\ifx\class\@tarticle\def\baseshift{-.5zh}\def\@landscape@{,landscape}\fi
+\ifx\class\@utarticle\def\baseshift{-.5zh}\def\@landscape@{,landscape}\fi
+
+\ifuptexmode
+ \edef\@opt@{uplatex,\@opt@}
+\fi
+%\documentclass[a4paper,titlepage,draft]{\class}
+%\documentclass[a4paper,titlepage,draft,landscape]{\class}
+\documentclass[a4paper,titlepage,draft\@landscape@]{\class}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[\@opt@]{otf}
+
+\newif\ifdeluxemode\deluxemodefalse
+\if@deluxe\deluxemodetrue\fi
+
+\makeatother
+
+
+\textheight250mm
+\topmargin-15mm
+\begin{document}
+\parindent0mm
+クラス：\texttt{\class}\\
+オプション：\texttt{\option}
+
+\section{\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} こんにちは Einenschönen Tag}
+
+\begin{tabular}{cccc}
+日本 & 簡体字 & 繁體字 & 朝鮮\\\hline
+\UTF{9aa8}\UTF{6d77}\UTF{76f4}\UTF{8ff0} &
+\UTFC{9aa8}\UTFC{6d77}\UTFC{76f4}\UTFC{8ff0} &
+\UTFT{9aa8}\UTFT{6d77}\UTFT{76f4}\UTFT{8ff0} &
+\UTFK{9aa8}\UTFK{6d77}\UTFK{76f4}\UTFK{8ff0}
+\end{tabular}
+
+% Adobe-Japan, Adobe-GB, Adobe-CNS, Adobe-KoreaでU+007F..00FFかつfullwidthとなっているもの。
+\begin{tabular}{rl}
+J &
+\UTF{00a7}\UTF{00a8}\UTF{00b0}\UTF{00b1}\UTF{00b4}\UTF{00b6}\UTF{00d7}\UTF{00f7}\\
+C &
+\UTFC{00a4}\UTFC{00a7}\UTFC{00a8}\UTFC{00b0}\UTFC{00b1}\UTFC{00b7}\UTFC{00d7}\UTFC{00e0}\UTFC{00e1}\UTFC{00e8}\UTFC{00e9}\UTFC{00ea}\UTFC{00ec}\UTFC{00ed}\UTFC{00f2}\UTFC{00f3}\UTFC{00f7}\UTFC{00f9}\UTFC{00fa}\UTFC{00fc}\\
+T &
+\UTFT{00a5}\UTFT{00a7}\UTFT{00a8}\UTFT{00ac}\UTFT{00af}\UTFT{00b0}\UTFT{00b1}\UTFT{00b7}\UTFT{00c0}\UTFT{00c1}\UTFT{00c8}\UTFT{00c9}\UTFT{00ca}\UTFT{00d2}\UTFT{00d3}\UTFT{00d7}\UTFT{00e0}\UTFT{00e1}\UTFT{00e8}\UTFT{00e9}\UTFT{00ea}\UTFT{00ec}\UTFT{00ed}\UTFT{00f2}\UTFT{00f3}\UTFT{00f7}\UTFT{00f8}\UTFT{00f9}\UTFT{00fa}\UTFT{00fc}\\
+K &
+\UTFK{00a1}\UTFK{00a4}\UTFK{00a7}\UTFK{00a8}\UTFK{00aa}\UTFK{00ab}\UTFK{00b0}\UTFK{00b1}\UTFK{00b4}\UTFK{00b6}\UTFK{00b7}\UTFK{00b8}\UTFK{00b9}\UTFK{00ba}\UTFK{00bb}\UTFK{00bc}\UTFK{00bd}\UTFK{00be}\UTFK{00bf}\UTFK{00c6}\UTFK{00d0}\UTFK{00d7}\UTFK{00d8}\UTFK{00de}\UTFK{00df}\UTFK{00e6}\UTFK{00f0}\UTFK{00f7}\UTFK{00f8}\UTFK{00fe}
+\end{tabular}
+
+\subsection{\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} こんにちは Einenschönen Tag}
+
+\ifdeluxemode
+{\mcfamily\ltseries
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+\fi% \ifdeluxemode
+{\mcfamily
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+{\mcfamily\bfseries
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+{\gtfamily
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+{\gtfamily\bfseries
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+\ifdeluxemode
+{\gtfamily\ebseries
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+{\mgfamily
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+\fi% \ifdeluxemode
+
+\subsubsection{\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} こんにちは Einenschönen Tag}
+
+{\footnotesize
+\ifdeluxemode
+{\mcfamily\ltseries
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+\fi% \ifdeluxemode
+{\mcfamily
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+{\mcfamily\bfseries
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+{\gtfamily
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+{\gtfamily\bfseries
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+\ifdeluxemode
+{\gtfamily\ebseries
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+{\mgfamily
+\UTFC{4F60}\UTFC{597D} \UTFT{60A8}\UTFT{597D} \UTFK{C548}\UTFK{B155} %你好 您好 안녕
+こんにちは Einenschönen Tag\\
+}%
+\fi% \ifdeluxemode
+}
+
+\section{penalty}
+\edef\bs{$\backslash$\kern0em}
+
+\fbox{\parbox{4.7zw}{君の名は。}}~UTF8
+
+\fbox{\parbox{4.7zw}{君の名は\char\kuten"0103}}~\bs char\bs kuten
+
+\fbox{\parbox{4.7zw}{君の名は\UTF{3002}}}~\bs UTF\{\}
+
+\ifuptexmode
+\fbox{\parbox{4.7zw}{君の名は\kchar"3002}}~\bs kchar
+\fi
+
+
+\fbox{\parbox{4.7zw}{君の名は．}}~UTF8
+
+\fbox{\parbox{4.7zw}{君の名は\char\kuten"0105}}~\bs char\bs kuten
+
+\fbox{\parbox{4.7zw}{君の名は\UTF{FF0E}}}~\bs UTF\{\}
+
+\ifuptexmode
+\fbox{\parbox{4.7zw}{君の名は\kchar"FF0E}}~\bs kchar
+\fi
+
+
+\clearpage
+[mc/m]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ
+\fi
+
+“回”、‘回’。“回”，‘回’．
+
+日本：\UTF{9aa8}\UTF{6d77}\UTF{76f4}\UTF{8ff0}~~簡体字：\UTFC{9aa8}\UTFC{6d77}\UTFC{76f4}\UTFC{8ff0}~~繁體字：\UTFT{9aa8}\UTFT{6d77}\UTFT{76f4}\UTFT{8ff0}~~朝鮮：\UTFK{9aa8}\UTFK{6d77}\UTFK{76f4}\UTFK{8ff0}\\
+\UTFC{4F60}\UTFC{597D}~~%你好
+\UTFT{4F60}\UTFT{597D}~~%你好
+\UTFK{C548}\UTFK{B155}%안녕
+
+{\bfseries%
+[mc/bx]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ
+\fi
+
+“回”、‘回’。“回”，‘回’．
+
+日本：\UTF{9aa8}\UTF{6d77}\UTF{76f4}\UTF{8ff0}~~簡体字：\UTFC{9aa8}\UTFC{6d77}\UTFC{76f4}\UTFC{8ff0}~~繁體字：\UTFT{9aa8}\UTFT{6d77}\UTFT{76f4}\UTFT{8ff0}~~朝鮮：\UTFK{9aa8}\UTFK{6d77}\UTFK{76f4}\UTFK{8ff0}\\
+\UTFC{4F60}\UTFC{597D}~~%你好
+\UTFT{4F60}\UTFT{597D}~~%你好
+\UTFK{C548}\UTFK{B155}%안녕
+}
+
+
+\ifdeluxemode
+{\ltseries%
+[mc/l]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ
+\fi
+
+“回”、‘回’。“回”，‘回’．
+
+日本：\UTF{9aa8}\UTF{6d77}\UTF{76f4}\UTF{8ff0}~~簡体字：\UTFC{9aa8}\UTFC{6d77}\UTFC{76f4}\UTFC{8ff0}~~繁體字：\UTFT{9aa8}\UTFT{6d77}\UTFT{76f4}\UTFT{8ff0}~~朝鮮：\UTFK{9aa8}\UTFK{6d77}\UTFK{76f4}\UTFK{8ff0}\\
+\UTFC{4F60}\UTFC{597D}~~%你好
+\UTFT{4F60}\UTFT{597D}~~%你好
+\UTFK{C548}\UTFK{B155}%안녕
+}
+\fi% \ifdeluxemode
+
+{\gtfamily
+[gt/m]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ
+\fi
+
+“回”、‘回’。“回”，‘回’．
+
+日本：\UTF{9aa8}\UTF{6d77}\UTF{76f4}\UTF{8ff0}~~簡体字：\UTFC{9aa8}\UTFC{6d77}\UTFC{76f4}\UTFC{8ff0}~~繁體字：\UTFT{9aa8}\UTFT{6d77}\UTFT{76f4}\UTFT{8ff0}~~朝鮮：\UTFK{9aa8}\UTFK{6d77}\UTFK{76f4}\UTFK{8ff0}\\
+\UTFC{4F60}\UTFC{597D}~~%你好
+\UTFT{4F60}\UTFT{597D}~~%你好
+\UTFK{C548}\UTFK{B155}%안녕
+}
+
+{\gtfamily\bfseries%
+[gt/bx]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ
+\fi
+
+“回”、‘回’。“回”，‘回’．
+
+日本：\UTF{9aa8}\UTF{6d77}\UTF{76f4}\UTF{8ff0}~~簡体字：\UTFC{9aa8}\UTFC{6d77}\UTFC{76f4}\UTFC{8ff0}~~繁體字：\UTFT{9aa8}\UTFT{6d77}\UTFT{76f4}\UTFT{8ff0}~~朝鮮：\UTFK{9aa8}\UTFK{6d77}\UTFK{76f4}\UTFK{8ff0}\\
+\UTFC{4F60}\UTFC{597D}~~%你好
+\UTFT{4F60}\UTFT{597D}~~%你好
+\UTFK{C548}\UTFK{B155}%안녕
+}
+
+\ifdeluxemode
+{\gtfamily\ebseries%
+[gt/eb]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ
+\fi
+
+“回”、‘回’。“回”，‘回’．
+
+日本：\UTF{9aa8}\UTF{6d77}\UTF{76f4}\UTF{8ff0}~~簡体字：\UTFC{9aa8}\UTFC{6d77}\UTFC{76f4}\UTFC{8ff0}~~繁體字：\UTFT{9aa8}\UTFT{6d77}\UTFT{76f4}\UTFT{8ff0}~~朝鮮：\UTFK{9aa8}\UTFK{6d77}\UTFK{76f4}\UTFK{8ff0}\\
+\UTFC{4F60}\UTFC{597D}~~%你好
+\UTFT{4F60}\UTFT{597D}~~%你好
+\UTFK{C548}\UTFK{B155}%안녕
+}
+
+{\mgfamily
+[mg/m]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ
+\fi
+
+“回”、‘回’。“回”，‘回’．
+
+日本：\UTF{9aa8}\UTF{6d77}\UTF{76f4}\UTF{8ff0}~~簡体字：\UTFC{9aa8}\UTFC{6d77}\UTFC{76f4}\UTFC{8ff0}~~繁體字：\UTFT{9aa8}\UTFT{6d77}\UTFT{76f4}\UTFT{8ff0}~~朝鮮：\UTFK{9aa8}\UTFK{6d77}\UTFK{76f4}\UTFK{8ff0}\\
+\UTFC{4F60}\UTFC{597D}~~%你好
+\UTFT{4F60}\UTFT{597D}~~%你好
+\UTFK{C548}\UTFK{B155}%안녕
+}
+\fi% \ifdeluxemode
+
+
+\end{document}
+
