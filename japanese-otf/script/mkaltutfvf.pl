@@ -78,8 +78,9 @@ sub writechar {
 sub printchar {
 	$jiscode=($_[1]+0x20)*256+($_[2]+0x20);
 	$unicode=$_[0]*4096+($_[1]-16)*64+($_[2]-16);
+	$wd = ($dir eq 'h' && $unicode>=0xFF61 && $unicode<=0xFF9F) ? '0.5' : '1.0';
 	printf OVP "(CHARACTER H %X\n", $jiscode;
-	print  OVP "   (CHARWD R 1.0)\n";#2003/10/22 CHARWD 0.962216->1.0
+	print  OVP "   (CHARWD R $wd)\n";#2003/10/22 CHARWD 0.962216->1.0
 	print  OVP "   (MAP\n";
 	&write_map_font;
 	printf OVP "      (SETCHAR H %X)\n", $unicode;
