@@ -35,25 +35,25 @@ done
 echo "making vf for burasage ..."
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -sage -cq     upbrsgnml${face}-h uph${face}-h
-./umkjvf -ucs -sp 1 -sage -cm -cp upbrsgnml${face}-v uph${face}-v
+./umkjvf -ucs -sp 1 -sage -omitfw -cq     upbrsgnml${face}-h uph${face}-h
+./umkjvf -ucs -sp 1 -sage -omitfw -cm -cp upbrsgnml${face}-v uph${face}-v
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -sage -cq     upbrsgnml${face}-h uph${face}-h
-./umkjvf -ucs -sp 1 -sage -cm -cp upbrsgnml${face}-v uph${face}-v
+./umkjvf -ucs -sp 1 -sage -omitfw -cq     upbrsgnml${face}-h uph${face}-h
+./umkjvf -ucs -sp 1 -sage -omitfw -cm -cp upbrsgnml${face}-v uph${face}-v
 done
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -sage -cq     -expert upbrsgexp${face}-h uph${face}-h cidj${face}
-./umkjvf -ucs -sp 1 -sage -cm -cp -expert upbrsgexp${face}-v uph${face}-v cidj${face}
+./umkjvf -ucs -sp 1 -sage -omitfw -cq     -expert upbrsgexp${face}-h uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -sage -omitfw -cm -cp -expert upbrsgexp${face}-v uph${face}-v cidj${face}
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -sage -cq     -expert upbrsgexp${face}-h uph${face}-h cidj${face}
-./umkjvf -ucs -sp 1 -sage -cm -cp -expert upbrsgexp${face}-v uph${face}-v cidj${face}
+./umkjvf -ucs -sp 1 -sage -omitfw -cq     -expert upbrsgexp${face}-h uph${face}-h cidj${face}
+./umkjvf -ucs -sp 1 -sage -omitfw -cm -cp -expert upbrsgexp${face}-v uph${face}-v cidj${face}
 done
 
 

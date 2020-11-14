@@ -1,23 +1,65 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{mlutf}[2004/04/17 v1.1.2 psitau, u0.25 ttk]
+\ProvidesPackage{mlutf}[2004/04/17 v1.1.2 psitau, u0.26 ttk]
 %force catcode of \" be 12
 \count@\catcode`\"
 \catcode`\"=12
-\DeclareRobustCommand{\UTFK}[1]{\begingroup%
-	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
-	\kanjifamily{utfk}\uppercase{\set@character="#1}%
-	\endgroup%
-}
-\DeclareRobustCommand{\UTFC}[1]{\begingroup%
-	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
-	\kanjifamily{utfc}\uppercase{\set@character="#1}%
-	\endgroup%
-}
-\DeclareRobustCommand{\UTFT}[1]{\begingroup%
-	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
-	\kanjifamily{utft}\uppercase{\set@character="#1}%
-	\endgroup%
-}
+\if@otf@uplatex
+\if@deluxe
+	\DeclareRobustCommand{\UTFK}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
+		\ifx\k@family\reserved@a \kanjifamily{utfkg}\else\ifx\k@family\reserved@b
+			\kanjifamily{utfkmg}\else\kanjifamily{utfk}\fi\fi%
+		\uppercase{\set@character@="#1}%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\UTFC}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
+		\ifx\k@family\reserved@a \kanjifamily{utfcg}\else\ifx\k@family\reserved@b
+			\kanjifamily{utfcmg}\else\kanjifamily{utfc}\fi\fi%
+		\uppercase{\set@character@="#1}%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\UTFT}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
+		\ifx\k@family\reserved@a \kanjifamily{utftg}\else\ifx\k@family\reserved@b
+			\kanjifamily{utftmg}\else\kanjifamily{utft}\fi\fi%
+		\uppercase{\set@character@="#1}%
+		\endgroup%
+	}
+\else
+	\DeclareRobustCommand{\UTFK}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{utfk}\uppercase{\set@character@="#1}%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\UTFC}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{utfc}\uppercase{\set@character@="#1}%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\UTFT}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{utft}\uppercase{\set@character@="#1}%
+		\endgroup%
+	}
+\fi
+\else% for pLaTeX
+	\DeclareRobustCommand{\UTFK}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{utfk}\uppercase{\set@character="#1}%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\UTFC}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{utfc}\uppercase{\set@character="#1}%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\UTFT}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{utft}\uppercase{\set@character="#1}%
+		\endgroup%
+	}
+\fi
 \DeclareRobustCommand{\UTFM}[1]{\begingroup%
 	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
 	\kanjifamily{utf}\uppercase{\set@character="#1}%
@@ -41,16 +83,64 @@
 
 \DeclareKanjiFamily{\otf@JYn}{utfk}{}
 \DeclareKanjiFamily{\otf@JTn}{utfk}{}
-\Declare@FontShape{utfk}{m}{0123456789abcdef}{utfkmr}
-\Declare@FontShape{utfk}{bx}{0123456789abcdef}{utfkgr}
 \DeclareKanjiFamily{\otf@JYn}{utfc}{}
 \DeclareKanjiFamily{\otf@JTn}{utfc}{}
-\Declare@FontShape{utfc}{m}{0123456789abcdefklmo}{utfcmr}
-\Declare@FontShape{utfc}{bx}{0123456789abcdefklmo}{utfcgr}
 \DeclareKanjiFamily{\otf@JYn}{utft}{}
 \DeclareKanjiFamily{\otf@JTn}{utft}{}
-\Declare@FontShape{utft}{m}{0123456789abcdefklmnopqrstuvwxz}{utftmr}
-\Declare@FontShape{utft}{bx}{0123456789abcdefklmnopqrstuvwxz}{utftgr}
+\if@otf@uplatex
+	\Declare@FontShape{utfk}{m}{-}{utfkmr}
+	\Declare@FontShape{utfc}{m}{-}{utfcmr}
+	\Declare@FontShape{utft}{m}{-}{utftmr}
+	\if@deluxe
+		\Declare@FontShape{utfk}{bx}{-}{utfkmb}
+		\DeclareKanjiFamily{\otf@JYn}{utfkg}{}
+		\DeclareKanjiFamily{\otf@JTn}{utfkg}{}
+		\Declare@FontShape{utfkg}{m}{-}{utfkgr}
+		\Declare@FontShape{utfkg}{bx}{-}{utfkgb}
+		\Declare@FontShape{utfkg}{eb}{-}{utfkge}
+		\DeclareKanjiFamily{\otf@JYn}{utfkmg}{}
+		\DeclareKanjiFamily{\otf@JTn}{utfkmg}{}
+		\Declare@FontShape{utfkmg}{m}{-}{utfkmgr}
+		\Declare@FontShape{utfk}{l}{-}{utfkml}
+		\Declare@FontShape{utfc}{bx}{-}{utfcmb}
+		\DeclareKanjiFamily{\otf@JYn}{utfcg}{}
+		\DeclareKanjiFamily{\otf@JTn}{utfcg}{}
+		\Declare@FontShape{utfcg}{m}{-}{utfcgr}
+		\Declare@FontShape{utfcg}{bx}{-}{utfcgb}
+		\Declare@FontShape{utfcg}{eb}{-}{utfcge}
+		\DeclareKanjiFamily{\otf@JYn}{utfcmg}{}
+		\DeclareKanjiFamily{\otf@JTn}{utfcmg}{}
+		\Declare@FontShape{utfcmg}{m}{-}{utfcmgr}
+		\Declare@FontShape{utfc}{l}{-}{utfcml}
+		\Declare@FontShape{utft}{bx}{-}{utftmb}
+		\DeclareKanjiFamily{\otf@JYn}{utftg}{}
+		\DeclareKanjiFamily{\otf@JTn}{utftg}{}
+		\Declare@FontShape{utftg}{m}{-}{utftgr}
+		\Declare@FontShape{utftg}{bx}{-}{utftgb}
+		\Declare@FontShape{utftg}{eb}{-}{utftge}
+		\DeclareKanjiFamily{\otf@JYn}{utftmg}{}
+		\DeclareKanjiFamily{\otf@JTn}{utftmg}{}
+		\Declare@FontShape{utftmg}{m}{-}{utftmgr}
+		\Declare@FontShape{utft}{l}{-}{utftml}
+	\else
+		\if@bold
+			\Declare@FontShape{utfk}{bx}{-}{utfkgb}
+			\Declare@FontShape{utfc}{bx}{-}{utfcgb}
+			\Declare@FontShape{utft}{bx}{-}{utftgb}
+		\else
+			\Declare@FontShape{utfk}{bx}{-}{utfkgr}
+			\Declare@FontShape{utfc}{bx}{-}{utfcgr}
+			\Declare@FontShape{utft}{bx}{-}{utftgr}
+		\fi
+	\fi
+\else
+	\Declare@FontShape{utfk}{m}{0123456789abcdef}{utfkmr}
+	\Declare@FontShape{utfk}{bx}{0123456789abcdef}{utfkgr}
+	\Declare@FontShape{utfc}{m}{0123456789abcdefklmo}{utfcmr}
+	\Declare@FontShape{utfc}{bx}{0123456789abcdefklmo}{utfcgr}
+	\Declare@FontShape{utft}{m}{0123456789abcdefklmnopqrstuvwxz}{utftmr}
+	\Declare@FontShape{utft}{bx}{0123456789abcdefklmnopqrstuvwxz}{utftgr}
+\fi
 \DeclareKanjiFamily{\otf@JYn}{utf}{}
 \DeclareKanjiFamily{\otf@JTn}{utf}{}
 \Declare@FontShape{utf}{m}{0123456789abcdefjklmnopqrstuvwxyz}{utfmr}
