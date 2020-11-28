@@ -101,13 +101,13 @@ sub printgeta {
 }
 
 sub writechar {
-	for ($ku=1; $ku <= 79; $ku++){
-		for ($ten=1; $ten <= 94; $ten++){
+	for ($ku=16; $ku <= 79; $ku++){
+		for ($ten=16; $ten <= 79; $ten++){
 			if ($ku>=16 && $ku<=79 && $ten>=16 && $ten<=79){
 				&printchar($first_hex,$ku,$ten);
 				$cidcode++;
-			} else {
-				&printgeta($first_hex,$ku,$ten);
+#			} else {
+#				&printgeta($first_hex,$ku,$ten);
 			}
 		}
 	}
