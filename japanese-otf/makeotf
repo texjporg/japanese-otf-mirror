@@ -124,7 +124,7 @@ echo "making alt. kana ..."
 ./mkjvf -omitfw -ruby rubygotheb-h hgotheb-h cidjgotheb
 ./mkjvf -omitfw -cm -cp -ruby rubygotheb-v hgotheb-v cidjgotheb
 echo "making proportional kana tfm/vf"
-perl script/mkpkana.pl
+perl -s script/mkpkana.pl -omitfw
 ppltotf -kanji=euc pl/phiraminw6-h.pl tfm/phiraminw6-h.tfm
 ppltotf -kanji=euc pl/phirakakuw3-h.pl tfm/phirakakuw3-h.tfm
 ppltotf -kanji=euc pl/phiraminw3-h.pl tfm/phiraminw3-h.tfm
@@ -135,7 +135,7 @@ ovp2ovf ovp/phiraminw6-h.ovp vf/phiraminw6-h.vf vf/phiraminw6-h.ofm
 ovp2ovf ovp/phiraminw3-h.ovp vf/phiraminw3-h.vf vf/phiraminw3-h.ofm
 ovp2ovf ovp/phirakakuw6-h.ovp vf/phirakakuw6-h.vf vf/phirakakuw6-h.ofm
 ovp2ovf ovp/phiramaruw4-h.ovp vf/phiramaruw4-h.vf vf/phiramaruw4-h.ofm
-perl script/mkvpkana.pl
+perl -s script/mkvpkana.pl -omitfw
 ppltotf -kanji=euc pl/phiraminw6-v.pl tfm/phiraminw6-v.tfm
 ppltotf -kanji=euc pl/phirakakuw3-v.pl tfm/phirakakuw3-v.tfm
 ppltotf -kanji=euc pl/phiraminw3-v.pl tfm/phiraminw3-v.tfm
