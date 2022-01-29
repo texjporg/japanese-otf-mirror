@@ -1,0 +1,18 @@
+package name: japanese-otf-uptex
+
+The contents of japanese-otf-uptex for CTAN have been
+merged into the package of japanese-otf for CTAN
+(Japanese TeX Development Community edition).
+The binary package japanese-otf-uptex at CTAN is obsolete.
+Please remove japanese-otf-uptex and install japanese-otf only
+to obtain the function of japanese-otf-uptex.
+
+The source code is maintained at GitHub:
+  https://github.com/texjporg/japanese-otf-mirror
+If you find any issues or bugs, please report to
+  https://github.com/texjporg/japanese-otf-mirror/issues
+or
+  e-mail: issue@texjp.org
+
+Japanese TeX Development Community
+$RELEASEDATE

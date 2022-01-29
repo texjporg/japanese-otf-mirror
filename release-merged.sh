@@ -35,6 +35,9 @@ rm -rf $PROJECT-$VER-orig
 rm -rf $PROJECT-nonfree-$VER
 mkdir $PROJECT-nonfree-$VER
 
+rm -rf $PROJECT-uptex-$VER
+mkdir $PROJECT-uptex-$VER
+
 for i in $PROJECT-$VER/* ; do
   bn=`basename $i`
   # japanese-otf(-uptex) contains Hiragino-specific TFM/VF,
@@ -87,6 +90,8 @@ for i in $PROJECT-$VER/* ; do
     mv $PROJECT-$VER/$bn $PROJECT-$VER/README
   elif test $bn = "README.merged.nonfree"; then
     mv $PROJECT-$VER/$bn $PROJECT-nonfree-$VER/README
+  elif test $bn = "README.merged.uptex"; then
+    mv $PROJECT-$VER/$bn $PROJECT-uptex-$VER/README
   elif test $bn = "COPYRIGHT.merged"; then
     cp -p $PROJECT-$VER/$bn $PROJECT-nonfree-$VER/COPYRIGHT
     mv $PROJECT-$VER/$bn $PROJECT-$VER/COPYRIGHT
@@ -106,9 +111,12 @@ done
   rm -f $PROJECT-$VER/README.bak
   perl -pi.bak -e "s/\\\$RELEASEDATE/$VER/g" $PROJECT-nonfree-$VER/README
   rm -f $PROJECT-nonfree-$VER/README.bak
+  perl -pi.bak -e "s/\\\$RELEASEDATE/$VER/g" $PROJECT-uptex-$VER/README
+  rm -f $PROJECT-uptex-$VER/README.bak
   # make archives
   tar zcf $DIR/$PROJECT-$VER.tar.gz $PROJECT-$VER
   tar zcf $DIR/$PROJECT-nonfree-$VER.tar.gz $PROJECT-nonfree-$VER
+  tar zcf $DIR/$PROJECT-uptex-$VER.tar.gz $PROJECT-uptex-$VER
   echo
   echo You should execute
   echo
