@@ -4,10 +4,9 @@ opendir(VF, "vf") || mkdir("vf",0755) || die "cannot mkdir vf";
 &makevf;
 
 sub makevf {
-	for ($k=0; $k<=6; $k++){#face
+	for ($k=0; $k<=5; $k++){#face
 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
-			elsif ($k==6){$face="ge";}
 		for ($i=0; $i<=1; $i++){#direction
 			if ($i==0) {$dir="h";}elsif ($i==1){$dir="v";}
 			$cidcode=0;

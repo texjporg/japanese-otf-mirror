@@ -3,8 +3,6 @@ binmode(GLYPH);
 @glyph_sub_table=();
 opendir(OVP, "ovp") || mkdir("ovp",0755) || die "cannot mkdir ovp";
 opendir(VF, "vf") || mkdir("vf",0755) || die "cannot mkdir vf";
-closedir(OVP);
-closedir(VF);
 
 &make_glyph_substitute_array;
 &make_uni_vf;
@@ -26,7 +24,6 @@ sub make_uni_vf {
 	for ($k=0; $k<=1; $k++){#face
 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
-			elsif ($k==6){$face="ge";}
 		for ($i=0; $i<=1; $i++){#direction
 			if ($i==0) {$dir="h";}elsif ($i==1){$dir="v";}
 			for ($first_hex=0x0; $first_hex <= 0xf; $first_hex++){

@@ -381,8 +381,6 @@ sub get_face{
 		$face="cidjmb";
 	}elsif($kana_font eq "cidjgothb"){
 		$face="cidjgb";
-	}elsif($kana_font eq "cidjgotheb"){
-		$face="cidjge";
 	}elsif($kana_font eq "cidjmgothr"){
 		$face="cidjmgr";
 	}elsif($kana_font eq "cidjminl"){
@@ -400,8 +398,6 @@ sub get_face{
 			$face="cidjmb";
 		}elsif($kanji_font =~ /hgothb/){
 			$face="cidjgb";
-		}elsif($kanji_font =~ /hgotheb/){
-			$face="cidjge";
 		}elsif($kanji_font =~ /hmgothr/){
 			$face="cidjmgr";
 		}elsif($kanji_font =~ /hminl/){

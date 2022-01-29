@@ -1,7 +1,7 @@
 opendir(OPLD, "opl") || mkdir("opl",0755) || die "cannot mkdir opl";
 opendir(OFMD, "ofm") || mkdir("ofm",0755) || die "cannot mkdir ofm";
 $font_at=1.0;
-@font_base_name=("cjmr", "cjgr", "cjmb", "cjgb", "cjmgr", "cjml", "cjge");
+@font_base_name=("cjmr", "cjgr", "cjmb", "cjgb", "cjmgr", "cjml");
 for ($d=0; $d<=1; $d++){
 	if ($d==0){$dir="h";}elsif($d==1){$dir="v";}
 	foreach $base_name(@font_base_name){

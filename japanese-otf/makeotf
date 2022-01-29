@@ -54,14 +54,6 @@ ppltotf basepl/base3-v.pl tfm/cidjmgr3-v.tfm
 #for extra fonts
 ppltotf basepl/base-h.pl tfm/nmlgotheb-h.tfm
 ppltotf basepl/base-v.pl tfm/nmlgotheb-v.tfm
-ppltotf basepl/base-h.pl tfm/expgotheb-h.tfm
-ppltotf basepl/base-v.pl tfm/expgotheb-v.tfm
-ppltotf basepl/base-v.pl tfm/rubygotheb-v.tfm
-ppltotf basepl/base-h.pl tfm/rubygotheb-h.tfm
-ppltotf basepl/base0-h.pl tfm/cidjge0-h.tfm
-ppltotf basepl/base2-h.pl tfm/cidjge2-h.tfm
-ppltotf basepl/base2-v.pl tfm/cidjge2-v.tfm
-ppltotf basepl/base3-v.pl tfm/cidjge3-v.tfm
 ppltotf basepl/base-h.pl tfm/nmlminl-h.tfm
 ppltotf basepl/base-v.pl tfm/nmlminl-v.tfm
 ppltotf basepl/base-h.pl tfm/expminl-h.tfm
@@ -91,7 +83,7 @@ perl script/mkaltutfvf.pl
 ./mkjvf -cm -cp nmlmgothr-v hmgothr-v
 #extra fonts
 ./mkjvf nmlgotheb-h hgotheb-h
-./mkjvf -cm -cp nmlgotheb-v hgotheb-v
+./mkjvf -cp nmlgotheb-v hgotheb-v
 ./mkjvf nmlminl-h hminl-h
 ./mkjvf -cm -cp nmlminl-v hminl-v
 echo "making alt. kana ..."
@@ -119,10 +111,6 @@ echo "making alt. kana ..."
 ./mkjvf -cm -cp -expert expminl-v hminl-v cidjminl
 ./mkjvf -ruby rubyminl-h hminl-h cidjminl
 ./mkjvf -cm -cp -ruby rubyminl-v hminl-v cidjminl
-./mkjvf -expert expgotheb-h hgotheb-h cidjgotheb
-./mkjvf -cm -cp -expert expgotheb-v hgotheb-v cidjgotheb
-./mkjvf -ruby rubygotheb-h hgotheb-h cidjgotheb
-./mkjvf -cm -cp -ruby rubygotheb-v hgotheb-v cidjgotheb
 echo "making proportional kana tfm/vf"
 perl script/mkpkana.pl
 ppltotf -kanji=euc pl/phiraminw6-h.pl tfm/phiraminw6-h.tfm
@@ -183,8 +171,6 @@ ppltotf basepl/brsg-h.pl tfm/brsgexpmgothr-h.tfm
 ppltotf basepl/brsg-v.pl tfm/brsgexpmgothr-v.tfm
 ppltotf basepl/brsg-h.pl tfm/brsgnmlgotheb-h.tfm
 ppltotf basepl/brsg-v.pl tfm/brsgnmlgotheb-v.tfm
-ppltotf basepl/brsg-h.pl tfm/brsgexpgotheb-h.tfm
-ppltotf basepl/brsg-v.pl tfm/brsgexpgotheb-v.tfm
 ppltotf basepl/brsg-h.pl tfm/brsgnmlminl-h.tfm
 ppltotf basepl/brsg-v.pl tfm/brsgnmlminl-v.tfm
 ppltotf basepl/brsg-h.pl tfm/brsgexpminl-h.tfm
@@ -200,7 +186,7 @@ ppltotf basepl/brsg-v.pl tfm/brsgexpminl-v.tfm
 ./mkjvf -sage brsgnmlmgothr-h hmgothr-h
 ./mkjvf -sage -cm -cp brsgnmlmgothr-v hmgothr-v
 ./mkjvf -sage brsgnmlgotheb-h hgotheb-h
-./mkjvf -sage -cm -cp brsgnmlgotheb-v hgotheb-v
+./mkjvf -sage -cp brsgnmlgotheb-v hgotheb-v
 ./mkjvf -sage brsgnmlminl-h hminl-h
 ./mkjvf -sage -cm -cp brsgnmlminl-v hminl-v
 ./mkjvf -sage -expert brsgexpminr-h hminr-h cidjminr
@@ -213,8 +199,6 @@ ppltotf basepl/brsg-v.pl tfm/brsgexpminl-v.tfm
 ./mkjvf -sage -cm -cp -expert brsgexpgothb-v hgothb-v cidjgothb
 ./mkjvf -sage -expert brsgexpmgothr-h hmgothr-h cidjmgothr
 ./mkjvf -sage -cm -cp -expert brsgexpmgothr-v hmgothr-v cidjmgothr
-./mkjvf -sage -expert brsgexpgotheb-h hgotheb-h cidjgotheb
-./mkjvf -sage -cm -cp -expert brsgexpgotheb-v hgotheb-v cidjgotheb
 ./mkjvf -sage -expert brsgexpminl-h hminl-h cidjminl
 ./mkjvf -sage -cm -cp -expert brsgexpminl-v hminl-v cidjminl
 echo "making tfm/vf for UTF jp04 (wait a while)..."
@@ -244,10 +228,6 @@ ppltotf basepl/base-h.pl tfm/nmlminln-h.tfm
 ppltotf basepl/base-v.pl tfm/nmlminln-v.tfm
 ppltotf basepl/base-h.pl tfm/expminln-h.tfm
 ppltotf basepl/base-v.pl tfm/expminln-v.tfm
-ppltotf basepl/base-h.pl tfm/nmlgothebn-h.tfm
-ppltotf basepl/base-v.pl tfm/nmlgothebn-v.tfm
-ppltotf basepl/base-h.pl tfm/expgothebn-h.tfm
-ppltotf basepl/base-v.pl tfm/expgothebn-v.tfm
 ppltotf basepl/brsg-h.pl tfm/brsgnmlminrn-h.tfm
 ppltotf basepl/brsg-v.pl tfm/brsgnmlminrn-v.tfm
 ppltotf basepl/brsg-h.pl tfm/brsgnmlgothrn-h.tfm
@@ -272,10 +252,6 @@ ppltotf basepl/brsg-h.pl tfm/brsgnmlminln-h.tfm
 ppltotf basepl/brsg-v.pl tfm/brsgnmlminln-v.tfm
 ppltotf basepl/brsg-h.pl tfm/brsgexpminln-h.tfm
 ppltotf basepl/brsg-v.pl tfm/brsgexpminln-v.tfm
-ppltotf basepl/brsg-h.pl tfm/brsgnmlgothebn-h.tfm
-ppltotf basepl/brsg-v.pl tfm/brsgnmlgothebn-v.tfm
-ppltotf basepl/brsg-h.pl tfm/brsgexpgothebn-h.tfm
-ppltotf basepl/brsg-v.pl tfm/brsgexpgothebn-v.tfm
 echo "making jvf for jp04 ..."
 ./mkjvf -jp04 nmlminrn-h hminrn-h
 ./mkjvf -jp04 -cm -cp nmlminrn-v hminrn-v
@@ -289,8 +265,6 @@ echo "making jvf for jp04 ..."
 ./mkjvf -jp04 -cm -cp nmlmgothrn-v hmgothrn-v
 ./mkjvf -jp04 nmlminln-h hminln-h
 ./mkjvf -jp04 -cm -cp nmlminln-v hminln-v
-./mkjvf -jp04 nmlgothebn-h hgothebn-h
-./mkjvf -jp04 -cm -cp nmlgothebn-v hgothebn-v
 ./mkjvf -jp04 -expert expminrn-h hminrn-h cidjminr
 ./mkjvf -jp04 -cm -cp -expert expminrn-v hminrn-v cidjminr
 ./mkjvf -jp04 -expert expgothrn-h hgothrn-h cidjgothr
@@ -301,8 +275,6 @@ echo "making jvf for jp04 ..."
 ./mkjvf -jp04 -cm -cp -expert expgothbn-v hgothbn-v cidjgothb
 ./mkjvf -jp04 -expert expmgothrn-h hmgothrn-h cidjmgothr
 ./mkjvf -jp04 -cm -cp -expert expmgothrn-v hmgothrn-v cidjmgothr
-./mkjvf -jp04 -expert expgothebn-h hgothebn-h cidjgotheb
-./mkjvf -jp04 -cm -cp -expert expgothebn-v hgothebn-v cidjgotheb
 ./mkjvf -jp04 -expert expminln-h hminln-h cidjminl
 ./mkjvf -jp04 -cm -cp -expert expminln-v hminln-v cidjminl
 ./mkjvf -jp04 -sage brsgnmlminrn-h hminrn-h
@@ -315,8 +287,6 @@ echo "making jvf for jp04 ..."
 ./mkjvf -jp04 -sage -cm -cp brsgnmlgothbn-v hgothbn-v
 ./mkjvf -jp04 -sage brsgnmlmgothrn-h hmgothrn-h
 ./mkjvf -jp04 -sage -cm -cp brsgnmlmgothrn-v hmgothrn-v
-./mkjvf -jp04 -sage brsgnmlgothebn-h hgothebn-h
-./mkjvf -jp04 -sage -cm -cp brsgnmlgothebn-v hgothebn-v
 ./mkjvf -jp04 -sage brsgnmlminln-h hminln-h
 ./mkjvf -jp04 -sage -cm -cp brsgnmlminln-v hminln-v
 ./mkjvf -jp04 -sage -expert brsgexpminrn-h hminrn-h cidjminr
@@ -329,8 +299,6 @@ echo "making jvf for jp04 ..."
 ./mkjvf -jp04 -sage -cm -cp -expert brsgexpgothbn-v hgothbn-v cidjgothb
 ./mkjvf -jp04 -sage -expert brsgexpmgothrn-h hmgothrn-h cidjmgothr
 ./mkjvf -jp04 -sage -cm -cp -expert brsgexpmgothrn-v hmgothrn-v cidjmgothr
-./mkjvf -jp04 -sage -expert brsgexpgothebn-h hgothebn-h cidjgotheb
-./mkjvf -jp04 -sage -cm -cp -expert brsgexpgothebn-v hgothebn-v cidjgotheb
 ./mkjvf -jp04 -sage -expert brsgexpminln-h hminln-h cidjminl
 ./mkjvf -jp04 -sage -cm -cp -expert brsgexpminln-v hminln-v cidjminl
 echo "finishing ..."

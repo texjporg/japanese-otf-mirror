@@ -6,10 +6,9 @@ opendir(VF, "vf") || mkdir("vf",0755) || die "cannot mkdir vf";
 &makemlvf;
 
 sub makejvf {
-	for ($k=0; $k<=6; $k++){#face
+	for ($k=0; $k<=5; $k++){#face
 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
-			elsif ($k==6){$face="ge";}
 		for ($l=0; $l<=0; $l++){#language
 			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
@@ -34,7 +33,6 @@ sub makemlvf {
 	for ($k=0; $k<=1; $k++){#face
 		if ($k==0) {$face="mr";}elsif ($k==1){$face="gr";}elsif ($k==2){$face="mb";}
 			elsif ($k==3){$face="gb";}elsif ($k==4){$face="mgr";}elsif ($k==5){$face="ml";}
-			elsif ($k==6){$face="ge";}
 		for ($l=1; $l<=$multi; $l++){#language
 			if ($l==0) {$lang="j";} elsif ($l==1) {$lang="k";} 
 				elsif ($l==2) {$lang="c";} elsif ($l==3){$lang="t";}
