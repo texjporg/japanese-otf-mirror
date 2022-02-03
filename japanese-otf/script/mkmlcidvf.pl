@@ -104,6 +104,9 @@ sub writechar {
 	for ($ku=16; $ku <= 79; $ku++){
 		for ($ten=16; $ten <= 79; $ten++){
 			if ($ku>=16 && $ku<=79 && $ten>=16 && $ten<=79){
+				return if (($lang eq "c" && $cidcode>30283)
+					|| ($lang eq "t" && $cidcode>19178)
+					|| ($lang eq "k" && $cidcode>18351));
 				&printchar($first_hex,$ku,$ten);
 				$cidcode++;
 #			} else {
