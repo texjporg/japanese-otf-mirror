@@ -95,36 +95,36 @@ perl script/mkaltutfvf.pl
 ./mkjvf nmlminl-h hminl-h
 ./mkjvf -cm -cp nmlminl-v hminl-v
 echo "making alt. kana ..."
-./mkjvf -omitfw -expert expminr-h hminr-h cidjminr
-./mkjvf -omitfw -cm -cp -expert expminr-v hminr-v cidjminr
-./mkjvf -omitfw -expert expgothr-h hgothr-h cidjgothr
-./mkjvf -omitfw -cm -cp -expert expgothr-v hgothr-v cidjgothr
-./mkjvf -omitfw -expert expminb-h hminb-h cidjminb
-./mkjvf -omitfw -cm -cp -expert expminb-v hminb-v cidjminb
-./mkjvf -omitfw -expert expgothb-h hgothb-h cidjgothb
-./mkjvf -omitfw -cm -cp -expert expgothb-v hgothb-v cidjgothb
-./mkjvf -omitfw -expert expmgothr-h hmgothr-h cidjmgothr
-./mkjvf -omitfw -cm -cp -expert expmgothr-v hmgothr-v cidjmgothr
-./mkjvf -omitfw -ruby rubyminr-h hminr-h cidjminr
-./mkjvf -omitfw -cm -cp -ruby rubyminr-v hminr-v cidjminr
-./mkjvf -omitfw -ruby rubygothr-h hgothr-h cidjgothr
-./mkjvf -omitfw -cm -cp -ruby rubygothr-v hgothr-v cidjgothr
-./mkjvf -omitfw -ruby rubyminb-h hminb-h cidjminb
-./mkjvf -omitfw -cm -cp -ruby rubyminb-v hminb-v cidjminb
-./mkjvf -omitfw -ruby rubygothb-h hgothb-h cidjgothb
-./mkjvf -omitfw -cm -cp -ruby rubygothb-v hgothb-v cidjgothb
-./mkjvf -omitfw -ruby rubymgothr-h hmgothr-h cidjmgothr
-./mkjvf -omitfw -cm -cp -ruby rubymgothr-v hmgothr-v cidjmgothr
-./mkjvf -omitfw -expert expminl-h hminl-h cidjminl
-./mkjvf -omitfw -cm -cp -expert expminl-v hminl-v cidjminl
-./mkjvf -omitfw -ruby rubyminl-h hminl-h cidjminl
-./mkjvf -omitfw -cm -cp -ruby rubyminl-v hminl-v cidjminl
-./mkjvf -omitfw -expert expgotheb-h hgotheb-h cidjgotheb
-./mkjvf -omitfw -cm -cp -expert expgotheb-v hgotheb-v cidjgotheb
-./mkjvf -omitfw -ruby rubygotheb-h hgotheb-h cidjgotheb
-./mkjvf -omitfw -cm -cp -ruby rubygotheb-v hgotheb-v cidjgotheb
+./mkjvf -expert expminr-h hminr-h cidjminr
+./mkjvf -cm -cp -expert expminr-v hminr-v cidjminr
+./mkjvf -expert expgothr-h hgothr-h cidjgothr
+./mkjvf -cm -cp -expert expgothr-v hgothr-v cidjgothr
+./mkjvf -expert expminb-h hminb-h cidjminb
+./mkjvf -cm -cp -expert expminb-v hminb-v cidjminb
+./mkjvf -expert expgothb-h hgothb-h cidjgothb
+./mkjvf -cm -cp -expert expgothb-v hgothb-v cidjgothb
+./mkjvf -expert expmgothr-h hmgothr-h cidjmgothr
+./mkjvf -cm -cp -expert expmgothr-v hmgothr-v cidjmgothr
+./mkjvf -ruby rubyminr-h hminr-h cidjminr
+./mkjvf -cm -cp -ruby rubyminr-v hminr-v cidjminr
+./mkjvf -ruby rubygothr-h hgothr-h cidjgothr
+./mkjvf -cm -cp -ruby rubygothr-v hgothr-v cidjgothr
+./mkjvf -ruby rubyminb-h hminb-h cidjminb
+./mkjvf -cm -cp -ruby rubyminb-v hminb-v cidjminb
+./mkjvf -ruby rubygothb-h hgothb-h cidjgothb
+./mkjvf -cm -cp -ruby rubygothb-v hgothb-v cidjgothb
+./mkjvf -ruby rubymgothr-h hmgothr-h cidjmgothr
+./mkjvf -cm -cp -ruby rubymgothr-v hmgothr-v cidjmgothr
+./mkjvf -expert expminl-h hminl-h cidjminl
+./mkjvf -cm -cp -expert expminl-v hminl-v cidjminl
+./mkjvf -ruby rubyminl-h hminl-h cidjminl
+./mkjvf -cm -cp -ruby rubyminl-v hminl-v cidjminl
+./mkjvf -expert expgotheb-h hgotheb-h cidjgotheb
+./mkjvf -cm -cp -expert expgotheb-v hgotheb-v cidjgotheb
+./mkjvf -ruby rubygotheb-h hgotheb-h cidjgotheb
+./mkjvf -cm -cp -ruby rubygotheb-v hgotheb-v cidjgotheb
 echo "making proportional kana tfm/vf"
-perl -s script/mkpkana.pl -omitfw
+perl script/mkpkana.pl
 ppltotf -kanji=euc pl/phiraminw6-h.pl tfm/phiraminw6-h.tfm
 ppltotf -kanji=euc pl/phirakakuw3-h.pl tfm/phirakakuw3-h.tfm
 ppltotf -kanji=euc pl/phiraminw3-h.pl tfm/phiraminw3-h.tfm
@@ -135,7 +135,7 @@ ovp2ovf ovp/phiraminw6-h.ovp vf/phiraminw6-h.vf vf/phiraminw6-h.ofm
 ovp2ovf ovp/phiraminw3-h.ovp vf/phiraminw3-h.vf vf/phiraminw3-h.ofm
 ovp2ovf ovp/phirakakuw6-h.ovp vf/phirakakuw6-h.vf vf/phirakakuw6-h.ofm
 ovp2ovf ovp/phiramaruw4-h.ovp vf/phiramaruw4-h.vf vf/phiramaruw4-h.ofm
-perl -s script/mkvpkana.pl -omitfw
+perl script/mkvpkana.pl
 ppltotf -kanji=euc pl/phiraminw6-v.pl tfm/phiraminw6-v.tfm
 ppltotf -kanji=euc pl/phirakakuw3-v.pl tfm/phirakakuw3-v.tfm
 ppltotf -kanji=euc pl/phiraminw3-v.pl tfm/phiraminw3-v.tfm
@@ -189,34 +189,34 @@ ppltotf basepl/brsg-h.pl tfm/brsgnmlminl-h.tfm
 ppltotf basepl/brsg-v.pl tfm/brsgnmlminl-v.tfm
 ppltotf basepl/brsg-h.pl tfm/brsgexpminl-h.tfm
 ppltotf basepl/brsg-v.pl tfm/brsgexpminl-v.tfm
-./mkjvf -sage -omitfw brsgnmlminr-h hminr-h
-./mkjvf -sage -omitfw -cm -cp brsgnmlminr-v hminr-v
-./mkjvf -sage -omitfw brsgnmlgothr-h hgothr-h
-./mkjvf -sage -omitfw -cm -cp brsgnmlgothr-v hgothr-v
-./mkjvf -sage -omitfw brsgnmlminb-h hminb-h
-./mkjvf -sage -omitfw -cm -cp brsgnmlminb-v hminb-v
-./mkjvf -sage -omitfw brsgnmlgothb-h hgothb-h
-./mkjvf -sage -omitfw -cm -cp brsgnmlgothb-v hgothb-v
-./mkjvf -sage -omitfw brsgnmlmgothr-h hmgothr-h
-./mkjvf -sage -omitfw -cm -cp brsgnmlmgothr-v hmgothr-v
-./mkjvf -sage -omitfw brsgnmlgotheb-h hgotheb-h
-./mkjvf -sage -omitfw -cm -cp brsgnmlgotheb-v hgotheb-v
-./mkjvf -sage -omitfw brsgnmlminl-h hminl-h
-./mkjvf -sage -omitfw -cm -cp brsgnmlminl-v hminl-v
-./mkjvf -sage -omitfw -expert brsgexpminr-h hminr-h cidjminr
-./mkjvf -sage -omitfw -cm -cp -expert brsgexpminr-v hminr-v cidjminr
-./mkjvf -sage -omitfw -expert brsgexpgothr-h hgothr-h cidjgothr
-./mkjvf -sage -omitfw -cm -cp -expert brsgexpgothr-v hgothr-v cidjgothr
-./mkjvf -sage -omitfw -expert brsgexpminb-h hminb-h cidjminb
-./mkjvf -sage -omitfw -cm -cp -expert brsgexpminb-v hminb-v cidjminb
-./mkjvf -sage -omitfw -expert brsgexpgothb-h hgothb-h cidjgothb
-./mkjvf -sage -omitfw -cm -cp -expert brsgexpgothb-v hgothb-v cidjgothb
-./mkjvf -sage -omitfw -expert brsgexpmgothr-h hmgothr-h cidjmgothr
-./mkjvf -sage -omitfw -cm -cp -expert brsgexpmgothr-v hmgothr-v cidjmgothr
-./mkjvf -sage -omitfw -expert brsgexpgotheb-h hgotheb-h cidjgotheb
-./mkjvf -sage -omitfw -cm -cp -expert brsgexpgotheb-v hgotheb-v cidjgotheb
-./mkjvf -sage -omitfw -expert brsgexpminl-h hminl-h cidjminl
-./mkjvf -sage -omitfw -cm -cp -expert brsgexpminl-v hminl-v cidjminl
+./mkjvf -sage brsgnmlminr-h hminr-h
+./mkjvf -sage -cm -cp brsgnmlminr-v hminr-v
+./mkjvf -sage brsgnmlgothr-h hgothr-h
+./mkjvf -sage -cm -cp brsgnmlgothr-v hgothr-v
+./mkjvf -sage brsgnmlminb-h hminb-h
+./mkjvf -sage -cm -cp brsgnmlminb-v hminb-v
+./mkjvf -sage brsgnmlgothb-h hgothb-h
+./mkjvf -sage -cm -cp brsgnmlgothb-v hgothb-v
+./mkjvf -sage brsgnmlmgothr-h hmgothr-h
+./mkjvf -sage -cm -cp brsgnmlmgothr-v hmgothr-v
+./mkjvf -sage brsgnmlgotheb-h hgotheb-h
+./mkjvf -sage -cm -cp brsgnmlgotheb-v hgotheb-v
+./mkjvf -sage brsgnmlminl-h hminl-h
+./mkjvf -sage -cm -cp brsgnmlminl-v hminl-v
+./mkjvf -sage -expert brsgexpminr-h hminr-h cidjminr
+./mkjvf -sage -cm -cp -expert brsgexpminr-v hminr-v cidjminr
+./mkjvf -sage -expert brsgexpgothr-h hgothr-h cidjgothr
+./mkjvf -sage -cm -cp -expert brsgexpgothr-v hgothr-v cidjgothr
+./mkjvf -sage -expert brsgexpminb-h hminb-h cidjminb
+./mkjvf -sage -cm -cp -expert brsgexpminb-v hminb-v cidjminb
+./mkjvf -sage -expert brsgexpgothb-h hgothb-h cidjgothb
+./mkjvf -sage -cm -cp -expert brsgexpgothb-v hgothb-v cidjgothb
+./mkjvf -sage -expert brsgexpmgothr-h hmgothr-h cidjmgothr
+./mkjvf -sage -cm -cp -expert brsgexpmgothr-v hmgothr-v cidjmgothr
+./mkjvf -sage -expert brsgexpgotheb-h hgotheb-h cidjgotheb
+./mkjvf -sage -cm -cp -expert brsgexpgotheb-v hgotheb-v cidjgotheb
+./mkjvf -sage -expert brsgexpminl-h hminl-h cidjminl
+./mkjvf -sage -cm -cp -expert brsgexpminl-v hminl-v cidjminl
 echo "making tfm/vf for UTF jp04 (wait a while)..."
 perl script/mkjp04tfmvf.pl
 echo "making tfm for jp04 ..."
@@ -291,48 +291,48 @@ echo "making jvf for jp04 ..."
 ./mkjvf -jp04 -cm -cp nmlminln-v hminln-v
 ./mkjvf -jp04 nmlgothebn-h hgothebn-h
 ./mkjvf -jp04 -cm -cp nmlgothebn-v hgothebn-v
-./mkjvf -jp04 -omitfw -expert expminrn-h hminrn-h cidjminr
-./mkjvf -jp04 -omitfw -cm -cp -expert expminrn-v hminrn-v cidjminr
-./mkjvf -jp04 -omitfw -expert expgothrn-h hgothrn-h cidjgothr
-./mkjvf -jp04 -omitfw -cm -cp -expert expgothrn-v hgothrn-v cidjgothr
-./mkjvf -jp04 -omitfw -expert expminbn-h hminbn-h cidjminb
-./mkjvf -jp04 -omitfw -cm -cp -expert expminbn-v hminbn-v cidjminb
-./mkjvf -jp04 -omitfw -expert expgothbn-h hgothbn-h cidjgothb
-./mkjvf -jp04 -omitfw -cm -cp -expert expgothbn-v hgothbn-v cidjgothb
-./mkjvf -jp04 -omitfw -expert expmgothrn-h hmgothrn-h cidjmgothr
-./mkjvf -jp04 -omitfw -cm -cp -expert expmgothrn-v hmgothrn-v cidjmgothr
-./mkjvf -jp04 -omitfw -expert expgothebn-h hgothebn-h cidjgotheb
-./mkjvf -jp04 -omitfw -cm -cp -expert expgothebn-v hgothebn-v cidjgotheb
-./mkjvf -jp04 -omitfw -expert expminln-h hminln-h cidjminl
-./mkjvf -jp04 -omitfw -cm -cp -expert expminln-v hminln-v cidjminl
-./mkjvf -jp04 -sage -omitfw brsgnmlminrn-h hminrn-h
-./mkjvf -jp04 -sage -omitfw -cm -cp brsgnmlminrn-v hminrn-v
-./mkjvf -jp04 -sage -omitfw brsgnmlgothrn-h hgothrn-h
-./mkjvf -jp04 -sage -omitfw -cm -cp brsgnmlgothrn-v hgothrn-v
-./mkjvf -jp04 -sage -omitfw brsgnmlminbn-h hminbn-h
-./mkjvf -jp04 -sage -omitfw -cm -cp brsgnmlminbn-v hminbn-v
-./mkjvf -jp04 -sage -omitfw brsgnmlgothbn-h hgothbn-h
-./mkjvf -jp04 -sage -omitfw -cm -cp brsgnmlgothbn-v hgothbn-v
-./mkjvf -jp04 -sage -omitfw brsgnmlmgothrn-h hmgothrn-h
-./mkjvf -jp04 -sage -omitfw -cm -cp brsgnmlmgothrn-v hmgothrn-v
-./mkjvf -jp04 -sage -omitfw brsgnmlgothebn-h hgothebn-h
-./mkjvf -jp04 -sage -omitfw -cm -cp brsgnmlgothebn-v hgothebn-v
-./mkjvf -jp04 -sage -omitfw brsgnmlminln-h hminln-h
-./mkjvf -jp04 -sage -omitfw -cm -cp brsgnmlminln-v hminln-v
-./mkjvf -jp04 -sage -omitfw -expert brsgexpminrn-h hminrn-h cidjminr
-./mkjvf -jp04 -sage -omitfw -cm -cp -expert brsgexpminrn-v hminrn-v cidjminr
-./mkjvf -jp04 -sage -omitfw -expert brsgexpgothrn-h hgothrn-h cidjgothr
-./mkjvf -jp04 -sage -omitfw -cm -cp -expert brsgexpgothrn-v hgothrn-v cidjgothr
-./mkjvf -jp04 -sage -omitfw -expert brsgexpminbn-h hminbn-h cidjminb
-./mkjvf -jp04 -sage -omitfw -cm -cp -expert brsgexpminbn-v hminbn-v cidjminb
-./mkjvf -jp04 -sage -omitfw -expert brsgexpgothbn-h hgothbn-h cidjgothb
-./mkjvf -jp04 -sage -omitfw -cm -cp -expert brsgexpgothbn-v hgothbn-v cidjgothb
-./mkjvf -jp04 -sage -omitfw -expert brsgexpmgothrn-h hmgothrn-h cidjmgothr
-./mkjvf -jp04 -sage -omitfw -cm -cp -expert brsgexpmgothrn-v hmgothrn-v cidjmgothr
-./mkjvf -jp04 -sage -omitfw -expert brsgexpgothebn-h hgothebn-h cidjgotheb
-./mkjvf -jp04 -sage -omitfw -cm -cp -expert brsgexpgothebn-v hgothebn-v cidjgotheb
-./mkjvf -jp04 -sage -omitfw -expert brsgexpminln-h hminln-h cidjminl
-./mkjvf -jp04 -sage -omitfw -cm -cp -expert brsgexpminln-v hminln-v cidjminl
+./mkjvf -jp04 -expert expminrn-h hminrn-h cidjminr
+./mkjvf -jp04 -cm -cp -expert expminrn-v hminrn-v cidjminr
+./mkjvf -jp04 -expert expgothrn-h hgothrn-h cidjgothr
+./mkjvf -jp04 -cm -cp -expert expgothrn-v hgothrn-v cidjgothr
+./mkjvf -jp04 -expert expminbn-h hminbn-h cidjminb
+./mkjvf -jp04 -cm -cp -expert expminbn-v hminbn-v cidjminb
+./mkjvf -jp04 -expert expgothbn-h hgothbn-h cidjgothb
+./mkjvf -jp04 -cm -cp -expert expgothbn-v hgothbn-v cidjgothb
+./mkjvf -jp04 -expert expmgothrn-h hmgothrn-h cidjmgothr
+./mkjvf -jp04 -cm -cp -expert expmgothrn-v hmgothrn-v cidjmgothr
+./mkjvf -jp04 -expert expgothebn-h hgothebn-h cidjgotheb
+./mkjvf -jp04 -cm -cp -expert expgothebn-v hgothebn-v cidjgotheb
+./mkjvf -jp04 -expert expminln-h hminln-h cidjminl
+./mkjvf -jp04 -cm -cp -expert expminln-v hminln-v cidjminl
+./mkjvf -jp04 -sage brsgnmlminrn-h hminrn-h
+./mkjvf -jp04 -sage -cm -cp brsgnmlminrn-v hminrn-v
+./mkjvf -jp04 -sage brsgnmlgothrn-h hgothrn-h
+./mkjvf -jp04 -sage -cm -cp brsgnmlgothrn-v hgothrn-v
+./mkjvf -jp04 -sage brsgnmlminbn-h hminbn-h
+./mkjvf -jp04 -sage -cm -cp brsgnmlminbn-v hminbn-v
+./mkjvf -jp04 -sage brsgnmlgothbn-h hgothbn-h
+./mkjvf -jp04 -sage -cm -cp brsgnmlgothbn-v hgothbn-v
+./mkjvf -jp04 -sage brsgnmlmgothrn-h hmgothrn-h
+./mkjvf -jp04 -sage -cm -cp brsgnmlmgothrn-v hmgothrn-v
+./mkjvf -jp04 -sage brsgnmlgothebn-h hgothebn-h
+./mkjvf -jp04 -sage -cm -cp brsgnmlgothebn-v hgothebn-v
+./mkjvf -jp04 -sage brsgnmlminln-h hminln-h
+./mkjvf -jp04 -sage -cm -cp brsgnmlminln-v hminln-v
+./mkjvf -jp04 -sage -expert brsgexpminrn-h hminrn-h cidjminr
+./mkjvf -jp04 -sage -cm -cp -expert brsgexpminrn-v hminrn-v cidjminr
+./mkjvf -jp04 -sage -expert brsgexpgothrn-h hgothrn-h cidjgothr
+./mkjvf -jp04 -sage -cm -cp -expert brsgexpgothrn-v hgothrn-v cidjgothr
+./mkjvf -jp04 -sage -expert brsgexpminbn-h hminbn-h cidjminb
+./mkjvf -jp04 -sage -cm -cp -expert brsgexpminbn-v hminbn-v cidjminb
+./mkjvf -jp04 -sage -expert brsgexpgothbn-h hgothbn-h cidjgothb
+./mkjvf -jp04 -sage -cm -cp -expert brsgexpgothbn-v hgothbn-v cidjgothb
+./mkjvf -jp04 -sage -expert brsgexpmgothrn-h hmgothrn-h cidjmgothr
+./mkjvf -jp04 -sage -cm -cp -expert brsgexpmgothrn-v hmgothrn-v cidjmgothr
+./mkjvf -jp04 -sage -expert brsgexpgothebn-h hgothebn-h cidjgotheb
+./mkjvf -jp04 -sage -cm -cp -expert brsgexpgothebn-v hgothebn-v cidjgotheb
+./mkjvf -jp04 -sage -expert brsgexpminln-h hminln-h cidjminl
+./mkjvf -jp04 -sage -cm -cp -expert brsgexpminln-v hminln-v cidjminl
 echo "finishing ..."
 mv *.vf vf/
 mv *.tfm tfm/

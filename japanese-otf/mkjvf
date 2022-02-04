@@ -69,6 +69,9 @@ sub proc_arg {
 	} elsif (($omitfw != 0) && ($baseline_shift != 0)){
 			print "mkjvf: You can't use \"-b\" and \"-omitfw\" at same time.\n";
 			&print_help;
+	} elsif (($omitfw != 0) && ($all_ku != 0)){
+			print "mkjvf: You can't use \"-omitfw\" and \"-allku\" at same time.\n";
+			&print_help;
 	} else {
 		if ($#ARGV <= 1) {
 			print "mkjvf: Need three file arguments for this option.\n";
@@ -282,7 +285,7 @@ sub make_tfm {
 ####  dfn of sub sub rtns  ###
 ##############################
 sub print_help {
-	print "This is mkjvf version 1.0b21 (2010/3/25) by psitau\n";
+	print "This is mkjvf version 1.0b21 (2010/3/25) by psitau, 2022/02/05 TeX JP org\n";
 	print "Usage: mkjvf [option] <TFMfile> <PSfontTFM> [<PSfontTFM>]\n";
 	print "   -b <number>     baseline shift\n";
 	print "   -m              translate quotation mark to minute\n";
@@ -294,7 +297,7 @@ sub print_help {
 	print "   -burasage       make the width of kutoh-ten zero for burasage\n";
 	print "   -jp04           make a font mapped JIS X 0213:2004 glyphs\n";
 	print "   -omitfw         omit entries in vf for characters with default metric (tex-jp-org extention)\n";
-	print "   -allku          do not omit entries in vf for undefined Ku in JIS X 0208 (tex-jp-org extention)\n";
+	print "   -allku          don't omit entries in vf for undefined Ku in JIS X 0208 (tex-jp-org extention)\n";
 	print "   -SJIS           make shift jis mapped vf (experimental)\n";
 	print "   -scale <0--1>   make kokana vf\n";
 	print "   -help           print this message\n";
