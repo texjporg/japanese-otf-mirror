@@ -81,9 +81,7 @@ sub writechar {
 		for ($ten=16; $ten <= 79; $ten++){
 			$jis=sprintf("%X", $ku*256 + $ten + 0x2020);
 			if ($ku>=16 && $ku<=79 && $ten>=16 && $ten<=79){
-				$uni=$hex*4096 + ($ku-16)*64 + ($ten-16);
-				next if ($uni>=0xD800 && $uni<=0xDFFF); # skip surrogate
-				$uni=sprintf("%X", $uni);
+				$uni=sprintf("%X", $hex*4096 + ($ku-16)*64 + ($ten-16));
 #			} else {
 #				$uni="3013";
 			}

@@ -78,7 +78,6 @@ sub writechar {
 sub printchar {
 	$jiscode=($_[1]+0x20)*256+($_[2]+0x20);
 	$unicode=$_[0]*4096+($_[1]-16)*64+($_[2]-16);
-	return if ($unicode>=0xD800 && $unicode<=0xDFFF); # skip surrogate
 	printf OVP "(CHARACTER H %X\n", $jiscode;
 	print  OVP "   (CHARWD R 1.0)\n";#2003/10/22 CHARWD 0.962216->1.0
 	print  OVP "   (MAP\n";
