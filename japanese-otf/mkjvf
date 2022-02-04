@@ -43,7 +43,7 @@ sub initialize_constant{
 }
 sub proc_arg {
 	if ($#ARGV == -1) {&print_help;}
-	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cp', \$comma_period, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-omitfw', \$omitfw, 0], ['^-h(e|el|elp)?', \$help, 0], ['^-(.+)', \$unknown, 0]);
+	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cp', \$comma_period, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-omitfw', \$omitfw, 0], ['^-allku', \$all_ku, 0], ['^-h(e|el|elp)?', \$help, 0], ['^-(.+)', \$unknown, 0]);
 	if ($unknown == 1){
 		print "mkjvf: Unknown options!\n";
 		&print_help;
@@ -213,6 +213,7 @@ sub font_header {
 }
 sub write_char {
 	for ($ku=1; $ku<=$max_ku; $ku++){
+		next if (!$all_ku && (($ku>=9&&$ku<=15) || $ku>=85));
 		for ($ten=1; $ten<=94; $ten++){
 			$jiscode=($ku+32)*256+($ten+32);
 			if($sjis == 1){
@@ -293,6 +294,7 @@ sub print_help {
 	print "   -burasage       make the width of kutoh-ten zero for burasage\n";
 	print "   -jp04           make a font mapped JIS X 0213:2004 glyphs\n";
 	print "   -omitfw         omit entries in vf for characters with default metric (tex-jp-org extention)\n";
+	print "   -allku          do not omit entries in vf for undefined Ku in JIS X 0208 (tex-jp-org extention)\n";
 	print "   -SJIS           make shift jis mapped vf (experimental)\n";
 	print "   -scale <0--1>   make kokana vf\n";
 	print "   -help           print this message\n";

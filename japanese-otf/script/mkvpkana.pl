@@ -169,6 +169,7 @@ sub fonthead {
 }
 sub write_char {
 	for ($ku=1; $ku<=94; $ku++){
+		next if (!$allku && (($ku>=9&&$ku<=15) || $ku>=85));
 		for ($ten=1; $ten<=94; $ten++){
 			$jiscode=($ku+32)*256+($ten+32);
 			if ($ku==1){&print_kigo_char;}elsif($ku==4){&print_hira_char;}
