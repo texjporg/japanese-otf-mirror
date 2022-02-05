@@ -156,13 +156,13 @@ END_OF_DATA
 
 sub writechar {
 	($hex) = @_;
-	for ($ku=1; $ku <= 79; $ku++){
-		for ($ten=1; $ten <= 94; $ten++){
+	for ($ku=16; $ku <= 79; $ku++){
+		for ($ten=16; $ten <= 79; $ten++){
 			$jis=sprintf("%X", $ku*256 + $ten + 0x2020);
 			if ($ku>=16 && $ku<=79 && $ten>=16 && $ten<=79){
 				$uni=$hex*4096 + ($ku-16)*64 + ($ten-16);
-			} else {
-				$uni=0x3013;
+#			} else {
+#				$uni=0x3013;
 			}
 			$wd = ($lang eq 'j' && $dir eq 'h' && $uni>=0xFF61 && $uni<=0xFF9F) ? '0.5' : '1.0';
 			$uni=sprintf("%X", $uni);
