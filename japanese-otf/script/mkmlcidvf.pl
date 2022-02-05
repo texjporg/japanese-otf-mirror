@@ -101,13 +101,16 @@ sub printgeta {
 }
 
 sub writechar {
-	for ($ku=1; $ku <= 79; $ku++){
-		for ($ten=1; $ten <= 94; $ten++){
+	for ($ku=16; $ku <= 79; $ku++){
+		for ($ten=16; $ten <= 79; $ten++){
 			if ($ku>=16 && $ku<=79 && $ten>=16 && $ten<=79){
+				return if (($lang eq "c" && $cidcode>30283)   # Adobe-GB1-5
+					|| ($lang eq "t" && $cidcode>19178)   # Adobe-CNS1-7
+					|| ($lang eq "k" && $cidcode>18351)); # Adobe-Korea1-2
 				&printchar($first_hex,$ku,$ten);
 				$cidcode++;
-			} else {
-				&printgeta($first_hex,$ku,$ten);
+#			} else {
+#				&printgeta($first_hex,$ku,$ten);
 			}
 		}
 	}
