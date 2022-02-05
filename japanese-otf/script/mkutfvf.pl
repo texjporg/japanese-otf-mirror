@@ -81,11 +81,13 @@ sub writechar {
 		for ($ten=16; $ten <= 79; $ten++){
 			$jis=sprintf("%X", $ku*256 + $ten + 0x2020);
 			if ($ku>=16 && $ku<=79 && $ten>=16 && $ten<=79){
-				$uni=sprintf("%X", $hex*4096 + ($ku-16)*64 + ($ten-16));
+				$uni=$hex*4096 + ($ku-16)*64 + ($ten-16);
 #			} else {
-#				$uni="3013";
+#				$uni=0x3013;
 			}
-			print OUT "(CHARACTER H $jis (CHARWD R 1.0) (MAP (SETCHAR H $uni)))\n";
+			$wd = ($lang eq 'j' && $dir eq 'h' && $uni>=0xFF61 && $uni<=0xFF9F) ? '0.5' : '1.0';
+			$uni=sprintf("%X", $uni);
+			print OUT "(CHARACTER H $jis (CHARWD R $wd) (MAP (SETCHAR H $uni)))\n";
 		}
 	}
 }
