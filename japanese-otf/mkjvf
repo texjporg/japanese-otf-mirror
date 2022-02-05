@@ -43,7 +43,7 @@ sub initialize_constant{
 }
 sub proc_arg {
 	if ($#ARGV == -1) {&print_help;}
-	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cp', \$comma_period, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0],  ['^-h(e|el|elp)?', \$help, 0], ['^-(.+)', \$unknown, 0]);
+	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cp', \$comma_period, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-omitfw', \$omitfw, 0], ['^-allku', \$all_ku, 0], ['^-h(e|el|elp)?', \$help, 0], ['^-(.+)', \$unknown, 0]);
 	if ($unknown == 1){
 		print "mkjvf: Unknown options!\n";
 		&print_help;
@@ -65,6 +65,12 @@ sub proc_arg {
 			&print_help;
 	} elsif (($jis2004 != 0) && ($sjis != 0)){
 			print "mkjvf: You can't use \"-sjis\" and \"-jp04\" at same time.\n";
+			&print_help;
+	} elsif (($omitfw != 0) && ($baseline_shift != 0)){
+			print "mkjvf: You can't use \"-b\" and \"-omitfw\" at same time.\n";
+			&print_help;
+	} elsif (($omitfw != 0) && ($all_ku != 0)){
+			print "mkjvf: You can't use \"-omitfw\" and \"-allku\" at same time.\n";
 			&print_help;
 	} else {
 		if ($#ARGV <= 1) {
@@ -210,6 +216,7 @@ sub font_header {
 }
 sub write_char {
 	for ($ku=1; $ku<=$max_ku; $ku++){
+		next if (!$all_ku && (($ku>=9&&$ku<=15) || $ku>=85));
 		for ($ten=1; $ten<=94; $ten++){
 			$jiscode=($ku+32)*256+($ten+32);
 			if($sjis == 1){
@@ -278,7 +285,7 @@ sub make_tfm {
 ####  dfn of sub sub rtns  ###
 ##############################
 sub print_help {
-	print "This is mkjvf version 1.0b21 (2010/3/25) by psitau\n";
+	print "This is mkjvf version 1.0b21 (2010/3/25) by psitau, 2022/02/05 TeX JP org\n";
 	print "Usage: mkjvf [option] <TFMfile> <PSfontTFM> [<PSfontTFM>]\n";
 	print "   -b <number>     baseline shift\n";
 	print "   -m              translate quotation mark to minute\n";
@@ -289,6 +296,8 @@ sub print_help {
 	print "   -expert         use alt. kana glyph for kana (for utf package)\n";
 	print "   -burasage       make the width of kutoh-ten zero for burasage\n";
 	print "   -jp04           make a font mapped JIS X 0213:2004 glyphs\n";
+	print "   -omitfw         omit entries in vf for characters with default metric (tex-jp-org extention)\n";
+	print "   -allku          don't omit entries in vf for undefined Ku in JIS X 0208 (tex-jp-org extention)\n";
 	print "   -SJIS           make shift jis mapped vf (experimental)\n";
 	print "   -scale <0--1>   make kokana vf\n";
 	print "   -help           print this message\n";
@@ -523,19 +532,25 @@ sub print_kigo_char{
 	print  OVP "   )\n";
 }
 sub print_char{
-	printf OVP "(CHARACTER H %X\n", $jiscode;
-	printf OVP "   (CHARWD R %f)\n", $font_at;
-	print  OVP "   (MAP\n";
+	$fontmap = 0;
 	if (($jis2004 == 1) && (0x3029 <= $jiscode && $jiscode <= 0x726D)){
 		if (exists $kaisei_jikei{$jiscode}){
 			$cid = $kaisei_jikei{$jiscode};
 			$fontmap = int($cid/4096)+3;
-			printf OVP "      (SELECTFONT D %d)\n", $fontmap;
 			$upper = int(($cid%4096)/64)+16;
 			$lower = (($cid%4096)%64)+16;
 #			printf STDOUT "%d, %d\n",$upper,$lower;
 			$char_code = $upper*256+$lower+0x2020;
 		}
+	}
+	if ($omitfw && $baseline_shift==0 && !$fontmap) {
+		return if ($jiscode==$char_code);
+	}
+	printf OVP "(CHARACTER H %X\n", $jiscode;
+	printf OVP "   (CHARWD R %f)\n", $font_at;
+	print  OVP "   (MAP\n";
+	if ($fontmap) {
+		printf OVP "      (SELECTFONT D %d)\n", $fontmap;
 	}
 	&baseline_shift;
 	printf OVP "      (SETCHAR H %X)\n",$char_code;
@@ -543,6 +558,9 @@ sub print_char{
 	print  OVP "   )\n";
 }
 sub print_kana_char{
+	if ($omitfw && $baseline_shift==0 && $scale==1 && $kana_font eq "") {
+		return if ($jiscode==$char_code);
+	}
 	printf OVP "(CHARACTER H %X\n", $jiscode;
 	printf OVP "   (CHARWD R %f)\n", $font_at;
 	print  OVP "   (MAP\n";

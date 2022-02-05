@@ -64,12 +64,12 @@ print OVP <<END_OF_DATA;
 END_OF_DATA
 }#2003/10/22 FONTAT 0.962216->1.0
 sub writechar {
-	for ($ku=1; $ku <= 79; $ku++){#2002/1/27 120->79
-		for ($ten=1; $ten <= 94; $ten++){
+	for ($ku=16; $ku <= 79; $ku++){#2002/1/27 120->79
+		for ($ten=16; $ten <= 79; $ten++){
 			if ($ku>=16 && $ku<=79 && $ten>=16 && $ten<=79){
 				&printchar($first_hex,$ku,$ten);
-			} else {
-				&printgeta($first_hex,$ku,$ten);
+#			} else {
+#				&printgeta($first_hex,$ku,$ten);
 			}
 		}
 	}
