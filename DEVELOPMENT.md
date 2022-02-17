@@ -37,7 +37,7 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 - `chmod +x makeotf mkjvf`
 - Convert all files in `script/` and `test/` from CRLF -> LF
 - `make` (at top directory)
-- Add `README`, `README.nonfree` and `TeXLive-maps/otf-cktx.map`
+- Add `README` and `README.nonfree`
 
 #### master branch
 
@@ -47,13 +47,14 @@ hiraprop は Makefile のインストール対象に含めていません（準�
     - omit entries in vf for unused character numbers
     - support halfwidth katakana in \UTF{}, \UTFM{}
     - fix typo
+- Add `TeXLive-maps/otf-cktx.map`
 - `./makeotf` (at `japanese-otf` directory)
 
 ### japanese-otf-uptex
 
 - Obtain and extract `https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.26`
 - `make` (at top directory)
-- Add `README` (almost same as `00otf-uptex.txt`)
+- Add `README` and `README.nonfree`
 
 ### hiraprop
 
