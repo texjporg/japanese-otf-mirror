@@ -6,7 +6,7 @@ DVIPS = dvips
 DVIPDFMX = dvipdfmx -v
 PDVITYPE = pdvitype
 
-all: otf sp art brsg jis04 scale prop punct exclam
+all: otf sp art brsg jis04 scale prop punct exclam mltwght
 
 otf: uplatex-otf platex-otf
 sp: uplatex-sp platex-sp
@@ -208,6 +208,24 @@ platex-utfmacro:
 		mv utfmacro-cjk.dvi utfmacro-cjk-$$opt-v-platex.dvi ; \
 		$(DVIPDFMX) -l -f utfmacro-haranoaji.map utfmacro-cjk-$$opt-v-platex.dvi ; \
 	done
+
+mltwght:
+	$(UPLATEX) "\def\map{mapline}\input" cjk-mltwght-h.tex ; \
+	mv cjk-mltwght-h.dvi cjk-mltwght-h-line.dvi ; \
+	$(DVIPDFMX)    cjk-mltwght-h-line.dvi ; \
+	$(UPLATEX) "\def\map{mapline}\input" cjk-mltwght-v.tex ; \
+	mv cjk-mltwght-v.dvi cjk-mltwght-v-line.dvi ; \
+	$(DVIPDFMX) -l cjk-mltwght-v-line.dvi ; \
+	$(UPLATEX) cjk-mltwght-h.tex ; \
+	mv cjk-mltwght-h.dvi cjk-mltwght-h-cmap.dvi ; \
+	$(DVIPDFMX)    -f utfmacro-haranoaji.map cjk-mltwght-h-cmap.dvi ; \
+	$(UPLATEX) cjk-mltwght-v.tex ; \
+	mv cjk-mltwght-v.dvi cjk-mltwght-v-cmap.dvi ; \
+	$(DVIPDFMX) -l -f utfmacro-haranoaji.map cjk-mltwght-v-cmap.dvi ; \
+	$(UPLATEX) cjk-pxbabel-h.tex ; \
+	$(DVIPDFMX)    -f utfmacro-haranoaji.map cjk-pxbabel-h.dvi ; \
+	$(UPLATEX) cjk-pxbabel-v.tex ; \
+	$(DVIPDFMX) -l -f utfmacro-haranoaji.map cjk-pxbabel-v.dvi
 
 clean:
 	rm -f *.aux *.log *.dvi *.pdf

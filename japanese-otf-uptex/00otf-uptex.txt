@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.26  2020/11/08
+japanese-otf-uptex Ver.0.27  2022/02/16
 
 
 [ Abstract ]
@@ -21,16 +21,28 @@ basepl/ubase-h.pl : unicode version of base-h.pl
 basepl/ubase-v.pl : unicode version of base-v.pl
 basepl/ubrsg-h.pl : unicode version of brsg-h.pl
 basepl/ubrsg-v.pl : unicode version of brsg-v.pl
+basepl/ubase-sch-h.pl : base pl for simplified Chinese horizontal writing
+basepl/ubase-sch-v.pl : base pl for simplified Chinese vertical writing
+basepl/ubase-tch-h.pl : base pl for traditional Chinese horizontal writing
+basepl/ubase-tch-v.pl : base pl for traditional Chinese vertical writing
+basepl/ubase-kor-h.pl : base pl for Korean horizontal writing
+basepl/ubase-kor-v.pl : base pl for Korean vertical writing
+basepl/mjvf-upnmsch.cnf : makejvf configuration for simplified Chinese, full entry
+basepl/mjvf-upnmtch.cnf : makejvf configuration for traditional Chinese, full entry
+basepl/mjvf-upnmkor.cnf : makejvf configuration for Korean, full entry
+basepl/mjvf-upnmsch-slim.cnf : makejvf configuration for simplified Chinese, minimum entry
+basepl/mjvf-upnmtch-slim.cnf : makejvf configuration for traditional Chinese, minimum entry
+basepl/mjvf-upnmkor-slim.cnf : makejvf configuration for Korean, minimum entry
 
-script/mkutf32list.pl : perl script making lists of characters on supplementary planes.
-script/MakeSPList.pm : perl module making data of characters on supplementary planes.
-script/mktfm_sp.pl   : perl script making tfm for characters on supplementary planes.
-script/mkutfvf_sp.pl : perl script making vf for characters on supplementary planes.
-script/sp_list_j.txt : a list of characters on supplementary planes in UniJIS-UTF32.
-script/sp_list_c.txt : a list of characters on supplementary planes in UniGB-UTF32.
-script/sp_list_t.txt : a list of characters on supplementary planes in UniCNS-UTF32.
-script/sp_list_k.txt : a list of characters on supplementary planes in UniKS-UTF32.
-script/CheckDVICode.pm : perl module checking category of characters.
+script/mkutf32list.pl : perl script making lists of characters on supplementary planes
+script/MakeSPList.pm : perl module making data of characters on supplementary planes
+script/mktfm_sp.pl   : perl script making tfm for characters on supplementary planes
+script/mkutfvf_sp.pl : perl script making vf for characters on supplementary planes
+script/sp_list_j.txt : a list of characters on supplementary planes in UniJIS-UTF32
+script/sp_list_c.txt : a list of characters on supplementary planes in UniGB-UTF32
+script/sp_list_t.txt : a list of characters on supplementary planes in UniCNS-UTF32
+script/sp_list_k.txt : a list of characters on supplementary planes in UniKS-UTF32
+script/CheckDVICode.pm : perl module checking category of characters
 script/umkpkana.pl   : perl script making pl, ovp for proportional kana
 script/umkvpkana.pl  : perl script making pl, ovp for proportional kana
 
@@ -107,7 +119,7 @@ in the font generation scripts umakeotf{,_brsg,_jis04,_prop}.
 Ref. https://github.com/t-tk/japanese-otf-uptex/issues/3
 
 
-[ About Unicode base multi-weight fonts in \UTF{}, \UTFC{}, \UTFT{}, \UTFK{} ]
+[ About Unicode base multi-weight fonts ]
 japanese-otf-uptex Ver.0.26 has introduced new virtual fonts for
 \UTF{}, \UTFC{}, \UTFT{}, \UTFK{} macros. They are Unicode base
 (conventionally subfont scheme) and support multi-weight fonts
@@ -122,6 +134,13 @@ The feature also requires new dviware which support fall back of CJK virtual fon
   ゴシック体・極太  \gtfamily\ebseries  ge
   丸ゴシック体　　  \mgfamily           mgr
 Ref. https://github.com/t-tk/japanese-otf-uptex/issues/4
+
+japanese-otf-uptex Ver.0.27 has introduced new virtual fonts for
+Chinese/Korean plain texts to support multi-weight fonts.
+They have not been registered in otf.sty nor mlutf.sty yet.
+I hope they will be supported by other extentional macros.
+Ref. https://github.com/t-tk/japanese-otf-uptex/issues/7
+https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=2828
 
 
 [ Repository ]
@@ -451,4 +470,14 @@ https://github.com/t-tk/japanese-otf-uptex
   test/uplatex/{uotftest-utf8.tex,utfmacro-cjk.tex}, test/uplatex/Makefile,
   test/uplatex/utfmacro-haranoaji.map ::
     Add a new test for multi-weight \UTF{}, \UTFC{}, \UTFT{}, \UTFK{}.
+2022.02.16 Ver0.27
+  sty/otf.sty, sty/mlutf.sty ::
+    Bump version number.
+  umakeotf, basepl/ubase-{sch,tch,kor}-{h,v}.pl,
+  basepl/mjvf-upnm{sch,tch,kor}{,-slim}.cnf ::
+    Introduce multi-weight virtual fonts for Chinese/Korean plain texts.
+  test/uplatex/Makefile, test/uplatex/cjk-{mltwght,pxbabel}-{h,v}.tex ::
+    Add new tests for CK multi-weight plain texts.
+  COPYRIGHT ::
+    Update year.
 

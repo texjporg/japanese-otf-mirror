@@ -173,3 +173,48 @@ otf-ckmr-v Identity-V HaranoAjiMinchoK1-Regular.otf
 otf-ckgr-v Identity-V HaranoAjiGothicK1-Regular.otf
 
 
+upaschminr-h UniGB-UTF16-H HaranoAjiMinchoCN-Regular.otf
+upaschminb-h UniGB-UTF16-H HaranoAjiMinchoCN-Bold.otf
+upaschminl-h UniGB-UTF16-H HaranoAjiMinchoCN-Light.otf
+upaschgothr-h UniGB-UTF16-H HaranoAjiGothicCN-Regular.otf
+upaschgothb-h UniGB-UTF16-H HaranoAjiGothicCN-Medium.otf
+upaschgotheb-h UniGB-UTF16-H HaranoAjiGothicCN-Bold.otf
+upaschmgothr-h UniGB-UTF16-H HaranoAjiGothicCN-Heavy.otf
+upaschminr-v UniGB-UTF16-V HaranoAjiMinchoCN-Regular.otf
+upaschminb-v UniGB-UTF16-V HaranoAjiMinchoCN-Bold.otf
+upaschminl-v UniGB-UTF16-V HaranoAjiMinchoCN-Light.otf
+upaschgothr-v UniGB-UTF16-V HaranoAjiGothicCN-Regular.otf
+upaschgothb-v UniGB-UTF16-V HaranoAjiGothicCN-Medium.otf
+upaschgotheb-v UniGB-UTF16-V HaranoAjiGothicCN-Bold.otf
+upaschmgothr-v UniGB-UTF16-V HaranoAjiGothicCN-Heavy.otf
+
+upatchminr-h UniCNS-UTF16-H HaranoAjiMinchoTW-Regular.otf
+upatchminb-h UniCNS-UTF16-H HaranoAjiMinchoTW-Bold.otf
+upatchminl-h UniCNS-UTF16-H HaranoAjiMinchoTW-Light.otf
+upatchgothr-h UniCNS-UTF16-H HaranoAjiGothicTW-Regular.otf
+upatchgothb-h UniCNS-UTF16-H HaranoAjiGothicTW-Medium.otf
+upatchgotheb-h UniCNS-UTF16-H HaranoAjiGothicTW-Bold.otf
+upatchmgothr-h UniCNS-UTF16-H HaranoAjiGothicTW-Heavy.otf
+upatchminr-v UniCNS-UTF16-V HaranoAjiMinchoTW-Regular.otf
+upatchminb-v UniCNS-UTF16-V HaranoAjiMinchoTW-Bold.otf
+upatchminl-v UniCNS-UTF16-V HaranoAjiMinchoTW-Light.otf
+upatchgothr-v UniCNS-UTF16-V HaranoAjiGothicTW-Regular.otf
+upatchgothb-v UniCNS-UTF16-V HaranoAjiGothicTW-Medium.otf
+upatchgotheb-v UniCNS-UTF16-V HaranoAjiGothicTW-Bold.otf
+upatchmgothr-v UniCNS-UTF16-V HaranoAjiGothicTW-Heavy.otf
+
+upakorminr-h UniKS-UTF16-H HaranoAjiMinchoK1-Regular.otf
+upakorminb-h UniKS-UTF16-H HaranoAjiMinchoK1-Bold.otf
+upakorminl-h UniKS-UTF16-H HaranoAjiMinchoK1-Light.otf
+upakorgothr-h UniKS-UTF16-H HaranoAjiGothicK1-Regular.otf
+upakorgothb-h UniKS-UTF16-H HaranoAjiGothicK1-Medium.otf
+upakorgotheb-h UniKS-UTF16-H HaranoAjiGothicK1-Bold.otf
+upakormgothr-h UniKS-UTF16-H HaranoAjiGothicK1-Heavy.otf
+upakorminr-v UniKS-UTF16-V HaranoAjiMinchoK1-Regular.otf
+upakorminb-v UniKS-UTF16-V HaranoAjiMinchoK1-Bold.otf
+upakorminl-v UniKS-UTF16-V HaranoAjiMinchoK1-Light.otf
+upakorgothr-v UniKS-UTF16-V HaranoAjiGothicK1-Regular.otf
+upakorgothb-v UniKS-UTF16-V HaranoAjiGothicK1-Medium.otf
+upakorgotheb-v UniKS-UTF16-V HaranoAjiGothicK1-Bold.otf
+upakormgothr-v UniKS-UTF16-V HaranoAjiGothicK1-Heavy.otf
+
