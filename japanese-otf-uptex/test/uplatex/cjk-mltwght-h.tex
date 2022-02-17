@@ -1,0 +1,202 @@
+% -*- coding: utf-8 -*-
+
+\documentclass{ujarticle}
+
+%\usepackage[uplatex]{otf}
+
+\makeatletter
+\ifx\map\@undefined
+ \def\map{default}
+\fi
+\def\@mapline@{mapline}
+\ifx\map\@mapline@
+\AtBeginDvi{\special{pdf:mapline uphminl-h unicode HaranoAjiMincho-Light.otf}}
+\AtBeginDvi{\special{pdf:mapline uphminr-h unicode HaranoAjiMincho-Medium.otf}}
+\AtBeginDvi{\special{pdf:mapline uphminb-h unicode HaranoAjiMincho-Bold.otf}}
+\AtBeginDvi{\special{pdf:mapline uphgothr-h unicode HaranoAjiGothic-ExtraLight.otf}}
+\AtBeginDvi{\special{pdf:mapline uphgothb-h unicode HaranoAjiGothic-Normal.otf}}
+\AtBeginDvi{\special{pdf:mapline uphgotheb-h unicode HaranoAjiGothic-Medium.otf}}
+\AtBeginDvi{\special{pdf:mapline uphmgothr-h unicode HaranoAjiGothic-Heavy.otf}}
+
+\AtBeginDvi{\special{pdf:mapline upaschminl-h unicode HaranoAjiMinchoCN-Light.otf}}
+\AtBeginDvi{\special{pdf:mapline upaschminr-h unicode HaranoAjiMinchoCN-Medium.otf}}
+\AtBeginDvi{\special{pdf:mapline upaschminb-h unicode HaranoAjiMinchoCN-Bold.otf}}
+\AtBeginDvi{\special{pdf:mapline upaschgothr-h unicode HaranoAjiGothicCN-ExtraLight.otf}}
+\AtBeginDvi{\special{pdf:mapline upaschgothb-h unicode HaranoAjiGothicCN-Normal.otf}}
+\AtBeginDvi{\special{pdf:mapline upaschgotheb-h unicode HaranoAjiGothicCN-Medium.otf}}
+\AtBeginDvi{\special{pdf:mapline upaschmgothr-h unicode HaranoAjiGothicCN-Heavy.otf}}
+
+\AtBeginDvi{\special{pdf:mapline upatchminl-h unicode HaranoAjiMinchoTW-Light.otf}}
+\AtBeginDvi{\special{pdf:mapline upatchminr-h unicode HaranoAjiMinchoTW-Medium.otf}}
+\AtBeginDvi{\special{pdf:mapline upatchminb-h unicode HaranoAjiMinchoTW-Bold.otf}}
+\AtBeginDvi{\special{pdf:mapline upatchgothr-h unicode HaranoAjiGothicTW-ExtraLight.otf}}
+\AtBeginDvi{\special{pdf:mapline upatchgothb-h unicode HaranoAjiGothicTW-Normal.otf}}
+\AtBeginDvi{\special{pdf:mapline upatchgotheb-h unicode HaranoAjiGothicTW-Medium.otf}}
+\AtBeginDvi{\special{pdf:mapline upatchmgothr-h unicode HaranoAjiGothicTW-Heavy.otf}}
+
+\AtBeginDvi{\special{pdf:mapline upakorminl-h unicode HaranoAjiMinchoK1-Light.otf}}
+\AtBeginDvi{\special{pdf:mapline upakorminr-h unicode HaranoAjiMinchoK1-Medium.otf}}
+\AtBeginDvi{\special{pdf:mapline upakorminb-h unicode HaranoAjiMinchoK1-Bold.otf}}
+\AtBeginDvi{\special{pdf:mapline upakorgothr-h unicode HaranoAjiGothicK1-ExtraLight.otf}}
+\AtBeginDvi{\special{pdf:mapline upakorgothb-h unicode HaranoAjiGothicK1-Normal.otf}}
+\AtBeginDvi{\special{pdf:mapline upakorgotheb-h unicode HaranoAjiGothicK1-Medium.otf}}
+\AtBeginDvi{\special{pdf:mapline upakormgothr-h unicode HaranoAjiGothicK1-Heavy.otf}}
+\fi
+
+\makeatother
+
+\font\upjpnrml = upnmlminl-h at 10.0pt
+\font\upjpnrmm = upnmlminr-h at 10.0pt
+\font\upjpnrmb = upnmlminb-h at 10.0pt
+\font\upjpngtm = upnmlgothr-h at 10.0pt
+\font\upjpngtb = upnmlgothb-h at 10.0pt
+\font\upjpngte = upnmlgotheb-h at 10.0pt
+\font\upjpngth = upnmlmgothr-h at 10.0pt
+
+\font\upschrml = upnmschminl-h at 10.0pt
+\font\upschrmm = upnmschminr-h at 10.0pt
+\font\upschrmb = upnmschminb-h at 10.0pt
+\font\upschgtm = upnmschgothr-h at 10.0pt
+\font\upschgtb = upnmschgothb-h at 10.0pt
+\font\upschgte = upnmschgotheb-h at 10.0pt
+\font\upschgth = upnmschmgothr-h at 10.0pt
+
+\font\uptchrml = upnmtchminl-h at 10.0pt
+\font\uptchrmm = upnmtchminr-h at 10.0pt
+\font\uptchrmb = upnmtchminb-h at 10.0pt
+\font\uptchgtm = upnmtchgothr-h at 10.0pt
+\font\uptchgtb = upnmtchgothb-h at 10.0pt
+\font\uptchgte = upnmtchgotheb-h at 10.0pt
+\font\uptchgth = upnmtchmgothr-h at 10.0pt
+
+\font\upkorrml = upnmkorminl-h at 10.0pt
+\font\upkorrmm = upnmkorminr-h at 10.0pt
+\font\upkorrmb = upnmkorminb-h at 10.0pt
+\font\upkorgtm = upnmkorgothr-h at 10.0pt
+\font\upkorgtb = upnmkorgothb-h at 10.0pt
+\font\upkorgte = upnmkorgotheb-h at 10.0pt
+\font\upkorgth = upnmkormgothr-h at 10.0pt
+
+\textwidth170mm
+
+\begin{document}
+\parindent0mm
+map: \texttt{\map}
+
+\section{日本語}
+\upjpngtb 日本語
+
+\upjpnrml 骨海直器述与 おはよう，元気？頑張れ！有難う。おわり\\
+\upjpnrmm 骨海直器述与 おはよう，元気？頑張れ！有難う。おわり\\
+\upjpnrmb 骨海直器述与 おはよう，元気？頑張れ！有難う。おわり\\
+\upjpngtm 骨海直器述与 おはよう，元気？頑張れ！有難う。おわり\\
+\upjpngtb 骨海直器述与 おはよう，元気？頑張れ！有難う。おわり\\
+\upjpngte 骨海直器述与 おはよう，元気？頑張れ！有難う。おわり\\
+\upjpngth 骨海直器述与 おはよう，元気？頑張れ！有難う。おわり\\
+
+\upjpnrmm
+=“おはよう，有難う．”=
+
+=「おはよう、有難う。」=
+
+=‘（おはよう・有難う。）’=
+
+=頑張れ！元気？=
+
+=\kchar"00AB回\kchar"00BB% U+00AB, U+00BBは width: Neutralなのでずれても不思議ではない。
+=\kchar"2018回\kchar"2019=\kchar"201C回\kchar"201D=\kchar"2329回\kchar"232A=\kchar"3008回\kchar"3009%
+=\kchar"300A回\kchar"300B=\kchar"300C回\kchar"300D=\kchar"300E回\kchar"300F=\kchar"3010回\kchar"3011=\\
+=\kchar"3014回\kchar"3015=\kchar"3016回\kchar"3017=\kchar"3018回\kchar"3019%
+=\kchar"301D回\kchar"301E=\kchar"301D回\kchar"301F%
+=\kchar"FF08回\kchar"FF09=\kchar"FF3B回\kchar"FF3D=\kchar"FF5B回\kchar"FF5D=\kchar"FF5F回\kchar"FF60=\\
+=回\kchar"00B7回=回・回=回：回=回；回=回\kchar"2013回=回\kchar"2014回=回\kchar"2015回=回…回=回‥回=
+
+
+\section{中国語簡体字}
+\upschgtb 简体中文
+
+\upschrml 骨海直器述与 早上好，你呢？加油！谢谢你。完\\
+\upschrmm 骨海直器述与 早上好，你呢？加油！谢谢你。完\\
+\upschrmb 骨海直器述与 早上好，你呢？加油！谢谢你。完\\
+\upschgtm 骨海直器述与 早上好，你呢？加油！谢谢你。完\\
+\upschgtb 骨海直器述与 早上好，你呢？加油！谢谢你。完\\
+\upschgte 骨海直器述与 早上好，你呢？加油！谢谢你。完\\
+\upschgth 骨海直器述与 早上好，你呢？加油！谢谢你。完\\
+
+\upschrmm
+=“早上好，谢谢你．”=
+
+=「早上好、谢谢你。」=
+
+=‘（早上好·谢谢你）’=
+
+=加油！你呢？=
+
+=\kchar"2018回\kchar"2019=\kchar"201C回\kchar"201D=\kchar"2329回\kchar"232A=\kchar"3008回\kchar"3009%
+=\kchar"300A回\kchar"300B=\kchar"300C回\kchar"300D=\kchar"300E回\kchar"300F=\kchar"3010回\kchar"3011=\\
+=\kchar"3014回\kchar"3015=\kchar"3016回\kchar"3017=\kchar"301D回\kchar"301E%
+=\kchar"FF08回\kchar"FF09=\kchar"FF3B回\kchar"FF3D=\kchar"FF5B回\kchar"FF5D=\\
+=回\kchar"00B7回=回：回=回；回=回\kchar"2014回=回\kchar"2015回=回…回=回‥回=
+
+
+\newpage
+
+\section{中国語繁体字}
+\upschgtb 繁體中文
+
+\uptchrml 骨海直器述与 早上好，你呢？加油！謝謝你。完\\
+\uptchrmm 骨海直器述与 早上好，你呢？加油！謝謝你。完\\
+\uptchrmb 骨海直器述与 早上好，你呢？加油！謝謝你。完\\
+\uptchgtm 骨海直器述与 早上好，你呢？加油！謝謝你。完\\
+\uptchgtb 骨海直器述与 早上好，你呢？加油！謝謝你。完\\
+\uptchgte 骨海直器述与 早上好，你呢？加油！謝謝你。完\\
+\uptchgth 骨海直器述与 早上好，你呢？加油！謝謝你。完\\
+
+\uptchrmm
+
+骨海直画器術述
+
+=“早上好，謝謝你．”=
+
+=「早上好、謝謝你。」=
+
+=‘（早上好·謝謝你）’=
+
+=加油！你呢？=
+
+=\kchar"2018回\kchar"2019=\kchar"201C回\kchar"201D=\kchar"2329回\kchar"232A=\kchar"3008回\kchar"3009%
+=\kchar"300A回\kchar"300B=\kchar"300C回\kchar"300D=\kchar"300E回\kchar"300F=\kchar"3010回\kchar"3011=\\
+=\kchar"3014回\kchar"3015=\kchar"301D回\kchar"301E=\kchar"FE59回\kchar"FE5A=\kchar"FE5B回\kchar"FE5C%
+=\kchar"FE5D回\kchar"FE5E=\kchar"FF08回\kchar"FF09=\kchar"FF3B回\kchar"FF3D=\kchar"FF5B回\kchar"FF5D=\\
+=回\kchar"00B7回=回：回=回；回=回\kchar"2013回=回\kchar"2014回=回…回=回‥回=
+
+
+\section{韓国語}
+\upkorgtb 한국어
+
+\upkorrml 骨海直器述乭 좋은 아침，안녕？파이팅！고마워．끝\\
+\upkorrmm 骨海直器述乭 좋은 아침，안녕？파이팅！고마워．끝\\
+\upkorrmb 骨海直器述乭 좋은 아침，안녕？파이팅！고마워．끝\\
+\upkorgtm 骨海直器述乭 좋은 아침，안녕？파이팅！고마워．끝\\
+\upkorgtb 骨海直器述乭 좋은 아침，안녕？파이팅！고마워．끝\\
+\upkorgte 骨海直器述乭 좋은 아침，안녕？파이팅！고마워．끝\\
+\upkorgth 骨海直器述乭 좋은 아침，안녕？파이팅！고마워．끝\\
+
+\upkorrmm
+
+=“좋은 아침，고마워．”=
+
+=「좋은 아침、고마워。」=
+
+=‘（좋은 아침·고마워）’=
+
+=파이팅！안녕？=
+
+=\kchar"2018믐\kchar"2019=\kchar"201C믐\kchar"201D=\kchar"3008믐\kchar"3009%
+=\kchar"300A믐\kchar"300B=\kchar"300C믐\kchar"300D=\kchar"300E믐\kchar"300F=\kchar"3010믐\kchar"3011=\\
+=\kchar"3014믐\kchar"3015=\kchar"3016믐\kchar"3017=\kchar"3018믐\kchar"3019%
+=\kchar"FF08믐\kchar"FF09=\kchar"FF3B믐\kchar"FF3D=\kchar"FF5B믐\kchar"FF5D=\\
+=믐\kchar"00B7믐=믐：믐=믐；믐=믐\kchar"2013믐=믐\kchar"2014믐=믐…믐=믐‥믐=
+
+\end{document}
+

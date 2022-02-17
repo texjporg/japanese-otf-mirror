@@ -1,0 +1,11 @@
+% makejvf settings for upnmtch* in japanese-otf-uptex
+% based on Blocks-14.0.0.txt (Date: 2021-01-22, 23:29:00 GMT [KW])
+
+CHARSET	%
++	0080..00FF,% Latin-1 Supplement
++	2000..206F,% General Punctuation
++	2300..23FF,% Miscellaneous Technical
++	3000..303F,% CJK Symbols and Punctuation
+%+	4E00..9FFF,% CJK Unified Ideographs
++	FE50..FE6F,% Small Form Variants
++	FF00..FFEF,% Halfwidth and Fullwidth Forms
