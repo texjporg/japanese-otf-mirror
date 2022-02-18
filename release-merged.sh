@@ -101,6 +101,7 @@ for i in $PROJECT-$VER/* ; do
   fi
 done
 
+  rm -f $PROJECT-$VER/.gitignore
   rmdir $PROJECT-$VER/japanese-otf
   rmdir $PROJECT-$VER/japanese-otf-uptex
   # sty
