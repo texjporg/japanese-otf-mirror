@@ -6,7 +6,7 @@ DVIPS = dvips
 DVIPDFMX = dvipdfmx -v
 PDVITYPE = pdvitype
 
-all: otf sp art brsg jis04 scale prop punct exclam mltwght
+all: otf sp art brsg jis04 scale prop punct exclam dir
 
 otf: uplatex-otf platex-otf
 sp: uplatex-sp platex-sp
@@ -17,6 +17,7 @@ scale: uplatex-scale platex-scale
 prop: uplatex-prop platex-prop
 exclam: uplatex-exclam platex-exclam
 utfmacro: uplatex-utfmacro platex-utfmacro
+dir: uplatex-dir platex-dir
 
 uplatex-otf:
 	for opt in default deluxe expert bold noreplace; do \
@@ -226,6 +227,22 @@ mltwght:
 	$(DVIPDFMX)    -f utfmacro-haranoaji.map cjk-pxbabel-h.dvi ; \
 	$(UPLATEX) cjk-pxbabel-v.tex ; \
 	$(DVIPDFMX) -l -f utfmacro-haranoaji.map cjk-pxbabel-v.dvi
+
+uplatex-dir:
+	for opt in default expert noreplace; do \
+		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" direction-utf8.tex ; \
+		mv direction-utf8.dvi direction-$$opt-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map direction-$$opt-uplatex.dvi ; \
+		$(DVIPS) -u jotf-psfonts.map direction-$$opt-uplatex.dvi ; \
+	done
+
+platex-dir:
+	for opt in default expert noreplace; do \
+		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\input" direction-utf8.tex ; \
+		mv direction-utf8.dvi direction-$$opt-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map direction-$$opt-platex.dvi ; \
+		$(DVIPS) -u jotf-psfonts.map direction-$$opt-platex.dvi ; \
+	done
 
 clean:
 	rm -f *.aux *.log *.dvi *.pdf
