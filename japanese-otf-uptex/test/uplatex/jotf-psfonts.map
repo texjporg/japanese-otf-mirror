@@ -1,0 +1,27 @@
+rml   Ryumin-Light-H
+rmlv  Ryumin-Light-V
+
+uprml-h  Ryumin-Light-UniJIS-UTF16-H
+uprml-v  Ryumin-Light-UniJIS-UTF16-V
+
+hminr-h  Ryumin-Light-H
+hminr-v  Ryumin-Light-V
+
+uphminr-h  Ryumin-Light-UniJIS-UTF16-H
+uphminr-v  Ryumin-Light-UniJIS-UTF16-V
+
+otf-cjmr-h   Ryumin-Light-Identity-H
+otf-cjmr-v   Ryumin-Light-Identity-V
+
+otf-ujmr-h   Ryumin-Light-UniJIS-UTF16-H
+otf-ujmr-v   Ryumin-Light-UniJIS-UTF16-V
+
+pcrr8r	 Courier	"TeXBase1Encoding ReEncodeFont"	<8r.enc
+pplr8r	 Palatino-Roman	"TeXBase1Encoding ReEncodeFont"	<8r.enc
+pplb8r	 Palatino-Bold	"TeXBase1Encoding ReEncodeFont"	<8r.enc
+ptmr8r	 Times-Roman	"TeXBase1Encoding ReEncodeFont"	<8r.enc
+ptmb8r	 Times-Bold	"TeXBase1Encoding ReEncodeFont"	<8r.enc
+pbkl8r	 Bookman-Light	"TeXBase1Encoding ReEncodeFont"	<8r.enc
+pbkd8r	 Bookman-Demi	"TeXBase1Encoding ReEncodeFont"	<8r.enc
+
+
