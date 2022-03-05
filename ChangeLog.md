@@ -1,3 +1,16 @@
+# 2022-03-05 japanese-otf
+
+japanese-otf:
+* set FONTDIR RT in OFM for pTeX vertical writing. (TeX JP org extension)
+  They work with dvips 2022.1 (r62223 or later).
+  https://github.com/texjporg/japanese-otf-mirror/issues/15
+  https://github.com/texjporg/tex-jp-build/issues/135
+
+japanese-otf-uptex:
+* update samples.
+
+
+
 # 2022-02-17 japanese-otf(-uptex)
 
 Based on otfbeta v1.7b8 (2019/04/01) and japanese-otf-uptex Ver.0.27.

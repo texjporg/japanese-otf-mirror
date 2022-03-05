@@ -46,7 +46,7 @@ hiraprop は Makefile のインストール対象に含めていません（準�
     - build tfm/vf/ofm for gteb font series
     - omit entries in vf for unused character numbers
     - support halfwidth katakana in \UTF{}, \UTFM{}
-    - add FONTDIR RT in ofm for vertical writing
+    - set FONTDIR RT in ofm for vertical writing
     - fix typo
 - Add `TeXLive-maps/otf-cktx.map`
 - `./makeotf` (at `japanese-otf` directory)
