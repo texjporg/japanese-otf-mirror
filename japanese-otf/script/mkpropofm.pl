@@ -18,7 +18,7 @@ foreach $base_name(@font_base_name){
 		$font_name="$base_name-$dir";
 		open(OPL, ">opl/$font_name.opl") || die "cannot make file";
 		print OPL "(OFMLEVEL D 1)\n";
-		print OPL "(FONTDIR TL)\n";
+		printf OPL "(FONTDIR %s)\n", $d==1 ? "RT" : "TL";
 		print OPL "(FAMILY HIRAMIN)\n";
 		print OPL "(FACE F MRR)\n";
 		print OPL "(CODINGSCHEME UNSPECIFIED)\n";
