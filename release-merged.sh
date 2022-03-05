@@ -95,6 +95,9 @@ for i in $PROJECT-$VER/* ; do
   elif test $bn = "COPYRIGHT.merged"; then
     cp -p $PROJECT-$VER/$bn $PROJECT-nonfree-$VER/COPYRIGHT
     mv $PROJECT-$VER/$bn $PROJECT-$VER/COPYRIGHT
+  elif test $bn = "ChangeLog.md"; then
+    echo
+    # mv $PROJECT-$VER/$bn $PROJECT-$VER/$bn
   else
     echo remove $bn
     rm -rf $PROJECT-$VER/$bn
