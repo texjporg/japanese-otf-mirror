@@ -115,12 +115,12 @@ done
   rm -f $PROJECT-$VER/README.bak
   perl -pi.bak -e "s/\\\$RELEASEDATE/$VER/g" $PROJECT-nonfree-$VER/README
   rm -f $PROJECT-nonfree-$VER/README.bak
-  perl -pi.bak -e "s/\\\$RELEASEDATE/$VER/g" $PROJECT-uptex-$VER/README
-  rm -f $PROJECT-uptex-$VER/README.bak
+#  do not make japanese-otf-uptex-*.tar.gz anymore
+  rm -rf $PROJECT-uptex-$VER
   # make archives
   tar zcf $DIR/$PROJECT-$VER.tar.gz $PROJECT-$VER
   tar zcf $DIR/$PROJECT-nonfree-$VER.tar.gz $PROJECT-nonfree-$VER
-  tar zcf $DIR/$PROJECT-uptex-$VER.tar.gz $PROJECT-uptex-$VER
+#  tar zcf $DIR/$PROJECT-uptex-$VER.tar.gz $PROJECT-uptex-$VER
   echo
   echo You should execute
   echo
