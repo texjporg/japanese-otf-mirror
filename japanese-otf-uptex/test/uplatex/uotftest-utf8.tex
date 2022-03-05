@@ -61,6 +61,10 @@
 \ifx\rubyfamily\@undefined\let\rubyfamily=\relax\fi
 \ifx\mgfamily\@undefined\let\mgfamily=\relax\fi
 \makeatother
+\textwidth160mm
+\oddsidemargin0mm
+\evensidemargin0mm
+
 \begin{document}
 \section{見出し}
 
@@ -83,6 +87,8 @@ mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily\UTF{9DD7}} & {
 
 日本：\UTF{6d77}　簡体字：\UTFC{6d77}　繁體字：\UTFT{6d77}　朝鮮：\UTFK{6d77}
 
+日本：\UTF{8FF0}　簡体字：\UTFC{8FF0}　繁體字：\UTFT{8FF0}　朝鮮：\UTFK{8FF0}
+
 % with furikana.sty
 \makeatletter
 \ifx\kana\@undefined
@@ -101,17 +107,25 @@ mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily\UTF{9DD7}} & {
 
 アイウエオ\raisebox\baseshift{\frame{ア}\frame{イ}\frame{ウ}\frame{エ}\frame{オ}}
 
+\ifuptexmode
 ｱｲｳｴｵ\raisebox\baseshift{\frame{ｱ}\frame{ｲ}\frame{ｳ}\frame{ｴ}\frame{ｵ}}
+\fi
 
-% \UTF{}はまだ半角片仮名に対応していない。
 UTF:\UTF{FF71}\UTF{FF72}\UTF{FF73}\UTF{FF74}\UTF{FF75}%
-\raisebox\baseshift{\frame{\UTF{FF71}}\frame{\UTF{FF72}}\frame{\UTF{FF73}}\frame{\UTF{FF74}}\frame{\UTF{FF75}}}
+\raisebox\baseshift{\frame{\UTF{FF71}}\frame{\UTF{FF72}}\frame{\UTF{FF73}}\frame{\UTF{FF74}}\frame{\UTF{FF75}}}\\
+UTFM:\UTFM{FF71}\UTFM{FF72}\UTFM{FF73}\UTFM{FF74}\UTFM{FF75}%
+\raisebox\baseshift{\frame{\UTFM{FF71}}\frame{\UTFM{FF72}}\frame{\UTFM{FF73}}\frame{\UTFM{FF74}}\frame{\UTFM{FF75}}}
 
 UTF:%
 \UTF{FF61}\UTF{FF62}\UTF{FF63}\UTF{FF64}\UTF{FF65}\UTF{FF66}\UTF{FF67}\UTF{FF68}\UTF{FF69}\UTF{FF6A}\UTF{FF6B}\UTF{FF6C}\UTF{FF6D}\UTF{FF6E}\UTF{FF6F},%
 \UTF{FF70}\UTF{FF71}\UTF{FF72}\UTF{FF73}\UTF{FF74}\UTF{FF75}\UTF{FF76}\UTF{FF77}\UTF{FF78}\UTF{FF79}\UTF{FF7A}\UTF{FF7B}\UTF{FF7C}\UTF{FF7D}\UTF{FF7E}\UTF{FF7F},%
 \UTF{FF80}\UTF{FF81}\UTF{FF82}\UTF{FF83}\UTF{FF84}\UTF{FF85}\UTF{FF86}\UTF{FF87}\UTF{FF88}\UTF{FF89}\UTF{FF8A}\UTF{FF8B}\UTF{FF8C}\UTF{FF8D}\UTF{FF8E}\UTF{FF8F},%
-\UTF{FF90}\UTF{FF91}\UTF{FF92}\UTF{FF93}\UTF{FF94}\UTF{FF95}\UTF{FF96}\UTF{FF97}\UTF{FF98}\UTF{FF99}\UTF{FF9A}\UTF{FF9B}\UTF{FF9C}\UTF{FF9D}\UTF{FF9E}\UTF{FF9F}
+\UTF{FF90}\UTF{FF91}\UTF{FF92}\UTF{FF93}\UTF{FF94}\UTF{FF95}\UTF{FF96}\UTF{FF97}\UTF{FF98}\UTF{FF99}\UTF{FF9A}\UTF{FF9B}\UTF{FF9C}\UTF{FF9D}\UTF{FF9E}\UTF{FF9F}=\\
+UTFM:%
+\UTFM{FF61}\UTFM{FF62}\UTFM{FF63}\UTFM{FF64}\UTFM{FF65}\UTFM{FF66}\UTFM{FF67}\UTFM{FF68}\UTFM{FF69}\UTFM{FF6A}\UTFM{FF6B}\UTFM{FF6C}\UTFM{FF6D}\UTFM{FF6E}\UTFM{FF6F},%
+\UTFM{FF70}\UTFM{FF71}\UTFM{FF72}\UTFM{FF73}\UTFM{FF74}\UTFM{FF75}\UTFM{FF76}\UTFM{FF77}\UTFM{FF78}\UTFM{FF79}\UTFM{FF7A}\UTFM{FF7B}\UTFM{FF7C}\UTFM{FF7D}\UTFM{FF7E}\UTFM{FF7F},%
+\UTFM{FF80}\UTFM{FF81}\UTFM{FF82}\UTFM{FF83}\UTFM{FF84}\UTFM{FF85}\UTFM{FF86}\UTFM{FF87}\UTFM{FF88}\UTFM{FF89}\UTFM{FF8A}\UTFM{FF8B}\UTFM{FF8C}\UTFM{FF8D}\UTFM{FF8E}\UTFM{FF8F},%
+\UTFM{FF90}\UTFM{FF91}\UTFM{FF92}\UTFM{FF93}\UTFM{FF94}\UTFM{FF95}\UTFM{FF96}\UTFM{FF97}\UTFM{FF98}\UTFM{FF99}\UTFM{FF9A}\UTFM{FF9B}\UTFM{FF9C}\UTFM{FF9D}\UTFM{FF9E}\UTFM{FF9F}=
 
 \clearpage
 [mc/m]

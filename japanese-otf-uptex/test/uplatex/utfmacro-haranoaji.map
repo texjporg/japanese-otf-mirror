@@ -1,3 +1,9 @@
+rml  H HaranoAjiMincho-Regular.otf
+rmlv V HaranoAjiMincho-Regular.otf
+
+uprml-h UniJISup-UTF16-H HaranoAjiMincho-Regular.otf
+uprml-v UniJISup-UTF16-V HaranoAjiMincho-Regular.otf
+
 hminr-h H HaranoAjiMincho-Regular.otf
 hminb-h H HaranoAjiMincho-Bold.otf
 hminl-h H HaranoAjiMincho-Light.otf

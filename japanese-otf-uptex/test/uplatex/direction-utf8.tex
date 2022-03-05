@@ -1,0 +1,110 @@
+% -*- coding: utf-8 -*-
+\newif\ifuptexmode\uptexmodefalse
+\ifnum\jis"2121="3000 \uptexmodetrue\fi
+
+\makeatletter
+
+\def\@opt@{multi}
+\def\@default{default}
+\def\@jarticle{jarticle}
+\def\@tarticle{tarticle}
+\def\@utarticle{utarticle}
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\class\@undefined
+ \ifuptexmode
+  \def\class{ujarticle}
+ \else
+  \def\class{jarticle}
+ \fi
+\fi
+
+\ifuptexmode
+ \edef\@opt@{uplatex,\@opt@}
+\fi
+\documentclass[a4paper,titlepage,draft,twocolumn]{\class}
+%\documentclass[a4paper,titlepage, draft,landscape]{\class}
+
+\usepackage[\@opt@]{otf}
+\usepackage[T1]{fontenc}
+%\usepackage{bookman}
+%\usepackage{helvet}
+\usepackage{mathptmx}
+%\usepackage{mathpazo}
+\usepackage{courier}
+%\usepackage{txfonts}
+\usepackage{plext}
+\usepackage{graphicx}
+
+\makeatother
+
+\usepackage{redeffont}
+
+
+\AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
+
+\pagestyle{empty}
+
+\makeatother
+\begin{document}
+\parindent0mm
+クラス：\texttt{\class}\\
+オプション：\texttt{\option}
+
+\section{Horizontal Writing}
+\parbox<y>{13zw}{
+\fbox{\hbox{\large 「縦横無尽」}}\\
+\fbox{\hbox{\large キュート。Cute.}}\\
+\fbox{\hbox{\large \CID{8215}\CID{8216}\CID{8217}\CID{8218}\UTF{301C}\UTF{337C}\UTF{337B}\UTF{32FF}}}\\
+\ifuptexmode
+\fbox{\hbox{\large ㌐㌹㌨㍍㌰㌲㍿ｱｲｳｴｵ}}\\
+\fi
+\fbox{\hbox{\large ＴＬＴ． TLT.}}
+}
+
+\section{Vertical Writing}
+\parbox<t>{10.5zw}{
+\fbox{\hbox{\large 「縦横無尽」}}\\
+\fbox{\hbox{\large キュート。Cute.}}\\
+\fbox{\hbox{\large \CID{8215}\CID{8216}\CID{8217}\CID{8218}\UTF{301C}\UTF{337C}\UTF{337B}\UTF{32FF}}}\\
+\ifuptexmode
+\fbox{\hbox{\large ㌐㌹㌨㍍㌰㌲㍿}}\\
+\fi
+\fbox{\hbox{\large ＲＴＴ． RTR.}}
+}
+
+\section{Horizontal Writing, Rotate 270 deg}
+\rotatebox{-90}{
+\parbox<y>{13zw}{
+\fbox{\hbox{\large 「縦横無尽」}}\\
+\fbox{\hbox{\large キュート。Cute.}}\\
+\fbox{\hbox{\large \CID{8215}\CID{8216}\CID{8217}\CID{8218}\UTF{301C}\UTF{337C}\UTF{337B}\UTF{32FF}}}\\
+\ifuptexmode
+\fbox{\hbox{\large ㌐㌹㌨㍍㌰㌲㍿ｱｲｳｴｵ}}\\
+\fi
+\fbox{\hbox{\large ＲＴＲ． RTR.}}
+}
+}
+
+
+\section{Vertical Writing, Rotate 90 deg}
+\rotatebox{90}{
+\parbox<t>{10.5zw}{
+\fbox{\hbox{\large 「縦横無尽」}}\\
+\fbox{\hbox{\large キュート。Cute.}}\\
+\fbox{\hbox{\large \CID{8215}\CID{8216}\CID{8217}\CID{8218}\UTF{301C}\UTF{337C}\UTF{337B}\UTF{32FF}}}\\
+\ifuptexmode
+\fbox{\hbox{\large ㌐㌹㌨㍍㌰㌲㍿}}\\
+\fi
+\fbox{\hbox{\large ＴＬＬ． TLT.}}
+}
+}
+
+\end{document}
