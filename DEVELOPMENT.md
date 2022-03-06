@@ -30,7 +30,7 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 
 ### japanese-otf
 
-#### trunc branch
+#### trunk branch
 
 - Obtain and extract `http://psitau.kitunebi.com/otf1.7b8.zip`
 - Rename `readme.txt` -> `readme-ja.txt`
@@ -41,7 +41,7 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 
 #### master branch
 
-- Apply several patches from trunc branch.
+- Apply several patches from trunk branch.
     - avoid a warning for opening dirhandle
     - build tfm/vf/ofm for gteb font series
     - omit entries in vf for unused character numbers
