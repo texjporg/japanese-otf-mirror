@@ -775,6 +775,8 @@ sub print_ruby_hira_char{
 	if (&is_dvicode('hira-Vu')){$ruby_hira_code=0x3744;}
 	if (&is_dvicode('hira-ka')){$ruby_hira_code=0x363A;}
 	if (&is_dvicode('hira-ke')){$ruby_hira_code=0x3641;}
+	if (&is_dvicode('hira-ko')){$ruby_hira_code=0x3130;
+					$ruby_font_map=3;}        # Unicode 15.0
 	$ruby_hira_code_orig=$ruby_hira_code;
 	if ($direction eq "t"){&fix_ruby_hira_code;}
 	printf OVP "(CHARACTER H %X\n", $dvicode;
@@ -800,6 +802,7 @@ sub print_ruby_kata_char{
 							$ruby_font_map=3;}        # JIS X 0213
 	if (&is_dvicode('kata-ku')){$ruby_kata_code_orig=$ruby_kata_code=0x305B;} # JIS X 0213
 	if (&is_dvicode('kata-mu')){$ruby_kata_code_orig=$ruby_kata_code=0x3066;} # JIS X 0213
+	if (&is_dvicode('kata-ko')){$ruby_kata_code_orig=$ruby_kata_code=0x3131;} # Unicode 15.0
 	if ($direction eq "t"){&fix_ruby_kata_code;}
 	printf OVP "(CHARACTER H %X\n", $dvicode;
 	printf OVP "   (CHARWD R %f)\n",$font_at;
@@ -819,6 +822,7 @@ sub exp_hira_h_char{
 	if (&is_dvicode('hira-Vu')){$exp_hira_code_h=0x3139;$exp_font_map=3;} # JIS X 0213
 	if (&is_dvicode('hira-ka')){$exp_hira_code_h=0x6f6d;$exp_font_map=2;} # JIS X 0213
 	if (&is_dvicode('hira-ke')){$exp_hira_code_h=0x3034;$exp_font_map=3;} # JIS X 0213
+	if (&is_dvicode('hira-ko')){$exp_hira_code_h=0x3037;$exp_font_map=3;} # Unicode 15.0
 	printf OVP "(CHARACTER H %X\n", $dvicode;
 	printf OVP "   (CHARWD R %f)\n",$font_at;
 	print  OVP "   (MAP\n";
@@ -838,6 +842,7 @@ sub exp_hira_h_char{
 sub exp_kata_h_char{
 	if (&is_dvicode('kata-ka')){$exp_kata_code_h=0x3147;}
 	if (&is_dvicode('kata-ke')){$exp_kata_code_h=0x314e;}
+	if (&is_dvicode('kata-ko')){$exp_kata_code_h=0x3151;} # Unicode 15.0
 	if (&is_dvicode('kata-Va')){$exp_kata_code_h=0x3254;} # JIS X 0213
 	if (&is_dvicode('kata-ku')){$exp_kata_code_h=0x6f5d;} # JIS X 0213
 	if (&is_dvicode('kata-mu')){$exp_kata_code_h=0x6f68;} # JIS X 0213
@@ -860,6 +865,7 @@ sub exp_hira_v_char{
 	if (&is_dvicode('hira-Vu')){$exp_hira_code_v=0x3430;$exp_font_map=2;} # JIS X 0213
 	if (&is_dvicode('hira-ka')){$exp_hira_code_v=0x3264;$exp_font_map=2;} # JIS X 0213
 	if (&is_dvicode('hira-ke')){$exp_hira_code_v=0x326b;$exp_font_map=2;} # JIS X 0213
+	if (&is_dvicode('hira-ko')){$exp_hira_code_v=0x326e;$exp_font_map=2;} # Unicode 15.0
 	printf OVP "(CHARACTER H %X\n", $dvicode;
 	printf OVP "   (CHARWD R %f)\n",$font_at;
 	print  OVP "   (MAP\n";
@@ -881,6 +887,7 @@ sub exp_kata_v_char{
 	if (&is_dvicode('kata-Va')){$exp_kata_code_v=0x354b;}                 # JIS X 0213
 	if (&is_dvicode('kata-ku')){$exp_kata_code_v=0x303b;$exp_font_map=3;} # JIS X 0213
 	if (&is_dvicode('kata-mu')){$exp_kata_code_v=0x3046;}                 # JIS X 0213
+	if (&is_dvicode('kata-ko')){$exp_kata_code_v=0x3448;$exp_font_map=2;} # Unicode 15.0
 	printf OVP "(CHARACTER H %X\n", $dvicode;
 	printf OVP "   (CHARWD R %f)\n",$font_at;
 	print  OVP "   (MAP\n";
@@ -909,6 +916,7 @@ sub fix_ruby_hira_code{
 	if (&is_dvicode('hira-wa' )){$ruby_hira_code=0x3750;}#wa
 	if (&is_dvicode('hira-ka' )){$ruby_hira_code=0x374a;} # JIS X 0213
 	if (&is_dvicode('hira-ke' )){$ruby_hira_code=0x374b;} # JIS X 0213
+	if (&is_dvicode('hira-ko' )){$ruby_hira_code=0x3143;} # Unicode 15.0
 }
 sub fix_ruby_kata_code{
 	if (&is_dvicode('kata-a'  )){$ruby_kata_code=0x3867;}#a
@@ -922,8 +930,9 @@ sub fix_ruby_kata_code{
 	if (&is_dvicode('kata-yo' )){$ruby_kata_code=0x3931;}#yo
 	if (&is_dvicode('kata-wa' )){$ruby_kata_code=0x3932;}#wa
 	if (&is_dvicode('kata-ka' )){$ruby_kata_code=0x386c;}#ka
-	if (&is_dvicode('kata-ke' )){$ruby_kata_code=0x386d;}#ke 
+	if (&is_dvicode('kata-ke' )){$ruby_kata_code=0x386d;}#ke
 	if (&is_dvicode('kata-ku..ro')){$ruby_kata_code+=215;} # JIS X 0213
+	if (&is_dvicode('kata-ko' )){$ruby_kata_code=0x3144;} # Unicode 15.0
 }
 sub get_shift_jiscode{
 	$c1=$ku+32;

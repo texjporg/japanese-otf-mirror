@@ -6,6 +6,53 @@ DVIPS = dvips
 DVIPDFMX = dvipdfmx -v
 PDVITYPE = pdvitype
 
+JPOTF = ../../..
+MYFONTDIR = /please/set/personal/fontdir
+
+export TEXINPUTS := .;${JPOTF}/japanese-otf-uptex/sty/;${JPOTF}/japanese-otf/sty/;$$TEXMF/tex/{platex,latex,generic,}//
+export VFFONTS := .;${JPOTF}//vf/;$$TEXMF/fonts/vf//
+export TFMFONTS := .;${JPOTF}//tfm/;{$$TEXMF/fonts,$$VARTEXFONTS}/tfm//
+export OFMFONTS := .;${JPOTF}//ofm/;{$$TEXMF/fonts,$$VARTEXFONTS}/{ofm,tfm}//
+export OPENTYPEFONTS := .;${MYFONTDIR}//;$$TEXMF/fonts/{opentype,truetype}//;$$OSFONTDIR//
+
+which-otf:
+	kpsewhich otf.sty
+
+which-exp-vf:
+	kpsewhich -format vf upexpminr-h.vf
+
+which-exp-tfm:
+	kpsewhich -format tfm upexpminr-h.tfm
+
+which-cmr-tfm:
+	kpsewhich -format tfm cmr10.tfm
+
+which-cjmr-tfm:
+	kpsewhich -format tfm otf-cjmr-h.tfm
+
+which-cjmr-ofm:
+	kpsewhich -format ofm otf-cjmr-h.ofm
+
+which-hara-otf:
+	kpsewhich -format "opentype fonts" HaranoAjiMincho-Regular.otf
+	kpsewhich -format "opentype fonts" HaranoAjiGothic-Medium.otf
+
+which-hara-ck-otf:
+	kpsewhich -format "opentype fonts" HaranoAjiMinchoCN-Regular.otf
+	kpsewhich -format "opentype fonts" HaranoAjiGothicCN-Medium.otf
+	kpsewhich -format "opentype fonts" HaranoAjiMinchoTW-Regular.otf
+	kpsewhich -format "opentype fonts" HaranoAjiGothicTW-Medium.otf
+	kpsewhich -format "opentype fonts" HaranoAjiMinchoK1-Regular.otf
+	kpsewhich -format "opentype fonts" HaranoAjiGothicK1-Medium.otf
+
+which-koz-otf:
+	kpsewhich -format "opentype fonts" KozMinPr6N-Regular.otf
+	kpsewhich -format "opentype fonts" KozGoPr6N-Medium.otf
+	kpsewhich -format "opentype fonts" AdobeSongStd-Light.otf
+	kpsewhich -format "opentype fonts" AdobeMingStd-Light.otf
+	kpsewhich -format "opentype fonts" AdobeMyungjoStd-Medium.otf
+
+
 all: otf sp art brsg jis04 scale prop punct exclam dir
 
 otf: uplatex-otf platex-otf
@@ -39,6 +86,30 @@ platex-otf:
 		$(DVIPDFMX) uotftest-$$opt-v-platex.dvi ; \
 	done
 
+uplatex-otf-haranoaji: uplatex-otf
+	for opt in deluxe expert; do \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$opt-h-hara-uplatex.pdf uotftest-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$opt-v-hara-uplatex.pdf uotftest-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-otf-kozuka: uplatex-otf
+	for opt in deluxe expert; do \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$opt-h-koz-uplatex.pdf uotftest-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$opt-v-koz-uplatex.pdf uotftest-$$opt-v-uplatex.dvi ; \
+	done
+
+platex-otf-haranoaji: platex-otf
+	for opt in deluxe expert; do \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$opt-h-hara-platex.pdf uotftest-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$opt-v-hara-platex.pdf uotftest-$$opt-v-platex.dvi ; \
+	done
+
+platex-otf-kozuka: platex-otf
+	for opt in deluxe expert; do \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$opt-h-koz-platex.pdf uotftest-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$opt-v-koz-platex.pdf uotftest-$$opt-v-platex.dvi ; \
+	done
+
 uplatex-sp:
 	for opt in default deluxe expert bold noreplace; do \
 		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotf-sp-utf8.tex ; \
@@ -57,6 +128,30 @@ platex-sp:
 		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\input" uotf-sp-utf8.tex ; \
 		mv uotf-sp-utf8.dvi uotf-sp-$$opt-v-platex.dvi ; \
 		$(DVIPDFMX) uotf-sp-$$opt-v-platex.dvi ; \
+	done
+
+uplatex-sp-haranoaji: uplatex-sp
+	for opt in deluxe expert; do \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-h-hara-uplatex.pdf uotf-sp-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-v-hara-uplatex.pdf uotf-sp-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-sp-kozuka: uplatex-sp
+	for opt in deluxe expert; do \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-h-koz-uplatex.pdf uotf-sp-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-v-koz-uplatex.pdf uotf-sp-$$opt-v-uplatex.dvi ; \
+	done
+
+platex-sp-haranoaji: platex-sp
+	for opt in deluxe expert; do \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-h-hara-platex.pdf uotf-sp-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-v-hara-platex.pdf uotf-sp-$$opt-v-platex.dvi ; \
+	done
+
+platex-sp-kozuka: platex-sp
+	for opt in deluxe expert; do \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-h-koz-platex.pdf uotf-sp-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-v-koz-platex.pdf uotf-sp-$$opt-v-platex.dvi ; \
 	done
 
 uplatex-article:
