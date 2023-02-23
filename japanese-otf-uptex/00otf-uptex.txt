@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.27  2022/02/16
+japanese-otf-uptex Ver.0.28  2022/02/23
 
 
 [ Abstract ]
@@ -478,6 +478,28 @@ https://github.com/t-tk/japanese-otf-uptex
     Introduce multi-weight virtual fonts for Chinese/Korean plain texts.
   test/uplatex/Makefile, test/uplatex/cjk-{mltwght,pxbabel}-{h,v}.tex ::
     Add new tests for CK multi-weight plain texts.
+  COPYRIGHT ::
+    Update year.
+2023.02.23 Ver0.28
+  sty/otf.sty, sty/mlutf.sty ::
+    Bump version number.
+    Set option autodetect-engine default.
+    Add a new option platex to check if engine is platex.
+  umkjvf, umakeotf{,_brsg,_jis04,_pre,_prop},
+  script/{CheckDVICode,MakeSPList}.pm,
+  script/{mktfm_sp,mkutf32list,mkutfvf_sp,umk{,v}pkana}.pl ::
+    Update header comments.
+  script/CheckDVICode.pm, script/sp_list_j.txt,
+  test/uplatex/sp_jp_{utf,text}.tex ::
+    Update references:
+    Unicode Blocks-15.0.0.txt (Date: 2022-01-28, 20:58:00 GMT [KW])
+    Adobe-Japan1-7 cid2code.txt (Version 05/18/2022).
+  script/{CheckDVICode,MakeSPList}.pm, script/umk{,v}pkana}.pl,
+  umkjvf, umakeotf_prop ::
+    Support Kana Letter Small Ko defined by Unicode 15.0.
+  test/uplatex/Makefile, test/uplatex/utfmacro-kozuka.map,
+  test/uplatex/{uotftest-utf8,upkanatest1}.tex ::
+    Add new tests for Small Kana Extension & Adobe fonts.
   COPYRIGHT ::
     Update year.
 

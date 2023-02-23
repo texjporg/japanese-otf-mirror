@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #
-# This script is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
+# This script is a part of japanese-otf-uptex.
 #
 
 # setting for ovp2ovf & uppltotf
@@ -18,8 +18,8 @@ mkdir ovp
 fi
 
 echo "making proportional kana tfm/vf ..."
-perl -s script/umkpkana.pl -omitfw -hk
-perl -s script/umkvpkana.pl -omitfw
+perl -s script/umkpkana.pl -omitfw -sp -hk
+perl -s script/umkvpkana.pl -omitfw -sp
 
 for face in minw3 minw6 kakuw3 kakuw6 maruw4
 do

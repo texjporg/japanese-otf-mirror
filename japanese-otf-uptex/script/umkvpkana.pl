@@ -2,7 +2,7 @@
 
 =head1 NOTE
 
-This software is a part of otfbeta-uptex (a.k.a. japanese-otf-uptex).
+This software is a part of japanese-otf-uptex.
 
 =cut
 
@@ -340,7 +340,7 @@ sub print_type_prop{
 
 sub get_charwidth{
 	my ($i,$dvicode)=@_;
-	my ($char,$u,$l);
+	my ($char,$t,$u,$l);
 
 	if (!$ucs) {
 		if ($dvicode>=0x2474 && $dvicode<=0x2476) {
@@ -351,10 +351,11 @@ sub get_charwidth{
 		$char = pack("C*",$u,$l);
 		Encode::from_to($char,'euc-jp','utf-8');
 	} else {
+		$t = ($dvicode >>16) & 0xFF;
 		$u = ($dvicode >> 8) & 0xFF;
 		$l =  $dvicode       & 0xFF;
-		$char = pack("C*",$u,$l);
-		Encode::from_to($char,'utf-16be','utf-8');
+		$char = pack("C*",0x00,$t,$u,$l);
+		Encode::from_to($char,'utf-32','utf-8');
 	}
 	if (!exists($charwidth[$i]{$char})) {
 		return 0;
@@ -364,7 +365,7 @@ sub get_charwidth{
 
 
 __DATA__
-character  cid  min_w3  min_w6  goth_w3  goth_w6  maru_w4
+character  cid  min_w3  min_w6  goth_w3  goth_w6  maru_w4  comment
 ヽ  15976  7.17  7.46  7.92  8.27  8.13
 ヾ  15977  8.34  8.44  8.46  8.62  8.5
 ゝ  15978  7.77  7.98  8.44  8.69  8.62
@@ -566,4 +567,6 @@ character  cid  min_w3  min_w6  goth_w3  goth_w6  maru_w4
 ヸ  16188  9.61  9.8  9.73  9.84  9.77
 ヹ  16189  8.94  9.28  9.56  9.80  9.88
 ヺ  16190  9.54  9.71  9.67  9.82  9.74
+𛄲  16191  8.72  8.88  8.83  9.13  9.04  U+1B132 小書き「こ」
+𛅕  16192  8     8.23  8.65  8.95  8.91  U+1B155 小書き「コ」
 end

@@ -1,7 +1,7 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{otf}[2019/04/01 v1.7b8 psitau, u0.27 ttk]
+\ProvidesPackage{otf}[2019/04/01 v1.7b8 psitau, u0.28 ttk]
 \RequirePackage{keyval}
-%for processing options 
+%for processing options
 \newif\if@kana \@kanafalse
 \newif\if@macro \@macrotrue
 \newif\if@deluxe \@deluxefalse
@@ -10,7 +10,6 @@
 \newif\if@burasage \@burasagefalse
 \newif\if@newglyph \@newglyphfalse
 \newif\if@otf@uplatex \@otf@uplatexfalse
-\newif\if@otf@autodetect \@otf@autodetectfalse
 \newif\if@otf@scale \@otf@scalefalse
 \newif\if@jsclasses \@jsclassesfalse
 
@@ -22,8 +21,10 @@
 \DeclareOption{deluxe}{\@boldfalse\@replacetrue\@deluxetrue}
 \DeclareOption{multi}{\AtEndOfPackage{\RequirePackage{mlutf}\RequirePackage{mlcid}}}
 \DeclareOption{burasage}{\@burasagetrue}
-\DeclareOption{uplatex}{\@otf@uplatextrue}
-\DeclareOption{autodetect-engine}{\@otf@autodetecttrue}
+\let\@otf@engine@given=*
+\DeclareOption{platex}{\let\@otf@engine@given=p\@otf@uplatexfalse}
+\DeclareOption{uplatex}{\let\@otf@engine@given=u\@otf@uplatextrue}
+\DeclareOption{autodetect-engine}{\let\@otf@engine@given=*}
 \DeclareOption{jis2004}{\@newglyphtrue}
 \DeclareOption*{\otfpkg@setkey}
 \def\otfpkg@setkey{\expandafter\otfpkg@setkey@a\expandafter{\CurrentOption}}
@@ -40,22 +41,32 @@
 
 % Autodetect engine
 \ifnum \ifx\ucs\@undefined\z@\else\ucs"3000 \fi ="3000 %upTeX
-	\if@otf@autodetect
+	\ifx *\@otf@engine@given
 		\PackageInfo{otf}{Autodetected engine: upLaTeX}
 		\@otf@uplatextrue
+	\fi
+	\ifx p\@otf@engine@given
+		\PackageError{otf}
+		{Option 'platex' is specified but you are running upLaTeX.}
+		{\@ehc}
 	\fi
 	\if@otf@uplatex\else
 		\PackageError{otf}
 			{You are running upLaTeX.\MessageBreak
-			 Please use pLaTeX instead, or add 'uplatex' to\MessageBreak
+			 Please use pLaTeX instead, or remove 'platex' from\MessageBreak
 			 the package option list}
 			{\@ehc}
 		\@otf@uplatextrue
 	\fi
 \else %pTeX
-	\if@otf@autodetect
+	\ifx *\@otf@engine@given
 		\PackageInfo{otf}{Autodetected engine: pLaTeX}
 		\@otf@uplatexfalse
+	\fi
+	\ifx u\@otf@engine@given
+		\PackageError{otf}
+		{Option 'uplatex' is specified but you are running pLaTeX.}
+		{\@ehc}
 	\fi
 	\if@otf@uplatex
 		\PackageError{otf}
