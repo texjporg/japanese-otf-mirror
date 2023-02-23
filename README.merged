@@ -1,0 +1,32 @@
+package name: japanese-otf
+
+This bundle was edited for the upload to CTAN and
+consists of following packages:
+
+- OTF package
+  (Advanced font selection for pLaTeX and its friends)
+    - author: Shuzaburo Saito
+    - upstream: http://psitau.kitunebi.com/otf.html
+    - currently otfbeta v1.7b8 (2019/04/01)
+    - readme by the author: readme-ja.txt (in Japanese)
+- japanese-otf-uptex
+  (upLaTeX support of the OTF package)
+    - author: Tanaka Takuji
+    - upstream: http://www.t-lab.opal.ne.jp/tex/uptex_en.html
+                https://github.com/t-tk/japanese-otf-uptex
+    - currently japanese-otf-uptex Ver.0.27 (2022/02/16)
+    - readme by the author: 00otf-uptex.txt
+
+In addition, several patches were applied to support extended
+features. The source code is maintained at GitHub:
+  https://github.com/texjporg/japanese-otf-mirror
+If you find any issues or bugs, please report to
+  https://github.com/texjporg/japanese-otf-mirror/issues
+or
+  e-mail: issue@texjp.org
+
+The contents of this package is under the license given in the 
+COPYRIGHT file, which is the 3-clause BSD license.
+
+Japanese TeX Development Community
+$RELEASEDATE

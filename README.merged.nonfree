@@ -1,0 +1,22 @@
+package name: japanese-otf-nonfree
+
+This package is a companion to `japanese-otf' including
+support for nonfree Hiragino fonts, which we decided not to be
+included in TeX Live. Current version of this package used is
+based on
+	otfbeta v1.7b8 (2019/04/01)
+and
+	japanese-otf-uptex Ver.0.27 (2022/02/16)
+
+The source code is maintained at GitHub:
+  https://github.com/texjporg/japanese-otf-mirror
+If you find any issues or bugs, please report to
+  https://github.com/texjporg/japanese-otf-mirror/issues
+or
+  e-mail: issue@texjp.org
+
+The contents of this package is under the license given in the 
+COPYRIGHT file, which is the 3-clause BSD license.
+
+Japanese TeX Development Community
+$RELEASEDATE

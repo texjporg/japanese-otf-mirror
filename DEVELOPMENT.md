@@ -12,6 +12,9 @@ japanese-otf-mirror リポジトリは，以下の目的で用意しています
       (u)pLaTeX や jsclasses との共存をチェックする予定です。
     - 仮に OTF パッケージ側の改良が必要となった場合，本リポジトリで
       branch を切って開発し，upstream に報告する可能性もあるかもしれません。
+- 日本語 TeX 開発コミュニティで検討・提案する修整、機能拡張を管理するため。
+    - 原作を尊重し開発の意図を損なわない範囲での小さな修整や機能拡張を目指します。
+    - CTANには「日本語 TeX 開発コミュニティ版」と明示して投稿します。
 
 このリポジトリにあるものが公式の upstream ではないことに注意してください。
 それぞれの公式は [README.md](./README.md) に記載のあるとおりです。
@@ -27,21 +30,32 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 
 ### japanese-otf
 
+#### trunk branch
+
 - Obtain and extract `http://psitau.kitunebi.com/otf1.7b8.zip`
 - Rename `readme.txt` -> `readme-ja.txt`
 - `chmod +x makeotf mkjvf`
 - Convert all files in `script/` and `test/` from CRLF -> LF
-- `patch -p1 <otf-script-gteb.diff`
+- `make` (at top directory)
+- Add `README` and `README.nonfree`
+
+#### master branch
+
+- Apply several patches from trunk branch.
     - avoid a warning for opening dirhandle
     - build tfm/vf/ofm for gteb font series
-- `make` (at top directory)
-- Add `README`, `README.nonfree` and `TeXLive-maps/otf-cktx.map`
+    - omit entries in vf for unused character numbers
+    - support halfwidth katakana in \UTF{}, \UTFM{}
+    - set FONTDIR RT in ofm for vertical writing
+    - fix typo
+- Add `TeXLive-maps/otf-cktx.map`
+- `./makeotf` (at `japanese-otf` directory)
 
 ### japanese-otf-uptex
 
 - Obtain and extract `https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.28`
 - `make` (at top directory)
-- Add `README` (almost same as `00otf-uptex.txt`)
+- Add `README` and `README.nonfree`
 
 ### hiraprop
 
@@ -51,10 +65,10 @@ hiraprop は Makefile のインストール対象に含めていません（準�
 
 ## リリース手順
 
-状況によっては，upstream からでなく，本リポジトリから
-CTAN へアップロードする場合があるかもしれません。
+現状 CTAN へは upstream からでなく，本リポジトリから「日本語 TeX 開発コミュニティ版」として
+アップロードしています。
 
-この場合，CTAN へアップロードするためのアーカイブ (.tar.gz) は
+その際，CTAN へアップロードするためのアーカイブ (.tar.gz) は
 `release.sh` を実行すれば作成することができます。
 
 ````
@@ -68,6 +82,13 @@ TFM/VF/OFM のセット）を分割し，別のアーカイブとします。本
 CTAN に登録し，nonfree の方は [TLContrib](http://contrib.texlive.info)
 ([Git repository](https://git.texlive.info/tlcontrib))
 で配布します。
+
+japanese-otf，japanese-otf-uptex を統合したアーカイブは
+`release-merged.sh` を実行すれば作成することができます。
+
+````
+    $ ./release-merged.sh
+````
 
 ----
 Japanese TeX Development Community
