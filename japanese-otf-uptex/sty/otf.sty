@@ -251,11 +251,16 @@
 \AtBeginDocument{\Redefine@UTF}
 %internal macros
 %macros by iNOUE Koich!
+\ifx\kanjishapeforce\@undefined
+  \let\otf@kanjishape\kanjishape
+\else
+  \let\otf@kanjishape\kanjishapeforce
+\fi
 \newcommand\set@character{\afterassignment\put@character\@tempcnta}
 \newcommand\put@character{%
 	\@tempcntb=\@tempcnta
 	\divide\@tempcntb by "1000
-	\kanjishape{\ifcase\@tempcntb0\or1\or2\or3\or4\or5\or6\or7\or8\or9\or a\or b\or c\or d\or e\or f\or
+	\otf@kanjishape{\ifcase\@tempcntb0\or1\or2\or3\or4\or5\or6\or7\or8\or9\or a\or b\or c\or d\or e\or f\or
 	   \or  \or  \or  \or  \or  \or  \or  \or  \or  \or  \or g\or  \or h\or i\or j\or
 	  k\or l\or m\or n\or o\or p\or q\or r\or s\or t\or u\or v\or w\or x\or y\or z\fi}%
 	\selectfont%
