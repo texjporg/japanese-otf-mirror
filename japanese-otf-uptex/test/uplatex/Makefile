@@ -15,6 +15,18 @@ export TFMFONTS := .;${JPOTF}//tfm/;{$$TEXMF/fonts,$$VARTEXFONTS}/tfm//
 export OFMFONTS := .;${JPOTF}//ofm/;{$$TEXMF/fonts,$$VARTEXFONTS}/{ofm,tfm}//
 export OPENTYPEFONTS := .;${MYFONTDIR}//;$$TEXMF/fonts/{opentype,truetype}//;$$OSFONTDIR//
 
+uplatex-version:
+	uplatex --version
+
+euptex-version:
+	euptex --version
+
+xdvipdfmx-version:
+	xdvipdfmx --version
+
+dvipdfmx-version:
+	xdvipdfmx --dvipdfmx --version
+
 which-otf:
 	kpsewhich otf.sty
 
@@ -26,12 +38,18 @@ which-exp-tfm:
 
 which-cmr-tfm:
 	kpsewhich -format tfm cmr10.tfm
+	kpsewhich -format tfm cmbx12.tfm
+	kpsewhich -progname=dvipdfmx -format tfm cmr10.tfm
+	kpsewhich -progname=dvipdfmx -format tfm cmbx12.tfm
 
 which-cjmr-tfm:
 	kpsewhich -format tfm otf-cjmr-h.tfm
 
 which-cjmr-ofm:
 	kpsewhich -format ofm otf-cjmr-h.ofm
+
+which-ucgb-tfm:
+	kpsewhich -format tfm otf-ucgb-v.tfm
 
 which-hara-otf:
 	kpsewhich -format "opentype fonts" HaranoAjiMincho-Regular.otf
@@ -51,6 +69,24 @@ which-koz-otf:
 	kpsewhich -format "opentype fonts" AdobeSongStd-Light.otf
 	kpsewhich -format "opentype fonts" AdobeMingStd-Light.otf
 	kpsewhich -format "opentype fonts" AdobeMyungjoStd-Medium.otf
+
+which-dvipdfmx-cfg:
+	kpsewhich -progname=dvipdfmx -format=othertext dvipdfmx.cfg
+
+which-map:
+	kpsewhich -format "map" utfmacro-haranoaji.map
+	kpsewhich -format "map" utfmacro-kozuka.map
+	kpsewhich -format "map" jotf-psfonts.map
+
+which-cmap:
+	kpsewhich -format "cmap files" UniJIS-UTF16-H
+	kpsewhich -format "cmap files" UniJIS-UTF16-V
+	kpsewhich -format "cmap files" UniGB-UTF16-H
+	kpsewhich -format "cmap files" UniGB-UTF16-V
+	kpsewhich -format "cmap files" UniCNS-UTF16-H
+	kpsewhich -format "cmap files" UniCNS-UTF16-V
+	kpsewhich -format "cmap files" UniKS-UTF16-H
+	kpsewhich -format "cmap files" UniKS-UTF16-V
 
 
 all: otf sp art brsg jis04 scale prop punct exclam dir
