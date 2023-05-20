@@ -1,0 +1,130 @@
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{mlcid}[2004/04/17 v1.0.2 psitau, u0.28 ttk]
+%force catcode of \" be 12
+\count@\catcode`\"
+\catcode`\"=12
+\if@otf@uplatex
+\if@deluxe
+	\DeclareRobustCommand{\CIDK}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
+		\ifx\k@family\reserved@a \kanjifamily{cidkg}\else\ifx\k@family\reserved@b
+			\kanjifamily{cidkmg}\else\kanjifamily{cidk}\fi\fi%
+		\set@character@=#1%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\CIDC}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
+		\ifx\k@family\reserved@a \kanjifamily{cidcg}\else\ifx\k@family\reserved@b
+			\kanjifamily{cidcmg}\else\kanjifamily{cidc}\fi\fi%
+		\set@character@=#1%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\CIDT}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
+		\ifx\k@family\reserved@a \kanjifamily{cidtg}\else\ifx\k@family\reserved@b
+			\kanjifamily{cidtmg}\else\kanjifamily{cidt}\fi\fi%
+		\set@character@=#1%
+		\endgroup%
+	}
+\else
+	\DeclareRobustCommand{\CIDK}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{cidk}\set@character@=#1%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\CIDC}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{cidc}\set@character@=#1%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\CIDT}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{cidt}\set@character@=#1%
+		\endgroup%
+	}
+\fi
+\else% for pLaTeX
+	\DeclareRobustCommand{\CIDK}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{cidk}\set@character=#1%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\CIDC}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{cidc}\set@character=#1%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\CIDT}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{cidt}\set@character=#1%
+		\endgroup%
+	}
+\fi
+\catcode`\"=\count@
+%end of changing catcode of \"
+\DeclareKanjiFamily{\otf@JYn}{cidk}{}
+\DeclareKanjiFamily{\otf@JTn}{cidk}{}
+\DeclareKanjiFamily{\otf@JYn}{cidc}{}
+\DeclareKanjiFamily{\otf@JTn}{cidc}{}
+\DeclareKanjiFamily{\otf@JYn}{cidt}{}
+\DeclareKanjiFamily{\otf@JTn}{cidt}{}
+\if@otf@uplatex
+	\Declare@FontShape{cidk}{m}{-}{cidkmr}
+	\Declare@FontShape{cidc}{m}{-}{cidcmr}
+	\Declare@FontShape{cidt}{m}{-}{cidtmr}
+	\if@deluxe
+		\Declare@FontShape{cidk}{bx}{-}{cidkmb}
+		\DeclareKanjiFamily{\otf@JYn}{cidkg}{}
+		\DeclareKanjiFamily{\otf@JTn}{cidkg}{}
+		\Declare@FontShape{cidkg}{m}{-}{cidkgr}
+		\Declare@FontShape{cidkg}{bx}{-}{cidkgb}
+		\Declare@FontShape{cidkg}{eb}{-}{cidkge}
+		\DeclareKanjiFamily{\otf@JYn}{cidkmg}{}
+		\DeclareKanjiFamily{\otf@JTn}{cidkmg}{}
+		\Declare@FontShape{cidkmg}{m}{-}{cidkmgr}
+		\Declare@FontShape{cidk}{l}{-}{cidkml}
+		\Declare@FontShape{cidc}{bx}{-}{cidcmb}
+		\DeclareKanjiFamily{\otf@JYn}{cidcg}{}
+		\DeclareKanjiFamily{\otf@JTn}{cidcg}{}
+		\Declare@FontShape{cidcg}{m}{-}{cidcgr}
+		\Declare@FontShape{cidcg}{bx}{-}{cidcgb}
+		\Declare@FontShape{cidcg}{eb}{-}{cidcge}
+		\DeclareKanjiFamily{\otf@JYn}{cidcmg}{}
+		\DeclareKanjiFamily{\otf@JTn}{cidcmg}{}
+		\Declare@FontShape{cidcmg}{m}{-}{cidcmgr}
+		\Declare@FontShape{cidc}{l}{-}{cidcml}
+		\Declare@FontShape{cidt}{bx}{-}{cidtmb}
+		\DeclareKanjiFamily{\otf@JYn}{cidtg}{}
+		\DeclareKanjiFamily{\otf@JTn}{cidtg}{}
+		\Declare@FontShape{cidtg}{m}{-}{cidtgr}
+		\Declare@FontShape{cidtg}{bx}{-}{cidtgb}
+		\Declare@FontShape{cidtg}{eb}{-}{cidtge}
+		\DeclareKanjiFamily{\otf@JYn}{cidtmg}{}
+		\DeclareKanjiFamily{\otf@JTn}{cidtmg}{}
+		\Declare@FontShape{cidtmg}{m}{-}{cidtmgr}
+		\Declare@FontShape{cidt}{l}{-}{cidtml}
+	\else
+		\if@bold
+			\Declare@FontShape{cidk}{bx}{-}{cidkgb}
+			\Declare@FontShape{cidc}{bx}{-}{cidcgb}
+			\Declare@FontShape{cidt}{bx}{-}{cidtgb}
+		\else
+			\Declare@FontShape{cidk}{bx}{-}{cidkgr}
+			\Declare@FontShape{cidc}{bx}{-}{cidcgr}
+			\Declare@FontShape{cidt}{bx}{-}{cidtgr}
+		\fi
+	\fi
+\else
+	\if@deluxe
+		\Declare@FontShape{cidk}{l}{01234}{cidkmr}
+		\Declare@FontShape{cidc}{l}{01234567}{cidcmr}
+		\Declare@FontShape{cidt}{l}{01234}{cidtmr}
+	\fi
+	\Declare@FontShape{cidk}{m}{01234}{cidkmr}
+	\Declare@FontShape{cidk}{bx}{01234}{cidkgr}
+	\Declare@FontShape{cidc}{m}{01234567}{cidcmr}
+	\Declare@FontShape{cidc}{bx}{01234567}{cidcgr}
+	\Declare@FontShape{cidt}{m}{01234}{cidtmr}
+	\Declare@FontShape{cidt}{bx}{01234}{cidtgr}
+\fi
+\endinput
