@@ -88,6 +88,10 @@ which-cmap:
 	kpsewhich -format "cmap files" UniKS-UTF16-H
 	kpsewhich -format "cmap files" UniKS-UTF16-V
 
+which-cid-tex:
+	kpsewhich uotf-cid-h.tex
+	kpsewhich uotf-cid-v.tex
+
 
 all: otf sp art brsg jis04 scale prop punct exclam dir
 
@@ -188,6 +192,46 @@ platex-sp-kozuka: platex-sp
 	for opt in deluxe expert; do \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-h-koz-platex.pdf uotf-sp-$$opt-h-platex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-v-koz-platex.pdf uotf-sp-$$opt-v-platex.dvi ; \
+	done
+
+uplatex-cid-compile: uotf-cid-h.tex uotf-cid-v.tex
+	for opt in default deluxe bold; do \
+		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotf-cid-h.tex ; \
+		mv uotf-cid-h.dvi uotf-cid-$$opt-h-uplatex.dvi ; \
+		$(UPLATEX) "\def\option{$$opt}\def\class{utarticle}\input" uotf-cid-v.tex ; \
+		mv uotf-cid-v.dvi uotf-cid-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-cid-haranoaji: uplatex-cid-compile
+	for opt in default deluxe bold; do \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-h-hara-uplatex.pdf uotf-cid-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-v-hara-uplatex.pdf uotf-cid-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-cid-kozuka: uplatex-cid-compile
+	for opt in default deluxe bold; do \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-h-koz-uplatex.pdf uotf-cid-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-v-koz-uplatex.pdf uotf-cid-$$opt-v-uplatex.dvi ; \
+	done
+
+platex-cid-compile: uotf-cid-h.tex uotf-cid-v.tex
+	for opt in default deluxe; do \
+		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\input" uotf-cid-h.tex ; \
+		mv uotf-cid-h.dvi uotf-cid-$$opt-h-platex.dvi ; \
+		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\input" uotf-cid-v.tex ; \
+		mv uotf-cid-v.dvi uotf-cid-$$opt-v-platex.dvi ; \
+	done
+
+platex-cid-haranoaji: platex-cid-compile
+	for opt in default deluxe; do \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-h-hara-platex.pdf uotf-cid-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-v-hara-platex.pdf uotf-cid-$$opt-v-platex.dvi ; \
+	done
+
+platex-cid-kozuka: platex-cid-compile
+	for opt in default deluxe; do \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-h-koz-platex.pdf uotf-cid-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-v-koz-platex.pdf uotf-cid-$$opt-v-platex.dvi ; \
 	done
 
 uplatex-article:

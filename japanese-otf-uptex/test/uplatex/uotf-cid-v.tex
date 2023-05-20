@@ -1,0 +1,402 @@
+% -*- coding: utf-8 -*-
+%%%%%%%%
+% To control hyperref on command line,
+% you can select one of (1),(2a),(2b),(3).
+%   (1) do not treat hyperref
+%   $ uplatex uotf-cid-h.tex
+%   (2a) hyperref + dvipdfmx           (with    CMap conversion)
+%   $ uplatex "\def\withhyperref{dvipdfmx}\input" uotf-cid-h.tex
+%   (2b) hyperref + dvipdfmx + out2uni (without CMap conversion)
+%   $ uplatex "\def\withhyperref{dvipdfmx}\nocmap{true}\input" uotf-cid-h.tex
+%   (3) hyperref + dvips + convbkmk.rb + distiller/ps2pdf
+%   $ uplatex "\def\withhyperref{dvips}\input" uotf-cid-h.tex
+%%%%%%
+
+\newif\ifuptexmode\uptexmodefalse
+\ifnum\jis"2121="3000
+ \uptexmodetrue
+ \def\tounicode{pdf:tounicode UTF8-UTF16}
+\else
+ \ifnum\jis"2121="A1A1
+  \def\tounicode{pdf:tounicode EUC-UCS2}
+ \fi
+ \ifnum\jis"2121="8140
+  \def\tounicode{pdf:tounicode 90ms-RKSJ-UCS2}
+ \fi
+\fi
+
+\makeatletter
+
+\def\@opt@{multi}
+\def\@default{default}
+\def\@jarticle{jarticle}
+\def\@tarticle{tarticle}
+\def\@ujarticle{ujarticle}
+\def\@noreplace{noreplace}
+\def\@deluxe{deluxe}
+
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@noreplace
+ \ifuptexmode
+  \ifx\class\@ujarticle
+   \def\@enc@{JY2}\def\@dir@{h}
+  \else
+   \def\@enc@{JT2}\def\@dir@{v}
+  \fi
+  \DeclareFontFamily{\@enc@}{mcw}{}
+  \DeclareFontFamily{\@enc@}{gtw}{}
+  \DeclareFontShape{\@enc@}{mcw}{m}{n}{<->s*[0.962216]upjpnrm-\@dir@}{}
+  \DeclareFontShape{\@enc@}{gtw}{m}{n}{<->s*[0.962216]upjpngt-\@dir@}{}
+  \DeclareFontShape{\@enc@}{gt}{m}{n}{<->s*[0.962216]upjpngt-\@dir@}{}
+  \DeclareFontShape{\@enc@}{mcw}{bx}{n}{<->ssub*gt/m/n}{}
+  \DeclareFontShape{\@enc@}{gtw}{bx}{n}{<->ssub*gt/m/n}{}
+  \DeclareFontShape{\@enc@}{gt}{bx}{n}{<->ssub*gt/m/n}{}
+  \DeclareRobustCommand\mcw{\kanjifamily{mcw}\selectfont}
+  \DeclareRobustCommand\gtw{\kanjifamily{gtw}\selectfont}
+  \renewcommand\mcdefault{mcw}
+  \renewcommand\gtdefault{gtw}
+ \fi
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\class\@undefined
+ \ifuptexmode
+  \def\class{ujarticle}
+ \else
+  \def\class{jarticle}
+ \fi
+\fi
+
+\def\baseshift{-.5zh}
+
+\ifuptexmode
+ \edef\@opt@{uplatex,\@opt@}
+\fi
+\ifx\class\@jarticle
+  \documentclass[a4paper,titlepage,dvipdfmx]{\class}
+\else
+ \ifx\class\@ujarticle
+  \documentclass[a4paper,titlepage,dvipdfmx]{\class}
+ \else
+  \documentclass[a4paper,titlepage,landscape,dvipdfmx]{\class}
+ \fi
+\fi
+
+\usepackage[\@opt@]{otf}
+
+\def\@dvipdfmx{dvipdfmx}
+\def\@dvips{dvips}
+
+\ifx\withhyperref\@undefined
+ \def\withhyperref{undefined}
+ \edef\texorpdfstring#1#2{#1}
+\else
+ \ifx\withhyperref\@dvipdfmx
+  \def\@hyperrefkeyval{dvipdfm}
+  \usepackage{atbegshi}
+  \ifx\nocmap\@undefined
+   \AtBeginShipoutFirst{\special{\tounicode}}
+  \fi
+ \fi
+ \ifx\withhyperref\@dvips
+  \def\@hyperrefkeyval{dvips}
+ \fi
+
+\usepackage[\@hyperrefkeyval,%
+bookmarks=true,%
+bookmarksnumbered=true,%
+bookmarkstype=toc,%
+%pdfstartview={FitBH -32768},%
+pdftitle={japanese-otfのテスト},%
+pdfsubject={CID macro編},%
+pdfauthor={upTeXプロジェクト},%
+pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
+]{hyperref}
+
+\fi
+
+\newif\ifdeluxe \deluxefalse
+\ifx\option\@deluxe\deluxetrue\fi
+\makeatother
+
+\usepackage{redeffont}
+
+\AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
+\pagestyle{empty}
+\makeatletter
+\ifx\rubyfamily\@undefined\let\rubyfamily=\relax\fi
+\ifx\mgfamily\@undefined\let\mgfamily=\relax\fi
+\makeatother
+
+\font\upjpnrml = upnmlminl-v at 10.0pt
+\font\upjpnrmm = upnmlminr-v at 10.0pt
+\font\upjpnrmb = upnmlminb-v at 10.0pt
+\font\upjpngtm = upnmlgothr-v at 10.0pt
+\font\upjpngtb = upnmlgothb-v at 10.0pt
+\font\upjpngte = upnmlgotheb-v at 10.0pt
+\font\upjpnmgm = upnmlmgothr-v at 10.0pt
+
+\font\upschrml = upnmschminl-v at 10.0pt
+\font\upschrmm = upnmschminr-v at 10.0pt
+\font\upschrmb = upnmschminb-v at 10.0pt
+\font\upschgtm = upnmschgothr-v at 10.0pt
+\font\upschgtb = upnmschgothb-v at 10.0pt
+\font\upschgte = upnmschgotheb-v at 10.0pt
+\font\upschmgm = upnmschmgothr-v at 10.0pt
+
+\font\uptchrml = upnmtchminl-v at 10.0pt
+\font\uptchrmm = upnmtchminr-v at 10.0pt
+\font\uptchrmb = upnmtchminb-v at 10.0pt
+\font\uptchgtm = upnmtchgothr-v at 10.0pt
+\font\uptchgtb = upnmtchgothb-v at 10.0pt
+\font\uptchgte = upnmtchgotheb-v at 10.0pt
+\font\uptchmgm = upnmtchmgothr-v at 10.0pt
+
+\font\upkorrml = upnmkorminl-v at 10.0pt
+\font\upkorrmm = upnmkorminr-v at 10.0pt
+\font\upkorrmb = upnmkorminb-v at 10.0pt
+\font\upkorgtm = upnmkorgothr-v at 10.0pt
+\font\upkorgtb = upnmkorgothb-v at 10.0pt
+\font\upkorgte = upnmkorgotheb-v at 10.0pt
+\font\upkormgm = upnmkormgothr-v at 10.0pt
+
+\edef\bs{$\backslash$\kern0em}
+\setlength\parindent{0em}
+\textwidth150mm
+\oddsidemargin0mm
+\evensidemargin0mm
+
+\begin{document}
+\section{見出し}
+
+コンパイラー：\ifuptexmode upLaTeX\else pLaTeX\fi\\
+クラス：\texttt{\class}\\
+オプション：\texttt{\option}
+
+\vspace{\baselineskip}
+\ifuptexmode
+\begin{tabular}{l||ccccc}
+フォント & default & JPN & SCH & TCH & KOR\\
+\hline
+mc/m & 骨海直器述 &
+ {\upjpnrmm 骨海直器述竜} & {\upschrmm 骨海直器述龙} & {\uptchrmm 骨海直器述龍} & {\upkorrmm 骨海直器述용} \\
+mc/bx & {\bfseries 骨海直器述} &
+ {\upjpnrmb 骨海直器述竜} & {\upschrmb 骨海直器述龙} & {\uptchrmb 骨海直器述龍} & {\upkorrmb 骨海直器述용} \\
+\ifdeluxe
+mc/l & {\ltseries 骨海直器述} &
+ {\upjpnrml 骨海直器述竜} & {\upschrml 骨海直器述龙} & {\uptchrml 骨海直器述龍} & {\upkorrml 骨海直器述용} \\
+\fi
+gt/m & {\gtfamily 骨海直器述} &
+ {\upjpngtm 骨海直器述竜} & {\upschgtm 骨海直器述龙} & {\uptchgtm 骨海直器述龍} & {\upkorgtm 骨海直器述용} \\
+gt/bx & {\gtfamily\bfseries 骨海直器述} &
+ {\upjpngtb 骨海直器述竜} & {\upschgtb 骨海直器述龙} & {\uptchgtb 骨海直器述龍} & {\upkorgtb 骨海直器述용} \\
+\ifdeluxe
+gt/eb & {\gtfamily\ebseries 骨海直器述} &
+ {\upjpngte 骨海直器述竜} & {\upschgte 骨海直器述龙} & {\uptchgte 骨海直器述龍} & {\upkorgte 骨海直器述용} \\
+\fi
+mg/m & {\mgfamily 骨海直器述} &
+ {\upjpnmgm 骨海直器述竜} & {\upschmgm 骨海直器述龙} & {\uptchmgm 骨海直器述龍} & {\upkormgm 骨海直器述용} \\
+\end{tabular}
+\else
+\begin{tabular}{l||c}
+フォント & default\\
+\hline
+mc/m & 骨海直器述\\
+mc/bx & {\bfseries 骨海直器述} \\
+\ifdeluxe
+mc/l & {\ltseries 骨海直器述}\\
+\fi
+gt/m & {\gtfamily 骨海直器述}\\
+gt/bx & {\gtfamily\bfseries 骨海直器述}\\
+\ifdeluxe
+gt/eb & {\gtfamily\ebseries 骨海直器述}\\
+\fi
+mg/m & {\mgfamily 骨海直器述}\\
+\end{tabular}
+\fi
+\vspace{\baselineskip}
+
+\begin{tabular}{l||ccccc}
+フォント & \bs UTF & \bs UTFC & \bs UTFT & \bs UTFK & \bs UTFM\\
+\hline
+mc/m &
+ \UTF{9AA8}\UTF{6D77}\UTF{76F4}\UTF{5668}\UTF{8FF0}\UTF{7ADC} & \UTFC{9AA8}\UTFC{6D77}\UTFC{76F4}\UTFC{5668}\UTFC{8FF0}\UTFC{9F99} &
+ \UTFT{9AA8}\UTFT{6D77}\UTFT{76F4}\UTFT{5668}\UTFT{8FF0}\UTFT{9F8D} & \UTFK{9AA8}\UTFK{6D77}\UTFK{76F4}\UTFK{5668}\UTFK{8FF0}\UTFK{C6A9} &
+ \UTFM{9AA8}\UTFM{6D77}\UTFM{76F4}\UTFM{5668}\UTFM{8FF0}\UTFM{7ADC}\UTFM{9F99}\UTFM{9F8D}\UTFM{C6A9} \\
+mc/bx &
+ {\bfseries\UTF{9AA8}\UTF{6D77}\UTF{76F4}\UTF{5668}\UTF{8FF0}\UTF{7ADC}} & {\bfseries\UTFC{9AA8}\UTFC{6D77}\UTFC{76F4}\UTFC{5668}\UTFC{8FF0}\UTFC{9F99}} &
+ {\bfseries\UTFT{9AA8}\UTFT{6D77}\UTFT{76F4}\UTFT{5668}\UTFT{8FF0}\UTFT{9F8D}} & {\bfseries\UTFK{9AA8}\UTFK{6D77}\UTFK{76F4}\UTFK{5668}\UTFK{8FF0}\UTFK{C6A9}} &
+ {\bfseries\UTFM{9AA8}\UTFM{6D77}\UTFM{76F4}\UTFM{5668}\UTFM{8FF0}\UTFM{7ADC}\UTFM{9F99}\UTFM{9F8D}\UTFM{C6A9}} \\
+\ifdeluxe
+mc/l &
+ {\ltseries\UTF{9AA8}\UTF{6D77}\UTF{76F4}\UTF{5668}\UTF{8FF0}\UTF{7ADC}} & {\ltseries\UTFC{9AA8}\UTFC{6D77}\UTFC{76F4}\UTFC{5668}\UTFC{8FF0}\UTFC{9F99}} &
+ {\ltseries\UTFT{9AA8}\UTFT{6D77}\UTFT{76F4}\UTFT{5668}\UTFT{8FF0}\UTFT{9F8D}} & {\ltseries\UTFK{9AA8}\UTFK{6D77}\UTFK{76F4}\UTFK{5668}\UTFK{8FF0}\UTFK{C6A9}} &
+ {\ltseries\UTFM{9AA8}\UTFM{6D77}\UTFM{76F4}\UTFM{5668}\UTFM{8FF0}\UTFM{7ADC}\UTFM{9F99}\UTFM{9F8D}\UTFM{C6A9}} \\
+\fi
+gt/m &
+ {\gtfamily\UTF{9AA8}\UTF{6D77}\UTF{76F4}\UTF{5668}\UTF{8FF0}\UTF{7ADC}} & {\gtfamily\UTFC{9AA8}\UTFC{6D77}\UTFC{76F4}\UTFC{5668}\UTFC{8FF0}\UTFC{9F99}} &
+ {\gtfamily\UTFT{9AA8}\UTFT{6D77}\UTFT{76F4}\UTFT{5668}\UTFT{8FF0}\UTFT{9F8D}} & {\gtfamily\UTFK{9AA8}\UTFK{6D77}\UTFK{76F4}\UTFK{5668}\UTFK{8FF0}\UTFK{C6A9}} &
+ {\gtfamily\UTFM{9AA8}\UTFM{6D77}\UTFM{76F4}\UTFM{5668}\UTFM{8FF0}\UTFM{7ADC}\UTFM{9F99}\UTFM{9F8D}\UTFM{C6A9}} \\
+gt/bx &
+ {\gtfamily\bfseries\UTF{9AA8}\UTF{6D77}\UTF{76F4}\UTF{5668}\UTF{8FF0}\UTF{7ADC}} & {\gtfamily\bfseries\UTFC{9AA8}\UTFC{6D77}\UTFC{76F4}\UTFC{5668}\UTFC{8FF0}\UTFC{9F99}} &
+ {\gtfamily\bfseries\UTFT{9AA8}\UTFT{6D77}\UTFT{76F4}\UTFT{5668}\UTFT{8FF0}\UTFT{9F8D}} & {\gtfamily\bfseries\UTFK{9AA8}\UTFK{6D77}\UTFK{76F4}\UTFK{5668}\UTFK{8FF0}\UTFK{C6A9}} &
+ {\gtfamily\bfseries\UTFM{9AA8}\UTFM{6D77}\UTFM{76F4}\UTFM{5668}\UTFM{8FF0}\UTFM{7ADC}\UTFM{9F99}\UTFM{9F8D}\UTFM{C6A9}} \\
+\ifdeluxe
+gt/eb &
+ {\gtfamily\ebseries\UTF{9AA8}\UTF{6D77}\UTF{76F4}\UTF{5668}\UTF{8FF0}\UTF{7ADC}} & {\gtfamily\ebseries\UTFC{9AA8}\UTFC{6D77}\UTFC{76F4}\UTFC{5668}\UTFC{8FF0}\UTFC{9F99}} &
+ {\gtfamily\ebseries\UTFT{9AA8}\UTFT{6D77}\UTFT{76F4}\UTFT{5668}\UTFT{8FF0}\UTFT{9F8D}} & {\gtfamily\ebseries\UTFK{9AA8}\UTFK{6D77}\UTFK{76F4}\UTFK{5668}\UTFK{8FF0}\UTFK{C6A9}} &
+ {\gtfamily\ebseries\UTFM{9AA8}\UTFM{6D77}\UTFM{76F4}\UTFM{5668}\UTFM{8FF0}\UTFM{7ADC}\UTFM{9F99}\UTFM{9F8D}\UTFM{C6A9}}\\
+\fi
+mg/m &
+ {\mgfamily\UTF{9AA8}\UTF{6D77}\UTF{76F4}\UTF{5668}\UTF{8FF0}\UTF{7ADC}} & {\mgfamily\UTFC{9AA8}\UTFC{6D77}\UTFC{76F4}\UTFC{5668}\UTFC{8FF0}\UTFC{9F99}} &
+ {\mgfamily\UTFT{9AA8}\UTFT{6D77}\UTFT{76F4}\UTFT{5668}\UTFT{8FF0}\UTFT{9F8D}} & {\mgfamily\UTFK{9AA8}\UTFK{6D77}\UTFK{76F4}\UTFK{5668}\UTFK{8FF0}\UTFK{C6A9}} &
+ {\mgfamily\UTFM{9AA8}\UTFM{6D77}\UTFM{76F4}\UTFM{5668}\UTFM{8FF0}\UTFM{7ADC}\UTFM{9F99}\UTFM{9F8D}\UTFM{C6A9}} \\
+\end{tabular}
+\vspace{\baselineskip}
+
+\begin{tabular}{l||cccc}
+フォント & \bs CID & \bs CIDC & \bs CIDT & \bs CIDK\\
+\hline
+mc/m &
+ \CID{2062}\CID{1410}\CID{3034}\CID{1579}\CID{2396}\CID{3965} & \CIDC{1824}\CIDC{1882}\CIDC{4528}\CIDC{3094}\CIDC{3469}\CIDC{2627} &
+ \CIDT{2550}\CIDT{2318}\CIDT{1628}\CIDT{4764}\CIDT{2065}\CIDT{5042} & \CIDK{3785}\CIDK{7694}\CIDK{6975}\CIDK{4067}\CIDK{5669}\CIDK{2570} \\
+mc/bx &
+ {\bfseries\CID{2062}\CID{1410}\CID{3034}\CID{1579}\CID{2396}\CID{3965}} & {\bfseries\CIDC{1824}\CIDC{1882}\CIDC{4528}\CIDC{3094}\CIDC{3469}\CIDC{2627}} &
+ {\bfseries\CIDT{2550}\CIDT{2318}\CIDT{1628}\CIDT{4764}\CIDT{2065}\CIDT{5042}} & {\bfseries\CIDK{3785}\CIDK{7694}\CIDK{6975}\CIDK{4067}\CIDK{5669}\CIDK{2570}} \\
+\ifdeluxe
+mc/l &
+ {\ltseries\CID{2062}\CID{1410}\CID{3034}\CID{1579}\CID{2396}\CID{3965}} & {\ltseries\CIDC{1824}\CIDC{1882}\CIDC{4528}\CIDC{3094}\CIDC{3469}\CIDC{2627}} &
+ {\ltseries\CIDT{2550}\CIDT{2318}\CIDT{1628}\CIDT{4764}\CIDT{2065}\CIDT{5042}} & {\ltseries\CIDK{3785}\CIDK{7694}\CIDK{6975}\CIDK{4067}\CIDK{5669}\CIDK{2570}} \\
+\fi
+gt/m &
+ {\gtfamily\CID{2062}\CID{1410}\CID{3034}\CID{1579}\CID{2396}\CID{3965}} & {\gtfamily\CIDC{1824}\CIDC{1882}\CIDC{4528}\CIDC{3094}\CIDC{3469}\CIDC{2627}} &
+ {\gtfamily\CIDT{2550}\CIDT{2318}\CIDT{1628}\CIDT{4764}\CIDT{2065}\CIDT{5042}} & {\gtfamily\CIDK{3785}\CIDK{7694}\CIDK{6975}\CIDK{4067}\CIDK{5669}\CIDK{2570}} \\
+gt/bx &
+ {\gtfamily\bfseries\CID{2062}\CID{1410}\CID{3034}\CID{1579}\CID{2396}\CID{3965}} & {\gtfamily\bfseries\CIDC{1824}\CIDC{1882}\CIDC{4528}\CIDC{3094}\CIDC{3469}\CIDC{2627}} &
+ {\gtfamily\bfseries\CIDT{2550}\CIDT{2318}\CIDT{1628}\CIDT{4764}\CIDT{2065}\CIDT{5042}} & {\gtfamily\bfseries\CIDK{3785}\CIDK{7694}\CIDK{6975}\CIDK{4067}\CIDK{5669}\CIDK{2570}} \\
+\ifdeluxe
+gt/eb &
+ {\gtfamily\ebseries\CID{2062}\CID{1410}\CID{3034}\CID{1579}\CID{2396}\CID{3965}} & {\gtfamily\ebseries\CIDC{1824}\CIDC{1882}\CIDC{4528}\CIDC{3094}\CIDC{3469}\CIDC{2627}} &
+ {\gtfamily\ebseries\CIDT{2550}\CIDT{2318}\CIDT{1628}\CIDT{4764}\CIDT{2065}\CIDT{5042}} & {\gtfamily\ebseries\CIDK{3785}\CIDK{7694}\CIDK{6975}\CIDK{4067}\CIDK{5669}\CIDK{2570}} \\
+\fi
+mg/m &
+ {\mgfamily\CID{2062}\CID{1410}\CID{3034}\CID{1579}\CID{2396}\CID{3965}} & {\mgfamily\CIDC{1824}\CIDC{1882}\CIDC{4528}\CIDC{3094}\CIDC{3469}\CIDC{2627}} &
+ {\mgfamily\CIDT{2550}\CIDT{2318}\CIDT{1628}\CIDT{4764}\CIDT{2065}\CIDT{5042}} & {\mgfamily\CIDK{3785}\CIDK{7694}\CIDK{6975}\CIDK{4067}\CIDK{5669}\CIDK{2570}} \\
+\end{tabular}
+
+\section{Half Width}
+
+\bs CID: \raisebox\baseshift{\frame{\CID{8953}}\frame{\CID{8954}}\frame{\CID{8955}}\frame{\CID{8956}}}~~
+\raisebox\baseshift{\frame{\CID{8966}}\frame{\CID{8967}}\frame{\CID{8968}}\frame{\CID{8969}}\frame{\CID{8970}}}~~
+\raisebox\baseshift{\frame{\CID{8983}}\frame{\CID{8984}}\frame{\CID{8985}}\frame{\CID{8986}}\frame{\CID{8987}}}~~
+\raisebox\baseshift{\frame{\CID{9015}}\frame{\CID{9016}}\frame{\CID{9017}}\frame{\CID{9018}}\frame{\CID{9019}}}~~
+\raisebox\baseshift{\frame{\CID{8950}}}~~
+\raisebox\baseshift{\frame{\CID{13274}}\frame{\CID{13275}}\frame{\CID{13276}}\frame{\CID{13277}}\frame{\CID{13278}}}~~
+\raisebox\baseshift{\frame{\CID{13254}}\frame{\CID{13255}}\frame{\CID{13256}}\frame{\CID{13257}}\frame{\CID{13258}}}~~
+\raisebox\baseshift{\frame{\CID{10185}}\frame{\CID{10186}}\frame{\CID{10187}}\frame{\CID{10188}}\frame{\CID{10189}}}~~
+\raisebox\baseshift{\frame{\CID{9101}}\frame{\CID{9102}}\frame{\CID{9103}}\frame{\CID{9104}}\frame{\CID{9105}}}
+
+% ↓上手く動いていないように見える。
+\raisebox\baseshift{\frame{\CID{10185}\CID{10186}\CID{10187}\CID{10188}\CID{10189}}}\\
+\CID{10185}\CID{10186}\CID{10187}\CID{10188}\CID{10189}~~~~~~~~~
+=\CID{10185}◇\CID{10186}◇\CID{10187}◇\CID{10188}◇\CID{10189}~~~~~~~~~
+=\CID{10185}.\CID{10186}.\CID{10187}.\CID{10188}.\CID{10189}~~~~~~~~~
+=\CID{10185}\,\CID{10186}$\>$\CID{10187}$\!$\CID{10188}~\CID{10189}~~~~~~~~~
+=\CID{10185}\hspace{0mm}\CID{10186}\hspace{0.001mm}\CID{10187}\hspace{0.01mm}\CID{10188}\hspace{0.1mm}\CID{10189}
+
+
+\bs CIDC: \raisebox\baseshift{\frame{\CIDC{22228}}\frame{\CIDC{22229}}\frame{\CIDC{22230}}\frame{\CIDC{22231}}}~~
+\raisebox\baseshift{\frame{\CIDC{22241}}\frame{\CIDC{22242}}\frame{\CIDC{22243}}\frame{\CIDC{22244}}\frame{\CIDC{22245}}}~~
+\raisebox\baseshift{\frame{\CIDC{22258}}\frame{\CIDC{22259}}\frame{\CIDC{22260}}\frame{\CIDC{22261}}\frame{\CIDC{22262}}}~~
+\raisebox\baseshift{\frame{\CIDC{22290}}\frame{\CIDC{22291}}\frame{\CIDC{22292}}\frame{\CIDC{22293}}\frame{\CIDC{22294}}}~~
+\raisebox\baseshift{\frame{\CIDC{22352}}\frame{\CIDC{29061}}}
+
+
+\bs CIDT: \raisebox\baseshift{\frame{\CIDT{17509}}\frame{\CIDT{17510}}\frame{\CIDT{17511}}\frame{\CIDT{17512}}}~~
+\raisebox\baseshift{\frame{\CIDT{17522}}\frame{\CIDT{17523}}\frame{\CIDT{17524}}\frame{\CIDT{17525}}\frame{\CIDT{17526}}}~~
+\raisebox\baseshift{\frame{\CIDT{17539}}\frame{\CIDT{17540}}\frame{\CIDT{17541}}\frame{\CIDT{17542}}\frame{\CIDT{17543}}}~~
+\raisebox\baseshift{\frame{\CIDT{17571}}\frame{\CIDT{17572}}\frame{\CIDT{17573}}\frame{\CIDT{17574}}\frame{\CIDT{17575}}}~~
+\raisebox\baseshift{\frame{\CIDT{17506}}\frame{\CIDT{17605}}}
+
+
+\bs CIDK: \raisebox\baseshift{\frame{\CIDK{18258}}\frame{\CIDK{18259}}\frame{\CIDK{18260}}\frame{\CIDK{18261}}}~~
+\raisebox\baseshift{\frame{\CIDK{18271}}\frame{\CIDK{18272}}\frame{\CIDK{18273}}\frame{\CIDK{18274}}\frame{\CIDK{18275}}}~~
+\raisebox\baseshift{\frame{\CIDK{18288}}\frame{\CIDK{18289}}\frame{\CIDK{18290}}\frame{\CIDK{18291}}\frame{\CIDK{18293}}}~~
+\raisebox\baseshift{\frame{\CIDK{18320}}\frame{\CIDK{18321}}\frame{\CIDK{18322}}\frame{\CIDK{18323}}\frame{\CIDK{18324}}}~~
+\raisebox\baseshift{\frame{\CIDK{18255}}}
+
+
+\clearpage
+[mc/m]
+
+\input{cid_jp_v}
+\input{cid_gb_v}
+\input{cid_cns_v}
+\input{cid_ks_v}
+
+{\bfseries%
+[mc/bx]
+
+\input{cid_jp_v}
+\input{cid_gb_v}
+\input{cid_cns_v}
+\input{cid_ks_v}
+
+}
+
+\ifdeluxe
+{\ltseries%
+[mc/l]
+
+\input{cid_jp_v}
+\input{cid_gb_v}
+\input{cid_cns_v}
+\input{cid_ks_v}
+}
+\fi
+
+{\gtfamily
+[gt/m]
+
+\input{cid_jp_v}
+\input{cid_gb_v}
+\input{cid_cns_v}
+\input{cid_ks_v}
+
+{\bfseries%
+[gt/bx]
+
+\input{cid_jp_v}
+\input{cid_gb_v}
+\input{cid_cns_v}
+\input{cid_ks_v}
+}
+
+\ifdeluxe
+{\ebseries%
+[gt/eb]
+
+\input{cid_jp_v}
+\input{cid_gb_v}
+\input{cid_cns_v}
+\input{cid_ks_v}
+}
+\fi
+
+}
+
+{\mgfamily
+[mg/m]
+
+\input{cid_jp_v}
+\input{cid_gb_v}
+\input{cid_cns_v}
+\input{cid_ks_v}
+}
+
+\end{document}
