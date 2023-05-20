@@ -98,6 +98,10 @@ echo "making tfm for supplementary plane ..."
 perl script/mktfm_sp.pl
 echo "making vf for supplementary plane ..."
 perl script/mkutfvf_sp.pl
+echo "making new tfm for CID ..."
+perl script/umkcidtfm.pl
+echo "making new vf for CID ..."
+perl script/umkcidvf.pl -omitfw
 
 
 echo "finishing ..."
