@@ -34,7 +34,15 @@
 \def\@ujarticle{ujarticle}
 \def\@noreplace{noreplace}
 \def\@deluxe{deluxe}
+\def\@dlx@exp{dlxexp}
 
+\ifx\option\@dlx@exp
+ \edef\option{deluxe,expert}
+\fi
+\newif\ifdeluxe \deluxefalse
+\@for\@@opt:=\option\do{%
+ \ifx\@@opt\@deluxe\deluxetrue\fi
+}
 \ifx\option\@undefined
  \def\option{default}
 \fi
@@ -120,8 +128,6 @@ pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
 
 \fi
 
-\newif\ifdeluxe \deluxefalse
-\ifx\option\@deluxe\deluxetrue\fi
 \makeatother
 
 \usepackage{redeffont}
@@ -170,6 +176,8 @@ pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
 \textwidth150mm
 \oddsidemargin0mm
 \evensidemargin0mm
+\textheight250mm
+\topmargin-15mm
 
 \begin{document}
 \section{見出し}
@@ -183,40 +191,40 @@ pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
 \begin{tabular}{l||ccccc}
 フォント & default & JPN & SCH & TCH & KOR\\
 \hline
-mc/m & 骨海直器述 &
+mc/m & 骨海直器述り &
  {\upjpnrmm 骨海直器述竜} & {\upschrmm 骨海直器述龙} & {\uptchrmm 骨海直器述龍} & {\upkorrmm 骨海直器述용} \\
-mc/bx & {\bfseries 骨海直器述} &
+mc/bx & {\bfseries 骨海直器述り} &
  {\upjpnrmb 骨海直器述竜} & {\upschrmb 骨海直器述龙} & {\uptchrmb 骨海直器述龍} & {\upkorrmb 骨海直器述용} \\
 \ifdeluxe
-mc/l & {\ltseries 骨海直器述} &
+mc/l & {\ltseries 骨海直器述り} &
  {\upjpnrml 骨海直器述竜} & {\upschrml 骨海直器述龙} & {\uptchrml 骨海直器述龍} & {\upkorrml 骨海直器述용} \\
 \fi
-gt/m & {\gtfamily 骨海直器述} &
+gt/m & {\gtfamily 骨海直器述り} &
  {\upjpngtm 骨海直器述竜} & {\upschgtm 骨海直器述龙} & {\uptchgtm 骨海直器述龍} & {\upkorgtm 骨海直器述용} \\
-gt/bx & {\gtfamily\bfseries 骨海直器述} &
+gt/bx & {\gtfamily\bfseries 骨海直器述り} &
  {\upjpngtb 骨海直器述竜} & {\upschgtb 骨海直器述龙} & {\uptchgtb 骨海直器述龍} & {\upkorgtb 骨海直器述용} \\
 \ifdeluxe
-gt/eb & {\gtfamily\ebseries 骨海直器述} &
+gt/eb & {\gtfamily\ebseries 骨海直器述り} &
  {\upjpngte 骨海直器述竜} & {\upschgte 骨海直器述龙} & {\uptchgte 骨海直器述龍} & {\upkorgte 骨海直器述용} \\
 \fi
-mg/m & {\mgfamily 骨海直器述} &
+mg/m & {\mgfamily 骨海直器述り} &
  {\upjpnmgm 骨海直器述竜} & {\upschmgm 骨海直器述龙} & {\uptchmgm 骨海直器述龍} & {\upkormgm 骨海直器述용} \\
 \end{tabular}
 \else
 \begin{tabular}{l||c}
 フォント & default\\
 \hline
-mc/m & 骨海直器述\\
-mc/bx & {\bfseries 骨海直器述} \\
+mc/m & 骨海直器述り\\
+mc/bx & {\bfseries 骨海直器述り} \\
 \ifdeluxe
-mc/l & {\ltseries 骨海直器述}\\
+mc/l & {\ltseries 骨海直器述り}\\
 \fi
-gt/m & {\gtfamily 骨海直器述}\\
-gt/bx & {\gtfamily\bfseries 骨海直器述}\\
+gt/m & {\gtfamily 骨海直器述り}\\
+gt/bx & {\gtfamily\bfseries 骨海直器述り}\\
 \ifdeluxe
-gt/eb & {\gtfamily\ebseries 骨海直器述}\\
+gt/eb & {\gtfamily\ebseries 骨海直器述り}\\
 \fi
-mg/m & {\mgfamily 骨海直器述}\\
+mg/m & {\mgfamily 骨海直器述り}\\
 \end{tabular}
 \fi
 \vspace{\baselineskip}
@@ -296,13 +304,24 @@ mg/m &
 \raisebox\baseshift{\frame{\CID{8983}}\frame{\CID{8984}}\frame{\CID{8985}}\frame{\CID{8986}}\frame{\CID{8987}}}~~
 \raisebox\baseshift{\frame{\CID{9015}}\frame{\CID{9016}}\frame{\CID{9017}}\frame{\CID{9018}}\frame{\CID{9019}}}~~
 \raisebox\baseshift{\frame{\CID{8950}}}~~
+\raisebox\baseshift{\frame{\CID{9101}}\frame{\CID{9102}}\frame{\CID{9103}}\frame{\CID{9104}}\frame{\CID{9105}}}~~
 \raisebox\baseshift{\frame{\CID{13274}}\frame{\CID{13275}}\frame{\CID{13276}}\frame{\CID{13277}}\frame{\CID{13278}}}~~
 \raisebox\baseshift{\frame{\CID{13254}}\frame{\CID{13255}}\frame{\CID{13256}}\frame{\CID{13257}}\frame{\CID{13258}}}~~
-\raisebox\baseshift{\frame{\CID{10185}}\frame{\CID{10186}}\frame{\CID{10187}}\frame{\CID{10188}}\frame{\CID{10189}}}~~
-\raisebox\baseshift{\frame{\CID{9101}}\frame{\CID{9102}}\frame{\CID{9103}}\frame{\CID{9104}}\frame{\CID{9105}}}
+\raisebox\baseshift{\frame{\CID{13302}}\frame{\CID{13303}}\frame{\CID{13304}}\frame{\CID{13305}}\frame{\CID{13306}}\frame{\CID{13307}}}~~
+\raisebox\baseshift{\frame{\CID{10185}}\frame{\CID{10186}}\frame{\CID{10187}}\frame{\CID{10188}}\frame{\CID{10189}}}
+
+\raisebox\baseshift{\frame{\CID{8953}\CID{8954}\CID{8955}\CID{8956}}}~~
+\raisebox\baseshift{\frame{\CID{8966}\CID{8967}\CID{8968}\CID{8969}\CID{8970}}}~~
+\raisebox\baseshift{\frame{\CID{8983}\CID{8984}\CID{8985}\CID{8986}\CID{8987}}}~~
+\raisebox\baseshift{\frame{\CID{9015}\CID{9016}\CID{9017}\CID{9018}\CID{9019}}}~~
+\raisebox\baseshift{\frame{\CID{8950}}}~~
+\raisebox\baseshift{\frame{\CID{9101}\CID{9102}\CID{9103}\CID{9104}\CID{9105}}}~~
+\raisebox\baseshift{\frame{\CID{13274}\CID{13275}\CID{13276}\CID{13277}\CID{13278}}}~~
+\raisebox\baseshift{\frame{\CID{13254}\CID{13255}\CID{13256}\CID{13257}\CID{13258}}}~~
+\raisebox\baseshift{\frame{\CID{13302}\CID{13303}\CID{13304}\CID{13305}\CID{13306}\CID{13307}}}~~
+\raisebox\baseshift{\frame{\CID{10185}\CID{10186}\CID{10187}\CID{10188}\CID{10189}}}
 
 % ↓上手く動いていないように見える。
-\raisebox\baseshift{\frame{\CID{10185}\CID{10186}\CID{10187}\CID{10188}\CID{10189}}}\\
 \CID{10185}\CID{10186}\CID{10187}\CID{10188}\CID{10189}~~~~~~~~~
 =\CID{10185}◇\CID{10186}◇\CID{10187}◇\CID{10188}◇\CID{10189}~~~~~~~~~
 =\CID{10185}.\CID{10186}.\CID{10187}.\CID{10188}.\CID{10189}~~~~~~~~~
@@ -314,20 +333,35 @@ mg/m &
 \raisebox\baseshift{\frame{\CIDC{22241}}\frame{\CIDC{22242}}\frame{\CIDC{22243}}\frame{\CIDC{22244}}\frame{\CIDC{22245}}}~~
 \raisebox\baseshift{\frame{\CIDC{22258}}\frame{\CIDC{22259}}\frame{\CIDC{22260}}\frame{\CIDC{22261}}\frame{\CIDC{22262}}}~~
 \raisebox\baseshift{\frame{\CIDC{22290}}\frame{\CIDC{22291}}\frame{\CIDC{22292}}\frame{\CIDC{22293}}\frame{\CIDC{22294}}}~~
-\raisebox\baseshift{\frame{\CIDC{22352}}\frame{\CIDC{29061}}}
+\raisebox\baseshift{\frame{\CIDC{22352}}\frame{\CIDC{29061}}}~~~~~~
+\raisebox\baseshift{\frame{\CIDC{22228}\CIDC{22229}\CIDC{22230}\CIDC{22231}}}~~
+\raisebox\baseshift{\frame{\CIDC{22241}\CIDC{22242}\CIDC{22243}\CIDC{22244}\CIDC{22245}}}~~
+\raisebox\baseshift{\frame{\CIDC{22258}\CIDC{22259}\CIDC{22260}\CIDC{22261}\CIDC{22262}}}~~
+\raisebox\baseshift{\frame{\CIDC{22290}\CIDC{22291}\CIDC{22292}\CIDC{22293}\CIDC{22294}}}~~
+\raisebox\baseshift{\frame{\CIDC{22352}\CIDC{29061}}}
 
 
 \bs CIDT: \raisebox\baseshift{\frame{\CIDT{17509}}\frame{\CIDT{17510}}\frame{\CIDT{17511}}\frame{\CIDT{17512}}}~~
 \raisebox\baseshift{\frame{\CIDT{17522}}\frame{\CIDT{17523}}\frame{\CIDT{17524}}\frame{\CIDT{17525}}\frame{\CIDT{17526}}}~~
 \raisebox\baseshift{\frame{\CIDT{17539}}\frame{\CIDT{17540}}\frame{\CIDT{17541}}\frame{\CIDT{17542}}\frame{\CIDT{17543}}}~~
 \raisebox\baseshift{\frame{\CIDT{17571}}\frame{\CIDT{17572}}\frame{\CIDT{17573}}\frame{\CIDT{17574}}\frame{\CIDT{17575}}}~~
-\raisebox\baseshift{\frame{\CIDT{17506}}\frame{\CIDT{17605}}}
+\raisebox\baseshift{\frame{\CIDT{17506}}\frame{\CIDT{17605}}}~~~~~~
+\raisebox\baseshift{\frame{\CIDT{17509}\CIDT{17510}\CIDT{17511}\CIDT{17512}}}~~
+\raisebox\baseshift{\frame{\CIDT{17522}\CIDT{17523}\CIDT{17524}\CIDT{17525}\CIDT{17526}}}~~
+\raisebox\baseshift{\frame{\CIDT{17539}\CIDT{17540}\CIDT{17541}\CIDT{17542}\CIDT{17543}}}~~
+\raisebox\baseshift{\frame{\CIDT{17571}\CIDT{17572}\CIDT{17573}\CIDT{17574}\CIDT{17575}}}~~
+\raisebox\baseshift{\frame{\CIDT{17506}\CIDT{17605}}}
 
 
 \bs CIDK: \raisebox\baseshift{\frame{\CIDK{18258}}\frame{\CIDK{18259}}\frame{\CIDK{18260}}\frame{\CIDK{18261}}}~~
 \raisebox\baseshift{\frame{\CIDK{18271}}\frame{\CIDK{18272}}\frame{\CIDK{18273}}\frame{\CIDK{18274}}\frame{\CIDK{18275}}}~~
 \raisebox\baseshift{\frame{\CIDK{18288}}\frame{\CIDK{18289}}\frame{\CIDK{18290}}\frame{\CIDK{18291}}\frame{\CIDK{18293}}}~~
 \raisebox\baseshift{\frame{\CIDK{18320}}\frame{\CIDK{18321}}\frame{\CIDK{18322}}\frame{\CIDK{18323}}\frame{\CIDK{18324}}}~~
+\raisebox\baseshift{\frame{\CIDK{18255}}}~~~~~~
+\raisebox\baseshift{\frame{\CIDK{18258}\CIDK{18259}\CIDK{18260}\CIDK{18261}}}~~
+\raisebox\baseshift{\frame{\CIDK{18271}\CIDK{18272}\CIDK{18273}\CIDK{18274}\CIDK{18275}}}~~
+\raisebox\baseshift{\frame{\CIDK{18288}\CIDK{18289}\CIDK{18290}\CIDK{18291}\CIDK{18293}}}~~
+\raisebox\baseshift{\frame{\CIDK{18320}\CIDK{18321}\CIDK{18322}\CIDK{18323}\CIDK{18324}}}~~
 \raisebox\baseshift{\frame{\CIDK{18255}}}
 
 
@@ -338,6 +372,14 @@ mg/m &
 \input{cid_gb_v}
 \input{cid_cns_v}
 \input{cid_ks_v}
+
+\fbox{\hbox{\Huge り}}
+~std:\fbox{\hbox{\Huge\CID{915}}}%     standard
+~tuned:\fbox{\hbox{\Huge\CID{12351}}}% tuned horizontal
+\fbox{\hbox{\Huge\CID{12534}}}%        tuned vertical
+~ruby:\fbox{\hbox{\Huge\CID{12746}}}%  ruby
+~UTF:\fbox{\hbox{\Huge\UTF{308A}}}
+\vspace{\baselineskip}
 
 {\bfseries%
 [mc/bx]
@@ -367,6 +409,14 @@ mg/m &
 \input{cid_gb_v}
 \input{cid_cns_v}
 \input{cid_ks_v}
+
+\fbox{\hbox{\Huge り}}
+~std:\fbox{\hbox{\Huge\CID{915}}}%     standard
+~tuned:\fbox{\hbox{\Huge\CID{12351}}}% tuned horizontal
+\fbox{\hbox{\Huge\CID{12534}}}%        tuned vertical
+~ruby:\fbox{\hbox{\Huge\CID{12746}}}%  ruby
+~UTF:\fbox{\hbox{\Huge\UTF{308A}}}
+\vspace{\baselineskip}
 
 {\bfseries%
 [gt/bx]
