@@ -452,7 +452,7 @@
 	\DeclareRelationFont{\otf@JTn}{rubymg}{m}{}{\otf@OTorT1}{cmss}{m}{}
 	\DeclareRobustCommand\propshape
 		{\not@math@alphabet\propshape\relax
-		\otf@kanjishape\propdefault\selectfont}
+		\kanjishape\propdefault\selectfont}
 	\DeclareRobustCommand\ebseries
 		{\not@math@alphabet\ebseries\relax
 		\kanjiseries\ebdefault\selectfont}
@@ -473,11 +473,11 @@
 	\else
 		\DeclareFontShape{\otf@JYn}{mg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlmgothr\nlck@sfx@-h}{}
 		\DeclareFontShape{\otf@JTn}{mg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlmgothr\nlck@sfx@-v}{}
-		\DeclareFontShape{\otf@JYn}{hmc}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ nmlminl\nlck@sfx@-h}{}
-		\DeclareFontShape{\otf@JTn}{hmc}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ nmlminl\nlck@sfx@-v}{}
+		\DeclareFontShape{\otf@JYn}{hmc}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlminl\nlck@sfx@-h}{}
+		\DeclareFontShape{\otf@JTn}{hmc}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlminl\nlck@sfx@-v}{}
+		\DeclareFontShape{\otf@JYn}{hgt}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlgotheb\nlck@sfx@-h}{}
+		\DeclareFontShape{\otf@JTn}{hgt}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlgotheb\nlck@sfx@-v}{}
 	\fi
-	\DeclareFontShape{\otf@JYn}{hgt}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlgotheb\nlck@sfx@-h}{}
-	\DeclareFontShape{\otf@JTn}{hgt}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlgotheb\nlck@sfx@-v}{}
 	\DeclareFontShape{\otf@JYn}{hmc}{m}{prp}{<-> s * [\utf@sc@le] \otf@pfx@ phiraminw3-h}{}
 	\DeclareFontShape{\otf@JYn}{hmc}{bx}{prp}{<-> s * [\utf@sc@le] \otf@pfx@ phiraminw6-h}{}
 	\DeclareFontShape{\otf@JYn}{hgt}{m}{prp}{<-> s * [\utf@sc@le] \otf@pfx@ phirakakuw3-h}{}
