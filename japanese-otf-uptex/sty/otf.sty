@@ -3,6 +3,7 @@
 \RequirePackage{keyval}
 %for processing options
 \newif\if@kana \@kanafalse
+\newif\if@ruby \@rubytrue
 \newif\if@macro \@macrotrue
 \newif\if@deluxe \@deluxefalse
 \newif\if@replace \@replacetrue
@@ -16,6 +17,7 @@
 \DeclareOption{nomacro}{\@macrofalse}
 \DeclareOption{nomacros}{\@macrofalse}
 \DeclareOption{noreplace}{\@replacefalse}
+\DeclareOption{noruby}{\@rubyfalse}
 \DeclareOption{bold}{\@replacetrue\@boldtrue}
 \DeclareOption{expert}{\@replacetrue\@kanatrue}
 \DeclareOption{deluxe}{\@boldfalse\@replacetrue\@deluxetrue}
@@ -36,6 +38,7 @@
 \def\otf@OTorT{\if@otf@uplatex T\else OT\fi}
 \def\otf@pfx@{\if@otf@uplatex up\else \fi}
 \def\brsg@pfx@{\if@burasage brsg\else\fi}
+\def\ruby@pfx@{\if@ruby ruby\else nml\fi}
 \def\nlck@sfx@{\if@newglyph n\else\fi}
 \ProcessOptions\relax
 
@@ -372,8 +375,8 @@
 \if@kana
 	\DeclareFontShape{\otf@JYn}{hmc}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expminr\nlck@sfx@-h}{}
 	\DeclareFontShape{\otf@JTn}{hmc}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expminr\nlck@sfx@-v}{}
-	\DeclareFontShape{\otf@JYn}{ruby}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubyminr-h}{}
-	\DeclareFontShape{\otf@JTn}{ruby}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubyminr-v}{}
+	\DeclareFontShape{\otf@JYn}{ruby}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ minr-h}{}
+	\DeclareFontShape{\otf@JTn}{ruby}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ minr-v}{}
 \else
 	\if@replace
 		\DeclareFontShape{\otf@JYn}{hmc}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlminr\nlck@sfx@-h}{}
@@ -388,12 +391,12 @@
 		\DeclareFontShape{\otf@JTn}{hgt}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgothr\nlck@sfx@-v}{}
 		\DeclareFontShape{\otf@JYn}{hgt}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgothb\nlck@sfx@-h}{}
 		\DeclareFontShape{\otf@JTn}{hgt}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgothb\nlck@sfx@-v}{}
-		\DeclareFontShape{\otf@JYn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubyminb-h}{}
-		\DeclareFontShape{\otf@JTn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubyminb-v}{}
-		\DeclareFontShape{\otf@JYn}{rubyg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubygothr-h}{}
-		\DeclareFontShape{\otf@JTn}{rubyg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubygothr-v}{}
-		\DeclareFontShape{\otf@JYn}{rubyg}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubygothb-h}{}
-		\DeclareFontShape{\otf@JTn}{rubyg}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubygothb-v}{}
+		\DeclareFontShape{\otf@JYn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ minb-h}{}
+		\DeclareFontShape{\otf@JTn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ minb-v}{}
+		\DeclareFontShape{\otf@JYn}{rubyg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gothr-h}{}
+		\DeclareFontShape{\otf@JTn}{rubyg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gothr-v}{}
+		\DeclareFontShape{\otf@JYn}{rubyg}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gothb-h}{}
+		\DeclareFontShape{\otf@JTn}{rubyg}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gothb-v}{}
 	\else
 		\DeclareFontShape{\otf@JYn}{hmc}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlminb\nlck@sfx@-h}{}
 		\DeclareFontShape{\otf@JTn}{hmc}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlminb\nlck@sfx@-v}{}
@@ -407,13 +410,13 @@
 		\if@bold
 			\DeclareFontShape{\otf@JYn}{hgt}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgothb\nlck@sfx@-h}{}
 			\DeclareFontShape{\otf@JTn}{hgt}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgothb\nlck@sfx@-v}{}
-			\DeclareFontShape{\otf@JYn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubygothb-h}{}
-			\DeclareFontShape{\otf@JTn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubygothb-v}{}
+			\DeclareFontShape{\otf@JYn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gothb-h}{}
+			\DeclareFontShape{\otf@JTn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gothb-v}{}
 		\else
 			\DeclareFontShape{\otf@JYn}{hgt}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgothr\nlck@sfx@-h}{}
 			\DeclareFontShape{\otf@JTn}{hgt}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgothr\nlck@sfx@-v}{}
-			\DeclareFontShape{\otf@JYn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubygothr-h}{}
-			\DeclareFontShape{\otf@JTn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubygothr-v}{}
+			\DeclareFontShape{\otf@JYn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gothr-h}{}
+			\DeclareFontShape{\otf@JTn}{ruby}{bx}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gothr-v}{}
 		\fi
 	\else
 		\if@bold
@@ -459,14 +462,14 @@
 	\if@kana
 		\DeclareFontShape{\otf@JYn}{mg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expmgothr\nlck@sfx@-h}{}
 		\DeclareFontShape{\otf@JTn}{mg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expmgothr\nlck@sfx@-v}{}
-		\DeclareFontShape{\otf@JYn}{rubymg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubymgothr-h}{}
-		\DeclareFontShape{\otf@JTn}{rubymg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubymgothr-v}{}
+		\DeclareFontShape{\otf@JYn}{rubymg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ mgothr-h}{}
+		\DeclareFontShape{\otf@JTn}{rubymg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ mgothr-v}{}
 		\DeclareFontShape{\otf@JYn}{hmc}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expminl\nlck@sfx@-h}{}
 		\DeclareFontShape{\otf@JTn}{hmc}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expminl\nlck@sfx@-v}{}
 		\DeclareFontShape{\otf@JYn}{hgt}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgotheb\nlck@sfx@-h}{}
 		\DeclareFontShape{\otf@JTn}{hgt}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgotheb\nlck@sfx@-v}{}
-		\DeclareFontShape{\otf@JYn}{ruby}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubyminl-h}{}
-		\DeclareFontShape{\otf@JTn}{ruby}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ rubyminl-v}{}
+		\DeclareFontShape{\otf@JYn}{ruby}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ minl-h}{}
+		\DeclareFontShape{\otf@JTn}{ruby}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ minl-v}{}
 	\else
 		\DeclareFontShape{\otf@JYn}{mg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlmgothr\nlck@sfx@-h}{}
 		\DeclareFontShape{\otf@JTn}{mg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlmgothr\nlck@sfx@-v}{}

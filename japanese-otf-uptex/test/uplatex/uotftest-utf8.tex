@@ -9,7 +9,12 @@
 \def\@jarticle{jarticle}
 \def\@tarticle{tarticle}
 \def\@utarticle{utarticle}
+\def\@deluxe{deluxe}
 
+\newif\ifdeluxe \deluxefalse
+\@for\@@opt:=\option\do{%
+ \ifx\@@opt\@deluxe\deluxetrue\fi
+}
 \ifx\option\@undefined
  \def\option{default}
 \fi
@@ -33,8 +38,8 @@
 \ifuptexmode
  \edef\@opt@{uplatex,\@opt@}
 \fi
-\documentclass[a4paper,titlepage, draft,dvipdfmx]{\class}
-%\documentclass[a4paper,titlepage, draft,landscape,dvipdfmx]{\class}
+\documentclass[a4paper,titlepage,draft,dvipdfmx]{\class}
+%\documentclass[a4paper,titlepage,draft,landscape,dvipdfmx]{\class}
 
 \usepackage[\@opt@]{otf}
 
@@ -77,8 +82,14 @@
 \hline
 mc/m & ひらかな & 漢字 & \UTF{9DD7} & \CID{8705} & {\rubyfamily 振りかな}\\
 mc/bx & {\bfseries ひらかな} & {\bfseries 漢字} & {\bfseries\UTF{9DD7}} & {\bfseries\CID{8705}} & {\bfseries\rubyfamily 振りかな}\\
+\ifdeluxe
+mc/l & {\ltseries ひらかな} & {\ltseries 漢字} & {\ltseries\UTF{9DD7}} & {\ltseries\CID{8705}} & {\ltseries\rubyfamily 振りかな}\\
+\fi
 gt/m & {\gtfamily ひらかな} & {\gtfamily 漢字} & {\gtfamily\UTF{9DD7}} & {\gtfamily\CID{8705}} & {\gtfamily\rubyfamily 振りかな}\\
 gt/bx & {\gtfamily\bfseries ひらかな} & {\gtfamily\bfseries 漢字} & {\gtfamily\bfseries\UTF{9DD7}} & {\gtfamily\bfseries\CID{8705}} & {\gtfamily\bfseries\rubyfamily 振りかな}\\
+\ifdeluxe
+gt/eb & {\gtfamily\ebseries ひらかな} & {\gtfamily\ebseries 漢字} & {\gtfamily\ebseries\UTF{9DD7}} & {\gtfamily\ebseries\CID{8705}} & {\gtfamily\ebseries\rubyfamily 振りかな}\\
+\fi
 mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily\UTF{9DD7}} & {\mgfamily\CID{8705}} & {\mgfamily\rubyfamily 振りかな}\\
 \end{tabular}
 \vspace{\baselineskip}
@@ -162,6 +173,26 @@ UTFM:%
 “回”、‘回’。“回”，‘回’．
 }
 
+\ifdeluxe
+{\ltseries%
+[mc/lt]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ𛄲
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ𛅕
+\fi
+
+“回”、‘回’。“回”，‘回’．
+}
+\fi
+
 {\gtfamily
 [gt/m]
 
@@ -195,7 +226,28 @@ UTFM:%
 \fi
 
 “回”、‘回’。“回”，‘回’．
-}}
+}
+
+\ifdeluxe
+{\ebseries%
+[gt/eb]
+
+ぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのは
+ばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをんヽヾゝゞー
+\ifuptexmode
+ゔゕゖ𛄲
+\fi
+
+ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハ
+バパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ
+\ifuptexmode
+ヷヸヹヺㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ𛅕
+\fi
+
+“回”、‘回’。“回”，‘回’．
+}
+\fi
+}
 
 {\mgfamily
 [mg/m]
