@@ -1,0 +1,25 @@
+%
+% Reference:
+%   https://github.com/adobe-type-tools/cmap-resources/
+%   Adobe-CNS1-7
+%
+\makeatletter
+\newcount\K@@CT%
+\def\CIDTrange#1#2{%
+  \K@@CT=#1%
+  \loop\ifnum\K@@CT<#2%
+    \CIDT{\number\K@@CT}%
+  \advance\K@@CT by1%
+  \repeat%
+  }
+\makeatother
+
+\CIDT{2550}\CIDT{2318}\CIDT{1628}\CIDT{4764}\CIDT{2065}\CIDT{5042}~~\CIDTrange{19078}{19088}~~\CIDTrange{180}{193}
+
+Adobe-CNS1 1/2 13648--\\
+\CIDTrange{13648}{13743}
+
+Adobe-CNS1 1/2 17603\\
+\CIDTrange{17603}{17604}
+
+% end

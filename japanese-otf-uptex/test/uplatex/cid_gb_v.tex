@@ -1,0 +1,25 @@
+%
+% Reference:
+%   https://github.com/adobe-type-tools/cmap-resources/
+%   Adobe-GB1-5
+%
+\makeatletter
+\newcount\K@@CC%
+\def\CIDCrange#1#2{%
+  \K@@CC=#1%
+  \loop\ifnum\K@@CC<#2%
+    \CIDC{\number\K@@CC}%
+  \advance\K@@CC by1%
+  \repeat%
+  }
+\makeatother
+
+\CIDC{1824}\CIDC{1882}\CIDC{4528}\CIDC{3094}\CIDC{3469}\CIDC{2627}~~\CIDCrange{29049}{29059}~~\CIDCrange{173}{184}
+
+Adobe-GB1 1/2 22226--\\
+\CIDCrange{22226}{22353}
+
+Adobe-GB1 1/2 29060--\\
+\CIDCrange{29060}{29064}
+
+% end

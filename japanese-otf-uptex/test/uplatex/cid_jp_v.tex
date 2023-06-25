@@ -1,0 +1,34 @@
+%
+% Reference:
+%   https://github.com/adobe-type-tools/cmap-resources/
+%   Adobe-Japan1-7
+%
+\makeatletter
+\newcount\K@@CJ%
+\def\CIDJrange#1#2{%
+  \K@@CJ=#1%
+  \loop\ifnum\K@@CJ<#2%
+    \CID{\number\K@@CJ}%
+  \advance\K@@CJ by1%
+  \repeat%
+  }
+\makeatother
+
+\CID{2062}\CID{1410}\CID{3034}\CID{1579}\CID{2396}\CID{3965}~~\CIDJrange{23050}{23060}~~\CIDJrange{721}{734}
+
+Adobe-Japan1 1/2 8950--\\
+\CIDJrange{8950}{9354}
+
+Adobe-Japan1 1/2 10185--\\
+\CIDJrange{10185}{10196}
+
+Adobe-Japan1 1/2 13295--\\
+\CIDJrange{13295}{13320}
+
+Adobe-Japan1 1/3 13274--\\
+\CIDJrange{13274}{13295}
+
+Adobe-Japan1 1/4 13254--\\
+\CIDJrange{13254}{13274}
+
+% end

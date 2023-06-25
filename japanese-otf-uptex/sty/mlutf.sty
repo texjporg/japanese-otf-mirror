@@ -1,5 +1,5 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{mlutf}[2004/04/17 v1.1.2 psitau, u0.28 ttk]
+\ProvidesPackage{mlutf}[2004/04/17 v1.1.2 psitau, u0.29 ttk]
 %force catcode of \" be 12
 \count@\catcode`\"
 \catcode`\"=12
@@ -134,6 +134,11 @@
 		\fi
 	\fi
 \else
+	\if@deluxe
+		\Declare@FontShape{utfk}{l}{0123456789abcdef}{utfkmr}
+		\Declare@FontShape{utfc}{l}{0123456789abcdefklmo}{utfcmr}
+		\Declare@FontShape{utft}{l}{0123456789abcdefklmnopqrstuvwxz}{utftmr}
+	\fi
 	\Declare@FontShape{utfk}{m}{0123456789abcdef}{utfkmr}
 	\Declare@FontShape{utfk}{bx}{0123456789abcdef}{utfkgr}
 	\Declare@FontShape{utfc}{m}{0123456789abcdefklmo}{utfcmr}
@@ -143,6 +148,9 @@
 \fi
 \DeclareKanjiFamily{\otf@JYn}{utf}{}
 \DeclareKanjiFamily{\otf@JTn}{utf}{}
+\if@deluxe
+	\Declare@FontShape{utf}{l}{0123456789abcdefjklmnopqrstuvwxyz}{utfmr}
+\fi
 \Declare@FontShape{utf}{m}{0123456789abcdefjklmnopqrstuvwxyz}{utfmr}
 \Declare@FontShape{utf}{bx}{0123456789abcdefjklmnopqrstuvwxyz}{utfgr}
 \endinput
