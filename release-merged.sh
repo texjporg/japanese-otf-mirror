@@ -48,9 +48,8 @@ for i in $PROJECT-$VER/* ; do
     for j in $PROJECT-$VER/$bn/ofm/*hira{min,kaku,maru}*.ofm ; do
       mv $j $PROJECT-nonfree-$VER/ofm/
     done
-    mkdir -p $PROJECT-$VER/ofm
-    mv $PROJECT-$VER/$bn/ofm/*  $PROJECT-$VER/ofm/
-    rmdir $PROJECT-$VER/$bn/ofm
+    # We do not use japanese-otf/ofm/otf-cj*-{h,v}.ofm anymore.
+    rm -rf $PROJECT-$VER/$bn/ofm
   fi
   if test $bn = "japanese-otf" -o $bn = "japanese-otf-uptex"; then
     mkdir -p $PROJECT-nonfree-$VER/tfm
