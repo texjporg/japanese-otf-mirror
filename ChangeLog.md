@@ -1,3 +1,18 @@
+# 2023-06-25 japanese-otf
+
+Based on japanese-otf-uptex Ver.0.29.
+
+Common between platex and uplatex:
+* otf.sty: Add an option 'noruby' not to use kana glyphs optimized for ruby.
+* Fix bug on *brsgnmlminl, *nmlgotheb.
+* Fix issue related to \kanjishape
+
+japanese-otf-uptex:
+* Extended CID base multi-weight fonts (seven sets of family/series) in \CID{}, \CIDC{}, \CIDT{}, \CIDK{}.
+It enables to typeset multi-weights for macros \CIDC{}, \CIDT{}, \CIDK{}.
+
+
+
 # 2023-02-23 japanese-otf
 
 Based on japanese-otf-uptex Ver.0.28.
