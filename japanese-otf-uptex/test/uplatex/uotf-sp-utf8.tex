@@ -74,12 +74,12 @@
  \edef\@opt@{uplatex,\@opt@}
 \fi
 \ifx\class\@jarticle
-  \documentclass[a4paper,titlepage]{\class}
+  \documentclass[a4paper,titlepage,dvipdfmx]{\class}
 \else
  \ifx\class\@ujarticle
-  \documentclass[a4paper,titlepage]{\class}
+  \documentclass[a4paper,titlepage,dvipdfmx]{\class}
  \else
-  \documentclass[a4paper,titlepage,landscape]{\class}
+  \documentclass[a4paper,titlepage,landscape,dvipdfmx]{\class}
  \fi
 \fi
 

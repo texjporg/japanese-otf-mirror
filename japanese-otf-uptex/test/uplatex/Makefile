@@ -15,42 +15,107 @@ export TFMFONTS := .;${JPOTF}//tfm/;{$$TEXMF/fonts,$$VARTEXFONTS}/tfm//
 export OFMFONTS := .;${JPOTF}//ofm/;{$$TEXMF/fonts,$$VARTEXFONTS}/{ofm,tfm}//
 export OPENTYPEFONTS := .;${MYFONTDIR}//;$$TEXMF/fonts/{opentype,truetype}//;$$OSFONTDIR//
 
-which-otf:
-	kpsewhich otf.sty
+
+uplatex-version:
+	uplatex --version
+
+euptex-version:
+	euptex --version
+
+xdvipdfmx-version:
+	xdvipdfmx --version
+
+dvipdfmx-version:
+	xdvipdfmx --dvipdfmx --version
+	which xdvipdfmx
+
+which-otf-sty:
+	-@kpsewhich otf.sty
+	-@kpsewhich mlutf.sty
+	-@kpsewhich mlcid.sty
+	-@kpsewhich ajmacros.sty
 
 which-exp-vf:
-	kpsewhich -format vf upexpminr-h.vf
+	-@kpsewhich -format vf upexpminr-h.vf
+	-@kpsewhich -format vf upexpminr-v.vf
 
 which-exp-tfm:
-	kpsewhich -format tfm upexpminr-h.tfm
+	-@kpsewhich -format tfm upexpminr-h.tfm
+	-@kpsewhich -format tfm upexpminr-v.tfm
 
 which-cmr-tfm:
-	kpsewhich -format tfm cmr10.tfm
+	-@kpsewhich -format tfm cmr10.tfm
+	-@kpsewhich -format tfm cmbx12.tfm
+	-@kpsewhich -progname=dvipdfmx -format tfm cmr10.tfm
+	-@kpsewhich -progname=dvipdfmx -format tfm cmbx12.tfm
 
 which-cjmr-tfm:
-	kpsewhich -format tfm otf-cjmr-h.tfm
+	-@kpsewhich -format tfm otf-cjmr-h.tfm
+	-@kpsewhich -format tfm otf-cjmr-v.tfm
 
 which-cjmr-ofm:
-	kpsewhich -format ofm otf-cjmr-h.ofm
+	-@kpsewhich -format ofm otf-cjmr-h.ofm
+	-@kpsewhich -format ofm otf-cjmr-v.ofm
+
+which-ucgb-tfm:
+	-@kpsewhich -format tfm otf-ucgb-h.tfm
+	-@kpsewhich -format tfm otf-ucgb-v.tfm
 
 which-hara-otf:
-	kpsewhich -format "opentype fonts" HaranoAjiMincho-Regular.otf
-	kpsewhich -format "opentype fonts" HaranoAjiGothic-Medium.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiMincho-Regular.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiMincho-Bold.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiMincho-Light.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothic-Normal.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothic-Medium.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothic-Bold.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothic-Heavy.otf
 
 which-hara-ck-otf:
-	kpsewhich -format "opentype fonts" HaranoAjiMinchoCN-Regular.otf
-	kpsewhich -format "opentype fonts" HaranoAjiGothicCN-Medium.otf
-	kpsewhich -format "opentype fonts" HaranoAjiMinchoTW-Regular.otf
-	kpsewhich -format "opentype fonts" HaranoAjiGothicTW-Medium.otf
-	kpsewhich -format "opentype fonts" HaranoAjiMinchoK1-Regular.otf
-	kpsewhich -format "opentype fonts" HaranoAjiGothicK1-Medium.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiMinchoCN-Regular.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothicCN-Medium.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiMinchoTW-Regular.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothicTW-Medium.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiMinchoK1-Regular.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothicK1-Medium.otf
 
 which-koz-otf:
-	kpsewhich -format "opentype fonts" KozMinPr6N-Regular.otf
-	kpsewhich -format "opentype fonts" KozGoPr6N-Medium.otf
-	kpsewhich -format "opentype fonts" AdobeSongStd-Light.otf
-	kpsewhich -format "opentype fonts" AdobeMingStd-Light.otf
-	kpsewhich -format "opentype fonts" AdobeMyungjoStd-Medium.otf
+	-@kpsewhich -format "opentype fonts" KozMinPr6N-Regular.otf
+	-@kpsewhich -format "opentype fonts" KozGoPr6N-Medium.otf
+	-@kpsewhich -format "opentype fonts" AdobeSongStd-Light.otf
+	-@kpsewhich -format "opentype fonts" AdobeMingStd-Light.otf
+	-@kpsewhich -format "opentype fonts" AdobeMyungjoStd-Medium.otf
+
+which-iplx-otf:
+	-@kpsewhich -format "opentype fonts" IBMPlexSansJP-Regular.otf
+	-@kpsewhich -format "opentype fonts" IBMPlexSansJP-Light.otf
+	-@kpsewhich -format "opentype fonts" IBMPlexSansJP-ExtraLight.otf
+	-@kpsewhich -format "opentype fonts" IBMPlexSansJP-Medium.otf
+	-@kpsewhich -format "opentype fonts" IBMPlexSansJP-SemiBold.otf
+	-@kpsewhich -format "opentype fonts" IBMPlexSansJP-Bold.otf
+	-@kpsewhich -format "opentype fonts" IBMPlexSansJP-Text.otf
+	-@kpsewhich -format "opentype fonts" IBMPlexSansJP-Thin.otf
+
+which-dvipdfmx-cfg:
+	kpsewhich -progname=dvipdfmx -format=othertext dvipdfmx.cfg
+
+which-map:
+	-@kpsewhich -format "map" utfmacro-haranoaji.map
+	-@kpsewhich -format "map" utfmacro-kozuka.map
+	-@kpsewhich -format "map" jotf-psfonts.map
+
+which-cmap:
+	-@kpsewhich -format "cmap files" UniJIS-UTF16-H
+	-@kpsewhich -format "cmap files" UniJIS-UTF16-V
+	-@kpsewhich -format "cmap files" UniGB-UTF16-H
+	-@kpsewhich -format "cmap files" UniGB-UTF16-V
+	-@kpsewhich -format "cmap files" UniCNS-UTF16-H
+	-@kpsewhich -format "cmap files" UniCNS-UTF16-V
+	-@kpsewhich -format "cmap files" UniKS-UTF16-H
+	-@kpsewhich -format "cmap files" UniKS-UTF16-V
+
+which-cid-tex:
+	-@kpsewhich uotf-cid-h.tex
+	-@kpsewhich uotf-cid-v.tex
 
 
 all: otf sp art brsg jis04 scale prop punct exclam dir
@@ -67,47 +132,67 @@ utfmacro: uplatex-utfmacro platex-utfmacro
 dir: uplatex-dir platex-dir
 
 uplatex-otf:
-	for opt in default deluxe expert bold noreplace; do \
+	for opt in default deluxe expert deluxe,expert bold noreplace; do \
+		optx=`echo $$opt | sed -e 's/,/_/g'` ; \
 		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotftest-utf8.tex ; \
-		mv uotftest-utf8.dvi uotftest-$$opt-h-uplatex.dvi ; \
-		$(DVIPDFMX) uotftest-$$opt-h-uplatex.dvi ; \
+		mv uotftest-utf8.dvi uotftest-$$optx-h-uplatex.dvi ; \
+		$(DVIPDFMX) uotftest-$$optx-h-uplatex.dvi ; \
 		$(UPLATEX) "\def\option{$$opt}\def\class{utarticle}\input" uotftest-utf8.tex ; \
-		mv uotftest-utf8.dvi uotftest-$$opt-v-uplatex.dvi ; \
-		$(DVIPDFMX) uotftest-$$opt-v-uplatex.dvi ; \
+		mv uotftest-utf8.dvi uotftest-$$optx-v-uplatex.dvi ; \
+		$(DVIPDFMX) uotftest-$$optx-v-uplatex.dvi ; \
 	done
 
 platex-otf:
-	for opt in default deluxe expert bold noreplace; do \
+	for opt in default deluxe expert deluxe,expert bold noreplace; do \
+		optx=`echo $$opt | sed -e 's/,/_/g'` ; \
 		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\input" uotftest-utf8.tex ; \
-		mv uotftest-utf8.dvi uotftest-$$opt-h-platex.dvi ; \
-		$(DVIPDFMX) uotftest-$$opt-h-platex.dvi ; \
+		mv uotftest-utf8.dvi uotftest-$$optx-h-platex.dvi ; \
+		$(DVIPDFMX) uotftest-$$optx-h-platex.dvi ; \
 		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\input" uotftest-utf8.tex ; \
-		mv uotftest-utf8.dvi uotftest-$$opt-v-platex.dvi ; \
-		$(DVIPDFMX) uotftest-$$opt-v-platex.dvi ; \
+		mv uotftest-utf8.dvi uotftest-$$optx-v-platex.dvi ; \
+		$(DVIPDFMX) uotftest-$$optx-v-platex.dvi ; \
 	done
 
 uplatex-otf-haranoaji: uplatex-otf
-	for opt in deluxe expert; do \
-		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$opt-h-hara-uplatex.pdf uotftest-$$opt-h-uplatex.dvi ; \
-		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$opt-v-hara-uplatex.pdf uotftest-$$opt-v-uplatex.dvi ; \
+	for opt in expert,noruby deluxe,expert,noruby; do \
+		optx=`echo $$opt | sed -e 's/,/_/g'` ; \
+		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotftest-utf8.tex ; \
+		mv uotftest-utf8.dvi uotftest-$$optx-h-uplatex.dvi ; \
+		$(UPLATEX) "\def\option{$$opt}\def\class{utarticle}\input" uotftest-utf8.tex ; \
+		mv uotftest-utf8.dvi uotftest-$$optx-v-uplatex.dvi ; \
+	done
+	for opt in deluxe expert deluxe,expert expert,noruby deluxe,expert,noruby; do \
+		optx=`echo $$opt | sed -e 's/,/_/g'` ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$optx-h-hara-uplatex.pdf uotftest-$$optx-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$optx-v-hara-uplatex.pdf uotftest-$$optx-v-uplatex.dvi ; \
 	done
 
 uplatex-otf-kozuka: uplatex-otf
-	for opt in deluxe expert; do \
-		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$opt-h-koz-uplatex.pdf uotftest-$$opt-h-uplatex.dvi ; \
-		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$opt-v-koz-uplatex.pdf uotftest-$$opt-v-uplatex.dvi ; \
+	for opt in deluxe expert deluxe,expert; do \
+		optx=`echo $$opt | sed -e 's/,/_/g'` ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$optx-h-koz-uplatex.pdf uotftest-$$optx-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$optx-v-koz-uplatex.pdf uotftest-$$optx-v-uplatex.dvi ; \
 	done
 
 platex-otf-haranoaji: platex-otf
-	for opt in deluxe expert; do \
-		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$opt-h-hara-platex.pdf uotftest-$$opt-h-platex.dvi ; \
-		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$opt-v-hara-platex.pdf uotftest-$$opt-v-platex.dvi ; \
+	for opt in expert,noruby deluxe,expert,noruby; do \
+		optx=`echo $$opt | sed -e 's/,/_/g'` ; \
+		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\input" uotftest-utf8.tex ; \
+		mv uotftest-utf8.dvi uotftest-$$optx-h-platex.dvi ; \
+		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\input" uotftest-utf8.tex ; \
+		mv uotftest-utf8.dvi uotftest-$$optx-v-platex.dvi ; \
+	done
+	for opt in deluxe expert deluxe,expert expert,noruby deluxe,expert,noruby; do \
+		optx=`echo $$opt | sed -e 's/,/_/g'` ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$optx-h-hara-platex.pdf uotftest-$$optx-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotftest-$$optx-v-hara-platex.pdf uotftest-$$optx-v-platex.dvi ; \
 	done
 
 platex-otf-kozuka: platex-otf
-	for opt in deluxe expert; do \
-		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$opt-h-koz-platex.pdf uotftest-$$opt-h-platex.dvi ; \
-		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$opt-v-koz-platex.pdf uotftest-$$opt-v-platex.dvi ; \
+	for opt in deluxe expert deluxe,expert; do \
+		optx=`echo $$opt | sed -e 's/,/_/g'` ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$optx-h-koz-platex.pdf uotftest-$$optx-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotftest-$$optx-v-koz-platex.pdf uotftest-$$optx-v-platex.dvi ; \
 	done
 
 uplatex-sp:
@@ -152,6 +237,58 @@ platex-sp-kozuka: platex-sp
 	for opt in deluxe expert; do \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-h-koz-platex.pdf uotf-sp-$$opt-h-platex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-v-koz-platex.pdf uotf-sp-$$opt-v-platex.dvi ; \
+	done
+
+uplatex-cid-compile:
+	for opt in default deluxe bold expert dlxexp; do \
+		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotf-cid-h.tex ; \
+		mv uotf-cid-h.dvi uotf-cid-$$opt-h-uplatex.dvi ; \
+		$(UPLATEX) "\def\option{$$opt}\def\class{utarticle}\input" uotf-cid-v.tex ; \
+		mv uotf-cid-v.dvi uotf-cid-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-cid-haranoaji:
+	for opt in default deluxe bold expert dlxexp; do \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-h-hara-uplatex.pdf uotf-cid-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-v-hara-uplatex.pdf uotf-cid-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-cid-kozuka:
+	for opt in default deluxe expert dlxexp; do \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-h-koz-uplatex.pdf uotf-cid-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-v-koz-uplatex.pdf uotf-cid-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-cid-ibmplex:
+	for opt in default deluxe dlxexp; do \
+		$(DVIPDFMX) -f utfmacro-ibmplex.map -o uotf-cid-$$opt-h-iplx-uplatex.pdf uotf-cid-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-ibmplex.map -o uotf-cid-$$opt-v-iplx-uplatex.pdf uotf-cid-$$opt-v-uplatex.dvi ; \
+	done
+
+platex-cid-compile:
+	for opt in default deluxe bold expert dlxexp; do \
+		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\input" uotf-cid-h.tex ; \
+		mv uotf-cid-h.dvi uotf-cid-$$opt-h-platex.dvi ; \
+		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\input" uotf-cid-v.tex ; \
+		mv uotf-cid-v.dvi uotf-cid-$$opt-v-platex.dvi ; \
+	done
+
+platex-cid-haranoaji:
+	for opt in default deluxe bold expert dlxexp; do \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-h-hara-platex.pdf uotf-cid-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-v-hara-platex.pdf uotf-cid-$$opt-v-platex.dvi ; \
+	done
+
+platex-cid-kozuka:
+	for opt in default deluxe expert dlxexp; do \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-h-koz-platex.pdf uotf-cid-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-v-koz-platex.pdf uotf-cid-$$opt-v-platex.dvi ; \
+	done
+
+platex-cid-ibmplex:
+	for opt in default deluxe dlxexp; do \
+		$(DVIPDFMX) -f utfmacro-ibmplex.map -o uotf-cid-$$opt-h-iplx-platex.pdf uotf-cid-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-ibmplex.map -o uotf-cid-$$opt-v-iplx-platex.pdf uotf-cid-$$opt-v-platex.dvi ; \
 	done
 
 uplatex-article:

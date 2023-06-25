@@ -1,0 +1,255 @@
+rml  H IBMPlexSansJP-Regular.otf
+rmlv V IBMPlexSansJP-Regular.otf
+
+uprml-h UniJISup-UTF16-H IBMPlexSansJP-Regular.otf
+uprml-v UniJISup-UTF16-V IBMPlexSansJP-Regular.otf
+
+hminr-h H IBMPlexSansJP-Regular.otf
+hminb-h H IBMPlexSansJP-SemiBold.otf
+hminl-h H IBMPlexSansJP-ExtraLight.otf
+hgothr-h H IBMPlexSansJP-Light.otf
+hgothb-h H IBMPlexSansJP-Medium.otf
+hgotheb-h H IBMPlexSansJP-Bold.otf
+hmgothr-h H HaranoAjiGothic-Heavy.otf
+hminr-v V IBMPlexSansJP-Regular.otf
+hminb-v V IBMPlexSansJP-SemiBold.otf
+hminl-v V IBMPlexSansJP-ExtraLight.otf
+hgothr-v V IBMPlexSansJP-Light.otf
+hgothb-v V IBMPlexSansJP-Medium.otf
+hgotheb-v V IBMPlexSansJP-Bold.otf
+hmgothr-v V HaranoAjiGothic-Heavy.otf
+
+hminrn-h H IBMPlexSansJP-Regular.otf
+hminbn-h H IBMPlexSansJP-SemiBold.otf
+hminln-h H IBMPlexSansJP-ExtraLight.otf
+hgothrn-h H IBMPlexSansJP-Light.otf
+hgothbn-h H IBMPlexSansJP-Medium.otf
+hgothebn-h H IBMPlexSansJP-Bold.otf
+hmgothrn-h H HaranoAjiGothic-Heavy.otf
+hminrn-v V IBMPlexSansJP-Regular.otf
+hminbn-v V IBMPlexSansJP-SemiBold.otf
+hminln-v V IBMPlexSansJP-ExtraLight.otf
+hgothrn-v V IBMPlexSansJP-Light.otf
+hgothbn-v V IBMPlexSansJP-Medium.otf
+hgothebn-v V IBMPlexSansJP-Bold.otf
+hmgothrn-v V HaranoAjiGothic-Heavy.otf
+
+uphminr-h UniJISup-UTF16-H IBMPlexSansJP-Regular.otf
+uphminb-h UniJISup-UTF16-H IBMPlexSansJP-SemiBold.otf
+uphminl-h UniJISup-UTF16-H IBMPlexSansJP-ExtraLight.otf
+uphgothr-h UniJISup-UTF16-H IBMPlexSansJP-Light.otf
+uphgothb-h UniJISup-UTF16-H IBMPlexSansJP-Medium.otf
+uphgotheb-h UniJISup-UTF16-H IBMPlexSansJP-Bold.otf
+uphmgothr-h UniJISup-UTF16-H HaranoAjiGothic-Heavy.otf
+uphminr-v UniJISup-UTF16-V IBMPlexSansJP-Regular.otf
+uphminb-v UniJISup-UTF16-V IBMPlexSansJP-SemiBold.otf
+uphminl-v UniJISup-UTF16-V IBMPlexSansJP-ExtraLight.otf
+uphgothr-v UniJISup-UTF16-V IBMPlexSansJP-Light.otf
+uphgothb-v UniJISup-UTF16-V IBMPlexSansJP-Medium.otf
+uphgotheb-v UniJISup-UTF16-V IBMPlexSansJP-Bold.otf
+uphmgothr-v UniJISup-UTF16-V HaranoAjiGothic-Heavy.otf
+
+uphminrn-h UniJIS2004up-UTF16-H IBMPlexSansJP-Regular.otf
+uphminbn-h UniJIS2004up-UTF16-H IBMPlexSansJP-SemiBold.otf
+uphminln-h UniJIS2004up-UTF16-H IBMPlexSansJP-ExtraLight.otf
+uphgothrn-h UniJIS2004up-UTF16-H IBMPlexSansJP-Light.otf
+uphgothbn-h UniJIS2004up-UTF16-H IBMPlexSansJP-Medium.otf
+uphgothebn-h UniJIS2004up-UTF16-H IBMPlexSansJP-Bold.otf
+uphmgothrn-h UniJIS2004up-UTF16-H HaranoAjiGothic-Heavy.otf
+uphminrn-v UniJIS2004up-UTF16-V IBMPlexSansJP-Regular.otf
+uphminbn-v UniJIS2004up-UTF16-V IBMPlexSansJP-SemiBold.otf
+uphminln-v UniJIS2004up-UTF16-V IBMPlexSansJP-ExtraLight.otf
+uphgothrn-v UniJIS2004up-UTF16-V IBMPlexSansJP-Light.otf
+uphgothbn-v UniJIS2004up-UTF16-V IBMPlexSansJP-Medium.otf
+uphgothebn-v UniJIS2004up-UTF16-V IBMPlexSansJP-Bold.otf
+uphmgothrn-v UniJIS2004up-UTF16-V HaranoAjiGothic-Heavy.otf
+
+otf-ujmr-h UniJISup-UTF16-H IBMPlexSansJP-Regular.otf
+otf-ujmb-h UniJISup-UTF16-H IBMPlexSansJP-SemiBold.otf
+otf-ujml-h UniJISup-UTF16-H IBMPlexSansJP-ExtraLight.otf
+otf-ujgr-h UniJISup-UTF16-H IBMPlexSansJP-Light.otf
+otf-ujgb-h UniJISup-UTF16-H IBMPlexSansJP-Medium.otf
+otf-ujge-h UniJISup-UTF16-H IBMPlexSansJP-Bold.otf
+otf-ujmgr-h UniJISup-UTF16-H HaranoAjiGothic-Heavy.otf
+
+otf-ujmrn-h UniJIS2004up-UTF16-H IBMPlexSansJP-Regular.otf
+otf-ujmbn-h UniJIS2004up-UTF16-H IBMPlexSansJP-SemiBold.otf
+otf-ujmln-h UniJIS2004up-UTF16-H IBMPlexSansJP-ExtraLight.otf
+otf-ujgrn-h UniJIS2004up-UTF16-H IBMPlexSansJP-Light.otf
+otf-ujgbn-h UniJIS2004up-UTF16-H IBMPlexSansJP-Medium.otf
+otf-ujgen-h UniJIS2004up-UTF16-H IBMPlexSansJP-Bold.otf
+otf-ujmgrn-h UniJIS2004up-UTF16-H HaranoAjiGothic-Heavy.otf
+
+otf-ucmr-h UniGB-UTF16-H HaranoAjiMinchoCN-Regular.otf
+otf-ucmb-h UniGB-UTF16-H HaranoAjiMinchoCN-Bold.otf
+otf-ucml-h UniGB-UTF16-H HaranoAjiMinchoCN-Light.otf
+otf-ucgr-h UniGB-UTF16-H HaranoAjiGothicCN-Normal.otf
+otf-ucgb-h UniGB-UTF16-H HaranoAjiGothicCN-Medium.otf
+otf-ucge-h UniGB-UTF16-H HaranoAjiGothicCN-Bold.otf
+otf-ucmgr-h UniGB-UTF16-H HaranoAjiGothicCN-Heavy.otf
+
+otf-utmr-h UniCNS-UTF16-H HaranoAjiMinchoTW-Regular.otf
+otf-utmb-h UniCNS-UTF16-H HaranoAjiMinchoTW-Bold.otf
+otf-utml-h UniCNS-UTF16-H HaranoAjiMinchoTW-Light.otf
+otf-utgr-h UniCNS-UTF16-H HaranoAjiGothicTW-Normal.otf
+otf-utgb-h UniCNS-UTF16-H HaranoAjiGothicTW-Medium.otf
+otf-utge-h UniCNS-UTF16-H HaranoAjiGothicTW-Bold.otf
+otf-utmgr-h UniCNS-UTF16-H HaranoAjiGothicTW-Heavy.otf
+
+otf-ukmr-h UniKS-UTF16-H HaranoAjiMinchoK1-Regular.otf
+otf-ukmb-h UniKS-UTF16-H HaranoAjiMinchoK1-Bold.otf
+otf-ukml-h UniKS-UTF16-H HaranoAjiMinchoK1-Light.otf
+otf-ukgr-h UniKS-UTF16-H HaranoAjiGothicK1-Normal.otf
+otf-ukgb-h UniKS-UTF16-H HaranoAjiGothicK1-Medium.otf
+otf-ukge-h UniKS-UTF16-H HaranoAjiGothicK1-Bold.otf
+otf-ukmgr-h UniKS-UTF16-H HaranoAjiGothicK1-Heavy.otf
+
+otf-ujmr-v UniJISup-UTF16-V IBMPlexSansJP-Regular.otf
+otf-ujmb-v UniJISup-UTF16-V IBMPlexSansJP-SemiBold.otf
+otf-ujml-v UniJISup-UTF16-V IBMPlexSansJP-ExtraLight.otf
+otf-ujgr-v UniJISup-UTF16-V IBMPlexSansJP-Light.otf
+otf-ujgb-v UniJISup-UTF16-V IBMPlexSansJP-Medium.otf
+otf-ujge-v UniJISup-UTF16-V IBMPlexSansJP-Bold.otf
+otf-ujmgr-v UniJISup-UTF16-V HaranoAjiGothic-Heavy.otf
+
+otf-ujmrn-v UniJIS2004up-UTF16-V IBMPlexSansJP-Regular.otf
+otf-ujmbn-v UniJIS2004up-UTF16-V IBMPlexSansJP-SemiBold.otf
+otf-ujmln-v UniJIS2004up-UTF16-V IBMPlexSansJP-ExtraLight.otf
+otf-ujgrn-v UniJIS2004up-UTF16-V IBMPlexSansJP-Light.otf
+otf-ujgbn-v UniJIS2004up-UTF16-V IBMPlexSansJP-Medium.otf
+otf-ujgen-v UniJIS2004up-UTF16-V IBMPlexSansJP-Bold.otf
+otf-ujmgrn-v UniJIS2004up-UTF16-V HaranoAjiGothic-Heavy.otf
+
+otf-ucmr-v UniGB-UTF16-V HaranoAjiMinchoCN-Regular.otf
+otf-ucmb-v UniGB-UTF16-V HaranoAjiMinchoCN-Bold.otf
+otf-ucml-v UniGB-UTF16-V HaranoAjiMinchoCN-Light.otf
+otf-ucgr-v UniGB-UTF16-V HaranoAjiGothicCN-Normal.otf
+otf-ucgb-v UniGB-UTF16-V HaranoAjiGothicCN-Medium.otf
+otf-ucge-v UniGB-UTF16-V HaranoAjiGothicCN-Bold.otf
+otf-ucmgr-v UniGB-UTF16-V HaranoAjiGothicCN-Heavy.otf
+
+otf-utmr-v UniCNS-UTF16-V HaranoAjiMinchoTW-Regular.otf
+otf-utmb-v UniCNS-UTF16-V HaranoAjiMinchoTW-Bold.otf
+otf-utml-v UniCNS-UTF16-V HaranoAjiMinchoTW-Light.otf
+otf-utgr-v UniCNS-UTF16-V HaranoAjiGothicTW-Normal.otf
+otf-utgb-v UniCNS-UTF16-V HaranoAjiGothicTW-Medium.otf
+otf-utge-v UniCNS-UTF16-V HaranoAjiGothicTW-Bold.otf
+otf-utmgr-v UniCNS-UTF16-V HaranoAjiGothicTW-Heavy.otf
+
+otf-ukmr-v UniKS-UTF16-V HaranoAjiMinchoK1-Regular.otf
+otf-ukmb-v UniKS-UTF16-V HaranoAjiMinchoK1-Bold.otf
+otf-ukml-v UniKS-UTF16-V HaranoAjiMinchoK1-Light.otf
+otf-ukgr-v UniKS-UTF16-V HaranoAjiGothicK1-Normal.otf
+otf-ukgb-v UniKS-UTF16-V HaranoAjiGothicK1-Medium.otf
+otf-ukge-v UniKS-UTF16-V HaranoAjiGothicK1-Bold.otf
+otf-ukmgr-v UniKS-UTF16-V HaranoAjiGothicK1-Heavy.otf
+
+otf-cjmr-h Identity-H IBMPlexSansJP-Regular.otf
+otf-cjmb-h Identity-H IBMPlexSansJP-SemiBold.otf
+otf-cjml-h Identity-H IBMPlexSansJP-ExtraLight.otf
+otf-cjgr-h Identity-H IBMPlexSansJP-Light.otf
+otf-cjgb-h Identity-H IBMPlexSansJP-Medium.otf
+otf-cjge-h Identity-H IBMPlexSansJP-Bold.otf
+otf-cjmgr-h Identity-H HaranoAjiGothic-Heavy.otf
+
+otf-ccmr-h Identity-H HaranoAjiMinchoCN-Regular.otf
+otf-ccmb-h Identity-H HaranoAjiMinchoCN-Bold.otf
+otf-ccml-h Identity-H HaranoAjiMinchoCN-Light.otf
+otf-ccgr-h Identity-H HaranoAjiGothicCN-Normal.otf
+otf-ccgb-h Identity-H HaranoAjiGothicCN-Medium.otf
+otf-ccge-h Identity-H HaranoAjiGothicCN-Bold.otf
+otf-ccmgr-h Identity-H HaranoAjiGothicCN-Heavy.otf
+
+otf-ctmr-h Identity-H HaranoAjiMinchoTW-Regular.otf
+otf-ctmb-h Identity-H HaranoAjiMinchoTW-Bold.otf
+otf-ctml-h Identity-H HaranoAjiMinchoTW-Light.otf
+otf-ctgr-h Identity-H HaranoAjiGothicTW-Normal.otf
+otf-ctgb-h Identity-H HaranoAjiGothicTW-Medium.otf
+otf-ctge-h Identity-H HaranoAjiGothicTW-Bold.otf
+otf-ctmgr-h Identity-H HaranoAjiGothicTW-Heavy.otf
+
+otf-ckmr-h Identity-H HaranoAjiMinchoK1-Regular.otf
+otf-ckmb-h Identity-H HaranoAjiMinchoK1-Bold.otf
+otf-ckml-h Identity-H HaranoAjiMinchoK1-Light.otf
+otf-ckgr-h Identity-H HaranoAjiGothicK1-Normal.otf
+otf-ckgb-h Identity-H HaranoAjiGothicK1-Medium.otf
+otf-ckge-h Identity-H HaranoAjiGothicK1-Bold.otf
+otf-ckmgr-h Identity-H HaranoAjiGothicK1-Heavy.otf
+
+otf-cjmr-v Identity-V IBMPlexSansJP-Regular.otf
+otf-cjmb-v Identity-V IBMPlexSansJP-SemiBold.otf
+otf-cjml-v Identity-V IBMPlexSansJP-ExtraLight.otf
+otf-cjgr-v Identity-V IBMPlexSansJP-Light.otf
+otf-cjgb-v Identity-V IBMPlexSansJP-Medium.otf
+otf-cjge-v Identity-V IBMPlexSansJP-Bold.otf
+otf-cjmgr-v Identity-V HaranoAjiGothic-Heavy.otf
+
+otf-ccmr-v Identity-V HaranoAjiMinchoCN-Regular.otf
+otf-ccmb-v Identity-V HaranoAjiMinchoCN-Bold.otf
+otf-ccml-v Identity-V HaranoAjiMinchoCN-Light.otf
+otf-ccgr-v Identity-V HaranoAjiGothicCN-Normal.otf
+otf-ccgb-v Identity-V HaranoAjiGothicCN-Medium.otf
+otf-ccge-v Identity-V HaranoAjiGothicCN-Bold.otf
+otf-ccmgr-v Identity-V HaranoAjiGothicCN-Heavy.otf
+
+otf-ctmr-v Identity-V HaranoAjiMinchoTW-Regular.otf
+otf-ctmb-v Identity-V HaranoAjiMinchoTW-Bold.otf
+otf-ctml-v Identity-V HaranoAjiMinchoTW-Light.otf
+otf-ctgr-v Identity-V HaranoAjiGothicTW-Normal.otf
+otf-ctgb-v Identity-V HaranoAjiGothicTW-Medium.otf
+otf-ctge-v Identity-V HaranoAjiGothicTW-Bold.otf
+otf-ctmgr-v Identity-V HaranoAjiGothicTW-Heavy.otf
+
+otf-ckmr-v Identity-V HaranoAjiMinchoK1-Regular.otf
+otf-ckmb-v Identity-V HaranoAjiMinchoK1-Bold.otf
+otf-ckml-v Identity-V HaranoAjiMinchoK1-Light.otf
+otf-ckgr-v Identity-V HaranoAjiGothicK1-Normal.otf
+otf-ckgb-v Identity-V HaranoAjiGothicK1-Medium.otf
+otf-ckge-v Identity-V HaranoAjiGothicK1-Bold.otf
+otf-ckmgr-v Identity-V HaranoAjiGothicK1-Heavy.otf
+
+
+upaschminr-h UniGB-UTF16-H HaranoAjiMinchoCN-Regular.otf
+upaschminb-h UniGB-UTF16-H HaranoAjiMinchoCN-Bold.otf
+upaschminl-h UniGB-UTF16-H HaranoAjiMinchoCN-Light.otf
+upaschgothr-h UniGB-UTF16-H HaranoAjiGothicCN-Normal.otf
+upaschgothb-h UniGB-UTF16-H HaranoAjiGothicCN-Medium.otf
+upaschgotheb-h UniGB-UTF16-H HaranoAjiGothicCN-Bold.otf
+upaschmgothr-h UniGB-UTF16-H HaranoAjiGothicCN-Heavy.otf
+upaschminr-v UniGB-UTF16-V HaranoAjiMinchoCN-Regular.otf
+upaschminb-v UniGB-UTF16-V HaranoAjiMinchoCN-Bold.otf
+upaschminl-v UniGB-UTF16-V HaranoAjiMinchoCN-Light.otf
+upaschgothr-v UniGB-UTF16-V HaranoAjiGothicCN-Normal.otf
+upaschgothb-v UniGB-UTF16-V HaranoAjiGothicCN-Medium.otf
+upaschgotheb-v UniGB-UTF16-V HaranoAjiGothicCN-Bold.otf
+upaschmgothr-v UniGB-UTF16-V HaranoAjiGothicCN-Heavy.otf
+
+upatchminr-h UniCNS-UTF16-H HaranoAjiMinchoTW-Regular.otf
+upatchminb-h UniCNS-UTF16-H HaranoAjiMinchoTW-Bold.otf
+upatchminl-h UniCNS-UTF16-H HaranoAjiMinchoTW-Light.otf
+upatchgothr-h UniCNS-UTF16-H HaranoAjiGothicTW-Normal.otf
+upatchgothb-h UniCNS-UTF16-H HaranoAjiGothicTW-Medium.otf
+upatchgotheb-h UniCNS-UTF16-H HaranoAjiGothicTW-Bold.otf
+upatchmgothr-h UniCNS-UTF16-H HaranoAjiGothicTW-Heavy.otf
+upatchminr-v UniCNS-UTF16-V HaranoAjiMinchoTW-Regular.otf
+upatchminb-v UniCNS-UTF16-V HaranoAjiMinchoTW-Bold.otf
+upatchminl-v UniCNS-UTF16-V HaranoAjiMinchoTW-Light.otf
+upatchgothr-v UniCNS-UTF16-V HaranoAjiGothicTW-Normal.otf
+upatchgothb-v UniCNS-UTF16-V HaranoAjiGothicTW-Medium.otf
+upatchgotheb-v UniCNS-UTF16-V HaranoAjiGothicTW-Bold.otf
+upatchmgothr-v UniCNS-UTF16-V HaranoAjiGothicTW-Heavy.otf
+
+upakorminr-h UniKS-UTF16-H HaranoAjiMinchoK1-Regular.otf
+upakorminb-h UniKS-UTF16-H HaranoAjiMinchoK1-Bold.otf
+upakorminl-h UniKS-UTF16-H HaranoAjiMinchoK1-Light.otf
+upakorgothr-h UniKS-UTF16-H HaranoAjiGothicK1-Normal.otf
+upakorgothb-h UniKS-UTF16-H HaranoAjiGothicK1-Medium.otf
+upakorgotheb-h UniKS-UTF16-H HaranoAjiGothicK1-Bold.otf
+upakormgothr-h UniKS-UTF16-H HaranoAjiGothicK1-Heavy.otf
+upakorminr-v UniKS-UTF16-V HaranoAjiMinchoK1-Regular.otf
+upakorminb-v UniKS-UTF16-V HaranoAjiMinchoK1-Bold.otf
+upakorminl-v UniKS-UTF16-V HaranoAjiMinchoK1-Light.otf
+upakorgothr-v UniKS-UTF16-V HaranoAjiGothicK1-Normal.otf
+upakorgothb-v UniKS-UTF16-V HaranoAjiGothicK1-Medium.otf
+upakorgotheb-v UniKS-UTF16-V HaranoAjiGothicK1-Bold.otf
+upakormgothr-v UniKS-UTF16-V HaranoAjiGothicK1-Heavy.otf

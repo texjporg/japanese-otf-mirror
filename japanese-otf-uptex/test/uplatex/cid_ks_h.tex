@@ -1,0 +1,22 @@
+%
+% Reference:
+%   https://github.com/adobe-type-tools/cmap-resources/
+%   Adobe-Korea1-2
+%
+\makeatletter
+\newcount\K@@CK%
+\def\CIDKrange#1#2{%
+  \K@@CK=#1%
+  \loop\ifnum\K@@CK<#2%
+    \CIDK{\number\K@@CK}%
+  \advance\K@@CK by1%
+  \repeat%
+  }
+\makeatother
+
+\CIDK{3785}\CIDK{7694}\CIDK{6975}\CIDK{4067}\CIDK{5669}\CIDK{2570}~~\CIDKrange{18145}{18155}~~\CIDKrange{157}{170}
+
+Adobe-Korea1 1/2 8094--\\
+\CIDKrange{8094}{8191}
+
+% end
