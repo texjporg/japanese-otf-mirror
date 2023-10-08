@@ -160,7 +160,7 @@ sub writechar {
 			@type_1ov3 = (13274 .. 13294);
 		}
 	}
-	if ($lang eq "c") { # Adobe-GB1-5
+	if ($lang eq "c") { # Adobe-GB1-6
 		if ($dir eq "h") {
 			@type_1ov2 = (814 .. 939, 7716, 22355 .. 22357);
 		}

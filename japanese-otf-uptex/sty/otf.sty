@@ -1,5 +1,5 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{otf}[2019/04/01 v1.7b8 psitau, u0.29 ttk]
+\ProvidesPackage{otf}[2019/04/01 v1.7b8 psitau, u0.30 ttk]
 \RequirePackage{keyval}
 %for processing options
 \newif\if@kana \@kanafalse
@@ -287,6 +287,7 @@
 \newcommand\set@character@{\afterassignment\put@character@\@tempcnta}
 \newcommand\put@character@{%
 	\otf@kanjishape{-}\selectfont%
+	\advance\@tempcnta by "110000
 	\kchar\@tempcnta%
 }
 \catcode`\"=\count@
@@ -470,6 +471,8 @@
 		\DeclareFontShape{\otf@JTn}{hgt}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ expgotheb\nlck@sfx@-v}{}
 		\DeclareFontShape{\otf@JYn}{ruby}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ minl-h}{}
 		\DeclareFontShape{\otf@JTn}{ruby}{l}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ minl-v}{}
+		\DeclareFontShape{\otf@JYn}{rubyg}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gotheb-h}{}
+		\DeclareFontShape{\otf@JTn}{rubyg}{eb}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \ruby@pfx@ gotheb-v}{}
 	\else
 		\DeclareFontShape{\otf@JYn}{mg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlmgothr\nlck@sfx@-h}{}
 		\DeclareFontShape{\otf@JTn}{mg}{m}{n}{<-> s * [\utf@sc@le] \otf@pfx@ \brsg@pfx@ nmlmgothr\nlck@sfx@-v}{}
