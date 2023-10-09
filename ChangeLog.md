@@ -1,3 +1,14 @@
+# 2023-10-09 japanese-otf
+
+Based on japanese-otf-uptex Ver.0.30.
+
+japanese-otf-uptex:
+* Fix issue related to ruby of extra bold.
+* Fix issue related to insertion of penalty before \CID{}
+* Update reference Unicode Blocks-15.1.0.txt, Adobe-GB1-6 cid2code.txt (Version 09/21/2023).
+
+
+
 # 2023-06-25 japanese-otf
 
 Based on japanese-otf-uptex Ver.0.29.
