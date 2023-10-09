@@ -20,7 +20,7 @@ opendir(OVP, "ovp") || mkdir("ovp",0755) || die "cannot mkdir ovp";
 opendir(VF, "vf") || mkdir("vf",0755) || die "cannot mkdir vf";
 my %adobe_name = (
   'j' => 'Adobe-Japan1-7',
-  'c' => 'Adobe-GB1-5',
+  'c' => 'Adobe-GB1-6',
   'k' => 'Adobe-Korea1-2',
   't' => 'Adobe-CNS1-7'
 );
@@ -103,7 +103,7 @@ sub writechar_cid {
 			}
 		}
 		}
-		if ($lang eq "c") { # Adobe-GB1-5
+		if ($lang eq "c") { # Adobe-GB1-6
 		if ($dir eq "h") {
 			if (($cidcode >= 814 && $cidcode <= 939)
 				 || $cidcode == 7716
