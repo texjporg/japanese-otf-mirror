@@ -54,9 +54,9 @@ if ($.<8 && /((Adobe-(?:Japan|CNS|GB|Korea).*)-\d)\s/) {
 	$utfmac="UTFT"; $cmap="UniCNS-UTF32";
 	$source="Adobe-CNS1-7/cid2code.txt"; }
     elsif ($collection =~ /gb/i)  {
-	@cid_max = qw/-1 7716 9896 22126 22352 29063 30283/;
+	@cid_max = qw/-1 7716 9896 22126 22352 29063 30283 30571/;
 	$utfmac="UTFC"; $cmap="UniGB-UTF32";
-	$source="Adobe-GB1-5/cid2code.txt"; }
+	$source="Adobe-GB1-6/cid2code.txt"; }
     elsif ($collection =~ /kor/i) {
 	@cid_max = qw/-1 9332 18154 18351/;
 	$utfmac="UTFK"; $cmap="UniKS-UTF32";

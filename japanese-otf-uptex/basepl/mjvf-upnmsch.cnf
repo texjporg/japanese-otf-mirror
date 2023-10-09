@@ -1,6 +1,6 @@
 % makejvf settings for upnmtch* in japanese-otf-uptex
-% based on Blocks-14.0.0.txt (Date: 2021-01-22, 23:29:00 GMT [KW])
-% and Adobe-GB1-5/cid2code.txt (Version 12/05/2017)
+% based on Blocks-15.1.0.txt (Date: 2023-07-28, 15:47:20 GMT)
+% and Adobe-GB1-5/cid2code.txt (Version 09/21/2023)
 
 CHARSET	%
 +	0000..007F,% Basic Latin

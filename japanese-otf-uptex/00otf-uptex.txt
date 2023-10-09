@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.29  2023/06/25
+japanese-otf-uptex Ver.0.30  2023/10/08
 
 
 [ Abstract ]
@@ -529,4 +529,19 @@ https://github.com/t-tk/japanese-otf-uptex
   test/uplatex/uotf-cid-{h,v}.tex,
   test/uplatex/cid_{jp,gb,cns,ks}_{h,v}.tex ::
     Add a new test for multi-weight \CID{}, \CIDC{}, \CIDT{}, \CIDK{}.
+2023.10.08 Ver0.30
+  sty/otf.sty, sty/mlutf.sty, sty/mlcid.sty ::
+    Bump version number.
+  sty/otf.sty ::
+    Fix issue related to ruby of extra bold.   ## Thank 流橋 利樹 san.
+      Ref. https://okumuralab.org/tex/mod/forum/discuss.php?d=3068#p22269
+    Fix issue related to insertion of penalty before \CID{}   ## Thank @aminophen san.
+      Ref. https://github.com/t-tk/japanese-otf-uptex/issues/8#issuecomment-1741634553
+  basepl/mjvf-upnm{kor,sch,tch}{,-slim}.cnf, script/sp_list_c.txt,
+  script/mkutf32list.pl, script/umkcid{tfm,vf}.pl, test/uplatex/sp_gb_utf.tex ::
+    Update references:
+    Unicode Blocks-15.1.0.txt (Date: 2023-07-28, 15:47:20 GMT)
+    Adobe-GB1-6 cid2code.txt (Version 09/21/2023).
+  test/uplatex/uotftest-utf8.tex ::
+    Add tests for ruby with okumacro.sty and pxrubrica.sty .
 

@@ -1,5 +1,6 @@
 % -*- coding: utf-8 -*-
 \newif\ifuptexmode\uptexmodefalse
+\newif\iftatemode\tatemodefalse
 \ifnum\jis"2121="3000 \uptexmodetrue\fi
 
 \makeatletter
@@ -32,8 +33,8 @@
 \fi
 
 \def\baseshift{-.12zh}
-\ifx\class\@tarticle\def\baseshift{-.5zh}\fi
-\ifx\class\@utarticle\def\baseshift{-.5zh}\fi
+\ifx\class\@tarticle\def\baseshift{-.5zh}\tatemodetrue\fi
+\ifx\class\@utarticle\def\baseshift{-.5zh}\tatemodetrue\fi
 
 \ifuptexmode
  \edef\@opt@{uplatex,\@opt@}
@@ -44,12 +45,20 @@
 \usepackage[\@opt@]{otf}
 
 %
-% furikana.sty があれば読み込む
 \newread\@istheresuchafile
-\openin\@istheresuchafile furikana.sty
+%
+% okumacro.sty があれば読み込む
+\openin\@istheresuchafile okumacro.sty
 \ifeof\@istheresuchafile\relax
 \else\closein\@istheresuchafile\relax
-\usepackage{furikana}% found
+\usepackage{okumacro}% found
+\fi
+%
+% pxrubrica.sty があれば読み込む
+\openin\@istheresuchafile pxrubrica.sty
+\ifeof\@istheresuchafile\relax
+\else\closein\@istheresuchafile\relax
+\usepackage{pxrubrica}% found
 \fi
 
 \makeatother
@@ -66,9 +75,20 @@
 \ifx\rubyfamily\@undefined\let\rubyfamily=\relax\fi
 \ifx\mgfamily\@undefined\let\mgfamily=\relax\fi
 \makeatother
+
+\iftatemode
+\textwidth250mm
+\oddsidemargin0mm
+\evensidemargin0mm
+\textheight168mm
+\topmargin-15mm
+\else
 \textwidth160mm
 \oddsidemargin0mm
 \evensidemargin0mm
+\textheight250mm
+\topmargin-15mm
+\fi
 
 \begin{document}
 \section{見出し}
@@ -100,18 +120,53 @@ mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily\UTF{9DD7}} & {
 
 日本：\UTF{8FF0}　簡体字：\UTFC{8FF0}　繁體字：\UTFT{8FF0}　朝鮮：\UTFK{8FF0}
 
-% with furikana.sty
-\makeatletter
-\ifx\kana\@undefined
-\else
-\kana{漢字}{振りかな}{\bfseries \kana{漢字}{振りかな}}%
-{\gtfamily\kana{漢字}{振りかな}\bfseries \kana{漢字}{振りかな}}
-{\mgfamily\kana{漢字}{振りかな}}
 
-\kana{\UTF{9DD7}}{かな}\kana{鴎}{かな}
-
-\Kana[3]{\UTFK{c548},\UTFK{b155},\UTFK{d558},\UTFK{c138},\UTFK{c694}}{アン,ニョン,ハ,セ,ヨ}
+% with okumacro.sty
+\ifx\ruby\@undefined\else
+\vspace{\baselineskip}
+\ruby{漢字}{振りかな}~%
+{\bfseries\ruby{漢字}{振りかな}}~%
+\ifdeluxe
+ {\ltseries\ruby{漢字}{振りかな}}~%
 \fi
+{\gtfamily\ruby{漢字}{振りかな}~%
+ \bfseries\ruby{漢字}{振りかな}~%
+\ifdeluxe
+ \ebseries\ruby{漢字}{振りかな}~%
+\fi
+}%
+{\mgfamily\ruby{漢字}{振りかな}}
+
+\bgroup
+\ruby{\UTFK{c548}}{アン}\ruby{\UTFK{b155}}{ニョン}\ruby{\UTFK{d558}}{ハ}\ruby{\UTFK{c138}}{セ}\ruby{\UTFK{c694}}{ヨ}~%
+\gtfamily\ruby{\UTFK{c548}}{アン}\ruby{\UTFK{b155}}{ニョン}\ruby{\UTFK{d558}}{ハ}\ruby{\UTFK{c138}}{セ}\ruby{\UTFK{c694}}{ヨ}
+\egroup
+\fi
+
+
+% with pxrubrica.sty
+\makeatletter
+\ifx\jruby\@undefined\else
+\vspace{\baselineskip}
+\jruby[g]{漢字}{振りかな}~%
+{\bfseries\jruby[g]{漢字}{振りかな}}~%
+\ifdeluxe
+ {\ltseries\jruby[g]{漢字}{振りかな}}~%
+\fi
+{\gtfamily\jruby[g]{漢字}{振りかな}~%
+ \bfseries\jruby[g]{漢字}{振りかな}~%
+\ifdeluxe
+ \ebseries\jruby[g]{漢字}{振りかな}~%
+\fi
+}%
+{\mgfamily\jruby[g]{漢字}{振りかな}}
+
+\bgroup
+ \jruby[m]{{\UTFK{c548}}{\UTFK{b155}}{\UTFK{d558}}{\UTFK{c138}}{\UTFK{c694}}}{アン|ニョン|ハ|セ|ヨ}~%
+ \gtfamily\jruby[m]{{\UTFK{c548}}{\UTFK{b155}}{\UTFK{d558}}{\UTFK{c138}}{\UTFK{c694}}}{アン|ニョン|ハ|セ|ヨ}
+\egroup
+\fi
+
 \makeatother
 
 \vspace{\baselineskip}
