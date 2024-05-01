@@ -14,6 +14,19 @@ if ($sp==1) { # supplemental plane
     &make_sp_char_list('j');
     %exist_char=%{$MakeSPList::r_exist_char->{'j'}};
 }
+
+my (%upt_to_cid);
+if ($cid_combin==1) {
+    my (@ivd_list, $mode);
+    use MakeVSList;
+    if    ($expert) { $mode = 'expert'; }
+    elsif ($ruby  ) { $mode = 'ruby'  ; }
+    else            { $mode = ''; }
+    &make_var_seq_list($direction, $mode);
+    @ivd_list=@{$MakeVSList::r_ivd_list};
+
+    %upt_to_cid = ( @ivd_list );
+}
 #make ovp
 &font_header;
 &write_char;
@@ -94,7 +107,7 @@ JIS     UCS
 }
 sub proc_arg {
 	if ($#ARGV == -1) {&print_help;}
-	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cq', \$cid_quote, 0], ['^-cp', \$comma_period, 0], ['^-chk', \$cid_hankana, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-ucs', \$ucs, 0], ['^-omitfw', \$omitfw, 0], ['^-sp', \$sp, 1], ['^-ovp2ovf', \$ovp2ovf_command, 1], ['^-h(e|el|elp)?', \$help, 0], ['^-dbg', \$debug_mode, 0], ['^-(.+)', \$unknown, 0]);
+	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cq', \$cid_quote, 0], ['^-cp', \$comma_period, 0], ['^-chk', \$cid_hankana, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-ucs', \$ucs, 0], ['^-omitfw', \$omitfw, 0], ['^-ccmb', \$cid_combin, 0], ['^-sp', \$sp, 1], ['^-ovp2ovf', \$ovp2ovf_command, 1], ['^-h(e|el|elp)?', \$help, 0], ['^-dbg', \$debug_mode, 0], ['^-(.+)', \$unknown, 0]);
 	if ($unknown == 1){
 		print "umkjvf: Unknown options!\n";
 		&print_help;
@@ -122,6 +135,9 @@ sub proc_arg {
 			&print_help;
 	} elsif (($omitfw != 0) && ($baseline_shift != 0)){
 			print "umkjvf: You can't use \"-b\" and \"-omitfw\" at same time.\n";
+			&print_help;
+	} elsif (($cid_combin != 0) && ($ucs == 0)){
+			print "umkjvf: You need to use \"-ccmb\" with \"-ucs\".\n";
 			&print_help;
 	} else {
 		if ($#ARGV <= 1) {
@@ -319,6 +335,16 @@ sub font_header {
 			print  OVP "   )\n";
 		}
 	}
+	if ($cid_combin == 1){
+		if($direction eq "y"){$temp_dir = "h"}elsif($direction eq "t"){$temp_dir = "v"}
+		&get_face;
+		print  OVP "(MAPFONT D 9\n";
+		print  OVP "   (FONTNAME $face"."--$temp_dir)\n";
+		print  OVP "   (FONTCHECKSUM O 0)\n";
+		print  OVP "   (FONTAT R 1.0)\n";
+		print  OVP "   (FONTDSIZE R 10.0)\n";
+		print  OVP "   )\n";
+	}
 }
 sub write_char {
     if (!$ucs) {
@@ -386,6 +412,12 @@ sub write_char {
 				else{&print_char;}
 			}
 	}
+	if ($cid_combin) {
+		foreach $dvicode (sort(keys(%upt_to_cid))) {
+			$char_code=$upt_to_cid{$dvicode};
+			&print_combin_char;
+		}
+	}
     }
 }
 sub make_vf {
@@ -403,7 +435,7 @@ sub make_vf {
 	}
 	system("$ovp2ovf $tfm_name.ovp $tfm_name.vf $tfm_name.ofm");
 	unlink "$tfm_name.ovp";
-	unlink "$tfm_name.ofm";
+	unlink "$tfm_name.ofm" if (-e "$tfm_name.ofm");
 }
 sub make_tfm {
 	open(KANJITFM,">$kanji_font.tfm") || die "Can't make \'$kanji_font.tfm\'!\n";
@@ -451,6 +483,7 @@ sub print_help {
 	print "   -cq             translate quotation mark to CID quotation (umkjvf extention)\n";
 	print "   -cp             translate comma & period to KuTohTen\n";
 	print "   -chk            translate hankaku kana to CID hankaku kana (umkjvf extention)\n";
+	print "   -ccmb           translate combined character to CID code (umkjvf extention)\n";
 	print "   -notfm (h|v)    don't read tfm\n";
 	print "   -ruby           use ruby glyph for kana (for utf package)\n";
 	print "   -expert         use alt. kana glyph for kana (for utf package)\n";
@@ -564,19 +597,19 @@ sub get_face{
 	}elsif($kana_font eq "cidgoth"){
 		$face="cidg";
 	}elsif($kana_font eq ""){
-		if($kanji_font =~ /hminr/){
+		if($kanji_font =~ /[h0]minr/){
 			$face="cidjmr";
-		}elsif($kanji_font =~ /hgothr/){
+		}elsif($kanji_font =~ /[h0]gothr/){
 			$face="cidjgr";
-		}elsif($kanji_font =~ /hminb/){
+		}elsif($kanji_font =~ /[h0]minb/){
 			$face="cidjmb";
-		}elsif($kanji_font =~ /hgothb/){
+		}elsif($kanji_font =~ /[h0]gothb/){
 			$face="cidjgb";
-		}elsif($kanji_font =~ /hmgothr/){
+		}elsif($kanji_font =~ /[h0]mgothr/){
 			$face="cidjmgr";
-		}elsif($kanji_font =~ /hminl/){
+		}elsif($kanji_font =~ /[h0]minl/){
 			$face="cidjml";
-		}elsif($kanji_font =~ /hgotheb/){
+		}elsif($kanji_font =~ /[h0]gotheb/){
 			$face="cidjge";
 		}
 	}
@@ -732,6 +765,17 @@ sub print_char{
 	if ($fontmap) {
 		printf OVP "      (SELECTFONT D %d)\n", $fontmap;
 	}
+	&baseline_shift;
+	printf OVP "      (SETCHAR H %X)\n",$char_code;
+	print  OVP "      )\n";
+	print  OVP "   )\n";
+}
+sub print_combin_char{
+	$fontmap = 9;
+	printf OVP "(CHARACTER H %X\n", $dvicode;
+	printf OVP "   (CHARWD R %f)\n", $font_at;
+	print  OVP "   (MAP\n";
+	printf OVP "      (SELECTFONT D %d)\n", $fontmap;
 	&baseline_shift;
 	printf OVP "      (SETCHAR H %X)\n",$char_code;
 	print  OVP "      )\n";

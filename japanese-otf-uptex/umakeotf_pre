@@ -5,8 +5,8 @@
 #
 
 # setting for ovp2ovf & uppltotf
-#OVP2OVF='omfonts -ovp2ovf'
-OVP2OVF=ovp2ovf
+OVP2OVF='omfonts -ovp2ovf -omit-ofm'
+#OVP2OVF=ovp2ovf
 export OVP2OVF
 UPPLTOTF=uppltotf
 

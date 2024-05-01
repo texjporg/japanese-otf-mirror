@@ -34,14 +34,14 @@ done
 echo "making vf (wait a while)..."
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -cq     upnml${face}-h uph${face}-h
-./umkjvf -ucs -sp 1 -cm -cp upnml${face}-v uph${face}-v
+./umkjvf -ucs -sp 1 -omitfw -cq     -ccmb upnml${face}-h uph${face}-h
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -ccmb upnml${face}-v uph${face}-v
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -cq     upnml${face}-h uph${face}-h
-./umkjvf -ucs -sp 1 -cm -cp upnml${face}-v uph${face}-v
+./umkjvf -ucs -sp 1 -omitfw -cq     -ccmb upnml${face}-h uph${face}-h
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -ccmb upnml${face}-v uph${face}-v
 done
 
 
