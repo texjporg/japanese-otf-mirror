@@ -12,6 +12,7 @@ mkutf32list.pl -style=kchar cid2code.txt > sp_jp_kchar.tex
 mkutf32list.pl -style=list cid2code.txt > sp_list_j.txt
 mkutf32list.pl -style=list-wo-collec cid2code.txt > sp_list_ja.txt
 mkutf32list.pl -allrange cid2code.txt > sp_jp_text.tex
+mkutf32list.pl -style=svs -svsdata=StandardizedVariants.txt -allrange cid2code.txt > svs_list_j.txt
 
 =head1 AUTHOR
 
@@ -23,13 +24,15 @@ This software is a part of japanese-otf-uptex.
 
 =cut
 
+use 5.026;
 use strict;
 binmode(STDOUT, ":utf8");
 
-our ($style, $allrange);
+our ($style, $allrange, $svsdata);
 our (@count, %reset_ch, $icollec, $cid2code, $line);
 our ($col_utf32, @out);
 our (@cid_max, $collection_n, $collection, $utfmac, $cmap, $source);
+our (%utf_to_cid);
 
 BEGIN{
     $line = 0;
@@ -70,19 +73,40 @@ if ($.<8 && /((Adobe-(?:Japan|CNS|GB|Korea).*)-\d)\s/) {
 next if (/^#/);
 $line++;
 if ($line == 1) {
-    print <<END;
-%
-% This file is generated from the data of $cmap
-$cid2code
-% for $collection_n
-%
-% Reference:
-%   https://github.com/adobe-type-tools/cmap-resources/
-%   $source
-%
-% A newer CMap may be required for some code points.
-%
-END
+    print <<~END;
+	%
+	% This file is generated from the data of $cmap
+	$cid2code
+	% for $collection_n
+	%
+	% Reference:
+	%   https://github.com/adobe-type-tools/cmap-resources/
+	%   $source
+	%
+	% A newer CMap may be required for some code points.
+	%
+	END
+
+    if ($style =~ /svs/) {
+    if (!defined($svsdata)) {
+	die "svsdata is not defined!!";
+    }
+    open(SVS, '<', $svsdata) || die "$!: cannot open $svsdata";
+    my $line = <SVS>;
+    chomp $line;
+    $line =~ s/^.*(Standard.*txt).*/$1/;
+
+    print <<~END;
+	%
+	% And also referred to data of Unicode Standardized Variants
+	% in $line
+	%
+	% Reference:
+	%   https://www.unicode.org/Public/UCD/latest/ucd/StandardizedVariants.txt
+	%
+	END
+    }
+
 }
 if (/^CID/) {
     my @header = split;
@@ -122,6 +146,9 @@ foreach (@utf32) {
     }
     $count[$icollec]++;
     push @out, $ch;
+    if ($style =~ /svs/) {
+	$utf_to_cid{"$_"} = $cid;
+    }
 }
 
 
@@ -129,6 +156,28 @@ END {
     my ($i, $out, $ch);
 
     if ($style eq "list-wo-collec") { @out = sort(@out); }
+
+    if ($style =~ /svs/) {
+	my ($line, @data, $ucsseq, $compati);
+
+	while ($line=<SVS>) {
+	    last if $line =~ /CJK compatibility ideographs/;
+	}
+
+	while ($line=<SVS>) {
+	    next unless $line =~ /^[0-9A-F]{4,5} /;
+	    @data = split ';', $line;
+	    $ucsseq = $data[0];
+	    $compati = $data[1];
+	    $compati =~ s/^.*IDEOGRAPH-//;
+	    if ($utf_to_cid{$compati}) {
+		print "$ucsseq\t$compati\t$utf_to_cid{$compati}\n";
+	    }
+	}
+
+	print "%\n% end\n";
+	exit;
+    }
 
     foreach $ch (@out) {
 	if ($style eq "list-wo-collec") {}
