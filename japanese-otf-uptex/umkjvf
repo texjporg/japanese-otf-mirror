@@ -15,7 +15,15 @@ if ($sp==1) { # supplemental plane
     %exist_char=%{$MakeSPList::r_exist_char->{'j'}};
 }
 
-my (%upt_to_cid);
+my (%upt_to_compat, %upt_to_cid);
+if ($svs_file) {
+    my (@svs_list);
+    use MakeVSList;
+    &make_svs_char_list($svs_file);
+    @svs_list=@{$MakeVSList::r_svs_list};
+
+    %upt_to_compat = ( @svs_list );
+}
 if ($cid_combin==1) {
     my (@ivd_list, $mode);
     use MakeVSList;
@@ -107,7 +115,7 @@ JIS     UCS
 }
 sub proc_arg {
 	if ($#ARGV == -1) {&print_help;}
-	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cq', \$cid_quote, 0], ['^-cp', \$comma_period, 0], ['^-chk', \$cid_hankana, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-ucs', \$ucs, 0], ['^-omitfw', \$omitfw, 0], ['^-ccmb', \$cid_combin, 0], ['^-sp', \$sp, 1], ['^-ovp2ovf', \$ovp2ovf_command, 1], ['^-h(e|el|elp)?', \$help, 0], ['^-dbg', \$debug_mode, 0], ['^-(.+)', \$unknown, 0]);
+	GetOptions(\@ARGV, ['^-b', \$baseline_shift, 1], ['^-m', \$minute_option, 0], ['^-cm', \$cid_minute, 0], ['^-cq', \$cid_quote, 0], ['^-cp', \$comma_period, 0], ['^-chk', \$cid_hankana, 0], ['^-SJIS', \$sjis, 0], ['^-scale', \$scale, 1], ['^-notfm', \$without_tfm, 1], ['^-expert', \$expert, 0], ['^-ruby', \$ruby, 0], ['^-sage', \$burasage, 0], ['^-jp04', \$jis2004, 0], ['^-ucs', \$ucs, 0], ['^-omitfw', \$omitfw, 0], ['^-svs', \$svs_file, 1], ['^-ccmb', \$cid_combin, 0], ['^-sp', \$sp, 1], ['^-ovp2ovf', \$ovp2ovf_command, 1], ['^-h(e|el|elp)?', \$help, 0], ['^-dbg', \$debug_mode, 0], ['^-(.+)', \$unknown, 0]);
 	if ($unknown == 1){
 		print "umkjvf: Unknown options!\n";
 		&print_help;
@@ -138,6 +146,9 @@ sub proc_arg {
 			&print_help;
 	} elsif (($cid_combin != 0) && ($ucs == 0)){
 			print "umkjvf: You need to use \"-ccmb\" with \"-ucs\".\n";
+			&print_help;
+	} elsif (($svs_file ne '') && ($ucs == 0)){
+			print "umkjvf: You need to use \"-svs\" with \"-ucs\".\n";
 			&print_help;
 	} else {
 		if ($#ARGV <= 1) {
@@ -412,10 +423,16 @@ sub write_char {
 				else{&print_char;}
 			}
 	}
+	if ($svs_file) {
+		foreach $dvicode (sort(keys(%upt_to_compat))) {
+			$char_code=$upt_to_compat{$dvicode};
+			&print_combin_char;
+		}
+	}
 	if ($cid_combin) {
 		foreach $dvicode (sort(keys(%upt_to_cid))) {
 			$char_code=$upt_to_cid{$dvicode};
-			&print_combin_char;
+			&print_combin_char(9);
 		}
 	}
     }
@@ -494,6 +511,7 @@ sub print_help {
 	print "   -sp <0--2>      include supplemental plane (umkjvf extention)\n";
 	print "   -SJIS           make shift jis mapped vf (experimental)\n";
 	print "   -scale <0--1>   make kokana vf\n";
+	print "   -svs <list.txt>     translate SVS character in the list (umkjvf extention)\n";
 	print "   -ovp2ovf <command>  use ovp2ovf command\n";
 	print "   -dbg            debug mode\n";
 	print "   -help           print this message\n";
@@ -771,11 +789,13 @@ sub print_char{
 	print  OVP "   )\n";
 }
 sub print_combin_char{
-	$fontmap = 9;
+	$fontmap = $_[0];
 	printf OVP "(CHARACTER H %X\n", $dvicode;
 	printf OVP "   (CHARWD R %f)\n", $font_at;
 	print  OVP "   (MAP\n";
-	printf OVP "      (SELECTFONT D %d)\n", $fontmap;
+	if ($fontmap) {
+		printf OVP "      (SELECTFONT D %d)\n", $fontmap;
+	}
 	&baseline_shift;
 	printf OVP "      (SETCHAR H %X)\n",$char_code;
 	print  OVP "      )\n";

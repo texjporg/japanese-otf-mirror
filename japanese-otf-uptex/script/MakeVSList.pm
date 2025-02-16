@@ -4,7 +4,7 @@ use strict;
 use Exporter;
 use File::Basename qw/dirname/;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(make_var_seq_list);
+our @EXPORT = qw(make_svs_char_list make_var_seq_list);
 
 =head1 NAME
 
@@ -16,12 +16,33 @@ This software is a part of japanese-otf-uptex.
 
 =cut
 
-our ($r_ivd_list);
+our ($r_svs_list, $r_ivd_list);
+
+sub make_svs_char_list($) {
+    my ($svs_file)=@_;
+    my ($line, @data, $code, $svs, $cmpt);
+
+    @{$r_svs_list} = ();
+
+    open(SVS, '<', $svs_file) || die "Cannot open \'$svs_file\'!\n";
+
+    foreach $line (<SVS>) {
+	chomp $line;
+	next if $line =~ /^%/;
+	@data = split "\t", $line;
+	$cmpt = hex($data[1]);
+	@data = split ' ', $data[0];
+	$code = hex($data[0]);
+	$svs  = hex($data[1]);
+
+	$code += (($svs - 0xFE00) << 18) + 0x400000;
+	push @{$r_svs_list}, ($code, $cmpt);
+    }
+}
 
 sub make_var_seq_list($;$) {
     my ($direction, $mode)=@_;
-    my ($line, @data, $code, $mdf, $cid);
-    my (@ivd_list, $ivs);
+    my ($line, @data, $code, $mdf, $cid, $ivs);
 
     @{$r_ivd_list} = ();
 
