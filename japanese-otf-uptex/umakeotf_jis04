@@ -55,14 +55,14 @@ done
 echo "making vf for jis2004 ..."
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -cq     upnml${face}n-h uph${face}n-h
-./umkjvf -ucs -sp 1 -cm -cp upnml${face}n-v uph${face}n-v
+./umkjvf -ucs -sp 1 -omitfw -cq     -svs script/svs_list_j.txt -ccmb upnml${face}n-h uph${face}n-h
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -svs script/svs_list_j.txt -ccmb upnml${face}n-v uph${face}n-v
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -cq     upnml${face}n-h uph${face}n-h
-./umkjvf -ucs -sp 1 -cm -cp upnml${face}n-v uph${face}n-v
+./umkjvf -ucs -sp 1 -omitfw -cq     -svs script/svs_list_j.txt -ccmb upnml${face}n-h uph${face}n-h
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -svs script/svs_list_j.txt -ccmb upnml${face}n-v uph${face}n-v
 done
 
 for face in minr gothr minb gothb mgothr
