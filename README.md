@@ -10,7 +10,7 @@ This bundle is an unofficial mirror of the followings:
   (upLaTeX support of japanese-otf by Takuji Tanaka)
     - upstream: http://www.t-lab.opal.ne.jp/tex/uptex_en.html
                 https://github.com/t-tk/japanese-otf-uptex
-    - currently japanese-otf-uptex Ver.0.30 (2023/10/08)
+    - currently japanese-otf-uptex Ver.0.31 (2025/02/16)
 - hiraprop
   (LaTeX and TFM/VF support for Hiragino Proportional Alphabet)
     - upstream: http://psitau.kitunebi.com/experiment.html
