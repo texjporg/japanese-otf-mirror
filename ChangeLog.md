@@ -1,3 +1,15 @@
+# 2025-02-18 japanese-otf
+
+Based on japanese-otf-uptex Ver.0.31.
+
+japanese-otf-uptex:
+* Support Unicode variation sequences (SVS, IVS)
+  and combined characters in Japanese plain text.
+* Fix typo related to Adobe-GB1-6 support.
+* Update reference Unicode Blocks-17.0.0.txt.
+
+
+
 # 2023-10-09 japanese-otf
 
 Based on japanese-otf-uptex Ver.0.30.
