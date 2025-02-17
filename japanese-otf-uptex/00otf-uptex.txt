@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.31  2025/02/16
+japanese-otf-uptex Ver.0.31  2025/02/18
 
 
 [ Abstract ]
@@ -567,7 +567,7 @@ https://github.com/t-tk/japanese-otf-uptex
     Adobe-GB1-6 cid2code.txt (Version 09/21/2023).
   test/uplatex/uotftest-utf8.tex ::
     Add tests for ruby with okumacro.sty and pxrubrica.sty .
-2025.02.16 Ver0.31
+2025.02.18 Ver0.31
   sty/otf.sty, sty/mlutf.sty, sty/mlcid.sty ::
     Bump version number.
   umkjvf, umakeotf{,_jis04,_pre}, script/MakeVSList.pm,
@@ -576,6 +576,9 @@ https://github.com/t-tk/japanese-otf-uptex
     and combined characters in Japanese plain text.
   script/umkcidvf.pl ::
     Fix typo for Adobe-GB1-6 support.
+  script/CheckDVICode.pm ::
+    Update references:
+    Unicode Blocks-17.0.0.txt (Date: 2024-12-11).
   test/uplatex/Makefile, test/uplatex/uotf-vs-utf8.tex,
   test/uplatex/{combined_kana_text,ivd_jp_text}.tex,
   test/uplatex/svs_list_{jpn,kor,sch,tch}.tex,
