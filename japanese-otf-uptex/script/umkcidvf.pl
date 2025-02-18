@@ -69,7 +69,7 @@ sub writechar_cid {
 	if      ($lang eq "j") {
 		$maxcidcode = 23059;
 	} elsif ($lang eq "c") {
-		$maxcidcode = 30283;
+		$maxcidcode = 30571;
 	} elsif ($lang eq "k") {
 		$maxcidcode = 18351;
 	} elsif ($lang eq "t") {

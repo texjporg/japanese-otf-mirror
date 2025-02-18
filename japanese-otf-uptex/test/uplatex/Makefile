@@ -291,6 +291,16 @@ platex-cid-ibmplex:
 		$(DVIPDFMX) -f utfmacro-ibmplex.map -o uotf-cid-$$opt-v-iplx-platex.pdf uotf-cid-$$opt-v-platex.dvi ; \
 	done
 
+uplatex-vs-haranoaji:
+	for opt in deluxe; do \
+		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotf-vs-utf8.tex ; \
+		mv uotf-vs-utf8.dvi uotf-vs-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-vs-$$opt-h-hara-uplatex.pdf uotf-vs-$$opt-h-uplatex.dvi ; \
+		$(UPLATEX) "\def\option{$$opt}\def\class{utarticle}\input" uotf-vs-utf8.tex ; \
+		mv uotf-vs-utf8.dvi uotf-vs-$$opt-v-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-vs-$$opt-v-hara-uplatex.pdf uotf-vs-$$opt-v-uplatex.dvi ; \
+	done
+
 uplatex-article:
 	for opt in noreplace; do \
 		$(UPLATEX) "\def\option{$$opt}\def\class{article}\input" uotftest-utf8.tex ; \
