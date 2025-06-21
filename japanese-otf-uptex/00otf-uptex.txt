@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.30  2023/10/08
+japanese-otf-uptex Ver.0.31  2025/02/18
 
 
 [ Abstract ]
@@ -36,12 +36,17 @@ basepl/mjvf-upnmkor-slim.cnf : makejvf configuration for Korean, minimum entry
 
 script/mkutf32list.pl : perl script making lists of characters on supplementary planes
 script/MakeSPList.pm : perl module making data of characters on supplementary planes
+script/MakeVSList.pm : perl module making data of characters with variation sequences
 script/mktfm_sp.pl   : perl script making tfm for characters on supplementary planes
 script/mkutfvf_sp.pl : perl script making vf for characters on supplementary planes
 script/sp_list_j.txt : a list of characters on supplementary planes in UniJIS-UTF32
 script/sp_list_c.txt : a list of characters on supplementary planes in UniGB-UTF32
 script/sp_list_t.txt : a list of characters on supplementary planes in UniCNS-UTF32
 script/sp_list_k.txt : a list of characters on supplementary planes in UniKS-UTF32
+script/svs_list_j.txt : a list of characters with standard variation sequences in UniJIS-UTF32
+script/svs_list_c.txt : a list of characters with standard variation sequences in UniGB-UTF32
+script/svs_list_t.txt : a list of characters with standard variation sequences in UniCNS-UTF32
+script/svs_list_k.txt : a list of characters with standard variation sequences in UniKS-UTF32
 script/CheckDVICode.pm : perl module checking category of characters
 script/umkpkana.pl   : perl script making pl, ovp for proportional kana
 script/umkvpkana.pl  : perl script making pl, ovp for proportional kana
@@ -147,6 +152,24 @@ They have not been registered in otf.sty nor mlutf.sty yet.
 I hope they will be supported by other extentional macros.
 Ref. https://github.com/t-tk/japanese-otf-uptex/issues/7
 https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=2828
+
+
+[ About Unicode variation sequences and combined characters ]
+japanese-otf-uptex Ver.0.31 has supported Unicode variation sequences
+and combined characters in Japanese plain text.
+The new virtual fonts include characters with
+SVS (Stardized Variation Selector),
+IVS (Ideographic Variation Sequence/Selector) and
+Hiragana/Katakana with semi-voiced sound mark.
+To treat them, the latest software are required as follows:
+  * ptexenc ver 1.5.0/dev TeX Live svn r71091
+  * upTeX ver 1.35, r71143
+  * omegafonts (omfonts) ver 2.2, r71118
+  * dvipdfm-x ver 20240429, r71117
+  * dvips, r72345
+These update are included in TeX Live 2025 or later.
+Ref. https://github.com/texjporg/tex-jp-build/issues/46
+https://github.com/texjporg/japanese-otf-mirror/issues/28
 
 
 [ Repository ]
@@ -544,4 +567,23 @@ https://github.com/t-tk/japanese-otf-uptex
     Adobe-GB1-6 cid2code.txt (Version 09/21/2023).
   test/uplatex/uotftest-utf8.tex ::
     Add tests for ruby with okumacro.sty and pxrubrica.sty .
+2025.02.18 Ver0.31
+  sty/otf.sty, sty/mlutf.sty, sty/mlcid.sty ::
+    Bump version number.
+  umkjvf, umakeotf{,_jis04,_pre}, script/MakeVSList.pm,
+  script/svs_list_{c,j,k,t}.txt, script/mkutf32list.pl ::
+    Support Unicode variation sequences (SVS, IVS)
+    and combined characters in Japanese plain text.
+  script/umkcidvf.pl ::
+    Fix typo for Adobe-GB1-6 support.
+  script/CheckDVICode.pm ::
+    Update references:
+    Unicode Blocks-17.0.0.txt (Date: 2024-12-11).
+  test/uplatex/Makefile, test/uplatex/uotf-vs-utf8.tex,
+  test/uplatex/{combined_kana_text,ivd_jp_text}.tex,
+  test/uplatex/svs_list_{jpn,kor,sch,tch}.tex,
+  test/uplatex/svs_list_min_jpn.tex ::
+    Add tests for SVS, IVS and combined Kana.
+  COPYRIGHT ::
+    Update year.
 

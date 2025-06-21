@@ -1,0 +1,325 @@
+% -*- coding: utf-8 -*-
+%%%%%%%%
+% To control hyperref on command line,
+% you can select one of (1),(2a),(2b),(3).
+%   (1) do not treat hyperref
+%   $ uplatex uotf-vs-utf8.tex
+%   (2a) hyperref + dvipdfmx           (with    CMap conversion)
+%   $ uplatex "\def\withhyperref{dvipdfmx}\input" uotf-vs-utf8.tex
+%   (2b) hyperref + dvipdfmx + out2uni (without CMap conversion)
+%   $ uplatex "\def\withhyperref{dvipdfmx}\nocmap{true}\input" uotf-vs-utf8.tex
+%   (3) hyperref + dvips + convbkmk.rb + distiller/ps2pdf
+%   $ uplatex "\def\withhyperref{dvips}\input" uotf-vs-utf8.tex
+%%%%%%
+
+\newif\ifuptexmode\uptexmodefalse
+\ifnum\jis"2121="3000
+ \uptexmodetrue
+ \def\tounicode{pdf:tounicode UTF8-UTF16}
+\else
+ \ifnum\jis"2121="A1A1
+  \def\tounicode{pdf:tounicode EUC-UCS2}
+ \fi
+ \ifnum\jis"2121="8140
+  \def\tounicode{pdf:tounicode 90ms-RKSJ-UCS2}
+ \fi
+\fi
+\newif\ifvertmode\vertmodefalse
+
+\makeatletter
+
+\def\@opt@{multi}
+\def\@default{default}
+\def\@jarticle{jarticle}
+\def\@tarticle{tarticle}
+\def\@ujarticle{ujarticle}
+\def\@utarticle{utarticle}
+\def\@deluxe{deluxe}
+
+\newif\ifdeluxe \deluxefalse
+\@for\@@opt:=\option\do{%
+ \ifx\@@opt\@deluxe\deluxetrue\fi
+}
+\ifx\option\@undefined
+ \def\option{default}
+\fi
+\ifx\option\@default
+\else
+ \edef\@opt@{\option,\@opt@}
+\fi
+
+\ifx\class\@undefined
+ \ifuptexmode
+  \def\class{ujarticle}
+ \else
+  \def\class{jarticle}
+ \fi
+\fi
+
+\ifx\class\@utarticle\vertmodetrue\fi
+
+\ifuptexmode
+ \edef\@opt@{uplatex,\@opt@}
+\fi
+\ifx\class\@jarticle
+  \documentclass[a4paper,titlepage,dvipdfmx]{\class}
+\else
+ \ifx\class\@ujarticle
+  \documentclass[a4paper,titlepage,dvipdfmx]{\class}
+ \else
+  \documentclass[a4paper,titlepage,landscape,dvipdfmx]{\class}
+ \fi
+\fi
+
+\usepackage[\@opt@]{otf}
+
+\def\@dvipdfmx{dvipdfmx}
+\def\@dvips{dvips}
+
+\ifx\withhyperref\@undefined
+ \def\withhyperref{undefined}
+ \edef\texorpdfstring#1#2{#1}
+\else
+ \ifx\withhyperref\@dvipdfmx
+  \def\@hyperrefkeyval{dvipdfm}
+  \usepackage{atbegshi}
+  \ifx\nocmap\@undefined
+   \AtBeginShipoutFirst{\special{\tounicode}}
+  \fi
+ \fi
+ \ifx\withhyperref\@dvips
+  \def\@hyperrefkeyval{dvips}
+ \fi
+
+\usepackage[\@hyperrefkeyval,%
+bookmarks=true,%
+bookmarksnumbered=true,%
+bookmarkstype=toc,%
+%pdfstartview={FitBH -32768},%
+pdftitle={japanese-otfのテスト},%
+pdfsubject={Unicode IVS編},%
+pdfauthor={upTeXプロジェクト},%
+pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
+]{hyperref}
+
+\fi
+
+\makeatother
+
+\AtBeginDvi{\special{papersize=\the\paperwidth,\the\paperheight}}
+\pagestyle{empty}
+\makeatletter
+\ifx\rubyfamily\@undefined\let\rubyfamily=\relax\fi
+\ifx\mgfamily\@undefined\let\mgfamily=\relax\fi
+\makeatother
+
+\textwidth 175mm
+\textheight 255mm
+\headheight 0mm
+\headsep 0mm
+\footskip 25pt
+
+\ifvertmode
+ \voffset   20mm
+ \hoffset   0mm
+ \topmargin -30mm
+\else
+ \voffset -10mm
+ \hoffset -30mm
+ \topmargin 0mm
+\fi
+
+\edef\bs{$\backslash$\kern0em}
+\setlength\parindent{0em}
+\prebreakpenalty`ㇷ=0
+
+\begin{document}
+\section{見出し}
+
+コンパイラー：\ifuptexmode upLaTeX\else pLaTeX\fi\\
+クラス：\texttt{\class}\\
+オプション：\texttt{\option}
+
+\vspace{\baselineskip}
+\ifuptexmode
+\begin{tabular}{l|cccccc}
+フォント & UTF-8 & \bs kchar & \bs UTF & \bs CID & \bs ajLig\\
+\hline
+mc/m & かか゚セセ゚ㇷㇷ゚ & \kchar"304B\kchar"304B\kchar"309A\kchar"30BB\kchar"30BB\kchar"309A\kchar"31F7\kchar"31F7\kchar"309A\,\kchar"24304B\kchar"2430BB\kchar"2431F7 & \UTF{304B}\UTF{30BB}\UTF{31F7} & \CID{16209}\CID{16219}\CID{\ifvertmode 16343\else 16246\fi} & \ajLig{か゜}\ajLig{セ゜}\ajLig{小プ} \\
+mc/bx & {\bfseries かか゚セセ゚ㇷㇷ゚} & {\bfseries\kchar"304B\kchar"304B\kchar"309A\kchar"30BB\kchar"30BB\kchar"309A\kchar"31F7\kchar"31F7\kchar"309A\,\kchar"24304B\kchar"2430BB\kchar"2431F7} & {\bfseries\UTF{304B}\UTF{30BB}\UTF{31F7}} & {\bfseries\CID{16209}\CID{16219}\CID{\ifvertmode 16343\else 16246\fi}} & {\bfseries\ajLig{か゜}\ajLig{セ゜}\ajLig{小プ}} \\
+\ifdeluxe
+mc/l & {\ltseries かか゚セセ゚ㇷㇷ゚} & {\ltseries\kchar"304B\kchar"304B\kchar"309A\kchar"30BB\kchar"30BB\kchar"309A\kchar"31F7\kchar"31F7\kchar"309A\,\kchar"24304B\kchar"2430BB\kchar"2431F7} & {\ltseries\UTF{304B}\UTF{30BB}\UTF{31F7}} & {\ltseries\CID{16209}\CID{16219}\CID{\ifvertmode 16343\else 16246\fi}} & {\ltseries\ajLig{か゜}\ajLig{セ゜}\ajLig{小プ}} \\
+\fi
+gt/m & {\gtfamily かか゚セセ゚ㇷㇷ゚} & {\gtfamily\kchar"304B\kchar"304B\kchar"309A\kchar"30BB\kchar"30BB\kchar"309A\kchar"31F7\kchar"31F7\kchar"309A\,\kchar"24304B\kchar"2430BB\kchar"2431F7} & {\gtfamily\UTF{304B}\UTF{30BB}\UTF{31F7}} & {\gtfamily\CID{16209}\CID{16219}\CID{\ifvertmode 16343\else 16246\fi}} & {\gtfamily\ajLig{か゜}\ajLig{セ゜}\ajLig{小プ}} \\
+gt/bx & {\gtfamily\bfseries かか゚セセ゚ㇷㇷ゚} & {\gtfamily\bfseries\kchar"304B\kchar"304B\kchar"309A\kchar"30BB\kchar"30BB\kchar"309A\kchar"31F7\kchar"31F7\kchar"309A\,\kchar"24304B\kchar"2430BB\kchar"2431F7} & {\gtfamily\bfseries\UTF{304B}\UTF{30BB}\UTF{31F7}} & {\gtfamily\bfseries\CID{16209}\CID{16219}\CID{\ifvertmode 16343\else 16246\fi}} & {\gtfamily\bfseries\ajLig{か゜}\ajLig{セ゜}\ajLig{小プ}} \\
+\ifdeluxe
+gt/eb & {\gtfamily\ebseries かか゚セセ゚ㇷㇷ゚} & {\gtfamily\ebseries\kchar"304B\kchar"304B\kchar"309A\kchar"30BB\kchar"30BB\kchar"309A\kchar"31F7\kchar"31F7\kchar"309A\,\kchar"24304B\kchar"2430BB\kchar"2431F7} & {\gtfamily\ebseries\UTF{304B}\UTF{30BB}\UTF{31F7}} & {\gtfamily\ebseries\CID{16209}\CID{16219}\CID{\ifvertmode 16343\else 16246\fi}} & {\gtfamily\ebseries\ajLig{か゜}\ajLig{セ゜}\ajLig{小プ}} \\
+\fi
+mg/m & {\mgfamily かか゚セセ゚ㇷㇷ゚} & {\mgfamily\kchar"304B\kchar"304B\kchar"309A\kchar"30BB\kchar"30BB\kchar"309A\kchar"31F7\kchar"31F7\kchar"309A\,\kchar"24304B\kchar"2430BB\kchar"2431F7} & {\mgfamily\UTF{304B}\UTF{30BB}\UTF{31F7}} & {\mgfamily\CID{16209}\CID{16219}\CID{\ifvertmode 16343\else 16246\fi}} & {\mgfamily\ajLig{か゜}\ajLig{セ゜}\ajLig{小プ}} \\
+\end{tabular}
+
+\vspace{\baselineskip}
+
+\begin{tabular}{l|ccccc}
+フォント & UTF-8 & \bs kchar & \bs UTF & \bs CID\\
+\hline
+mc/m & 卿卿󠄀卿󠄁卿󠄂\,卿︂卿 & \kchar"537F\kchar"537F\kchar"E0100\kchar"537F\kchar"E0101\kchar"537F\kchar"E0102\,\kchar"80537F\kchar"84537F\kchar"88537F\,\kchar"537F\kchar"FE02\kchar"48537F\kchar"2F833 & \UTF{537F}\,\UTF{2F833} & \CID{13719}\CID{1698}\CID{7661} \\
+mc/bx & {\bfseries 卿卿󠄀卿󠄁卿󠄂\,卿︂卿} & {\bfseries\kchar"537F\kchar"537F\kchar"E0100\kchar"537F\kchar"E0101\kchar"537F\kchar"E0102\,\kchar"80537F\kchar"84537F\kchar"88537F\,\kchar"537F\kchar"FE02\kchar"48537F\kchar"2F833} & {\bfseries\UTF{537F}\,\UTF{2F833}} & {\bfseries\CID{13719}\CID{1698}\CID{7661}} \\
+\ifdeluxe
+mc/l & {\ltseries 卿卿󠄀卿󠄁卿󠄂\,卿︂卿} & {\ltseries\kchar"537F\kchar"537F\kchar"E0100\kchar"537F\kchar"E0101\kchar"537F\kchar"E0102\,\kchar"80537F\kchar"84537F\kchar"88537F\,\kchar"537F\kchar"FE02\kchar"48537F\kchar"2F833} & {\ltseries\UTF{537F}\,\UTF{2F833}} & {\ltseries\CID{13719}\CID{1698}\CID{7661}} \\
+\fi
+gt/m & {\gtfamily 卿卿󠄀卿󠄁卿󠄂\,卿︂卿} & {\gtfamily\kchar"537F\kchar"537F\kchar"E0100\kchar"537F\kchar"E0101\kchar"537F\kchar"E0102\,\kchar"80537F\kchar"84537F\kchar"88537F\,\kchar"537F\kchar"FE02\kchar"48537F\kchar"2F833} & {\gtfamily\UTF{537F}\,\UTF{2F833}} & {\gtfamily\CID{13719}\CID{1698}\CID{7661}} \\
+gt/bx & {\gtfamily\bfseries 卿卿󠄀卿󠄁卿󠄂\,卿︂卿} & {\gtfamily\bfseries\kchar"537F\kchar"537F\kchar"E0100\kchar"537F\kchar"E0101\kchar"537F\kchar"E0102\,\kchar"80537F\kchar"84537F\kchar"88537F\,\kchar"537F\kchar"FE02\kchar"48537F\kchar"2F833} & {\gtfamily\bfseries\UTF{537F}\,\UTF{2F833}} & {\gtfamily\bfseries\CID{13719}\CID{1698}\CID{7661}} \\
+\ifdeluxe
+gt/eb & {\gtfamily\ebseries 卿卿󠄀卿󠄁卿󠄂\,卿︂卿} & {\gtfamily\ebseries\kchar"537F\kchar"537F\kchar"E0100\kchar"537F\kchar"E0101\kchar"537F\kchar"E0102\,\kchar"80537F\kchar"84537F\kchar"88537F\,\kchar"537F\kchar"FE02\kchar"48537F\kchar"2F833} & {\gtfamily\ebseries\UTF{537F}\,\UTF{2F833}} & {\gtfamily\ebseries\CID{13719}\CID{1698}\CID{7661}} \\
+\fi
+mg/m & {\mgfamily 卿卿󠄀卿󠄁卿󠄂\,卿︂卿} & {\mgfamily\kchar"537F\kchar"537F\kchar"E0100\kchar"537F\kchar"E0101\kchar"537F\kchar"E0102\,\kchar"80537F\kchar"84537F\kchar"88537F\,\kchar"537F\kchar"FE02\kchar"48537F\kchar"2F833} & {\mgfamily\UTF{537F}\,\UTF{2F833}} & {\mgfamily\CID{13719}\CID{1698}\CID{7661}} \\
+\end{tabular}
+\fi
+
+\section{だんこ゚。カムイチカㇷ゚。葛󠄀城市。葛󠄁飾区。艹艹︀艹︁。}
+
+\ifuptexmode
+花よりだんこ゚。
+花よりだんこ\kchar"309A。
+花よりだん\ajLig{こ゜}。
+
+カムイチカㇷ゚。
+カムイチカ\kchar"31F7\kchar"309A。
+カムイチカ\ajLig{小プ}。
+
+
+
+Base:
+葛。\UTF{845B}。\kchar"845B。
+
+VS17:
+葛󠄀。\CID{1481}。
+葛󠄀城市。
+葛\kchar"E0100城市。
+
+VS18:
+葛󠄁。\CID{7652}。
+葛󠄁飾区。
+葛\kchar"E0101飾区。
+
+
+Base:
+邉。\UTF{9089}。\kchar"9089。
+
+VS17..31:
+邉󠄀邉󠄁邉󠄂邉󠄃邉󠄄邉󠄅邉󠄆邉󠄇邉󠄈邉󠄉邉󠄊邉󠄋邉󠄌邉󠄍邉󠄎。
+\kchar"9089\kchar"E0100
+\kchar"9089\kchar"E0101
+\kchar"9089\kchar"E0102
+\kchar"9089\kchar"E0103
+\kchar"9089\kchar"E0104
+\kchar"9089\kchar"E0105
+\kchar"9089\kchar"E0106
+\kchar"9089\kchar"E0107
+\kchar"9089\kchar"E0108
+\kchar"9089\kchar"E0109
+\kchar"9089\kchar"E010A
+\kchar"9089\kchar"E010B
+\kchar"9089\kchar"E010C
+\kchar"9089\kchar"E010D
+\kchar"9089\kchar"E010E。
+
+
+Base:
+艹。\UTF{8279}。\CID{14197}。\kchar"8279。
+
+[SVS] VS1:
+艹︀。\UTF{FA5D}。\CID{14199}。
+艹\kchar"FE00。
+
+[SVS] VS2:
+艹︁。\UTF{FA5E}。\CID{14198}。
+艹\kchar"FE01。
+
+[IVS] VS17..19:
+艹󠄀艹󠄁艹󠄂。
+\kchar"8279\kchar"E0100
+\kchar"8279\kchar"E0101
+\kchar"8279\kchar"E0102。
+
+\fi
+
+\vspace{\baselineskip}
+vertical:\fbox{\hbox{\tate\Huge ッ}}
+\fbox{\hbox{\tate\Huge ㇷ}}
+\fbox{\hbox{\tate\Huge ㇷ゚}}
+
+\vspace{\baselineskip}
+horizontal:\fbox{\hbox{\yoko\Huge ッ}}
+\fbox{\hbox{\yoko\Huge ㇷ}}
+\fbox{\hbox{\yoko\Huge ㇷ゚}}
+
+\clearpage
+[mc/m]
+
+\input{combined_kana_text}
+\input{ivd_jp_text}
+
+{\bfseries%
+[mc/bx]
+
+\input{combined_kana_text}
+\input{ivd_jp_text}
+
+}
+
+{\gtfamily
+[gt/m]
+
+\input{combined_kana_text}
+\input{ivd_jp_text}
+
+{\bfseries%
+[gt/bx]
+
+\input{combined_kana_text}
+\input{ivd_jp_text}
+
+}}
+
+{\mgfamily
+[mg/m]
+
+\input{combined_kana_text}
+\input{ivd_jp_text}
+
+}
+
+
+[mc/m]
+
+\input{svs_list_min_jpn}
+
+{\bfseries%
+[mc/bx]
+
+\input{svs_list_min_jpn}
+
+}
+
+{\gtfamily
+[gt/m]
+
+\input{svs_list_min_jpn}
+
+{\bfseries%
+[gt/bx]
+
+\input{svs_list_min_jpn}
+
+}}
+
+{\mgfamily
+[mg/m]
+
+\input{svs_list_min_jpn}
+
+}
+
+\end{document}

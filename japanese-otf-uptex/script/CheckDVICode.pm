@@ -219,8 +219,8 @@ sub is_ucs_hankana{
 
 # Reference:
 #   http://www.unicode.org/Public/UNIDATA/Blocks.txt
-#     Blocks-15.0.0.txt
-#     Date: 2022-01-28, 20:58:00 GMT [KW]
+#     Blocks-17.0.0.txt
+#     Date: 2024-12-11
 sub is_ucs_jpn_range{
 	return 1 if ($dvicode<=0x04FF); # Cyrillic
 
@@ -282,6 +282,7 @@ sub is_ucs_jpn_range{
 	return 1 if ($dvicode<=0x2B81F); # CJK Unified Ideographs Extension D
 	return 1 if ($dvicode<=0x2CEAF); # CJK Unified Ideographs Extension E
 	return 1 if ($dvicode<=0x2EBEF); # CJK Unified Ideographs Extension F
+	return 1 if ($dvicode<=0x2EE5F); # CJK Unified Ideographs Extension I
 
 	return 0 if ($dvicode< 0x2F800);
 	return 1 if ($dvicode<=0x2FA1F); # CJK Compatibility Ideographs Supplement
@@ -289,6 +290,7 @@ sub is_ucs_jpn_range{
 	return 0 if ($dvicode< 0x30000);
 	return 1 if ($dvicode<=0x3134F); # CJK Unified Ideographs Extension G
 	return 1 if ($dvicode<=0x323AF); # CJK Unified Ideographs Extension H
+	return 1 if ($dvicode<=0x3347F); # CJK Unified Ideographs Extension J
 
 	return 0;
 }
