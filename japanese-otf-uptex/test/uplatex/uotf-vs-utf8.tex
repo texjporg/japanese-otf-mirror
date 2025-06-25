@@ -123,15 +123,50 @@ pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
  \voffset   20mm
  \hoffset   0mm
  \topmargin -30mm
+ \edef\hv{v }%
 \else
  \voffset -10mm
  \hoffset -30mm
  \topmargin 0mm
+ \edef\hv{h }%
 \fi
 
 \edef\bs{$\backslash$\kern0em}
 \setlength\parindent{0em}
 \prebreakpenalty`ㇷ=0
+
+\font\upjpnrml = upnmlminl-\hv at 10.0pt
+\font\upjpnrmm = upnmlminr-\hv at 10.0pt
+\font\upjpnrmb = upnmlminb-\hv at 10.0pt
+\font\upjpngtm = upnmlgothr-\hv at 10.0pt
+\font\upjpngtb = upnmlgothb-\hv at 10.0pt
+\font\upjpngte = upnmlgotheb-\hv at 10.0pt
+\font\upjpnmgm = upnmlmgothr-\hv at 10.0pt
+
+\font\upschrml = upnmschminl-\hv at 10.0pt
+\font\upschrmm = upnmschminr-\hv at 10.0pt
+\font\upschrmb = upnmschminb-\hv at 10.0pt
+\font\upschgtm = upnmschgothr-\hv at 10.0pt
+\font\upschgtb = upnmschgothb-\hv at 10.0pt
+\font\upschgte = upnmschgotheb-\hv at 10.0pt
+\font\upschmgm = upnmschmgothr-\hv at 10.0pt
+
+\font\uptchrml = upnmtchminl-\hv at 10.0pt
+\font\uptchrmm = upnmtchminr-\hv at 10.0pt
+\font\uptchrmb = upnmtchminb-\hv at 10.0pt
+\font\uptchgtm = upnmtchgothr-\hv at 10.0pt
+\font\uptchgtb = upnmtchgothb-\hv at 10.0pt
+\font\uptchgte = upnmtchgotheb-\hv at 10.0pt
+\font\uptchmgm = upnmtchmgothr-\hv at 10.0pt
+
+\font\upkorrml = upnmkorminl-\hv at 10.0pt
+\font\upkorrmm = upnmkorminr-\hv at 10.0pt
+\font\upkorrmb = upnmkorminb-\hv at 10.0pt
+\font\upkorgtm = upnmkorgothr-\hv at 10.0pt
+\font\upkorgtb = upnmkorgothb-\hv at 10.0pt
+\font\upkorgte = upnmkorgotheb-\hv at 10.0pt
+\font\upkormgm = upnmkormgothr-\hv at 10.0pt
+
 
 \begin{document}
 \section{見出し}
@@ -269,6 +304,15 @@ horizontal:\fbox{\hbox{\yoko\Huge ッ}}
 
 }
 
+\ifdeluxe
+{\ltseries%
+[mc/l]
+
+\input{combined_kana_text}
+\input{ivd_jp_text}
+}
+\fi
+
 {\gtfamily
 [gt/m]
 
@@ -280,8 +324,17 @@ horizontal:\fbox{\hbox{\yoko\Huge ッ}}
 
 \input{combined_kana_text}
 \input{ivd_jp_text}
+}
 
-}}
+\ifdeluxe
+{\ebseries%
+[gt/eb]
+
+\input{combined_kana_text}
+\input{ivd_jp_text}
+}
+\fi
+}
 
 {\mgfamily
 [mg/m]
@@ -294,31 +347,68 @@ horizontal:\fbox{\hbox{\yoko\Huge ッ}}
 
 [mc/m]
 
-\input{svs_list_min_jpn}
+\input{svs_list_min_jpn}\par
+{\upschrmm \input{svs_list_min_sch}}\par
+{\uptchrmm \input{svs_list_min_tch}}\par
+{\upkorrmm \input{svs_list_min_kor}}
 
 {\bfseries%
 [mc/bx]
 
-\input{svs_list_min_jpn}
+\input{svs_list_min_jpn}\par
+{\upschrmb \input{svs_list_min_sch}}\par
+{\uptchrmb \input{svs_list_min_tch}}\par
+{\upkorrmb \input{svs_list_min_kor}}
 
 }
+
+\ifdeluxe
+{\ltseries%
+[mc/l]
+
+\input{svs_list_min_jpn}\par
+{\upschrml \input{svs_list_min_sch}}\par
+{\uptchrml \input{svs_list_min_tch}}\par
+{\upkorrml \input{svs_list_min_kor}}
+}
+\fi
 
 {\gtfamily
 [gt/m]
 
-\input{svs_list_min_jpn}
+\input{svs_list_min_jpn}\par
+{\upschgtm \input{svs_list_min_sch}}\par
+{\uptchgtm \input{svs_list_min_tch}}\par
+{\upkorgtm \input{svs_list_min_kor}}
 
 {\bfseries%
 [gt/bx]
 
-\input{svs_list_min_jpn}
+\input{svs_list_min_jpn}\par
+{\upschgtb \input{svs_list_min_sch}}\par
+{\uptchgtb \input{svs_list_min_tch}}\par
+{\upkorgtb \input{svs_list_min_kor}}
+}
 
-}}
+\ifdeluxe
+{\ebseries%
+[gt/eb]
+
+\input{svs_list_min_jpn}\par
+{\upschgte \input{svs_list_min_sch}}\par
+{\uptchgte \input{svs_list_min_tch}}\par
+{\upkorgte \input{svs_list_min_kor}}
+}
+\fi
+}
 
 {\mgfamily
 [mg/m]
 
-\input{svs_list_min_jpn}
+\input{svs_list_min_jpn}\par
+{\upschmgm \input{svs_list_min_sch}}\par
+{\uptchmgm \input{svs_list_min_tch}}\par
+{\upkormgm \input{svs_list_min_kor}}
 
 }
 
