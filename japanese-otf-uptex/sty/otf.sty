@@ -1,5 +1,5 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{otf}[2019/04/01 v1.7b8 psitau, u0.31 ttk]
+\ProvidesPackage{otf}[2019/04/01 v1.7b8 psitau, u0.32 ttk]
 \RequirePackage{keyval}
 %for processing options
 \newif\if@kana \@kanafalse
@@ -13,11 +13,13 @@
 \newif\if@otf@uplatex \@otf@uplatexfalse
 \newif\if@otf@scale \@otf@scalefalse
 \newif\if@jsclasses \@jsclassesfalse
+\newif\if@otf@macro@nosub \@otf@macro@nosubtrue
 
 \DeclareOption{nomacro}{\@macrofalse}
 \DeclareOption{nomacros}{\@macrofalse}
 \DeclareOption{noreplace}{\@replacefalse}
 \DeclareOption{noruby}{\@rubyfalse}
+\DeclareOption{subfont}{\@otf@macro@nosubfalse}
 \DeclareOption{bold}{\@replacetrue\@boldtrue}
 \DeclareOption{expert}{\@replacetrue\@kanatrue}
 \DeclareOption{deluxe}{\@boldfalse\@replacetrue\@deluxetrue}
@@ -80,6 +82,9 @@
 		\@otf@uplatexfalse
 	\fi
 \fi
+\if@otf@uplatex
+	\@otf@macro@nosubtrue
+\fi
 %user interface
 %force catcode of \" be 12
 \count@\catcode`\"
@@ -90,7 +95,8 @@
 		\ifx\k@family\reserved@a \kanjifamily{utfjg}\else\ifx\k@family\reserved@b
 			\kanjifamily{utfjmg}\else\kanjifamily{utfj}\fi\fi%
 %		\uppercase{\set@character="#1}% (1) pLaTeX, upLaTeXともに\UTF{}に従来のsubfontを使う
-		\uppercase{\if@otf@uplatex\set@character@\else\set@character\fi="#1}% (2) upLaTeXでは\UTF{}に新vfを使う
+		\uppercase{\if@otf@macro@nosub\set@character@\else\set@character\fi="#1}% (2) nosubtrueでは\UTF{}に新vfを使う
+%		\uppercase{\set@character@="#1}% (3) pLaTeX, upLaTeXともに\UTF{}に新vfを使う
 		\endgroup%
 	}
 	\DeclareRobustCommand{\CID}[1]{\begingroup%
@@ -98,7 +104,8 @@
 		\ifx\k@family\reserved@a \kanjifamily{cidjg}\else\ifx\k@family\reserved@b
 			\kanjifamily{cidjmg}\else\kanjifamily{cidj}\fi\fi%
 %		\set@character=#1% (1) pLaTeX, upLaTeXともに\CID{}に従来のsubfontを使う
-		\if@otf@uplatex\set@character@\else\set@character\fi=#1% (2) upLaTeXでは\CID{}に新vfを使う
+		\if@otf@macro@nosub\set@character@\else\set@character\fi=#1% (2) nosubtrueでは\CID{}に新vfを使う
+%		\set@character@=#1% (3) pLaTeX, upLaTeXともに\CID{}に新vfを使う
 		\endgroup%
 	}
 \else
@@ -106,14 +113,16 @@
 		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
 		\kanjifamily{utfj}%
 %		\uppercase{\set@character="#1}% (1) pLaTeX, upLaTeXともに\UTF{}に従来のsubfontを使う
-		\uppercase{\if@otf@uplatex\set@character@\else\set@character\fi="#1}% (2) upLaTeXでは\UTF{}に新vfを使う
+		\uppercase{\if@otf@macro@nosub\set@character@\else\set@character\fi="#1}% (2) nosubtrueでは\UTF{}に新vfを使う
+%		\uppercase{\set@character@="#1}% (3) pLaTeX, upLaTeXともに\UTF{}に新vfを使う
 		\endgroup%
 	}
 	\DeclareRobustCommand{\CID}[1]{\begingroup%
 		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
 		\kanjifamily{cidj}%
 %		\set@character=#1% (1) pLaTeX, upLaTeXともに\CID{}に従来のsubfontを使う
-		\if@otf@uplatex\set@character@\else\set@character\fi=#1% (2) upLaTeXでは\CID{}に新vfを使う
+		\if@otf@macro@nosub\set@character@\else\set@character\fi=#1% (2) nosubtrueでは\CID{}に新vfを使う
+%		\set@character@=#1% (3) pLaTeX, upLaTeXともに\CID{}に新vfを使う
 		\endgroup%
 	}
 \fi
