@@ -3,7 +3,7 @@ README
 
 From 00otf-uptex.txt:
 [ Title ]
-japanese-otf-uptex Ver.0.31  2025/02/18
+japanese-otf-uptex Ver.0.32  2025/07/23
 
 
 [ Abstract ]
@@ -22,7 +22,7 @@ Ref. http://opensource.org/licenses/BSD-3-Clause
 The original source has been downloaded from
 	https://github.com/t-tk/japanese-otf-uptex
 as
-	https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.31
+	https://github.com/t-tk/japanese-otf-uptex/releases/tag/v0.32
 
 After that the scripts run and the generated tfm and vf files included.
 

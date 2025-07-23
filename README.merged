@@ -14,7 +14,7 @@ consists of following packages:
     - author: Tanaka Takuji
     - upstream: http://www.t-lab.opal.ne.jp/tex/uptex_en.html
                 https://github.com/t-tk/japanese-otf-uptex
-    - currently japanese-otf-uptex Ver.0.31 (2025/02/18)
+    - currently japanese-otf-uptex Ver.0.32 (2025/07/23)
     - readme by the author: 00otf-uptex.txt
 
 In addition, several patches were applied to support extended
