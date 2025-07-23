@@ -266,7 +266,7 @@ uplatex-cid-ibmplex:
 	done
 
 platex-cid-compile:
-	for opt in default deluxe bold expert dlxexp; do \
+	for opt in default deluxe bold expert dlxexp dlxsub; do \
 		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\input" uotf-cid-h.tex ; \
 		mv uotf-cid-h.dvi uotf-cid-$$opt-h-platex.dvi ; \
 		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\input" uotf-cid-v.tex ; \
@@ -274,7 +274,7 @@ platex-cid-compile:
 	done
 
 platex-cid-haranoaji:
-	for opt in default deluxe bold expert dlxexp; do \
+	for opt in default deluxe bold expert dlxexp dlxsub; do \
 		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-h-hara-platex.pdf uotf-cid-$$opt-h-platex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-cid-$$opt-v-hara-platex.pdf uotf-cid-$$opt-v-platex.dvi ; \
 	done
