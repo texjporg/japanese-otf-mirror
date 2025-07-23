@@ -35,9 +35,13 @@
 \def\@noreplace{noreplace}
 \def\@deluxe{deluxe}
 \def\@dlx@exp{dlxexp}
+\def\@dlx@sub{dlxsub}
 
 \ifx\option\@dlx@exp
  \edef\option{deluxe,expert}
+\fi
+\ifx\option\@dlx@sub
+ \edef\option{deluxe,subfont}
 \fi
 \newif\ifdeluxe \deluxefalse
 \@for\@@opt:=\option\do{%

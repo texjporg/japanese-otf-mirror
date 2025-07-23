@@ -9,3 +9,28 @@ CHARSET	%
 %+	4E00..9FFF,% CJK Unified Ideographs
 +	FE50..FE6F,% Small Form Variants
 +	FF00..FFEF,% Halfwidth and Fullwidth Forms
+
+% for SVS
+% Ref. ../script/svs_list_c.txt
+CHARSET	%
++	405140,
++	4051C9,
++	4055C0,
++	40793C,
++	4079CA,
++	408612,
++	4088CF,
++	4090CE,
++	4096A3,
+
+% for SVS
+% Ref. ../script/svs_list_c.txt
+REPLACE	405140	FA0C
+REPLACE	4051C9	F979
+REPLACE	4055C0	FA0D
+REPLACE	40793C	FA18
+REPLACE	4079CA	F995
+REPLACE	408612	FA20
+REPLACE	4088CF	F9E7
+REPLACE	4090CE	F92C
+REPLACE	4096A3	F9F1

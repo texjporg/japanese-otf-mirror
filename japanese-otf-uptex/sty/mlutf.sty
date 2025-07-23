@@ -1,9 +1,9 @@
 \NeedsTeXFormat{pLaTeX2e}
-\ProvidesPackage{mlutf}[2004/04/17 v1.1.2 psitau, u0.31 ttk]
+\ProvidesPackage{mlutf}[2004/04/17 v1.1.2 psitau, u0.32 ttk]
 %force catcode of \" be 12
 \count@\catcode`\"
 \catcode`\"=12
-\if@otf@uplatex
+\if@otf@macro@nosub
 \if@deluxe
 	\DeclareRobustCommand{\UTFK}[1]{\begingroup%
 		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
@@ -43,7 +43,7 @@
 		\endgroup%
 	}
 \fi
-\else% for pLaTeX
+\else% for sub-fonts
 	\DeclareRobustCommand{\UTFK}[1]{\begingroup%
 		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
 		\kanjifamily{utfk}\uppercase{\set@character="#1}%
@@ -87,7 +87,7 @@
 \DeclareKanjiFamily{\otf@JTn}{utfc}{}
 \DeclareKanjiFamily{\otf@JYn}{utft}{}
 \DeclareKanjiFamily{\otf@JTn}{utft}{}
-\if@otf@uplatex
+\if@otf@macro@nosub
 	\Declare@FontShape{utfk}{m}{-}{utfkmr}
 	\Declare@FontShape{utfc}{m}{-}{utfcmr}
 	\Declare@FontShape{utft}{m}{-}{utftmr}

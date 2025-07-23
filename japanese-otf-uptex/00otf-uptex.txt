@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.31  2025/02/18
+japanese-otf-uptex Ver.0.32  2025/07/23
 
 
 [ Abstract ]
@@ -155,8 +155,8 @@ https://oku.edu.mie-u.ac.jp/tex/mod/forum/discuss.php?d=2828
 
 
 [ About Unicode variation sequences and combined characters ]
-japanese-otf-uptex Ver.0.31 has supported Unicode variation sequences
-and combined characters in Japanese plain text.
+japanese-otf-uptex Ver.0.31..0.32 has supported Unicode variation sequences
+and combined characters in Japanese(v0.31) and Chinese/Korean(v0.32) plain text.
 The new virtual fonts include characters with
 SVS (Stardized Variation Selector),
 IVS (Ideographic Variation Sequence/Selector) and
@@ -541,8 +541,8 @@ https://github.com/t-tk/japanese-otf-uptex
       Ref. https://github.com/texjporg/japanese-otf-mirror/issues/7
   sty/otf.sty, sty/mlcid.sty,
   umakeotf, script/umkcid{tfm,vf}.pl ::
-    Introduce Unicode base multi-weight virtual fonts
-    for \CID{}, \CIDC{}, \CITT{}, \CIDK{}.
+    Introduce CID base multi-weight virtual fonts
+    for \CID{}, \CIDC{}, \CIDT{}, \CIDK{}.
   test/uplatex/{uotftest-utf8,uotf-sp-utf8,otfscale}.tex ::
     Add option 'dvipdfmx' to document class declaration.
   test/uplatex/Makefile, test/uplatex/uotftest-utf8.tex ::
@@ -586,4 +586,24 @@ https://github.com/t-tk/japanese-otf-uptex
     Add tests for SVS, IVS and combined Kana.
   COPYRIGHT ::
     Update year.
+2025.07.23 Ver0.32
+  sty/otf.sty, sty/mlutf.sty, sty/mlcid.sty ::
+    Bump version number.
+    By default, use Unicode/CID base multi-weight virtual fonts for
+    \UTF{}, \UTFC{}, \UTFT{}, \UTFK{}, \CID{}, \CIDC{}, \CIDT{}, \CIDK{} macros
+    with pLaTeX engine.
+    It requires euptex v2.00 or later (TeX Live svn r73271 or later).
+    Add option 'subfont' to use virtual fonts of subfont scheme
+    (conventional default) for \UTF*{}, \CID*{} macros with pLaTeX engine.
+    Note that we always use Unicode/CID base ones with upLaTeX engine.
+      Ref. https://github.com/t-tk/japanese-otf-uptex/issues/9
+  basepl/mjvf-upnm{sch,tch,kor}{,-slim}.cnf ::
+    Support Unicode variation sequences (SVS)
+    in Chinese/Korean plain text.
+      Ref. https://github.com/texjporg/japanese-otf-mirror/issues/28
+  test/uplatex/Makefile, test/uplatex/uotf-cid-{h,v}.tex ::
+    Add tests for 'subfont' option with pLaTeX engine.
+  test/uplatex/uotf-vs-utf8.tex,
+  test/uplatex/svs_list_min_{sch,tch,kor}.tex ::
+    Add tests for SVS in Chinese/Korean plain text.
 

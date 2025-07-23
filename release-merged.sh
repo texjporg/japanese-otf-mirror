@@ -57,6 +57,8 @@ for i in $PROJECT-$VER/* ; do
       mv $j $PROJECT-nonfree-$VER/tfm/
     done
     mkdir -p $PROJECT-nonfree-$VER/vf
+    rm $PROJECT-$VER/$bn/tfm/{utf,cid}{c,t,k}*.tfm
+    rm $PROJECT-$VER/$bn/vf/{utf,cid}{c,t,k}*.vf
     for j in $PROJECT-$VER/$bn/vf/*hira{min,kaku,maru}*.vf ; do
       mv $j $PROJECT-nonfree-$VER/vf/
     done

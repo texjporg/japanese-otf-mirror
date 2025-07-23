@@ -1,3 +1,17 @@
+# 2025-07-24 japanese-otf
+
+Based on japanese-otf-uptex Ver.0.32.
+
+japanese-otf-uptex:
+* Support Unicode variation sequences (SVS)
+  in Chinese/Korean plain text.
+* Enable to use Unicode/CID base multi-weight virtual fonts
+  for \UTF*{}, \CID*{} macros with platex.
+* Add option 'subfont' to use conventional virtual fonts
+  by subfont scheme for \UTF*{}, \CID*{} macros with platex.
+
+
+
 # 2025-02-18 japanese-otf
 
 Based on japanese-otf-uptex Ver.0.31.
