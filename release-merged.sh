@@ -57,11 +57,11 @@ for i in $PROJECT-$VER/* ; do
       mv $j $PROJECT-nonfree-$VER/tfm/
     done
     mkdir -p $PROJECT-nonfree-$VER/vf
-    rm $PROJECT-$VER/$bn/tfm/{utf,cid}{c,t,k}*.tfm
-    rm $PROJECT-$VER/$bn/vf/{utf,cid}{c,t,k}*.vf
     for j in $PROJECT-$VER/$bn/vf/*hira{min,kaku,maru}*.vf ; do
       mv $j $PROJECT-nonfree-$VER/vf/
     done
+    rm -f $PROJECT-$VER/$bn/tfm/{utf,cid}{c,t,k}*[0-9a-z]-{h,v}.tfm
+    rm -f $PROJECT-$VER/$bn/vf/{utf,cid}{c,t,k}*[0-9a-z]-{h,v}.vf
     rm $PROJECT-$VER/$bn/README
     rm $PROJECT-$VER/$bn/README.nonfree
   # we don't include fontmap/* for CTAN,
