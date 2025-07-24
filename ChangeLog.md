@@ -10,6 +10,10 @@ japanese-otf-uptex:
 * Add option 'subfont' to use conventional virtual fonts
   by subfont scheme for \UTF*{}, \CID*{} macros with platex.
 
+For platex only:
+* Remove conventional vf's and tfm's by subfont scheme for
+  \UTF{C,T,K}{}, \CID{C,T,K}{} macros from the archive.
+
 
 
 # 2025-02-18 japanese-otf
