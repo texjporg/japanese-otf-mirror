@@ -102,6 +102,8 @@ echo "making new tfm for CID ..."
 perl script/umkcidtfm.pl
 echo "making new vf for CID ..."
 perl script/umkcidvf.pl -omitfw
+echo "making vf for UTFM ..."
+perl script/umkaltutfvf.pl
 
 
 echo "finishing ..."
