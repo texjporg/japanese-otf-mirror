@@ -26,6 +26,13 @@
 		\uppercase{\set@character@="#1}%
 		\endgroup%
 	}
+	\DeclareRobustCommand{\UTFM}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\edef\reserved@b{\mgdefault}%
+		\ifx\k@family\reserved@a \kanjifamily{utfg}\else\ifx\k@family\reserved@b
+			\kanjifamily{utfmg}\else\kanjifamily{utf}\fi\fi%
+		\uppercase{\set@character@="#1}%
+		\endgroup%
+	}
 \else
 	\DeclareRobustCommand{\UTFK}[1]{\begingroup%
 		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
@@ -40,6 +47,11 @@
 	\DeclareRobustCommand{\UTFT}[1]{\begingroup%
 		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
 		\kanjifamily{utft}\uppercase{\set@character@="#1}%
+		\endgroup%
+	}
+	\DeclareRobustCommand{\UTFM}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{utf}\uppercase{\set@character@="#1}%
 		\endgroup%
 	}
 \fi
@@ -59,12 +71,12 @@
 		\kanjifamily{utft}\uppercase{\set@character="#1}%
 		\endgroup%
 	}
+	\DeclareRobustCommand{\UTFM}[1]{\begingroup%
+		\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
+		\kanjifamily{utf}\uppercase{\set@character="#1}%
+		\endgroup%
+	}
 \fi
-\DeclareRobustCommand{\UTFM}[1]{\begingroup%
-	\edef\reserved@a{\gtdefault}\ifx\k@family\reserved@a \kanjiseries{bx}\fi%
-	\kanjifamily{utf}\uppercase{\set@character="#1}%
-	\endgroup%
-}
 \catcode`\"=\count@
 %end of changing catcode of \"
 \gdef\Redefine@MLUTF{%
@@ -87,10 +99,13 @@
 \DeclareKanjiFamily{\otf@JTn}{utfc}{}
 \DeclareKanjiFamily{\otf@JYn}{utft}{}
 \DeclareKanjiFamily{\otf@JTn}{utft}{}
+\DeclareKanjiFamily{\otf@JYn}{utf}{}
+\DeclareKanjiFamily{\otf@JTn}{utf}{}
 \if@otf@macro@nosub
 	\Declare@FontShape{utfk}{m}{-}{utfkmr}
 	\Declare@FontShape{utfc}{m}{-}{utfcmr}
 	\Declare@FontShape{utft}{m}{-}{utftmr}
+	\Declare@FontShape{utf}{m}{-}{utfmr}
 	\if@deluxe
 		\Declare@FontShape{utfk}{bx}{-}{utfkmb}
 		\DeclareKanjiFamily{\otf@JYn}{utfkg}{}
@@ -122,15 +137,27 @@
 		\DeclareKanjiFamily{\otf@JTn}{utftmg}{}
 		\Declare@FontShape{utftmg}{m}{-}{utftmgr}
 		\Declare@FontShape{utft}{l}{-}{utftml}
+		\Declare@FontShape{utf}{bx}{-}{utfmb}
+		\DeclareKanjiFamily{\otf@JYn}{utfg}{}
+		\DeclareKanjiFamily{\otf@JTn}{utfg}{}
+		\Declare@FontShape{utfg}{m}{-}{utfgr}
+		\Declare@FontShape{utfg}{bx}{-}{utfgb}
+		\Declare@FontShape{utfg}{eb}{-}{utfge}
+		\DeclareKanjiFamily{\otf@JYn}{utfmg}{}
+		\DeclareKanjiFamily{\otf@JTn}{utfmg}{}
+		\Declare@FontShape{utfmg}{m}{-}{utfmgr}
+		\Declare@FontShape{utf}{l}{-}{utfml}
 	\else
 		\if@bold
 			\Declare@FontShape{utfk}{bx}{-}{utfkgb}
 			\Declare@FontShape{utfc}{bx}{-}{utfcgb}
 			\Declare@FontShape{utft}{bx}{-}{utftgb}
+			\Declare@FontShape{utf}{bx}{-}{utfgb}
 		\else
 			\Declare@FontShape{utfk}{bx}{-}{utfkgr}
 			\Declare@FontShape{utfc}{bx}{-}{utfcgr}
 			\Declare@FontShape{utft}{bx}{-}{utftgr}
+			\Declare@FontShape{utf}{bx}{-}{utfgr}
 		\fi
 	\fi
 \else
@@ -138,6 +165,7 @@
 		\Declare@FontShape{utfk}{l}{0123456789abcdef}{utfkmr}
 		\Declare@FontShape{utfc}{l}{0123456789abcdefklmnopqrstuvw}{utfcmr}
 		\Declare@FontShape{utft}{l}{0123456789abcdefklmnopqrstuvwxz}{utftmr}
+		\Declare@FontShape{utf}{l}{0123456789abcdef}{utfmr}
 	\fi
 	\Declare@FontShape{utfk}{m}{0123456789abcdef}{utfkmr}
 	\Declare@FontShape{utfk}{bx}{0123456789abcdef}{utfkgr}
@@ -145,12 +173,7 @@
 	\Declare@FontShape{utfc}{bx}{0123456789abcdefklmnopqrstuvw}{utfcgr}
 	\Declare@FontShape{utft}{m}{0123456789abcdefklmnopqrstuvwxz}{utftmr}
 	\Declare@FontShape{utft}{bx}{0123456789abcdefklmnopqrstuvwxz}{utftgr}
+	\Declare@FontShape{utf}{m}{0123456789abcdef}{utfmr}
+	\Declare@FontShape{utf}{bx}{0123456789abcdef}{utfgr}
 \fi
-\DeclareKanjiFamily{\otf@JYn}{utf}{}
-\DeclareKanjiFamily{\otf@JTn}{utf}{}
-\if@deluxe
-	\Declare@FontShape{utf}{l}{0123456789abcdefjklmnopqrstuvwxyz}{utfmr}
-\fi
-\Declare@FontShape{utf}{m}{0123456789abcdefjklmnopqrstuvwxyz}{utfmr}
-\Declare@FontShape{utf}{bx}{0123456789abcdefjklmnopqrstuvwxyz}{utfgr}
 \endinput
