@@ -2,6 +2,7 @@ rml  H IBMPlexSansJP-Regular.otf
 rmlv V IBMPlexSansJP-Regular.otf
 
 uprml-h UniJISup-UTF16-H IBMPlexSansJP-Regular.otf
+uprml-hq UniJIS-UCS2-H IBMPlexSansJP-Regular.otf
 uprml-v UniJISup-UTF16-V IBMPlexSansJP-Regular.otf
 
 hminr-h H IBMPlexSansJP-Regular.otf

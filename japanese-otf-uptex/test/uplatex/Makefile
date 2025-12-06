@@ -57,9 +57,31 @@ which-cjmr-ofm:
 	-@kpsewhich -format ofm otf-cjmr-h.ofm
 	-@kpsewhich -format ofm otf-cjmr-v.ofm
 
+which-cidjmr--vf:
+	-@kpsewhich -format vf cidjmr--h.vf
+	-@kpsewhich -format vf cidjmr--v.vf
+
+which-cidjmr--tfm:
+	-@kpsewhich -format tfm cidjmr--h.tfm
+	-@kpsewhich -format tfm cidjmr--v.tfm
+
 which-ucgb-tfm:
 	-@kpsewhich -format tfm otf-ucgb-h.tfm
 	-@kpsewhich -format tfm otf-ucgb-v.tfm
+	-@kpsewhich -format tfm otf-ucgr-h.tfm
+	-@kpsewhich -format tfm otf-ucgr-v.tfm
+
+which-ccgb-tfm:
+	-@kpsewhich -format tfm otf-ccgb-h.tfm
+	-@kpsewhich -format tfm otf-ccgb-v.tfm
+	-@kpsewhich -format tfm otf-ccgr-h.tfm
+	-@kpsewhich -format tfm otf-ccgr-v.tfm
+
+which-utmr-tfm:
+	-@kpsewhich -format tfm otf-utmr-h.tfm
+	-@kpsewhich -format tfm otf-utmr-v.tfm
+	-@kpsewhich -format tfm otf-utgb-h.tfm
+	-@kpsewhich -format tfm otf-utgb-v.tfm
 
 which-hara-otf:
 	-@kpsewhich -format "opentype fonts" HaranoAjiMincho-Regular.otf
@@ -72,11 +94,18 @@ which-hara-otf:
 
 which-hara-ck-otf:
 	-@kpsewhich -format "opentype fonts" HaranoAjiMinchoCN-Regular.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiMinchoCN-Bold.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiMinchoCN-Light.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothicCN-Normal.otf
 	-@kpsewhich -format "opentype fonts" HaranoAjiGothicCN-Medium.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothicCN-Bold.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothicCN-Heavy.otf
 	-@kpsewhich -format "opentype fonts" HaranoAjiMinchoTW-Regular.otf
 	-@kpsewhich -format "opentype fonts" HaranoAjiGothicTW-Medium.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothicTW-Normal.otf
 	-@kpsewhich -format "opentype fonts" HaranoAjiMinchoK1-Regular.otf
 	-@kpsewhich -format "opentype fonts" HaranoAjiGothicK1-Medium.otf
+	-@kpsewhich -format "opentype fonts" HaranoAjiGothicK1-Normal.otf
 
 which-koz-otf:
 	-@kpsewhich -format "opentype fonts" KozMinPr6N-Regular.otf
@@ -112,11 +141,32 @@ which-cmap:
 	-@kpsewhich -format "cmap files" UniCNS-UTF16-V
 	-@kpsewhich -format "cmap files" UniKS-UTF16-H
 	-@kpsewhich -format "cmap files" UniKS-UTF16-V
+	-@kpsewhich -format "cmap files" UniJISup-UTF16-H
+	-@kpsewhich -format "cmap files" UniJISup-UTF16-V
 
 which-cid-tex:
 	-@kpsewhich uotf-cid-h.tex
 	-@kpsewhich uotf-cid-v.tex
+	-@kpsewhich uotftest-utf8.tex
+	-@kpsewhich cid_jp_h.tex
+	-@kpsewhich cid_jp_v.tex
+	-@kpsewhich cid_gb_h.tex
+	-@kpsewhich cid_gb_v.tex
+	-@kpsewhich cid_cns_h.tex
+	-@kpsewhich cid_cns_v.tex
+	-@kpsewhich cid_ks_h.tex
+	-@kpsewhich cid_ks_v.tex
 
+which-article:
+	-@kpsewhich jarticle.cls
+	-@kpsewhich tarticle.cls
+	-@kpsewhich ujarticle.cls
+	-@kpsewhich utarticle.cls
+	-@kpsewhich jsarticle.cls
+
+which-ruby-macro:
+	-@kpsewhich okumacro.sty
+	-@kpsewhich pxrubrica.sty
 
 all: otf sp art brsg jis04 scale prop punct exclam dir
 
@@ -199,43 +249,59 @@ uplatex-sp:
 	for opt in default deluxe expert bold noreplace; do \
 		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotf-sp-utf8.tex ; \
 		mv uotf-sp-utf8.dvi uotf-sp-$$opt-h-uplatex.dvi ; \
-		$(DVIPDFMX) uotf-sp-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-noembed.map uotf-sp-$$opt-h-uplatex.dvi ; \
 		$(UPLATEX) "\def\option{$$opt}\def\class{utarticle}\input" uotf-sp-utf8.tex ; \
 		mv uotf-sp-utf8.dvi uotf-sp-$$opt-v-uplatex.dvi ; \
-		$(DVIPDFMX) uotf-sp-$$opt-v-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-noembed.map uotf-sp-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-sp-haranoaji:
+	for opt in deluxe expert; do \
+		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\def\withAdobeGBOneSix{}\input" uotf-sp-utf8.tex ; \
+		mv uotf-sp-utf8.dvi uotf-sp-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-h-hara-uplatex.pdf uotf-sp-$$opt-h-uplatex.dvi ; \
+		$(UPLATEX) "\def\option{$$opt}\def\class{utarticle}\def\withAdobeGBOneSix{}\input" uotf-sp-utf8.tex ; \
+		mv uotf-sp-utf8.dvi uotf-sp-$$opt-v-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-v-hara-uplatex.pdf uotf-sp-$$opt-v-uplatex.dvi ; \
+	done
+
+uplatex-sp-kozuka:
+	for opt in deluxe expert; do \
+		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotf-sp-utf8.tex ; \
+		mv uotf-sp-utf8.dvi uotf-sp-$$opt-h-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-h-koz-uplatex.pdf uotf-sp-$$opt-h-uplatex.dvi ; \
+		$(UPLATEX) "\def\option{$$opt}\def\class{utarticle}\input" uotf-sp-utf8.tex ; \
+		mv uotf-sp-utf8.dvi uotf-sp-$$opt-v-uplatex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-v-koz-uplatex.pdf uotf-sp-$$opt-v-uplatex.dvi ; \
 	done
 
 platex-sp:
 	for opt in default deluxe expert bold noreplace; do \
 		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\input" uotf-sp-utf8.tex ; \
 		mv uotf-sp-utf8.dvi uotf-sp-$$opt-h-platex.dvi ; \
-		$(DVIPDFMX) uotf-sp-$$opt-h-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-noembed.map uotf-sp-$$opt-h-platex.dvi ; \
 		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\input" uotf-sp-utf8.tex ; \
 		mv uotf-sp-utf8.dvi uotf-sp-$$opt-v-platex.dvi ; \
-		$(DVIPDFMX) uotf-sp-$$opt-v-platex.dvi ; \
+		$(DVIPDFMX) -f utfmacro-noembed.map uotf-sp-$$opt-v-platex.dvi ; \
 	done
 
-uplatex-sp-haranoaji: uplatex-sp
+platex-sp-haranoaji:
 	for opt in deluxe expert; do \
-		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-h-hara-uplatex.pdf uotf-sp-$$opt-h-uplatex.dvi ; \
-		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-v-hara-uplatex.pdf uotf-sp-$$opt-v-uplatex.dvi ; \
-	done
-
-uplatex-sp-kozuka: uplatex-sp
-	for opt in deluxe expert; do \
-		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-h-koz-uplatex.pdf uotf-sp-$$opt-h-uplatex.dvi ; \
-		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-v-koz-uplatex.pdf uotf-sp-$$opt-v-uplatex.dvi ; \
-	done
-
-platex-sp-haranoaji: platex-sp
-	for opt in deluxe expert; do \
+		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\def\withAdobeGBOneSix{}\input" uotf-sp-utf8.tex ; \
+		mv uotf-sp-utf8.dvi uotf-sp-$$opt-h-platex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-h-hara-platex.pdf uotf-sp-$$opt-h-platex.dvi ; \
+		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\def\withAdobeGBOneSix{}\input" uotf-sp-utf8.tex ; \
+		mv uotf-sp-utf8.dvi uotf-sp-$$opt-v-platex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-sp-$$opt-v-hara-platex.pdf uotf-sp-$$opt-v-platex.dvi ; \
 	done
 
-platex-sp-kozuka: platex-sp
+platex-sp-kozuka:
 	for opt in deluxe expert; do \
+		$(PLATEX) "\def\option{$$opt}\def\class{jarticle}\input" uotf-sp-utf8.tex ; \
+		mv uotf-sp-utf8.dvi uotf-sp-$$opt-h-platex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-h-koz-platex.pdf uotf-sp-$$opt-h-platex.dvi ; \
+		$(PLATEX) "\def\option{$$opt}\def\class{tarticle}\input" uotf-sp-utf8.tex ; \
+		mv uotf-sp-utf8.dvi uotf-sp-$$opt-v-platex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-sp-$$opt-v-koz-platex.pdf uotf-sp-$$opt-v-platex.dvi ; \
 	done
 
@@ -254,7 +320,7 @@ uplatex-cid-haranoaji:
 	done
 
 uplatex-cid-kozuka:
-	for opt in default deluxe expert dlxexp; do \
+	for opt in default deluxe bold expert dlxexp; do \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-h-koz-uplatex.pdf uotf-cid-$$opt-h-uplatex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-v-koz-uplatex.pdf uotf-cid-$$opt-v-uplatex.dvi ; \
 	done
@@ -280,7 +346,7 @@ platex-cid-haranoaji:
 	done
 
 platex-cid-kozuka:
-	for opt in default deluxe expert dlxexp; do \
+	for opt in default deluxe bold expert dlxexp; do \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-h-koz-platex.pdf uotf-cid-$$opt-h-platex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-kozuka.map -o uotf-cid-$$opt-v-koz-platex.pdf uotf-cid-$$opt-v-platex.dvi ; \
 	done
