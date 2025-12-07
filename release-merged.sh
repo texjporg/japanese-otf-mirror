@@ -62,6 +62,8 @@ for i in $PROJECT-$VER/* ; do
     done
     rm -f $PROJECT-$VER/$bn/tfm/{utf,cid}{c,t,k}*[0-9a-z]-{h,v}.tfm
     rm -f $PROJECT-$VER/$bn/vf/{utf,cid}{c,t,k}*[0-9a-z]-{h,v}.vf
+    rm -f $PROJECT-$VER/$bn/tfm/utf{mr,gr}[0-9a-z]-{h,v}.tfm
+    rm -f $PROJECT-$VER/$bn/vf/utf{mr,gr}[0-9a-z]-{h,v}.vf
     rm $PROJECT-$VER/$bn/README
     rm $PROJECT-$VER/$bn/README.nonfree
   # we don't include fontmap/* for CTAN,

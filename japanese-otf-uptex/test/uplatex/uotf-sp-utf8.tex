@@ -33,7 +33,12 @@
 \def\@tarticle{tarticle}
 \def\@ujarticle{ujarticle}
 \def\@noreplace{noreplace}
+\def\@deluxe{deluxe}
 
+\newif\ifdeluxe \deluxefalse
+\@for\@@opt:=\option\do{%
+ \ifx\@@opt\@deluxe\deluxetrue\fi
+}
 \ifx\option\@undefined
  \def\option{default}
 \fi
@@ -134,6 +139,9 @@ pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
 
 \edef\bs{$\backslash$\kern0em}
 \setlength\parindent{0em}
+\textwidth160mm
+\oddsidemargin0mm
+\evensidemargin0mm
 
 \begin{document}
 \section{見出し}
@@ -144,24 +152,36 @@ pdfkeywords={TeX; dvips; dvipdfmx; bookmark; hyperref; しおり; pdf}%
 
 \vspace{\baselineskip}
 \ifuptexmode
-\begin{tabular}{l||ccccccc}
-フォント & 仮名 & 漢字 & UTF-8 & \bs kchar & \bs UTF & \bs CID\\
+\begin{tabular}{l||cccccccc}
+フォント & 仮名 & 漢字 & UTF-8 & \bs kchar & \bs UTF & \bs CID & \bs UTFM \\
 \hline
-mc/m & ひらかな & 漢字 & 𠮟𠅘 & \kchar"20B9F\kchar"20158 & \UTF{20B9F}\UTF{20158} & \CID{13803}\CID{20075} \\
-mc/bx & {\bfseries ひらかな} & {\bfseries 漢字} & {\bfseries 𠮟𠅘} & {\bfseries\kchar"20B9F\kchar"20158} & {\bfseries\UTF{20B9F}\UTF{20158}} & {\bfseries\CID{13803}\CID{20075}} \\
-gt/m & {\gtfamily ひらかな} & {\gtfamily 漢字} & {\gtfamily 𠮟𠅘} & {\gtfamily\kchar"20B9F\kchar"20158} & {\gtfamily\UTF{20B9F}\UTF{20158}} & {\gtfamily\CID{13803}\CID{20075}} \\
-gt/bx & {\gtfamily\bfseries ひらかな} & {\gtfamily\bfseries 漢字} & {\gtfamily\bfseries 𠮟𠅘} & {\gtfamily\bfseries\kchar"20B9F\kchar"20158} & {\gtfamily\bfseries\UTF{20B9F}\UTF{20158}} & {\gtfamily\bfseries\CID{13803}\CID{20075}} \\
-mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily 𠮟𠅘} & {\mgfamily\kchar"20B9F\kchar"20158} & {\mgfamily\UTF{20B9F}\UTF{20158}} & {\mgfamily\CID{13803}\CID{20075}} \\
+mc/m & ひらかな & 漢字 & 𠮟𠅘 & \kchar"20B9F\kchar"20158 & \UTF{20B9F}\UTF{20158} & \CID{13803}\CID{20075} & \UTFM{20B9F}\UTFM{20158} \\
+mc/bx & {\bfseries ひらかな} & {\bfseries 漢字} & {\bfseries 𠮟𠅘} & {\bfseries\kchar"20B9F\kchar"20158} & {\bfseries\UTF{20B9F}\UTF{20158}} & {\bfseries\CID{13803}\CID{20075}} & {\bfseries\UTFM{20B9F}\UTFM{20158}} \\
+\ifdeluxe
+mc/l & {\ltseries ひらかな} & {\ltseries 漢字} & {\ltseries 𠮟𠅘} & {\ltseries\kchar"20B9F\kchar"20158} & {\ltseries\UTF{20B9F}\UTF{20158}} & {\ltseries\CID{13803}\CID{20075}} & {\ltseries\UTFM{20B9F}\UTFM{20158}} \\
+\fi
+gt/m & {\gtfamily ひらかな} & {\gtfamily 漢字} & {\gtfamily 𠮟𠅘} & {\gtfamily\kchar"20B9F\kchar"20158} & {\gtfamily\UTF{20B9F}\UTF{20158}} & {\gtfamily\CID{13803}\CID{20075}} & {\gtfamily\UTFM{20B9F}\UTFM{20158}} \\
+gt/bx & {\gtfamily\bfseries ひらかな} & {\gtfamily\bfseries 漢字} & {\gtfamily\bfseries 𠮟𠅘} & {\gtfamily\bfseries\kchar"20B9F\kchar"20158} & {\gtfamily\bfseries\UTF{20B9F}\UTF{20158}} & {\gtfamily\bfseries\UTFM{20B9F}\UTFM{20158}} & {\gtfamily\bfseries\CID{13803}\CID{20075}} \\
+\ifdeluxe
+gt/eb & {\gtfamily\ebseries ひらかな} & {\gtfamily\ebseries 漢字} & {\gtfamily\ebseries 𠮟𠅘} & {\gtfamily\ebseries\kchar"20B9F\kchar"20158} & {\gtfamily\ebseries\UTF{20B9F}\UTF{20158}} & {\gtfamily\ebseries\CID{13803}\CID{20075}} & {\gtfamily\ebseries\UTFM{20B9F}\UTFM{20158}} \\
+\fi
+mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily 𠮟𠅘} & {\mgfamily\kchar"20B9F\kchar"20158} & {\mgfamily\UTF{20B9F}\UTF{20158}} & {\mgfamily\CID{13803}\CID{20075}} & {\mgfamily\UTFM{20B9F}\UTFM{20158}} \\
 \end{tabular}
 \else
-\begin{tabular}{l||ccccc}
-フォント & 仮名 & 漢字 & \bs UTF & \bs CID\\
+\begin{tabular}{l||cccccc}
+フォント & 仮名 & 漢字 & \bs UTF & \bs CID & \bs UTFM \\
 \hline
-mc/m & ひらかな & 漢字 & \UTF{20B9F}\UTF{20158} & \CID{13803}\CID{20075} \\
-mc/bx & {\bfseries ひらかな} & {\bfseries 漢字} & {\bfseries\UTF{20B9F}\UTF{20158}} & {\bfseries\CID{13803}\CID{20075}} \\
-gt/m & {\gtfamily ひらかな} & {\gtfamily 漢字} & {\gtfamily\UTF{20B9F}\UTF{20158}} & {\gtfamily\CID{13803}\CID{20075}} \\
-gt/bx & {\gtfamily\bfseries ひらかな} & {\gtfamily\bfseries 漢字} & {\gtfamily\bfseries\UTF{20B9F}\UTF{20158}} & {\gtfamily\bfseries\CID{13803}\CID{20075}} \\
-mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily\UTF{20B9F}\UTF{20158}} & {\mgfamily\CID{13803}\CID{20075}} \\
+mc/m & ひらかな & 漢字 & \UTF{20B9F}\UTF{20158} & \CID{13803}\CID{20075} & \UTFM{20B9F}\UTFM{20158} \\
+mc/bx & {\bfseries ひらかな} & {\bfseries 漢字} & {\bfseries\UTF{20B9F}\UTF{20158}} & {\bfseries\CID{13803}\CID{20075}} & {\bfseries\UTFM{20B9F}\UTFM{20158}} \\
+\ifdeluxe
+mc/l & {\ltseries ひらかな} & {\ltseries 漢字} & {\ltseries\UTF{20B9F}\UTF{20158}} & {\ltseries\CID{13803}\CID{20075}} & {\ltseries\UTFM{20B9F}\UTFM{20158}} \\
+\fi
+gt/m & {\gtfamily ひらかな} & {\gtfamily 漢字} & {\gtfamily\UTF{20B9F}\UTF{20158}} & {\gtfamily\CID{13803}\CID{20075}} & {\gtfamily\UTFM{20B9F}\UTFM{20158}} \\
+gt/bx & {\gtfamily\bfseries ひらかな} & {\gtfamily\bfseries 漢字} & {\gtfamily\bfseries\UTF{20B9F}\UTF{20158}} & {\gtfamily\bfseries\CID{13803}\CID{20075}} & {\gtfamily\bfseries\UTFM{20B9F}\UTFM{20158}} \\
+\ifdeluxe
+gt/eb & {\gtfamily\ebseries ひらかな} & {\gtfamily\ebseries 漢字} & {\gtfamily\ebseries\UTF{20B9F}\UTF{20158}} & {\gtfamily\ebseries\CID{13803}\CID{20075}} & {\gtfamily\ebseries\UTFM{20B9F}\UTFM{20158}} \\
+\fi
+mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily\UTF{20B9F}\UTF{20158}} & {\mgfamily\CID{13803}\CID{20075}} & {\mgfamily\UTFM{20B9F}\UTFM{20158}} \\
 \end{tabular}
 \fi
 \vspace{\baselineskip}
@@ -213,17 +233,17 @@ mg/m & {\mgfamily ひらかな} & {\mgfamily 漢字} & {\mgfamily\UTF{20B9F}\UTF
 \subsection{ハングル：\UTFK{c548}\UTFK{b155}\UTFK{d558}\UTFK{C138}\UTFK{C694}}
 ハングル：\UTFK{c548}\UTFK{b155}\UTFK{d558}\UTFK{C138}\UTFK{C694}
 
-\subsection{日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}}
-日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}
+\subsection{日本：\UTF{20509}\UTF{241FE}  簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}}
+日本：\UTF{20509}\UTF{241FE}  簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}
 
-\subsection{日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}}
-日本：\UTF{20509}\UTF{241FE}　簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}
+\subsection{日本：\UTF{20509}\UTF{241FE}  簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}}
+日本：\UTF{20509}\UTF{241FE}  簡体字：\UTFC{20509}\UTFC{241FE}  多言語：\UTFM{20509}\UTFM{241FE}
 
-\subsection{日本：\UTF{20b9f}\UTF{26402}　繁體字：\UTFT{20b9f}\UTFT{26402}  多言語：\UTFM{20b9f}\UTFM{26402}}
-日本：\UTF{20b9f}\UTF{26402}　繁體字：\UTFT{20b9f}\UTFT{26402}  多言語：\UTFM{20b9f}\UTFM{26402}
+\subsection{日本：\UTF{20b9f}\UTF{26402}  繁體字：\UTFT{20b9f}\UTFT{26402}  多言語：\UTFM{20b9f}\UTFM{26402}}
+日本：\UTF{20b9f}\UTF{26402}  繁體字：\UTFT{20b9f}\UTFT{26402}  多言語：\UTFM{20b9f}\UTFM{26402}
 
-\subsection{簡体字：\UTFC{20087}\UTFC{200cc}　繁體字：\UTFT{20087}\UTFT{200cc}  多言語：\UTFM{20087}\UTFM{200cc}}
-簡体字：\UTFC{20087}\UTFC{200cc}　繁體字：\UTFT{20087}\UTFT{200cc}  多言語：\UTFM{20087}\UTFM{200cc}
+\subsection{簡体字：\UTFC{20087}\UTFC{200cc}  繁體字：\UTFT{20087}\UTFT{200cc}  多言語：\UTFM{20087}\UTFM{200cc}}
+簡体字：\UTFC{20087}\UTFC{200cc}  繁體字：\UTFT{20087}\UTFT{200cc}  多言語：\UTFM{20087}\UTFM{200cc}
 \fi
 \makeatother
 
