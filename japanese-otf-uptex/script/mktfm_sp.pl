@@ -126,6 +126,13 @@ sub make_multi_utf_tfm {
 			}
 		}
 	}
+	foreach $lang (''){ #language, '' for UTFM macro
+		foreach $face (@face){ #face
+			foreach $dir (@dir){ #direction
+				&make_ucs_tfm_body($face, $dir, $lang);
+			}
+		}
+	}
 }
 sub make_unified_utf_tfm {
 		foreach $face (@face[0..1]){ #face
@@ -177,7 +184,7 @@ sub make_ucs_tfm_body {
 		open(TEXTFM,">tfm/$filename.tfm") || die "Can't make \'tfm/$filename.tfm\'!\n";
 		binmode(TEXTFM);
 		if ($dir eq 'h') {
-			if ($lang eq 'j') {
+			if ($lang eq 'j' || $lang eq '') {
 				@tex_tfm = @tex_tfm_ucs_h;
 			} else {
 				@tex_tfm = @tex_tfm_h;
