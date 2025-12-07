@@ -1,3 +1,17 @@
+# 2025-12-06 japanese-otf
+
+Based on japanese-otf-uptex Ver.0.33.
+
+japanese-otf-uptex:
+* Enable to use Unicode base multi-weight virtual fonts
+  for \UTFM{} macros with both platex and uplatex.
+
+For platex only:
+* Remove conventional vf's and tfm's by subfont scheme for
+  \UTFM{} macros from the archive.
+
+
+
 # 2025-07-24 japanese-otf
 
 Based on japanese-otf-uptex Ver.0.32.

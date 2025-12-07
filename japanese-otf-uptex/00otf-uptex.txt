@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.32  2025/07/23
+japanese-otf-uptex Ver.0.33  2025/12/06
 
 
 [ Abstract ]
@@ -606,4 +606,25 @@ https://github.com/t-tk/japanese-otf-uptex
   test/uplatex/uotf-vs-utf8.tex,
   test/uplatex/svs_list_min_{sch,tch,kor}.tex ::
     Add tests for SVS in Chinese/Korean plain text.
+2025.12.06 Ver0.33
+  sty/otf.sty, sty/mlutf.sty, sty/mlcid.sty ::
+    Bump version number.
+    By default, use Unicode base multi-weight virtual fonts for
+    \UTFM{} macros with both pLaTeX and upLaTeX engine.
+    It requires euptex v2.00 or later (TeX Live svn r73271 or later)
+    if it run with pLaTeX.
+    Option 'subfont' works to use virtual fonts of subfont scheme
+    (conventional default) for \UTFM{} macro.
+      Ref. https://github.com/t-tk/japanese-otf-uptex/issues/10
+  umakeotf, script/mktfm_sp.pl, script/umkaltutfvf.pl,
+  sty/mlutf.sty ::
+    Introduce Unicode base multi-weight virtual fonts for \UTFM{}.
+  test/uplatex/cid_gb_{h,v}.tex, test/uplatex/sp_gb_utf8.tex ::
+    Add tests for Adobe-GB1-6.
+  test/uplatex/uotf-cid-{h,v}.tex, test/uplatex/uotf-sp-utf8.tex ::
+    Add tests for \UTFM{} macro.
+  test/uplatex/uotftest-utf8.tex,
+  test/uplatex/utfmacro-{haranoaji,ibmplex,kozuka,noembed}.map,
+  test/uplatex/Makefile ::
+    Update tests.
 
