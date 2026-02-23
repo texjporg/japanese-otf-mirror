@@ -358,7 +358,7 @@ platex-cid-ibmplex:
 	done
 
 uplatex-vs-haranoaji:
-	for opt in deluxe; do \
+	for opt in deluxe expert dlxexp; do \
 		$(UPLATEX) "\def\option{$$opt}\def\class{ujarticle}\input" uotf-vs-utf8.tex ; \
 		mv uotf-vs-utf8.dvi uotf-vs-$$opt-h-uplatex.dvi ; \
 		$(DVIPDFMX) -f utfmacro-haranoaji.map -o uotf-vs-$$opt-h-hara-uplatex.pdf uotf-vs-$$opt-h-uplatex.dvi ; \
