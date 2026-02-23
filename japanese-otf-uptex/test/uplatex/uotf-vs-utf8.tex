@@ -35,7 +35,11 @@
 \def\@ujarticle{ujarticle}
 \def\@utarticle{utarticle}
 \def\@deluxe{deluxe}
+\def\@dlx@exp{dlxexp}
 
+\ifx\option\@dlx@exp
+ \edef\option{deluxe,expert}
+\fi
 \newif\ifdeluxe \deluxefalse
 \@for\@@opt:=\option\do{%
  \ifx\@@opt\@deluxe\deluxetrue\fi
