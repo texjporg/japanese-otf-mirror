@@ -3,7 +3,7 @@
 Based on japanese-otf-uptex Ver.0.34.
 
 japanese-otf-uptex:
-* Add entry of Unicode variation sequences (SVS, IVS)
+* Add entries of Unicode variation sequences (SVS, IVS)
   to virtual fonts for expert option.
 
 For platex only:
