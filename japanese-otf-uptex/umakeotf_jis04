@@ -67,14 +67,14 @@ done
 
 for face in minr gothr minb gothb mgothr
 do
-./umkjvf -ucs -sp 1 -omitfw -cq     -expert upexp${face}n-h  uph${face}n-h cidj${face}
-./umkjvf -ucs -sp 1 -omitfw -cm -cp -expert upexp${face}n-v  uph${face}n-v cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cq     -svs script/svs_list_j.txt -ccmb -expert upexp${face}n-h  uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -svs script/svs_list_j.txt -ccmb -expert upexp${face}n-v  uph${face}n-v cidj${face}
 done
 #extra fonts
 for face in gotheb minl
 do
-./umkjvf -ucs -sp 1 -omitfw -cq     -expert upexp${face}n-h  uph${face}n-h cidj${face}
-./umkjvf -ucs -sp 1 -omitfw -cm -cp -expert upexp${face}n-v  uph${face}n-v cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cq     -svs script/svs_list_j.txt -ccmb -expert upexp${face}n-h  uph${face}n-h cidj${face}
+./umkjvf -ucs -sp 1 -omitfw -cm -cp -svs script/svs_list_j.txt -ccmb -expert upexp${face}n-v  uph${face}n-v cidj${face}
 done
 
 
