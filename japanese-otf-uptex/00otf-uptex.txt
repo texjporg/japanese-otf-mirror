@@ -1,5 +1,5 @@
 [ Title ]
-japanese-otf-uptex Ver.0.33  2025/12/06
+japanese-otf-uptex Ver.0.34  2026/02/23
 
 
 [ Abstract ]
@@ -627,4 +627,14 @@ https://github.com/t-tk/japanese-otf-uptex
   test/uplatex/utfmacro-{haranoaji,ibmplex,kozuka,noembed}.map,
   test/uplatex/Makefile ::
     Update tests.
+2026.02.23 Ver0.34
+  sty/otf.sty, sty/mlutf.sty, sty/mlcid.sty ::
+    Bump version number.
+  umakeotf{,_jis04} ::
+    Add entries of Unicode variation sequences (SVS, IVS)
+    to virtual fonts for expert option.
+  test/uplatex/Makefile, test/uplatex/uotf-vs-utf8.tex ::
+    Update tests.
+  COPYRIGHT ::
+    Update year.
 
