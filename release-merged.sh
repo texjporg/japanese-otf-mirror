@@ -121,8 +121,10 @@ done
 #  do not make japanese-otf-uptex-*.tar.gz anymore
   rm -rf $PROJECT-uptex-$VER
   # make archives
-  tar zcf $DIR/$PROJECT-$VER.tar.gz $PROJECT-$VER
-  tar zcf $DIR/$PROJECT-nonfree-$VER.tar.gz $PROJECT-nonfree-$VER
+  mv $PROJECT-$VER $PROJECT
+  tar zcf $DIR/$PROJECT-$VER.tar.gz $PROJECT
+  mv $PROJECT-nonfree-$VER $PROJECT-nonfree
+  tar zcf $DIR/$PROJECT-nonfree-$VER.tar.gz $PROJECT-nonfree
 #  tar zcf $DIR/$PROJECT-uptex-$VER.tar.gz $PROJECT-uptex-$VER
   echo
   echo You should execute
