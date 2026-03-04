@@ -1,4 +1,4 @@
-# 2026-02-23 japanese-otf
+# 2026-03-04 japanese-otf
 
 Based on japanese-otf-uptex Ver.0.34.
 
