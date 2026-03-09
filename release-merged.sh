@@ -60,8 +60,10 @@ for i in $PROJECT/* ; do
     for j in $PROJECT/$bn/vf/*hira{min,kaku,maru}*.vf ; do
       mv $j $PROJECT-nonfree/vf/
     done
-    rm -f $PROJECT/$bn/tfm/{utf,cid}{j,c,t,k}*[0-9a-z]-{h,v}.tfm
-    rm -f $PROJECT/$bn/vf/{utf,cid}{j,c,t,k}*[0-9a-z]-{h,v}.vf
+    rm -f $PROJECT/$bn/tfm/{utf,cid}{c,t,k}*[0-9a-z]-{h,v}.tfm
+    rm -f $PROJECT/$bn/vf/{utf,cid}{c,t,k}*[0-9a-z]-{h,v}.vf
+    rm -f $PROJECT/$bn/tfm/utfj*[0-9a-z]-{h,v}.tfm
+    rm -f $PROJECT/$bn/vf/utfj*[0-9a-z]-{h,v}.vf
     rm -f $PROJECT/$bn/tfm/utf{mr,gr}[0-9a-z]-{h,v}.tfm
     rm -f $PROJECT/$bn/vf/utf{mr,gr}[0-9a-z]-{h,v}.vf
     rm $PROJECT/$bn/README
