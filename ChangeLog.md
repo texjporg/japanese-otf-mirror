@@ -1,3 +1,10 @@
+# 2026-03-09 japanese-otf
+
+* Revert to keeping conventional vf's and tfm's by subfont scheme for
+  \CID{} macros in the archive.
+
+
+
 # 2026-03-04 japanese-otf
 
 Based on japanese-otf-uptex Ver.0.34.
