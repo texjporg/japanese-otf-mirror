@@ -1,9 +1,9 @@
-# 2026-02-23 japanese-otf
+# 2026-03-04 japanese-otf
 
 Based on japanese-otf-uptex Ver.0.34.
 
 japanese-otf-uptex:
-* Add entry of Unicode variation sequences (SVS, IVS)
+* Add entries of Unicode variation sequences (SVS, IVS)
   to virtual fonts for expert option.
 
 For platex only:
